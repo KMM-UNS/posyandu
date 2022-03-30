@@ -31,6 +31,13 @@ return [
             'url' => '/admin/admin',
             'caret' => false,
         ],
+        "menu_ibu" =>  [
+            'icon' => 'fa fa-users',
+            'title' => 'Data Ibu',
+            'url' => ' /admin/dataibu',
+            'title' => '</i>&nbsp;Data Ibu'
+
+        ],
         [
             'icon' => 'fa fa-cogs',
             'title' => 'Master',
@@ -52,9 +59,12 @@ return [
                 ], [
                     'url' => '/admin/master-data/pendidikan',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Pendidikan'
+                ], [
+                    'url' => ' /admin/master-data/datakader',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Data Kader'
                 ]
             ]
-        ]
+        ],
     ],
 
     'menu_user' => [
