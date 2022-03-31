@@ -39,6 +39,27 @@ return [
 
         ],
         [
+            'icon' => 'fa fa-child',
+            'title' => 'Data Anak',
+            'url' => '/admin/dataanak',
+            'caret' => false,
+        ],
+        [
+            'icon' => 'fa fa-users',
+            'title' => 'Data Kader',
+            'url' => '/admin/datakader',
+            'caret' => false,
+        ],
+        [
+            'icon' => 'fa fa-child',
+            'title' => 'Imunisasi',
+            'url' => '/admin/imunisasi',
+            'caret' => false,
+        ],
+
+
+
+        [
             'icon' => 'fa fa-cogs',
             'title' => 'Master',
             'url' => 'javascript:;',
@@ -60,6 +81,9 @@ return [
                     'url' => '/admin/master-data/pendidikan',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Pendidikan'
                 ], [
+                    'url' => '/admin/master-data/jenisvaksin',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Jenis Vaksin'
+                ],[
                     'url' => ' /admin/master-data/datakader',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Data Kader'
                 ]

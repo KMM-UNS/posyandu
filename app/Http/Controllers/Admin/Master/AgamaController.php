@@ -48,7 +48,7 @@ class AgamaController extends Controller
     {
         try {
             $request->validate([
-                'nama' => 'required|min:3'
+                'nama_anak' => 'required|min:3'
             ]);
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError($th->validator->messages()->all()[0]);

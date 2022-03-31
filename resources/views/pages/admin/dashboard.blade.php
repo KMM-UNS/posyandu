@@ -1,5 +1,4 @@
 @extends('layouts.default')
-
 @section('title', 'Dashboard V2')
 
 @push('css')
@@ -596,3 +595,4 @@
 <script src="/assets/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
 <script src="/assets/js/demo/dashboard.js"></script>
 @endpush
+
