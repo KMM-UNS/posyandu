@@ -15,14 +15,13 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::view('/dashboard', 'pages.admin.dashboard')->name('dashboard');
 
 
-
-
-
         Route::resource('/admin', 'AdminController');
         Route::resource('/user', 'UserController');
         Route::resource('dataanak', 'DataAnakController');
         Route::resource('/datakader', 'DataKaderController');
         Route::resource('/imunisasi', 'ImunisasiController');
+        Route::resource('/dataibu', 'DataIbuController');
+
 
 
         Route::group(['prefix' => '/master-data', 'as' => 'master-data.', 'namespace' => 'Master'], function () {
@@ -36,7 +35,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
 
         });
+    
+            Route::resource('datakader', 'DataKaderController');
+        });
 
-        // tambahan
     });
 });
