@@ -26,7 +26,7 @@
 			<div class="widget widget-stats bg-blue">
 				<div class="stats-icon"><i class="fa fa-desktop"></i></div>
 				<div class="stats-info">
-					<h4>TOTAL VISITORS</h4>
+					<h4>DATA ANAK</h4>
 					<p>3,291,922</p>	
 				</div>
 				<div class="stats-link">
