@@ -1,8 +1,8 @@
 <?php
 
-namespace App\DataTables\admin;
+namespace App\DataTables;
 
-use App\Models\DataKader;
+use App\App\Models\DataKader;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
@@ -20,24 +20,14 @@ class DataKaderDataTable extends DataTable
     public function dataTable($query)
     {
         return datatables()
-        ->eloquent($query)
-        ->setRowId(function ($row) {
-            return $row->id;
-        })
-        ->addColumn('action', function ($row) {
-            $btn = '<div class="btn-group">';
-            $btn = $btn . '<a href="' . route('admin.datakader.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
-            $btn = $btn . '<a href="' . route('admin.datakader.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
-            $btn = $btn . '</div>';
-
-            return $btn;
-        });
-     }
+            ->eloquent($query)
+            ->addColumn('action', 'datakader.action');
+    }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\App\Models\admin/DataKader $model
+     * @param \App\App\Models\DataKader $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function query(DataKader $model)
@@ -53,7 +43,7 @@ class DataKaderDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-                    ->setTableId('data_kaders-table')
+                    ->setTableId('datakader-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                     ->dom('<"dataTables_wrapper dt-bootstrap"B<"row"<"col-xl-7 d-block d-sm-flex d-xl-block justify-content-center"<"d-block d-lg-inline-flex"l>><"col-xl-5 d-flex d-xl-block justify-content-center"fr>>t<"row"<"col-sm-5"i><"col-sm-7"p>>>')
@@ -81,10 +71,9 @@ class DataKaderDataTable extends DataTable
                   ->width(60)
                   ->addClass('text-center'),
             Column::make('id'),
-            Column::make('nama_kader'),
-            Column::make('jenis_kelamin'),
-            Column::make('alamat'),
-            Column::make('no_telephone'),
+            Column::make('add your columns'),
+            Column::make('created_at'),
+            Column::make('updated_at'),
         ];
     }
 
@@ -95,6 +84,6 @@ class DataKaderDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'Admin/DataKader_' . date('YmdHis');
+        return 'DataKader_' . date('YmdHis');
     }
 }

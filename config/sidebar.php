@@ -45,12 +45,6 @@ return [
             'caret' => false,
         ],
         [
-            'icon' => 'fa fa-users',
-            'title' => 'Data Kader',
-            'url' => '/admin/datakader',
-            'caret' => false,
-        ],
-        [
             'icon' => 'fa fa-child',
             'title' => 'Imunisasi',
             'url' => '/admin/imunisasi',

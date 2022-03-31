@@ -18,7 +18,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::resource('/admin', 'AdminController');
         Route::resource('/user', 'UserController');
         Route::resource('dataanak', 'DataAnakController');
-        Route::resource('/datakader', 'DataKaderController');
         Route::resource('/imunisasi', 'ImunisasiController');
         Route::resource('/dataibu', 'DataIbuController');
 
@@ -35,9 +34,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
 
         });
-    
-            Route::resource('datakader', 'DataKaderController');
-        });
+
 
     });
 });
