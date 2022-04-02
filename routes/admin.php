@@ -17,8 +17,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::resource('/admin', 'AdminController');
         Route::resource('/user', 'UserController');
 
-        Route::resource('/dataibu', 'DataIbuController');
-
         Route::group(['prefix' => '/master-data', 'as' => 'master-data.', 'namespace' => 'Master'], function () {
             Route::resource('agama', 'AgamaController');
             // Route::get('file-upload', [ SliderController::class, 'Slider' ])->name('file.upload');
@@ -27,6 +25,14 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::resource('status-kawin', 'StatusKawinController');
             Route::resource('pendidikan', 'PendidikanController');
             Route::resource('datakader', 'DataKaderController');
+            Route::resource('golda', 'GolonganDarahController');
+        });
+
+
+        Route::group(['prefix' => '/data-ibu', 'as' => 'data-ibu.', 'namespace' => 'Dataibu'], function () {
+            Route::resource('dataibu', 'DataIbuController');
+            Route::resource('ibuhamil', 'PeriksaIbuHamilController');
+            Route::resource('ibunifas', 'PeriksaIbuNifasController');
         });
     });
 });

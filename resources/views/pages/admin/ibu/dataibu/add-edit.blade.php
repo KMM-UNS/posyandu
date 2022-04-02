@@ -20,7 +20,7 @@
 
 
 <!-- begin panel -->
-<form action="{{ isset($data) ? route('admin.dataibu.update', $data->id) : route('admin.dataibu.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
+<form action="{{ isset($data) ? route('admin.data-ibu.dataibu.update', $data->id) : route('admin.data-ibu.dataibu.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
     @csrf
     @if(isset($data))
     {{ method_field('PUT') }}
@@ -45,20 +45,20 @@
                 <input type="text" id="nik" name="nik" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nik ?? old('nik') }}}">
                 <label for="name">Pembiayaan</label>
                 <input type="text" id="pembiayaan" name="pembiayaan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->pembiayaan ?? old('pembiayaan') }}}">
-                <label for="name">Golongan Darah </label>
-                <input type="text" id="golongan_darah" name="golongan_darah" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->golongan_darah ?? old('golongan_darah') }}}">
+                <label for="name">Golongan Darah</label>
+                <x-form.Dropdown name="golongan_darah" :options="$golda" selected="{{{ old('golongan_darah') ?? ($data['golongan_darah'] ?? null) }}}" required />
+                <label for="name">TTL</label>
+                <input type="text" id="ttl" name="ttl" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->ttl ?? old('ttl') }}}">
                 <label for="name">Pendidikan</label>
                 <input type="text" id="pendidikan" name="pendidikan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->pendidikan ?? old('pendidikan') }}}">
                 <label for="name">Pekerjaan</label>
                 <input type="text" id="pekerjaan" name="pekerjaan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->pekerjaan ?? old('pekerjaan') }}}">
-                <label for="name">Status</label>
-                <input type="text" id="status" name="status" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->status ?? old('status') }}}">
                 <label for="name">Alamat Rumah</label>
                 <input type="text" id="alamat_rumah" name="alamat_rumah" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->alamat_rumah ?? old('alamat_rumah') }}}">
-                <label for="name">TTL</label>
-                <input type="text" id="ttl" name="ttl" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->ttl ?? old('ttl') }}}">
-                <label for="name">No Telepon</label>
+                <label for="name">Nomor Telepon</label>
                 <input type="text" id="no_telepon" name="no_telepon" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->no_telepon ?? old('no_telepon') }}}">
+                <label for="name">Status</label>
+                <input type="text" id="status" name="status" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->status ?? old('status') }}}">
             </div>
         </div>
         <!-- end panel-body -->

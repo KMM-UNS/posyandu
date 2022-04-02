@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Dataibu;
 
-use App\Datatables\Admin\DataIbuDataTable;
+use App\Datatables\Admin\Dataibu\DataIbuDataTable;
+use App\Http\Controllers\Controller;
 use App\Models\DataIbu;
+use App\Models\GolonganDarah;
 use Illuminate\Http\Request;
 
 class DataIbuController extends Controller
@@ -15,7 +17,7 @@ class DataIbuController extends Controller
      */
     public function index(DataIbuDataTable $dataTable)
     {
-        return $dataTable->render('pages.admin.dataibu.index');
+        return $dataTable->render('pages.admin.ibu.dataibu.index');
     }
 
     /**
@@ -25,7 +27,8 @@ class DataIbuController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.dataibu.add-edit');
+        $golda = GolonganDarah::pluck('nama');
+        return view('pages.admin.ibu.dataibu.add-edit', ['golda' => $golda]);
     }
 
     /**
@@ -51,7 +54,7 @@ class DataIbuController extends Controller
             return back()->withInput()->withToastError('Something went wrong');
         }
 
-        return redirect(route('admin.dataibu.index'))->withToastSuccess('Data tersimpan');
+        return redirect(route('admin.data-ibu.dataibu.index'))->withToastSuccess('Data tersimpan');
     }
 
     /**
@@ -74,7 +77,8 @@ class DataIbuController extends Controller
     public function edit($id)
     {
         $data = DataIbu::findOrFail($id);
-        return view('pages.admin.dataibu.add-edit', ['data' => $data]);
+        $golda = GolonganDarah::pluck('nama');
+        return view('pages.admin.ibu.dataibu.add-edit', ['data' => $data, 'golda' => $golda]);
     }
 
     /**
@@ -101,7 +105,7 @@ class DataIbuController extends Controller
             return back()->withInput()->withToastError('Something went wrong');
         }
 
-        return redirect(route('admin.dataibu.index'))->withToastSuccess('Data tersimpan');
+        return redirect(route('admin.data-ibu.dataibu.index'))->withToastSuccess('Data tersimpan');
     }
 
     /**

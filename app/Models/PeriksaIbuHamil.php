@@ -8,16 +8,16 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
 use App\Models\GolonganDarah;
 
-class DataIbu extends Model
+class PeriksaIbuHamil extends Model
 {
     use HasFactory;
     use SoftDeletes;
 
     public const ACTIVE = "aktif";
 
-    protected $table = 'data_ibus';
+    protected $table = 'periksa_ibu_hamils';
     protected $fillable = [
-        'id', 'nama', 'nik', 'pembiayaan', 'golongan_darah', 'ttl', 'pendidikan', 'pekerjaan', 'alamat_rumah', 'no_telepon', 'status'
+        'id', 'nama', 'golongan_darah', 'tanggal_periksa', 'tinggi_badan', 'berat_badan', 'riwayat_kesehatanibu', 'status_pemberian_vitamin', 'riwayat_penyakit_keluarga', 'keluhan_ibu_hamil', 'tenaga_kesehatan'
     ];
     public $timestamps = false;
 

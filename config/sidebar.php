@@ -31,13 +31,30 @@ return [
             'url' => '/admin/admin',
             'caret' => false,
         ],
-        "menu_ibu" =>  [
-            'icon' => 'fa fa-users',
-            'title' => 'Data Ibu',
-            'url' => ' /admin/dataibu',
-            'title' => '</i>&nbsp;Data Ibu'
 
+
+        [
+            'icon' => 'fa fa-cogs',
+            'title' => 'Data Ibu',
+            'url' => 'javascript:;',
+            'caret' => true,
+            'sub_menu' => [
+                [
+                    'url' => ' /admin/data-ibu/dataibu',
+                    'title' => '</i>&nbsp;Data Ibu'
+                ],
+                [
+                    'url' => ' /admin/data-ibu/ibuhamil',
+                    'title' => '</i>&nbsp;Periksa Ibu Hamil'
+                ],
+                [
+                    'url' => ' /admin/data-ibu/ibunifas',
+                    'title' => '</i>&nbsp;Periksa Ibu Nifas'
+                ]
+            ]
         ],
+
+
         [
             'icon' => 'fa fa-cogs',
             'title' => 'Master',
@@ -62,6 +79,10 @@ return [
                 ], [
                     'url' => ' /admin/master-data/datakader',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Data Kader'
+                ],
+                [
+                    'url' => ' /admin/master-data/golda',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Golongan Darah'
                 ]
             ]
         ],
