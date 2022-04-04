@@ -32,6 +32,35 @@ return [
             'caret' => false,
         ],
 
+        "menu_ibu" =>  [
+            'icon' => 'fa fa-users',
+            'title' => 'Data Ibu',
+            'url' => ' /admin/dataibu',
+            'title' => '</i>&nbsp;Data Ibu'
+
+        ],
+
+        [
+            'icon' => 'fa fa-cogs',
+            'title' => 'Anak',
+            'url' => 'javascript:;',
+            'caret' => true,
+            'sub_menu' => [
+
+        [
+
+            'url' => '/admin/anak-data/dataanak',
+            'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Data Anak'
+        ], [
+            'url' => '/admin/anak-data/imunisasi',
+            'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Imunisasi'
+        ],
+
+        ]
+    ],
+// ini buat naro url bagian Master
+
+
 
         [
             'icon' => 'fa fa-cogs',
@@ -53,6 +82,7 @@ return [
                 ]
             ]
         ],
+
 
 
         [
@@ -82,16 +112,27 @@ return [
                     'url' => '/admin/master-data/pendidikan',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Pendidikan'
                 ], [
+
+                    'url' => '/admin/master-data/jenisvaksin',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Jenis Vaksin'
+                ],[
+                    'url' => ' /admin/master-data/datakader',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Data Kader'
+
                     'url' => ' /admin/master-data/datakader',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Data Kader'
                 ],
                 [
                     'url' => ' /admin/master-data/golda',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Golongan Darah'
+
                 ]
             ]
         ],
     ],
+
+    // ini buat naro url bagian anak
+
 
     'menu_user' => [
         [

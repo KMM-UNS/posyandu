@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
 use App\Models\GolonganDarah;
 
+
 class DataIbu extends Model
 {
     use HasFactory;
@@ -21,8 +22,10 @@ class DataIbu extends Model
     ];
     public $timestamps = false;
 
+
     public function golda()
     {
         return $this->belongsTo(GolonganDarah::class, 'golongan_darah');
     }
+
 }
