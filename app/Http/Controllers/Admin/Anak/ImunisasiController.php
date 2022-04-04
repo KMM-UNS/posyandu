@@ -1,24 +1,24 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\admin\Anak;
 
-use App\Datatables\Admin\DataAnakDataTable;
+use App\Datatables\Admin\Anak\ImunisasiDataTable;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\DataAnak;
+use App\Models\Imunisasi;
+use App\Models\JenisVaksin;
 
-class DataAnakController extends Controller
+class ImunisasiController extends Controller
 {
-     /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(DataAnakDataTable $dataTable)
+    public function index(ImunisasiDataTable $dataTable)
     {
-        return $dataTable->render('pages.admin.dataanak.index');
+        return $dataTable->render('pages.admin.anak.imunisasi.index');
     }
-
 
     /**
      * Show the form for creating a new resource.
@@ -27,7 +27,8 @@ class DataAnakController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.dataanak.add-edit');
+        $jenisvaksin=JenisVaksin::pluck('vaksin','id');
+        return view('pages.admin.anak.imunisasi.add-edit',['jenisvaksin'=>$jenisvaksin]);
     }
 
     /**
@@ -47,12 +48,12 @@ class DataAnakController extends Controller
         }
 
         try {
-            DataAnak::create($request->all());
+            Imunisasi::create($request->all());
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Something went wrong');
         }
 
-        return redirect(route('admin.dataanak.index'))->withToastSuccess('Data tersimpan');
+        return redirect(route('admin.anak-data.imunisasi.index'))->withToastSuccess('Data tersimpan');
     }
 
     /**
@@ -74,8 +75,9 @@ class DataAnakController extends Controller
      */
     public function edit($id)
     {
-        $data = DataAnak::findOrFail($id);
-        return view('pages.admin.dataanak.add-edit', ['data' => $data]);
+        $jenisvaksin=JenisVaksin::pluck('vaksin','id');
+        $data = Imunisasi::findOrFail($id);
+        return view('pages.admin.anak.imunisasi.add-edit', ['data' => $data,'jenisvaksin'=>$jenisvaksin]);
     }
 
     /**
@@ -87,7 +89,7 @@ class DataAnakController extends Controller
      */
     public function update(Request $request, $id)
     {
-         try {
+        try {
             $request->validate([
                 'nama_anak' => 'required|min:3'
             ]);
@@ -96,13 +98,14 @@ class DataAnakController extends Controller
         }
 
         try {
-            $data = DataAnak::findOrFail($id);
+            $data = Imunisasi::findOrFail($id);
             $data->update($request->all());
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Something went wrong');
         }
 
-        return redirect(route('admin.dataanak.index'))->withToastSuccess('Data tersimpan');
+        return redirect(route('admin.anak-data.imunisasi.index'))->withToastSuccess('Data tersimpan');
+
     }
 
     /**
@@ -114,7 +117,7 @@ class DataAnakController extends Controller
     public function destroy($id)
     {
         try {
-            DataAnak::find($id)->delete();
+            Imunisasi::find($id)->delete();
         } catch (\Throwable $th) {
             return response(['error' => 'Something went wrong']);
         }

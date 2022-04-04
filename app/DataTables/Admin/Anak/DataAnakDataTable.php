@@ -1,15 +1,15 @@
 <?php
 
-namespace App\DataTables\admin;
+namespace App\DataTables\Admin\Anak;
 
-use App\Models\Imunisasi;
+use App\Models\DataAnak;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class ImunisasiDataTable extends DataTable
+class DataAnakDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -20,29 +20,29 @@ class ImunisasiDataTable extends DataTable
     public function dataTable($query)
     {
         return datatables()
-            ->eloquent($query)
-            ->setRowId(function ($row) {
-                return $row->id;
-            })
-            ->addColumn('action', function ($row) {
-                $btn = '<div class="btn-group">';
-                $btn = $btn . '<a href="' . route('admin.imunisasi.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
-                $btn = $btn . '<a href="' . route('admin.imunisasi.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
-                $btn = $btn . '</div>';
+        ->eloquent($query)
+        ->setRowId(function ($row) {
+            return $row->id;
+        })
+        ->addColumn('action', function ($row) {
+            $btn = '<div class="btn-group">';
+            $btn = $btn . '<a href="' . route('admin.anak-data.dataanak.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
+            $btn = $btn . '<a href="' . route('admin.anak-data.dataanak.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
+            $btn = $btn . '</div>';
 
-                return $btn;
-            });
+            return $btn;
+        });
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\App\Models\admin\Imunisasi $model
+     * @param \App\App\Models\Admin/Master/DataAnak $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Imunisasi $model)
+    public function query(DataAnak $model)
     {
-        return $model->select('imunisasis.*')->with(['jenisvaksin']);
+        return $model->newQuery();
     }
 
     /**
@@ -53,7 +53,7 @@ class ImunisasiDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-                    ->setTableId('imunisasi-table')
+                    ->setTableId('dataanak-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                     ->dom('<"dataTables_wrapper dt-bootstrap"B<"row"<"col-xl-7 d-block d-sm-flex d-xl-block justify-content-center"<"d-block d-lg-inline-flex"l>><"col-xl-5 d-flex d-xl-block justify-content-center"fr>>t<"row"<"col-sm-5"i><"col-sm-7"p>>>')
@@ -82,14 +82,13 @@ class ImunisasiDataTable extends DataTable
                   ->addClass('text-center'),
             Column::make('id'),
             Column::make('nama_anak'),
-            Column::make('jenis_kelamin'),
-            Column::make('tanggal_imunisasi'),
-            Column::make('berat_badan'),
-            Column::make('tinggi_badan'),
+            Column::make('NIK'),
+            Column::make('tempat_lahir'),
+            Column::make('tanggal_lahir'),
             Column::make('umur'),
-            Column::make('jenis_vaksin')->data('jenisvaksin.vaksin'), //jenisvaksin nama fungsi relasi
-            Column::make('jadwal_vaksin'),
-            Column::make('nama_kader'),
+            Column::make('jenis_kelamin'),
+            Column::make('anak_ke'),
+            Column::make('nama_orangtua'),
         ];
     }
 
@@ -100,6 +99,6 @@ class ImunisasiDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'admin\Imunisasi_' . date('YmdHis');
+        return 'Admin/DataAnak_' . date('YmdHis');
     }
 }

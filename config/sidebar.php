@@ -38,21 +38,26 @@ return [
             'title' => '</i>&nbsp;Data Ibu'
 
         ],
+
         [
-            'icon' => 'fa fa-child',
-            'title' => 'Data Anak',
-            'url' => '/admin/dataanak',
-            'caret' => false,
-        ],
+            'icon' => 'fa fa-cogs',
+            'title' => 'Anak',
+            'url' => 'javascript:;',
+            'caret' => true,
+            'sub_menu' => [
+
         [
-            'icon' => 'fa fa-child',
-            'title' => 'Imunisasi',
-            'url' => '/admin/imunisasi',
-            'caret' => false,
+
+            'url' => '/admin/anak-data/dataanak',
+            'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Data Anak'
+        ], [
+            'url' => '/admin/anak-data/imunisasi',
+            'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Imunisasi'
         ],
 
-
-
+        ]
+    ],
+// ini buat naro url bagian Master
         [
             'icon' => 'fa fa-cogs',
             'title' => 'Master',
@@ -84,6 +89,9 @@ return [
             ]
         ],
     ],
+
+    // ini buat naro url bagian anak
+
 
     'menu_user' => [
         [

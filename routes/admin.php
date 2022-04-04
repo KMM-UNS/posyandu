@@ -17,12 +17,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         Route::resource('/admin', 'AdminController');
         Route::resource('/user', 'UserController');
-        Route::resource('dataanak', 'DataAnakController');
-        Route::resource('/imunisasi', 'ImunisasiController');
         Route::resource('/dataibu', 'DataIbuController');
 
 
-
+// route master data
         Route::group(['prefix' => '/master-data', 'as' => 'master-data.', 'namespace' => 'Master'], function () {
             Route::resource('agama', 'AgamaController');
             // Route::get('file-upload', [ SliderController::class, 'Slider' ])->name('file.upload');
@@ -31,10 +29,14 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::resource('status-kawin', 'StatusKawinController');
             Route::resource('pendidikan', 'PendidikanController');
             Route::resource('jenisvaksin', 'JenisVaksinController');
-
-
         });
 
 
-    });
+        // route data anak
+        Route::group(['prefix' => '/anak-data', 'as' => 'anak-data.', 'namespace' => 'Anak'], function () {
+
+                Route::resource('dataanak', 'DataAnakController');
+                Route::resource('imunisasi', 'ImunisasiController');
+        });
+});
 });
