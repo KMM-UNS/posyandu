@@ -5,8 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Str;
 use App\Models\GolonganDarah;
+use App\Models\Vitamin;
+
 
 class PeriksaIbuHamil extends Model
 {
@@ -24,5 +25,10 @@ class PeriksaIbuHamil extends Model
     public function golda()
     {
         return $this->belongsTo(GolonganDarah::class, 'golongan_darah');
+    }
+
+    public function vitamin()
+    {
+        return $this->belongsTo(Vitamin::class, 'status_pemberian_vitamin');
     }
 }

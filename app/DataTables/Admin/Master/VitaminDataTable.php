@@ -1,15 +1,15 @@
 <?php
 
-namespace App\DataTables\Admin\Dataibu;
+namespace App\DataTables\Admin\Master;
 
-use App\Models\PeriksaIbuHamil;
+use App\Models\Vitamin;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class PeriksaIbuHamilDataTable extends DataTable
+class VitaminDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -26,8 +26,8 @@ class PeriksaIbuHamilDataTable extends DataTable
             })
             ->addColumn('action', function ($row) {
                 $btn = '<div class="btn-group">';
-                $btn = $btn . '<a href="' . route('admin.data-ibu.ibuhamil.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
-                $btn = $btn . '<a href="' . route('admin.data-ibu.ibuhamil.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
+                $btn = $btn . '<a href="' . route('admin.master-data.vitamin.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
+                $btn = $btn . '<a href="' . route('admin.master-data.vitamin.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
                 $btn = $btn . '</div>';
 
                 return $btn;
@@ -37,13 +37,12 @@ class PeriksaIbuHamilDataTable extends DataTable
     /**
      * Get query source of dataTable.
      *
-     * @param \App\App\Models\Admin\Dataibu\PeriksaIbuHamilDataTable $model
+     * @param \App\App\Models\Admin\Master\VitaminDataTable $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(PeriksaIbuHamil $model)
+    public function query(Vitamin $model)
     {
-        return $model->select('periksa_ibu_hamils.*')->with(['golda']);
-        return $model->select('periksa_ibu_hamils.*')->with(['vitamin']);
+        return $model->newQuery();
     }
 
     /**
@@ -54,7 +53,7 @@ class PeriksaIbuHamilDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-            ->setTableId('periksa_ibu_hamils-table')
+            ->setTableId('vitamins-table')
             ->columns($this->getColumns())
             ->minifiedAjax()
             ->dom('<"dataTables_wrapper dt-bootstrap"B<"row"<"col-xl-7 d-block d-sm-flex d-xl-block justify-content-center"<"d-block d-lg-inline-flex"l>><"col-xl-5 d-flex d-xl-block justify-content-center"fr>>t<"row"<"col-sm-5"i><"col-sm-7"p>>>')
@@ -83,15 +82,6 @@ class PeriksaIbuHamilDataTable extends DataTable
                 ->addClass('text-center'),
             Column::make('id'),
             Column::make('nama'),
-            Column::make('golongan_darah')->data('golda.nama'),
-            Column::make('tanggal_periksa'),
-            Column::make('tinggi_badan'),
-            Column::make('berat_badan'),
-            Column::make('riwayat_kesehatanibu'),
-            Column::make('status_pemberian_vitamin'),
-            Column::make('riwayat_penyakit_keluarga'),
-            Column::make('keluhan_ibu_hamil'),
-            Column::make('tenaga_kesehatan')
         ];
     }
 
@@ -102,6 +92,6 @@ class PeriksaIbuHamilDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'Admin\Dataibu\PeriksaIbuHamil_' . date('YmdHis');
+        return 'Admin\Master\Vitamin_' . date('YmdHis');
     }
 }

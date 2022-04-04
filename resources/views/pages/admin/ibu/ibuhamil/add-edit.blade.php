@@ -52,7 +52,7 @@
                 <label for="name">Riwayat Kesehatan</label>
                 <input type="text" id="riwayat_kesehatanibu" name="riwayat_kesehatanibu" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->riwayat_kesehatanibu ?? old('riwayat_kesehatanibu') }}}">
                 <label for="name">Status Pemberian Vitamin</label>
-                <input type="text" id="status_pemberian_vitamin" name="status_pemberian_vitamin" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->status_pemberian_vitamin ?? old('status_pemberian_vitamin') }}}">
+                <x-form.Dropdown name="status_pemberian_vitamin" :options="$vitamin" selected="{{{ old('status_pemberian_vitamin') ?? ($data['status_pemberian_vitamin'] ?? null) }}}" required />
                 <label for="name">Riwayat Penyakit Keluarga</label>
                 <input type="text" id="riwayat_penyakit_keluarga" name="riwayat_penyakit_keluarga" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->riwayat_penyakit_keluarga ?? old('riwayat_penyakit_keluarga') }}}">
                 <label for="name">Keluhan Ibu Hamil</label>

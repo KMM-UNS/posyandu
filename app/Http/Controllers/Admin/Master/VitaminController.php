@@ -1,19 +1,22 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Dataibu;
+namespace App\Http\Controllers\Admin\Master;
 
-use App\Datatables\Admin\Dataibu\PeriksaIbuHamilDataTable;
+use App\Datatables\Admin\Master\VitaminDataTable;
 use App\Http\Controllers\Controller;
-use App\Models\PeriksaIbuHamil;
-use App\Models\GolonganDarah;
 use App\Models\Vitamin;
 use Illuminate\Http\Request;
 
-class PeriksaIbuHamilController extends Controller
+class VitaminController extends Controller
 {
-    public function index(PeriksaIbuHamilDataTable $dataTable)
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index(VitaminDataTable $dataTable)
     {
-        return $dataTable->render('pages.admin.ibu.ibuhamil.index');
+        return $dataTable->render('pages.admin.master.vitamin.index');
     }
 
     /**
@@ -23,9 +26,7 @@ class PeriksaIbuHamilController extends Controller
      */
     public function create()
     {
-        $golda = GolonganDarah::pluck('nama');
-        $vitamin = Vitamin::pluck('nama');
-        return view('pages.admin.ibu.ibuhamil.add-edit', ['golda' => $golda], ['vitamin' => $vitamin]);
+        return view('pages.admin.master.vitamin.add-edit');
     }
 
     /**
@@ -45,13 +46,12 @@ class PeriksaIbuHamilController extends Controller
         }
 
         try {
-            PeriksaIbuHamil::create($request->all());
+            Vitamin::create($request->all());
         } catch (\Throwable $th) {
-
             return back()->withInput()->withToastError('Something went wrong');
         }
 
-        return redirect(route('admin.data-ibu.ibuhamil.index'))->withToastSuccess('Data tersimpan');
+        return redirect(route('admin.master-data.vitamin.index'))->withToastSuccess('Data tersimpan');
     }
 
     /**
@@ -73,10 +73,8 @@ class PeriksaIbuHamilController extends Controller
      */
     public function edit($id)
     {
-        $data = PeriksaIbuHamil::findOrFail($id);
-        $golda = GolonganDarah::pluck('nama');
-        $vitamin = Vitamin::pluck('nama');
-        return view('pages.admin.ibu.ibuhamil.add-edit', ['data' => $data, 'ibuhamil' => $golda], ['data' => $data, 'ibuhamil' => $vitamin]);
+        $data = Vitamin::findOrFail($id);
+        return view('pages.admin.master.vitamin.add-edit', ['data' => $data]);
     }
 
     /**
@@ -97,13 +95,13 @@ class PeriksaIbuHamilController extends Controller
         }
 
         try {
-            $data = PeriksaIbuHamil::findOrFail($id);
+            $data = Vitamin::findOrFail($id);
             $data->update($request->all());
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Something went wrong');
         }
 
-        return redirect(route('admin.data-ibu.ibuhamil.index'))->withToastSuccess('Data tersimpan');
+        return redirect(route('admin.master-data.vitamin.index'))->withToastSuccess('Data tersimpan');
     }
 
     /**
@@ -115,7 +113,7 @@ class PeriksaIbuHamilController extends Controller
     public function destroy($id)
     {
         try {
-            PeriksaIbuHamil::find($id)->delete();
+            Vitamin::find($id)->delete();
         } catch (\Throwable $th) {
             return response(['error' => 'Something went wrong']);
         }

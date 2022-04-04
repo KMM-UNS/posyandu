@@ -68,6 +68,11 @@ return [
                     'url' => '/admin/master-data/agama',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Agama'
                 ], [
+                    'url' => '/admin/master-data/vitamin',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Vitamin'
+                ],
+
+                [
                     'url' => '/admin/master-data/pekerjaan',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Pekerjaan'
                 ], [
