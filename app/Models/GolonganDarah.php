@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 use App\Models\DataIbu;
 use App\Models\PeriksaIbuHamil;
 use App\Models\PeriksaIbuNifas;
+use App\Models\DataLansia;
 
 class GolonganDarah extends Model
 {

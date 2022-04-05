@@ -46,6 +46,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::resource('ibuhamil', 'PeriksaIbuHamilController');
             Route::resource('ibunifas', 'PeriksaIbuNifasController');
         });
+
+        Route::group(['prefix' => '/data-lansia', 'as' => 'data-lansia.', 'namespace' => 'Lansia'], function () {
+            Route::resource('datalansia', 'DataLansiaController');
+        });
 });
 
             

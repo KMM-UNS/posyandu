@@ -47,18 +47,18 @@ return [
             'caret' => true,
             'sub_menu' => [
 
-        [
+                [
 
-            'url' => '/admin/anak-data/dataanak',
-            'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Data Anak'
-        ], [
-            'url' => '/admin/anak-data/imunisasi',
-            'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Imunisasi'
+                    'url' => '/admin/anak-data/dataanak',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Data Anak'
+                ], [
+                    'url' => '/admin/anak-data/imunisasi',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Imunisasi'
+                ],
+
+            ]
         ],
-
-        ]
-    ],
-// ini buat naro url bagian Master
+        // ini buat naro url bagian Master
 
 
 
@@ -83,7 +83,26 @@ return [
             ]
         ],
 
-
+         [
+            'icon' => 'fa fa-cogs',
+            'title' => 'Lansia',
+            'url' => 'javascript:;',
+            'caret' => true,
+            'sub_menu' => [
+                [
+                    'url' => ' /admin/data-lansia/datalansia',
+                    'title' => '</i>&nbsp;Data Lansia'
+                ],
+                [
+                    'url' => ' /admin/lansia/lansia',
+                    'title' => '</i>&nbsp;Pemeriksaan'
+                ],
+                [
+                    'url' => ' /admin/data-ibu/ibunifas',
+                    'title' => '</i>&nbsp;Periksa Ibu Nifas'
+                ]
+            ]
+        ],
 
         [
             'icon' => 'fa fa-cogs',
@@ -115,10 +134,7 @@ return [
 
                     'url' => '/admin/master-data/jenisvaksin',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Jenis Vaksin'
-                ],[
-                    'url' => ' /admin/master-data/datakader',
-                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Data Kader'
-
+                ], [
                     'url' => ' /admin/master-data/datakader',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Data Kader'
                 ],
