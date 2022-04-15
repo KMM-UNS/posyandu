@@ -16,6 +16,7 @@ class CreateDataLansia extends Migration
         Schema::create('data_lansia', function (Blueprint $table) {
             $table->id();
             $table->string('nama_lansia');
+            $table->string('no_KMS');
             $table->string('NIK');
             $table->string('jenis_kelamin');
             $table->string('ttl');

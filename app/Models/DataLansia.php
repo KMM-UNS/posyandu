@@ -19,11 +19,16 @@ class DataLansia extends Model
 
     protected $table = 'data_lansia';
     protected $fillable = [
-        'nama_lansia', 'NIK', 'jenis_kelamin', 'ttl', 'umur', 'status_perkawinan', 'alamat', 'agama', 'pendidikan_terakhir','golongan_darah','jaminan_kesehatan'
+        'nama_lansia','no_KMS', 'NIK', 'jenis_kelamin', 'ttl', 'umur', 'status_perkawinan', 'alamat', 'agama', 'pendidikan_terakhir','golongan_darah','jaminan_kesehatan'
     ];
     public $timestamps = false;
 
+    public function KeluhanTindakan()
+    {
+        return $this->hasMany(KeluhanTindakan::class);
+    }
 
-    
+
+
 
 }

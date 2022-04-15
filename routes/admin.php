@@ -40,7 +40,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
                 Route::resource('dataanak', 'DataAnakController');
                 Route::resource('imunisasi', 'ImunisasiController');
         });
-      
+
        Route::group(['prefix' => '/data-ibu', 'as' => 'data-ibu.', 'namespace' => 'Dataibu'], function () {
             Route::resource('dataibu', 'DataIbuController');
             Route::resource('ibuhamil', 'PeriksaIbuHamilController');
@@ -49,11 +49,14 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         Route::group(['prefix' => '/data-lansia', 'as' => 'data-lansia.', 'namespace' => 'Lansia'], function () {
             Route::resource('datalansia', 'DataLansiaController');
+            Route::resource('pantauankms', 'PantauanKMSController');
+            Route::resource('keluhantindakan', 'KeluhanTindakanController');
+
         });
 });
 
-            
-            
+
+
         });
 
 

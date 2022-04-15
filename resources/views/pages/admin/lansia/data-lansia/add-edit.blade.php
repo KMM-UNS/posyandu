@@ -37,14 +37,17 @@
     </div>
     <!-- end panel-heading -->
     <!-- begin panel-body -->
+
     <div class="panel-body">
       <div class="form-group">
         <label for="name">Nama Lansia</label>
         <input type="text" id="nama_lansia" name="nama_lansia" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama_lansia ?? old('nama_lansia') }}}">
+        <label for="name">No KMS</label>
+        <input type="text" id="no_KMS" name="no_KMS" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->no_KMS ?? old('no_KMS') }}}">
         <label for="name">NIK</label>
         <input type="text" id="NIK" name="NIK" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->NIK ?? old('NIK') }}}">
         <label for="name">Jenis Kelamin</label>
-        <input type="text" id="jenis_kelamin" name="jenis_kelamin" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->jenis_kelamin ?? old('jenis_kelamin') }}}">
+        <x-form.genderRadio name="jenis_kelamin" selected="{{{ old('jenis_kelamin') ?? ($data['jenis_kelamin'] ?? null) }}}"/>
         <label for="name">ttl</label>
         <input type="text" id="ttl" name="ttl" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->ttl ?? old('ttl') }}}">
         <label for="name">Umur</label>

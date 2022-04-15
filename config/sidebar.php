@@ -94,12 +94,12 @@ return [
                     'title' => '</i>&nbsp;Data Lansia'
                 ],
                 [
-                    'url' => ' /admin/lansia/lansia',
-                    'title' => '</i>&nbsp;Pemeriksaan'
+                    'url' => ' /admin/data-lansia/pantauankms',
+                    'title' => '</i>&nbsp;Catatan Pemantauan KMS'
                 ],
                 [
-                    'url' => ' /admin/data-ibu/ibunifas',
-                    'title' => '</i>&nbsp;Periksa Ibu Nifas'
+                    'url' => ' /admin/data-lansia/keluhantindakan',
+                    'title' => '</i>&nbsp;Catatan Keluhan dan Tindakan'
                 ]
             ]
         ],
