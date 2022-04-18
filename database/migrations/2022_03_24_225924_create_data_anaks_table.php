@@ -19,10 +19,13 @@ class CreateDataAnaksTable extends Migration
             $table->string('NIK');
             $table->string('tempat_lahir');
             $table->string('tanggal_lahir');
+            $table->string('berat_badan_lahir');
+            $table->string('tinggi_badan_lahir');
             $table->string('umur');
             $table->string('jenis_kelamin');
             $table->string('anak_ke');
             $table->string('nama_orangtua');
+            $table->string('no_hp_orangtua');
             $table->softDeletes();
         });
     }

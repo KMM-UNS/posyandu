@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\JenisVaksin;
-
+use App\Models\DataAnak;
+use App\Models\VitaminAnak;
 class Imunisasi extends Model
 {
     use HasFactory;
@@ -16,14 +17,16 @@ class Imunisasi extends Model
 
     protected $table = 'imunisasis';
     protected $fillable = [
-        'nama_anak',
-        'jenis_kelamin',
+        'nama_anak_id',
         'tanggal_imunisasi',
         'berat_badan',
         'tinggi_badan',
         'umur',
         'jenis_vaksin',
-        'jadwal_vaksin',
+        'vitamin',
+        'keluhan',
+        'tindakan',
+        'status_gizi',
         'nama_kader',
     ];
     public $timestamps = false;
@@ -31,5 +34,15 @@ class Imunisasi extends Model
     public function jenisvaksin()
     {
         return $this->belongsTo(JenisVaksin::class,'jenis_vaksin');
+    }
+
+    public function data_anak()
+    {
+        return $this->belongsTo(DataAnak::class,'nama_anak_id');
+    }
+
+    public function vitamin_anak()
+    {
+         return $this->belongsTo(VitaminAnak::class,'vitamin');
     }
 }

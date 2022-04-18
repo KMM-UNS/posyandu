@@ -44,19 +44,22 @@
                 <label for="name">Nama Anak</label>
             </div>
             <div class="col-md-3">
-                <input type="text" id="nama_anak" name="nama_anak" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama_anak ?? old('nama_anak') }}}">
+                {{ $data->nama_anak }}
+                {{-- <input type="text" id="nama_anak" name="nama_anak" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama_anak ?? old('nama_anak') }}}"> --}}
             </div>
             <div class="col-md-1">
                 <label for="name">NIK</label>
             </div>
             <div class="col-md-3">
-                <input type="text" id="NIK" name="NIK" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->NIK ?? old('NIK') }}}">
+                {{ $data->NIK }}
+                {{-- <input type="text" id="NIK" name="NIK" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->NIK ?? old('NIK') }}}"> --}}
             </div>
             <div class="col-md-1">
                 <label for="name">Tempat Lahir</label>
             </div>
             <div class="col-md-3">
-                <input type="text" id="tempat_lahir" name="tempat_lahir" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tempat_lahir ?? old('tempat_lahir') }}}">
+                {{ $data->tempat_lahir }}
+                {{-- <input type="text" id="tempat_lahir" name="tempat_lahir" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tempat_lahir ?? old('tempat_lahir') }}}"> --}}
             </div>
         </div>
       </div>
@@ -67,19 +70,22 @@
                 <label for="name">Tanggal Lahir</label>
             </div>
             <div class="col-md-3">
-                <input type="date" id="tanggal_lahir" name="tanggal_lahir" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tanggal_lahir ?? old('tanggal_lahir') }}}">
+                {{ $data->tanggal_lahir }}
+                {{-- <input type="date" id="tanggal_lahir" name="tanggal_lahir" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tanggal_lahir ?? old('tanggal_lahir') }}}"> --}}
             </div>
             <div class="col-md-1">
                 <label for="name">Berat Badan Lahir</label>
             </div>
             <div class="col-md-3">
-                <input type="text" id="berat_badan_lahir" name="berat_badan_lahir" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->berat_badan_lahir ?? old('berat_badan_lahir') }}}">
+                {{ $data->berat_badan_lahir }}
+                {{-- <input type="text" id="berat_badan_lahir" name="berat_badan_lahir" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->berat_badan_lahir ?? old('berat_badan_lahir') }}}"> --}}
             </div>
             <div class="col-md-1">
                 <label for="name">Tinggi Badan Lahir</label>
             </div>
             <div class="col-md-3">
-                <input type="text" id="tinggi_badan_lahir" name="tinggi_badan_lahir" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tinggi_badan_lahir ?? old('tinggi_badan_lahir') }}}">
+                {{ $data->tinggi_badan_lahir }}
+                {{-- <input type="text" id="tinggi_badan_lahir" name="tinggi_badan_lahir" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tinggi_badan_lahir ?? old('tinggi_badan_lahir') }}}"> --}}
     </div>
     </div>
 
@@ -89,20 +95,23 @@
                   <label for="name">Umur</label>
               </div>
               <div class="col-md-3">
-                  <input type="text" id="umur" name="umur" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->umur ?? old('umur') }}}">
+               {{ $data->umur }}
+                {{-- <input type="text" id="umur" name="umur" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->umur ?? old('umur') }}}"> --}}
               </div>
               <div class="col-md-1">
                   <label for="name">Jenis Kelamin</label>
               </div>
               <div class="col-md-3">
-                  <x-form.genderRadio name="jenis_kelamin" selected="{{{ old('jenis_kelamin') ?? ($data['jenis_kelamin'] ?? null) }}}"/>
+                {{ $data->jenis_kelamin }}
+                  {{-- <x-form.genderRadio name="jenis_kelamin" selected="{{{ old('jenis_kelamin') ?? ($data['jenis_kelamin'] ?? null) }}}"/> --}}
                   {{-- <input type="text" id="jenis_kelamin" name="jenis_kelamin" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->jenis_kelamin ?? old('jenis_kelamin') }}}"> --}}
               </div>
               <div class="col-md-1">
                   <label for="name">Anak Ke</label>
               </div>
               <div class="col-md-3">
-                  <input type="text" id="anak_ke" name="anak_ke" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->anak_ke ?? old('anak_ke') }}}">
+                  {{ $data->anak_ke }}
+                  {{-- <input type="text" id="anak_ke" name="anak_ke" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->anak_ke ?? old('anak_ke') }}}"> --}}
               </div>
         </div>
         </div>
@@ -112,14 +121,20 @@
                   <label for="name">Nama Orangtua</label>
               </div>
               <div class="col-md 3">
-                  <input type="text" id="nama_orangtua" name="nama_orangtua" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama_orangtua ?? old('nama_orangtua') }}}">
+               {{ $data->nama_orangtua }}
+                {{-- <input type="text" id="nama_orangtua" name="nama_orangtua" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama_orangtua ?? old('nama_orangtua') }}}"> --}}
               </div>
               <div class="col-md-1">
                   <label for="name">No Handphone Orangtua</label>
               </div>
               <div class="col-md-3">
-                  <input type="text" id="no_hp_orangtua" name="no_hp_orangtua" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->no_hp_orangtua ?? old('no_hp_orangtua') }}}">
+                {{ $data->no_hp_orangtua }}
+                {{-- <input type="text" id="no_hp_orangtua" name="no_hp_orangtua" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->no_hp_orangtua ?? old('no_hp_orangtua') }}}"> --}}
               </div>
+
+
+
+
      </div>
     </div>
     <!-- end panel-body -->

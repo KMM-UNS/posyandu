@@ -63,7 +63,8 @@ class DataAnakController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = DataAnak::findOrFail($id);
+        return view('pages.admin.anak.dataanak.show', ['data' => $data]);
     }
 
     /**

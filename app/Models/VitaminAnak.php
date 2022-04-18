@@ -7,26 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Imunisasi;
 
-class DataAnak extends Model
+class VitaminAnak extends Model
 {
     use HasFactory;
     use SoftDeletes;
 
     public const ACTIVE = "aktif";
 
-    protected $table = 'data_anaks';
+    protected $table = 'vitamin_anaks';
     protected $fillable = [
-        'nama_anak',
-        'NIK',
-        'tempat_lahir',
-        'tanggal_lahir',
-        'berat_badan_lahir',
-        'tinggi_badan_lahir',
-        'umur',
-        'jenis_kelamin',
-        'anak_ke',
-        'nama_orangtua',
-        'no_hp_orangtua'];
+        'nama_vitamin',
+        'keterangan'];
     public $timestamps = false;
 
     public function imunisasi()

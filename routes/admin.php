@@ -37,6 +37,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
                 Route::resource('dataanak', 'DataAnakController');
                 Route::resource('imunisasi', 'ImunisasiController');
+                Route::resource('jadwalimunisasi', 'JadwalImunisasiController');
+                Route::resource('vitaminanak', 'VitaminAnakController');
         });
 });
 });

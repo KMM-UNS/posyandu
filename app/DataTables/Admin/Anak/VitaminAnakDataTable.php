@@ -1,15 +1,15 @@
 <?php
 
-namespace App\DataTables\Admin\Anak;
+namespace App\DataTables\admin\anak;
 
-use App\Models\DataAnak;
+use App\Models\VitaminAnak;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class DataAnakDataTable extends DataTable
+class VitaminAnakDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -20,28 +20,27 @@ class DataAnakDataTable extends DataTable
     public function dataTable($query)
     {
         return datatables()
-        ->eloquent($query)
-        ->setRowId(function ($row) {
-            return $row->id;
-        })
-        ->addColumn('action', function ($row) {
-            $btn = '<div class="btn-group">';
-            $btn = $btn . '<a href="' . route('admin.anak-data.dataanak.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
-            $btn = $btn . '<a href="' . route('admin.anak-data.dataanak.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
-            $btn = $btn . '<a href="' . route('admin.anak-data.dataanak.show', $row->id) . '" class="btn btn-info buttons-show"><i class="fas fa-info fa-fw"></i></a>';
-            $btn = $btn . '</div>';
+            ->eloquent($query)
+            ->setRowId(function ($row) {
+                return $row->id;
+            })
+            ->addColumn('action', function ($row) {
+                $btn = '<div class="btn-group">';
+                $btn = $btn . '<a href="' . route('admin.anak-data.vitaminanak.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
+                $btn = $btn . '<a href="' . route('admin.anak-data.vitaminanak.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
+                $btn = $btn . '</div>';
 
-            return $btn;
-        });
-    }
+                return $btn;
+            });
+        }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\App\Models\Admin/Master/DataAnak $model
+     * @param \App\App\Models\admin\anak\VitaminAnak $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(DataAnak $model)
+    public function query(VitaminAnak $model)
     {
         return $model->newQuery();
     }
@@ -54,7 +53,7 @@ class DataAnakDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-                    ->setTableId('dataanak-table')
+                    ->setTableId('vitaminanak-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                     ->dom('<"dataTables_wrapper dt-bootstrap"B<"row"<"col-xl-7 d-block d-sm-flex d-xl-block justify-content-center"<"d-block d-lg-inline-flex"l>><"col-xl-5 d-flex d-xl-block justify-content-center"fr>>t<"row"<"col-sm-5"i><"col-sm-7"p>>>')
@@ -81,18 +80,9 @@ class DataAnakDataTable extends DataTable
                   ->printable(false)
                   ->width(60)
                   ->addClass('text-center'),
-            // Column::make('id'),
-            Column::make('nama_anak'),
-            Column::make('NIK'),
-            Column::make('tempat_lahir'),
-            Column::make('tanggal_lahir'),
-            Column::make('berat_badan_lahir'),
-            Column::make('tinggi_badan_lahir'),
-            Column::make('umur'),
-            Column::make('jenis_kelamin'),
-            // Column::make('anak_ke'),
-            // Column::make('nama_orangtua'),
-            // Column::make('no_hp_orangtua'),
+            Column::make('id'),
+            Column::make('nama_vitamin'),
+            Column::make('keterangan'),
         ];
     }
 
@@ -103,6 +93,6 @@ class DataAnakDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'Admin/DataAnak_' . date('YmdHis');
+        return 'admin\anak\VitaminAnak_' . date('YmdHis');
     }
 }

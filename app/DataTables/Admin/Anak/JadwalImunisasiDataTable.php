@@ -1,15 +1,15 @@
 <?php
 
-namespace App\DataTables;
+namespace App\DataTables\admin\anak;
 
-use App\App\Models\DataKader;
+use App\Models\JadwalImunisasi;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class DataKaderDataTable extends DataTable
+class JadwalImunisasiDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -21,16 +21,26 @@ class DataKaderDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
-            ->addColumn('action', 'datakader.action');
-    }
+            ->setRowId(function ($row) {
+                return $row->id;
+            })
+            ->addColumn('action', function ($row) {
+                $btn = '<div class="btn-group">';
+                $btn = $btn . '<a href="' . route('admin.anak-data.jadwalimunisasi.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
+                $btn = $btn . '<a href="' . route('admin.anak-data.jadwalimunisasi.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
+                $btn = $btn . '</div>';
+
+                return $btn;
+            });
+         }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\App\Models\DataKader $model
+     * @param \App\App\Models\admin\anak\JadwalImunisasi $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(DataKader $model)
+    public function query(JadwalImunisasi $model)
     {
         return $model->newQuery();
     }
@@ -43,7 +53,7 @@ class DataKaderDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-                    ->setTableId('datakader-table')
+                    ->setTableId('jadwalimunisasi-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                     ->dom('<"dataTables_wrapper dt-bootstrap"B<"row"<"col-xl-7 d-block d-sm-flex d-xl-block justify-content-center"<"d-block d-lg-inline-flex"l>><"col-xl-5 d-flex d-xl-block justify-content-center"fr>>t<"row"<"col-sm-5"i><"col-sm-7"p>>>')
@@ -71,9 +81,8 @@ class DataKaderDataTable extends DataTable
                   ->width(60)
                   ->addClass('text-center'),
             Column::make('id'),
-            Column::make('add your columns'),
-            Column::make('created_at'),
-            Column::make('updated_at'),
+            Column::make('tanggal'),
+            Column::make('keterangan'),
         ];
     }
 
@@ -84,6 +93,6 @@ class DataKaderDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'DataKader_' . date('YmdHis');
+        return 'admin\anak\JadwalImunisasi_' . date('YmdHis');
     }
 }

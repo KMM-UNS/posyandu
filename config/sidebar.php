@@ -53,6 +53,12 @@ return [
         ], [
             'url' => '/admin/anak-data/imunisasi',
             'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Imunisasi'
+        ],[
+            'url' => '/admin/anak-data/jadwalimunisasi',
+            'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Jadwal Imunisasi'
+        ],[
+            'url' => '/admin/anak-data/vitaminanak',
+            'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Vitamin Anak'
         ],
 
         ]
