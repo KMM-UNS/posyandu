@@ -1,4 +1,5 @@
 @extends('layouts.default')
+
 @section('title', 'Dashboard V2')
 
 @push('css')
@@ -324,6 +325,11 @@
         <a href="javascript:;" class="btn btn-white btn-sm">Cancel</a>
         <a href="javascript:;" class="btn btn-primary btn-sm m-l-5">Action</a>
       </div>
+      <textarea class="form-control rounded-0 bg-light p-15" rows="14">Enter some comment.</textarea>
+      <div class="panel-footer text-right">
+        <a href="javascript:;" class="btn btn-white btn-sm">Cancel</a>
+        <a href="javascript:;" class="btn btn-primary btn-sm m-l-5">Action</a>
+      </div>
     </div>
     <!-- end panel -->
 
@@ -594,5 +600,7 @@
 <script src="/assets/plugins/jvectormap-next/jquery-jvectormap-world-mill.js"></script>
 <script src="/assets/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
 <script src="/assets/js/demo/dashboard.js"></script>
+
 @endpush
+
 

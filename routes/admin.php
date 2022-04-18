@@ -23,22 +23,35 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 // route master data
         Route::group(['prefix' => '/master-data', 'as' => 'master-data.', 'namespace' => 'Master'], function () {
             Route::resource('agama', 'AgamaController');
+            Route::resource('vitamin', 'VitaminController');
             // Route::get('file-upload', [ SliderController::class, 'Slider' ])->name('file.upload');
             // Route::post('file-upload', [ SliderController::class, 'Slider' ])->name('file.upload.post');
             Route::resource('pekerjaan', 'PekerjaanController');
             Route::resource('status-kawin', 'StatusKawinController');
             Route::resource('pendidikan', 'PendidikanController');
             Route::resource('jenisvaksin', 'JenisVaksinController');
+          Route::resource('golda', 'GolonganDarahController');
+          Route::resource('datakader', 'DataKaderController');
         });
 
 
         // route data anak
         Route::group(['prefix' => '/anak-data', 'as' => 'anak-data.', 'namespace' => 'Anak'], function () {
-
                 Route::resource('dataanak', 'DataAnakController');
                 Route::resource('imunisasi', 'ImunisasiController');
                 Route::resource('jadwalimunisasi', 'JadwalImunisasiController');
                 Route::resource('vitaminanak', 'VitaminAnakController');
         });
+      
+       Route::group(['prefix' => '/data-ibu', 'as' => 'data-ibu.', 'namespace' => 'Dataibu'], function () {
+            Route::resource('dataibu', 'DataIbuController');
+            Route::resource('ibuhamil', 'PeriksaIbuHamilController');
+            Route::resource('ibunifas', 'PeriksaIbuNifasController');
+        });
 });
-});
+
+            
+            
+        });
+
+
