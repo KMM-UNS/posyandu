@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\PantauanKMS;
 
+
 class PantauanKMSController extends Controller
 {
     /**
@@ -75,10 +76,11 @@ class PantauanKMSController extends Controller
      */
     public function edit($id)
     {
-        $data = KeluhanTindakan::findOrFail($id);
+        //$data = KeluhanTindakan::findOrFail($id);
        //$nama_lansia=DataLansia::pluck('nama_lansia','id');
         return view('pages.admin.lansia.pantauan-kms.add-edit',
-        ['data' => $data]);
+        //['data' => $data]
+    );
     }
 
     /**
