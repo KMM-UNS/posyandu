@@ -81,6 +81,7 @@ $sidebarClass = (!empty($sidebarTransparent)) ? 'sidebar-transparent' : '';
 			return $subMenu;
 			}
 
+
 			foreach (config('sidebar.menu') as $key => $menu) {
 			$GLOBALS['parent_active'] = '';
 

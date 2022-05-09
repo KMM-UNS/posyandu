@@ -16,7 +16,7 @@ $sidebarClass = (!empty($sidebarTransparent)) ? 'sidebar-transparent' : '';
                     </div>
                     <div class="info">
                         <b class="caret pull-right"></b>
-                        Sean Ngu
+                        Sean Nguuuuuuuuu
                         <small>Front end developer</small>
                     </div>
                 </a>

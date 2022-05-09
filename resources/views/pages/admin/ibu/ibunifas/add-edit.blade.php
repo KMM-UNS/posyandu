@@ -40,11 +40,9 @@
         <div class="panel-body">
             <div class="form-group">
                 <label for="name">Nama</label>
-                <input type="text" id="nama" name="nama" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama ?? old('nama') }}}">
-                <label for="name">Golongan Darah</label>
-                <x-form.Dropdown name="golongan_darah" :options="$golda" selected="{{{ old('golongan_darah') ?? ($data['golongan_darah'] ?? null) }}}" required />
+                <x-form.Dropdown name="nama" :options="$dataibu" selected="{{{ old('nama') ?? ($data['nama'] ?? null) }}}" required />
                 <label for="name">Tanggal Periksa</label>
-                <input type="text" id="tanggal_periksa" name="tanggal_periksa" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tanggal_periksa ?? old('tanggal_periksa') }}}">
+                <input type="date" id="tanggal_periksa" name="tanggal_periksa" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tanggal_periksa ?? old('tanggal_periksa') }}}">
                 <label for="name">Tinggi Badan</label>
                 <input type="text" id="tinggi_badan" name="tinggi_badan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tinggi_badan ?? old('tinggi_badan') }}}">
                 <label for="name">Berat Badan</label>
@@ -53,12 +51,12 @@
                 <input type="text" id="riwayat_kesehatanibu" name="riwayat_kesehatanibu" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->riwayat_kesehatanibu ?? old('riwayat_kesehatanibu') }}}">
                 <label for="name">Status Pemberian Vitamin</label>
                 <input type="text" id="status_pemberian_vitamin" name="status_pemberian_vitamin" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->status_pemberian_vitamin ?? old('status_pemberian_vitamin') }}}">
+                <label for="name">Golongan Darah</label>
+                <x-form.Dropdown name="golongan_darah_id" :options="$golda" selected="{{{ old('golongan_darah_id') ?? ($data['golongan_darah_id'] ?? null) }}}" required />
                 <label for="name">Riwayat Penyakit Keluarga</label>
                 <input type="text" id="riwayat_penyakit_keluarga" name="riwayat_penyakit_keluarga" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->riwayat_penyakit_keluarga ?? old('riwayat_penyakit_keluarga') }}}">
-                <label for="name">Keluhan Ibu Nifas</label>
-                <input type="text" id="keluhan_ibu_nifas" name="keluhan_ibu_nifas" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->keluhan_ibu_nifas ?? old('keluhan_ibu_nifas') }}}">
-                <label for="name">Tenaga Kesehatan</label>
-                <input type="text" id="tenaga_kesehatan" name="tenaga_kesehatan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tenaga_kesehatan ?? old('tenaga_kesehatan') }}}">
+                <label for="name">Kader</label>
+                <x-form.Dropdown name="kader" :options="$kader" selected="{{{ old('kader') ?? ($data['kader'] ?? null) }}}" required />
             </div>
         </div>
         <!-- end panel-body -->

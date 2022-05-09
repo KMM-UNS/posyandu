@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDataKadersTable extends Migration
+class CreateStatusesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,10 @@ class CreateDataKadersTable extends Migration
      */
     public function up()
     {
-        Schema::create('data_kaders', function (Blueprint $table) {
+        Schema::create('statuses', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->string('jabatan');
-            $table->string('jenis kelamin');
-            $table->string('TTL');
-            $table->string('pendidikan');
-            $table->string('status absen');
+            $table->enum('status', ['aktif', 'non-aktif'])->default('aktif');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -33,6 +29,6 @@ class CreateDataKadersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('data_kaders');
+        Schema::dropIfExists('statuses');
     }
 }

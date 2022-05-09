@@ -46,7 +46,7 @@
                 <label for="name">Pembiayaan</label>
                 <input type="text" id="pembiayaan" name="pembiayaan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->pembiayaan ?? old('pembiayaan') }}}">
                 <label for="name">Golongan Darah</label>
-                <x-form.Dropdown name="golongan_darah" :options="$golda" selected="{{{ old('golongan_darah') ?? ($data['golongan_darah'] ?? null) }}}" required />
+                <x-form.Dropdown name="golongan_darah_id" :options="$golda" selected="{{{ old('golongan_darah_id') ?? ($data['golongan_darah_id'] ?? null) }}}" required />
                 <label for="name">TTL</label>
                 <input type="text" id="ttl" name="ttl" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->ttl ?? old('ttl') }}}">
                 <label for="name">Pendidikan</label>
@@ -58,7 +58,7 @@
                 <label for="name">Nomor Telepon</label>
                 <input type="text" id="no_telepon" name="no_telepon" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->no_telepon ?? old('no_telepon') }}}">
                 <label for="name">Status</label>
-                <input type="text" id="status" name="status" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->status ?? old('status') }}}">
+                <x-form.Dropdown name="status_id" :options="$status" class="form-control" selected="{{{ old('status_id') ?? ($data['status_id'] ?? null) }}}" required />
             </div>
         </div>
         <!-- end panel-body -->

@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers\Admin\Dataibu;
 
-use App\Datatables\Admin\Dataibu\PeriksaIbuNifasDataTable;
-use App\Http\Controllers\Controller;
-use App\Models\PeriksaIbuNifas;
-use App\Models\GolonganDarah;
+use App\Models\Status;
+use App\Models\DataIbu;
+use App\Models\Kader;
 use Illuminate\Http\Request;
+use App\Models\GolonganDarah;
+use App\Models\PeriksaIbuNifas;
+// use App\Models\Vitamin;
+use App\Http\Controllers\Controller;
+use App\Datatables\Admin\Dataibu\PeriksaIbuNifasDataTable;
 
 class PeriksaIbuNifasController extends Controller
 {
@@ -27,8 +31,11 @@ class PeriksaIbuNifasController extends Controller
      */
     public function create()
     {
-        $golda = GolonganDarah::pluck('nama');
-        return view('pages.admin.ibu.ibunifas.add-edit', ['golda' => $golda]);
+        $golda = GolonganDarah::pluck('nama', 'id');
+        $kader = Kader::pluck('nama', 'id');
+        $status = Status::select('id')->where('nama', 'Ibu Nifas')->first()->toArray();
+        $dataibu = DataIbu::where('status_id', $status)->pluck('nama', 'id');
+        return view('pages.admin.ibu.ibunifas.add-edit', ['golda' => $golda, 'dataibu' => $dataibu, 'status' => $status, 'kader' => $kader]);
     }
 
     /**
@@ -41,7 +48,7 @@ class PeriksaIbuNifasController extends Controller
     {
         try {
             $request->validate([
-                'nama' => 'required|min:3'
+                'nama' => 'required|min:1'
             ]);
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError($th->validator->messages()->all()[0]);
@@ -50,6 +57,7 @@ class PeriksaIbuNifasController extends Controller
         try {
             PeriksaIbuNifas::create($request->all());
         } catch (\Throwable $th) {
+
             return back()->withInput()->withToastError('Something went wrong');
         }
 
@@ -64,7 +72,11 @@ class PeriksaIbuNifasController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = PeriksaIbuNifas::findOrFail($id);
+        $golda = GolonganDarah::pluck('nama', 'id');
+        $dataibu = DataIbu::pluck('nama', 'id');
+        $kader = Kader::pluck('nama', 'id');
+        return view('pages.admin.ibu.ibunifas.show', ['data' => $data, 'golda' => $golda, 'dataibu' => $dataibu, 'kader' => $kader]);
     }
 
     /**
@@ -76,8 +88,10 @@ class PeriksaIbuNifasController extends Controller
     public function edit($id)
     {
         $data = PeriksaIbuNifas::findOrFail($id);
-        $golda = GolonganDarah::pluck('nama');
-        return view('pages.admin.ibu.ibunifas.add-edit', ['data' => $data, 'ibunifas' => $golda]);
+        $golda = GolonganDarah::pluck('nama', 'id');
+        $dataibu = DataIbu::pluck('nama', 'id');
+        $kader = Kader::pluck('nama', 'id');
+        return view('pages.admin.ibu.ibunifas.add-edit', ['data' => $data, 'golda' => $golda, 'dataibu' => $dataibu, 'kader' => $kader]);
     }
 
     /**
@@ -91,7 +105,7 @@ class PeriksaIbuNifasController extends Controller
     {
         try {
             $request->validate([
-                'nama' => 'required|min:3'
+                'nama' => 'required|min:1'
             ]);
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError($th->validator->messages()->all()[0]);

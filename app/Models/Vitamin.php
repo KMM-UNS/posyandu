@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
 use App\Models\PeriksaIbuHamil;
+use App\Models\PeriksaIbuNifas;
 
 class Vitamin extends Model
 {
@@ -32,5 +33,10 @@ class Vitamin extends Model
     public function periksaibuhamil()
     {
         return $this->hasMany(PeriksaIbuHamil::class);
+    }
+
+    public function periksaibunifas()
+    {
+        return $this->hasMany(PeriksaIbuNifas::class);
     }
 }

@@ -1,23 +1,22 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\Admin\Master;
 
-use App\Datatables\Admin\DataKaderDataTable;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\DataKader;
+use App\Models\TenagaKesehatan;
+use App\Datatables\Admin\Master\TenagaKesehatanDataTable;
 
-class DataKaderController extends Controller
+class TenagaKesehatanController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(DataKaderDataTable $dataTable)
+    public function index(TenagaKesehatanDataTable $dataTable)
     {
-        return $dataTable->render('pages.admin.datakader.index');
-
+        return $dataTable->render('pages.admin.master.tenagakesehatan.index');
     }
 
     /**
@@ -27,8 +26,7 @@ class DataKaderController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.datakader.add-edit');
-
+        return view('pages.admin.master.tenagakesehatan.add-edit');
     }
 
     /**
@@ -41,20 +39,19 @@ class DataKaderController extends Controller
     {
         try {
             $request->validate([
-                'nama_kader' => 'required|min:3'
+                'nama' => 'required'
             ]);
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError($th->validator->messages()->all()[0]);
         }
 
         try {
-            DataKader::create($request->all());
+            TenagaKesehatan::create($request->all());
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Something went wrong');
         }
 
-        return redirect(route('admin.datakader.index'))->withToastSuccess('Data tersimpan');
-
+        return redirect(route('admin.master-data.tenaga_kesehatan.index'))->withToastSuccess('Data tersimpan');
     }
 
     /**
@@ -76,8 +73,8 @@ class DataKaderController extends Controller
      */
     public function edit($id)
     {
-        $data = DataKader::findOrFail($id);
-        return view('pages.admin.datakader.add-edit', ['data' => $data]);
+        $data = TenagaKesehatan::findOrFail($id);
+        return view('pages.admin.master.tenaga_kesehatan.add-edit', ['data' => $data]);
     }
 
     /**
@@ -91,20 +88,20 @@ class DataKaderController extends Controller
     {
         try {
             $request->validate([
-                'nama_kader' => 'required|min:3'
+                'nama' => 'required|min:1'
             ]);
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError($th->validator->messages()->all()[0]);
         }
 
         try {
-            $data = DataKader::findOrFail($id);
+            $data = TenagaKesehatan::findOrFail($id);
             $data->update($request->all());
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Something went wrong');
         }
 
-        return redirect(route('admin.datakader.index'))->withToastSuccess('Data tersimpan');
+        return redirect(route('admin.master-data.tenaga_kesehatan.index'))->withToastSuccess('Data tersimpan');
     }
 
     /**
@@ -116,7 +113,7 @@ class DataKaderController extends Controller
     public function destroy($id)
     {
         try {
-            DataKader::find($id)->delete();
+            TenagaKesehatan::find($id)->delete();
         } catch (\Throwable $th) {
             return response(['error' => 'Something went wrong']);
         }

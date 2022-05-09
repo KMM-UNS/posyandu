@@ -28,6 +28,7 @@ class PeriksaIbuHamilDataTable extends DataTable
                 $btn = '<div class="btn-group">';
                 $btn = $btn . '<a href="' . route('admin.data-ibu.ibuhamil.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
                 $btn = $btn . '<a href="' . route('admin.data-ibu.ibuhamil.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
+                $btn = $btn . '<a href="' . route('admin.data-ibu.ibuhamil.show', $row->id) . '" class="btn btn-info buttons-show"><i class="fas fa-info fa-fw"></i></a>';
                 $btn = $btn . '</div>';
 
                 return $btn;
@@ -42,8 +43,11 @@ class PeriksaIbuHamilDataTable extends DataTable
      */
     public function query(PeriksaIbuHamil $model)
     {
-        return $model->select('periksa_ibu_hamils.*')->with(['golda']);
-        return $model->select('periksa_ibu_hamils.*')->with(['vitamin']);
+        return $model->select('periksa_ibu_hamils.*')->with([
+            'data_ibu',
+            'data_penyakit',
+            'data_imunisasi', 'data_kader'
+        ]);
     }
 
     /**
@@ -82,16 +86,10 @@ class PeriksaIbuHamilDataTable extends DataTable
                 ->width(60)
                 ->addClass('text-center'),
             Column::make('id'),
-            Column::make('nama'),
-            Column::make('golongan_darah')->data('golda.nama'),
+            Column::make('nama_id')->data('data_ibu.nama'),
             Column::make('tanggal_periksa'),
-            Column::make('tinggi_badan'),
-            Column::make('berat_badan'),
-            Column::make('riwayat_kesehatanibu'),
-            Column::make('status_pemberian_vitamin'),
-            Column::make('riwayat_penyakit_keluarga'),
-            Column::make('keluhan_ibu_hamil'),
-            Column::make('tenaga_kesehatan')
+            Column::make('riwayat_kesehatanibu_id')->data('data_penyakit.nama'),
+            Column::make('kader')->data('data_kader.nama'),
         ];
     }
 

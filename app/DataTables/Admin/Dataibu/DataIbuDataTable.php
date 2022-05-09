@@ -42,7 +42,7 @@ class DataIbuDataTable extends DataTable
      */
     public function query(DataIbu $model)
     {
-        return $model->select('data_ibus.*')->with(['golda']);
+        return $model->select('data_ibus.*')->with(['golda_ibu', 'status_ibu']);
     }
 
     /**
@@ -53,6 +53,7 @@ class DataIbuDataTable extends DataTable
     public function html()
     {
         return $this->builder()
+            ->scrollX('true')
             ->setTableId('data_ibus-table')
             ->columns($this->getColumns())
             ->minifiedAjax()
@@ -84,13 +85,13 @@ class DataIbuDataTable extends DataTable
             Column::make('nama'),
             Column::make('nik'),
             Column::make('pembiayaan'),
-            Column::make('golongan_darah')->data('golda.nama'),
+            Column::make('golongan_darah_id')->data('golda_ibu.nama'),
             Column::make('ttl'),
             Column::make('pendidikan'),
             Column::make('pekerjaan'),
             Column::make('alamat_rumah'),
             Column::make('no_telepon'),
-            Column::make('status'),
+            Column::make('status_id')->data('status_ibu.nama'),
         ];
     }
 
