@@ -32,13 +32,12 @@ return [
             'caret' => false,
         ],
 
-        "menu_ibu" =>  [
-            'icon' => 'fa fa-users',
-            'title' => 'Data Ibu',
-            'url' => ' /admin/dataibu',
-            'title' => '</i>&nbsp;Data Ibu'
+        // "menu_ibu" =>  [
+        //     'icon' => 'fa fa-users',
+        //     'title' => 'Data Ibu',
+        //     'url' => ' /admin/dataibu',
+        //     'title' => '</i>&nbsp;Data Ibu'
 
-        ],
 
         [
             'icon' => 'fa fa-cogs',
@@ -106,9 +105,7 @@ return [
                 ], [
                     'url' => '/admin/master-data/vitamin',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Vitamin'
-                ],
-
-                [
+                ],[
                     'url' => '/admin/master-data/pekerjaan',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Pekerjaan'
                 ], [
@@ -122,13 +119,6 @@ return [
                     'url' => '/admin/master-data/jenisvaksin',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Jenis Vaksin'
                 ],[
-                    'url' => ' /admin/master-data/datakader',
-                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Data Kader'
-
-                    'url' => ' /admin/master-data/datakader',
-                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Data Kader'
-                ],
-                [
                     'url' => ' /admin/master-data/golda',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Golongan Darah'
 

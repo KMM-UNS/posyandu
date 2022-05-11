@@ -31,7 +31,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::resource('pendidikan', 'PendidikanController');
             Route::resource('jenisvaksin', 'JenisVaksinController');
           Route::resource('golda', 'GolonganDarahController');
-          Route::resource('datakader', 'DataKaderController');
         });
 
 
@@ -42,7 +41,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
                 Route::resource('jadwalimunisasi', 'JadwalImunisasiController');
                 Route::resource('vitaminanak', 'VitaminAnakController');
         });
-      
+
        Route::group(['prefix' => '/data-ibu', 'as' => 'data-ibu.', 'namespace' => 'Dataibu'], function () {
             Route::resource('dataibu', 'DataIbuController');
             Route::resource('ibuhamil', 'PeriksaIbuHamilController');
@@ -50,8 +49,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         });
 });
 
-            
-            
+
+
         });
 
 
