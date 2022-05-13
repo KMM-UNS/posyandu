@@ -42,7 +42,7 @@ class PantauanKMSDataTable extends DataTable
      */
     public function query(PantauanKMS $model)
     {
-        return $model->newQuery();
+        return $model->select('pantauan_kms.*')->with(['lansia']);
     }
 
     /**
@@ -78,7 +78,7 @@ class PantauanKMSDataTable extends DataTable
             //Column::make('id'),
             //Column::make('no'),
             Column::make('tanggal_pemeriksaan'),
-            Column::make('nama_lansia1'),
+            Column::make('nama_lansia1')->data('lansia.nama_lansia'),
             Column::make('kegiatan_harian'),
             Column::make('status_mental'),
             Column::make('indeks_massa_tubuh'),

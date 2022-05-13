@@ -42,7 +42,7 @@ class DataLansiaDataTable extends DataTable
      */
     public function query(DataLansia $model)
     {
-        return $model->newQuery();
+        return $model->select('data_lansia.*')->with(['golongandarah','agama', 'statuskawin', 'jaminankesehatan']);
     }
 
     /**
@@ -75,7 +75,7 @@ class DataLansiaDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            //Column::make('id'),
+            // Column::make('id'),
             //Column::make('no'),
             Column::make('nama_lansia'),
             Column::make('no_KMS'),
@@ -83,12 +83,12 @@ class DataLansiaDataTable extends DataTable
             Column::make('jenis_kelamin'),
             Column::make('ttl'),
             Column::make('umur'),
-            Column::make('status_perkawinan'),
+            Column::make('status_perkawinan')->data('statuskawin.nama'),
             Column::make('alamat'),
-            Column::make('agama'),
+            Column::make('agama')->data('agama.nama'),
             Column::make('pendidikan_terakhir'),
-            Column::make('golongan_darah'),
-            Column::make('jaminan_kesehatan'),
+            Column::make('golongan_darah')->data('golongandarah.nama'),
+            Column::make('jaminan_kesehatan')->data('jaminankesehatan.jaminan_kesehatan_id'),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)

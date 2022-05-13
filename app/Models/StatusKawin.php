@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
+use App\Models\DataLansia;
 
 class StatusKawin extends Model
 {
@@ -31,5 +32,9 @@ class StatusKawin extends Model
     public function pemohon()
     {
         return $this->hasMany(Pemohon::class);
+    }
+    public function DataLansiaStatusKawin()
+    {
+        return $this->hasMany(DataLansia::class);
     }
 }

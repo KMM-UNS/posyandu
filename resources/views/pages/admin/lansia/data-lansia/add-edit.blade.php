@@ -53,17 +53,17 @@
         <label for="name">Umur</label>
         <input type="text" id="umur" name="umur" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->umur ?? old('umur') }}}">
         <label for="name">Status Perkawinan</label>
-        <input type="text" id="status_perkawinan" name="status_perkawinan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->status_perkawinan ?? old('status_perkawinan') }}}">
+        <x-form.Dropdown name="status_perkawinan" :options="$statuskawins" selected="{{{ old('status_perkawinan') ?? ($data['status_perkawinan'] ?? null) }}}" required />
         <label for="name">Alamat</label>
         <input type="text" id="alamat" name="alamat" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->alamat ?? old('alamat') }}}">
         <label for="name">Agama</label>
-        <input type="text" id="agama" name="agama" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->agama ?? old('agama') }}}">
+        <x-form.Dropdown name="agama" :options="$agamas" selected="{{{ old('agama') ?? ($data['agama'] ?? null) }}}" required />
         <label for="name">Pendidikan Terakhir</label>
         <input type="text" id="pendidikan_terakhir" name="pendidikan_terakhir" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->pendidikan_terakhir ?? old('pendidikan_terakhir') }}}">
         <label for="name">Golongan Darah</label>
-        <input type="text" id="golongan_darah" name="golongan_darah" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->golongan_darah ?? old('golongan_darah') }}}">
+        <x-form.Dropdown name="golongan_darah" :options="$goldas" selected="{{{ old('golongan_darah') ?? ($data['golongan_darah'] ?? null) }}}" required />
         <label for="name">Jaminan Kesehatan</label>
-        <input type="text" id="jaminan_kesehatan" name="jaminan_kesehatan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->jaminan_kesehatan ?? old('jaminan_kesehatan') }}}">
+        <x-form.Dropdown name="jaminan_kesehatan" :options="$jaminankesehatans" selected="{{{ old('jaminan_kesehatan') ?? ($data['jaminan_kesehatan'] ?? null) }}}" required />
      </div>
     </div>
     <!-- end panel-body -->

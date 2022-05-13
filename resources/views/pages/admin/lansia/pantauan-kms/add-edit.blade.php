@@ -43,7 +43,7 @@
         <label for="name">Tanggal Pemeriksaan</label>
         <input type="date" id="tanggal_pemeriksaan" name="tanggal_pemeriksaan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tanggal_pemeriksaan ?? old('tanggal_pemeriksaan') }}}">
         <label for="name">Nama Lansia</label>
-        <input type="text" id="nama_lansia1" name="nama_lansia1" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama_lansia1 ?? old('nama_lansia1') }}}">
+        <x-form.Dropdown name="nama_lansia1" :options="$nama_lansia" selected="{{{ old('nama_lansia1') ?? ($data['nama_lansia1'] ?? null) }}}" required />
         <label for="name">Kegiatan Sehari-hari</label>
         <input type="text" id="kegiatan_harian" name="kegiatan_harian" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->kegiatan_harian ?? old('kegiatan_harian') }}}">
         <label for="name">Status Mental</label>

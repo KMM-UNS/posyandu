@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\JaminanKesehatan;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
@@ -32,6 +33,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::resource('jenisvaksin', 'JenisVaksinController');
           Route::resource('golda', 'GolonganDarahController');
           Route::resource('datakader', 'DataKaderController');
+          Route::resource('jaminankesehatan','JaminanKesehatanController');
         });
 
 

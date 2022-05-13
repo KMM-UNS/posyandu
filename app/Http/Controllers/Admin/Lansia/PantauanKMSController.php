@@ -6,6 +6,7 @@ use App\Datatables\Admin\Lansia\PantauanKMSDataTable;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\PantauanKMS;
+use App\Models\DataLansia;
 
 
 class PantauanKMSController extends Controller
@@ -27,8 +28,8 @@ class PantauanKMSController extends Controller
      */
     public function create()
     {
-        //$nama_lansia=DataLansia::pluck('nama_lansia','id');
-        return view('pages.admin.lansia.pantauan-kms.add-edit');
+        $nama_lansia=DataLansia::pluck('nama_lansia','id');
+        return view('pages.admin.lansia.pantauan-kms.add-edit',['nama_lansia' =>  $nama_lansia]);
     }
 
     /**
@@ -76,11 +77,9 @@ class PantauanKMSController extends Controller
      */
     public function edit($id)
     {
-        //$data = KeluhanTindakan::findOrFail($id);
-       //$nama_lansia=DataLansia::pluck('nama_lansia','id');
-        return view('pages.admin.lansia.pantauan-kms.add-edit',
-        //['data' => $data]
-    );
+        $data = PantauanKMS::findOrFail($id);
+        $nama_lansia=DataLansia::pluck('nama_lansia','id');
+        return view('pages.admin.lansia.pantauan-kms.add-edit', ['data' => $data, 'nama_lansia' => $nama_lansia]);
     }
 
     /**

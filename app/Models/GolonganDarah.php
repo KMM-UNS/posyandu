@@ -46,4 +46,8 @@ class GolonganDarah extends Model
     {
         return $this->hasMany(PeriksaIbuNifas::class);
     }
+    public function DataLansiaGolda()
+    {
+        return $this->hasMany(DataLansia::class);
+    }
 }

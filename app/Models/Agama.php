@@ -33,4 +33,9 @@ class Agama extends Model
     {
         return $this->hasMany(Pendaftar::class);
     }
+
+    public function DataLansiaAgama()
+    {
+        return $this->hasMany(DataLansia::class);
+    }
 }

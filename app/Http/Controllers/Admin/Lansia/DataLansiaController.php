@@ -7,7 +7,10 @@ use App\Http\Controllers\Controller;
 use App\Models\DataLansia;
 //use App\Models\GolonganDarah;
 use App\Models\Agama;
+use App\Models\GolonganDarah;
+use App\Models\StatusKawin;
 use Illuminate\Http\Request;
+use App\Models\JaminanKesehatan;
 
 class DataLansiaController extends Controller
 {
@@ -28,8 +31,12 @@ class DataLansiaController extends Controller
      */
     public function create()
     {
-       
-        return view('pages.admin.lansia.data-lansia.add-edit');
+        $agamas=Agama::pluck('nama','id'); 
+        $goldas=GolonganDarah::pluck('nama','id'); 
+        $statuskawins=StatusKawin::pluck('nama','id');
+        $jaminankesehatans=JaminanKesehatan::pluck('jaminan_kesehatan_id','id');
+        return view('pages.admin.lansia.data-lansia.add-edit', ['agamas' =>  $agamas, 'goldas'=> $goldas, 'statuskawins' => $statuskawins, 'jaminankesehatans' => $jaminankesehatans ]);
+        
     }
 
     /**
@@ -78,8 +85,12 @@ class DataLansiaController extends Controller
     public function edit($id)
     {
         $data = DataLansia::findOrFail($id);
+        $agamas=Agama::pluck('nama','id'); 
+        $goldas=GolonganDarah::pluck('nama','id'); 
+        $statuskawins=StatusKawin::pluck('nama','id');
+        $jaminankesehatans=JaminanKesehatan::pluck('jaminan_kesehatan_id','id');
    
-        return view('pages.admin.lansia.data-lansia.add-edit', ['data' => $data]);
+        return view('pages.admin.lansia.data-lansia.add-edit', ['data' => $data, 'agamas' =>  $agamas, 'goldas'=> $goldas, 'statuskawins' => $statuskawins, 'jaminankesehatans' => $jaminankesehatans]);
     }
 
     /**

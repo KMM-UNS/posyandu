@@ -6,25 +6,24 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
+use App\Models\DataLansia;
 
-
-class PantauanKMS extends Model
+class JaminanKesehatan extends Model
 {
     use HasFactory;
     use SoftDeletes;
 
     public const ACTIVE = "aktif";
 
-    protected $table = 'pantauan_kms';
+    protected $table = 'jaminan_kesehatan';
     protected $fillable = [
-        'tanggal_pemeriksaan' , 'nama_lansia1', 'kegiatan_harian' , 'status_mental' , 'indeks_massa_tubuh', 'tekanan_darah', 'hemoglobin','reduksi_urine', 'protein_urine'
+        'jaminan_kesehatan_id'
     ];
     public $timestamps = false;
 
-    public function lansia()
+    public function DataLansiaJaminanKesehatan()
     {
-        return $this->belongsTo(DataLansia::class,'nama_lansia1');
+        return $this->hasMany(DataLansia::class);
     }
-
 
 }

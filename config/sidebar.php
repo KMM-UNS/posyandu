@@ -142,6 +142,11 @@ return [
                     'url' => ' /admin/master-data/golda',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Golongan Darah'
 
+                ],
+                [
+                    'url' => ' /admin/master-data/jaminankesehatan',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Jaminan Kesehatan'
+
                 ]
             ]
         ],
