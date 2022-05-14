@@ -43,7 +43,7 @@ class KeluhanTindakanDataTable extends DataTable
      */
     public function query(KeluhanTindakan $model)
     {
-        return $model->select('keluhan_tindakan.*')->with(['lansia']);
+        return $model->select('keluhan_tindakan.*')->with(['lansia','kader']);
     }
 
     /**
@@ -79,7 +79,7 @@ class KeluhanTindakanDataTable extends DataTable
             //Column::make('id'),
             //Column::make('no'),
             Column::make('nama_lansia')->data('lansia.nama_lansia'),
-            Column::make('nama_pemeriksa'),
+            Column::make('nama_pemeriksa')->data('kader.nama'),
             Column::make('tanggal_pemeriksaan'),
             Column::make('keluhan'),
             Column::make('tindakan'),

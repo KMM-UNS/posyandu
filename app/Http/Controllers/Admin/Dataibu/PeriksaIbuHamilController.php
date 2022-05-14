@@ -2,17 +2,21 @@
 
 namespace App\Http\Controllers\Admin\Dataibu;
 
-use App\Datatables\Admin\Dataibu\PeriksaIbuHamilDataTable;
-use App\Http\Controllers\Controller;
-use App\Models\PeriksaIbuHamil;
-use App\Models\GolonganDarah;
-use App\Models\Vitamin;
+use App\Models\Status;
+use App\Models\DataIbu;
+use App\Models\Kader;
+use App\Models\DaftarPenyakit;
+use App\Models\DetailImunisasi;
 use Illuminate\Http\Request;
+use App\Models\PeriksaIbuHamil;
+use App\Http\Controllers\Controller;
+use App\Datatables\Admin\Dataibu\PeriksaIbuHamilDataTable;
 
 class PeriksaIbuHamilController extends Controller
 {
     public function index(PeriksaIbuHamilDataTable $dataTable)
     {
+        // $imunisasi = DetailImunisasi::();
         return $dataTable->render('pages.admin.ibu.ibuhamil.index');
     }
 
@@ -23,9 +27,12 @@ class PeriksaIbuHamilController extends Controller
      */
     public function create()
     {
-        $golda = GolonganDarah::pluck('nama');
-        $vitamin = Vitamin::pluck('nama');
-        return view('pages.admin.ibu.ibuhamil.add-edit', ['golda' => $golda], ['vitamin' => $vitamin]);
+        $status = Status::select('id')->where('nama', 'Ibu Hamil')->first()->toArray();
+        $kader = Kader::pluck('nama', 'id');
+        $dataibu = DataIbu::where('status_id', $status)->pluck('nama', 'id');
+        $datapenyakit = DaftarPenyakit::pluck('nama', 'id');
+        $dataimunisasi = DetailImunisasi::pluck('tt_ke', 'id');
+        return view('pages.admin.ibu.ibuhamil.add-edit', ['dataibu' => $dataibu, 'datapenyakit' => $datapenyakit, 'dataimunisasi' => $dataimunisasi, 'kader' => $kader]);
     }
 
     /**
@@ -38,7 +45,7 @@ class PeriksaIbuHamilController extends Controller
     {
         try {
             $request->validate([
-                'nama' => 'required|min:3'
+                'nama_id' => 'required|min:1'
             ]);
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError($th->validator->messages()->all()[0]);
@@ -47,10 +54,8 @@ class PeriksaIbuHamilController extends Controller
         try {
             PeriksaIbuHamil::create($request->all());
         } catch (\Throwable $th) {
-
             return back()->withInput()->withToastError('Something went wrong');
         }
-
         return redirect(route('admin.data-ibu.ibuhamil.index'))->withToastSuccess('Data tersimpan');
     }
 
@@ -62,7 +67,13 @@ class PeriksaIbuHamilController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = PeriksaIbuHamil::with('data_imunisasi')->findOrFail($id);
+        // dd($data->data_imunisasi);
+        $dataibu = DataIbu::pluck('nama', 'id');
+        $datapenyakit = DaftarPenyakit::pluck('nama', 'id');
+        $dataimunisasi = DetailImunisasi::pluck('tt_ke', 'id');
+        $kader = Kader::pluck('nama', 'id');
+        return view('pages.admin.ibu.ibuhamil.show', ['data' => $data, 'dataibu' => $dataibu, 'datapenyakit' => $datapenyakit, 'dataimunisasi' => $dataimunisasi, 'kader' => $kader]);
     }
 
     /**
@@ -74,9 +85,11 @@ class PeriksaIbuHamilController extends Controller
     public function edit($id)
     {
         $data = PeriksaIbuHamil::findOrFail($id);
-        $golda = GolonganDarah::pluck('nama');
-        $vitamin = Vitamin::pluck('nama');
-        return view('pages.admin.ibu.ibuhamil.add-edit', ['data' => $data, 'ibuhamil' => $golda], ['data' => $data, 'ibuhamil' => $vitamin]);
+        $dataibu = DataIbu::pluck('nama', 'id');
+        $datapenyakit = DaftarPenyakit::pluck('nama', 'id');
+        $kader = Kader::pluck('nama', 'id');
+        $dataimunisasi = DetailImunisasi::pluck('tt_ke', 'id');
+        return view('pages.admin.ibu.ibuhamil.add-edit', ['data' => $data,  'dataibu' => $dataibu, 'datapenyakit' => $datapenyakit, 'dataimunisasi' => $dataimunisasi, 'kader' => $kader]);
     }
 
     /**
@@ -90,7 +103,7 @@ class PeriksaIbuHamilController extends Controller
     {
         try {
             $request->validate([
-                'nama' => 'required|min:3'
+                'nama_id' => 'required|min:1'
             ]);
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError($th->validator->messages()->all()[0]);

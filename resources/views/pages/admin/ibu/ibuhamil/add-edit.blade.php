@@ -20,7 +20,7 @@
 
 
 <!-- begin panel -->
-<form action="{{ isset($data) ? route('admin.data-ibu.ibuhamil.update', $data->id) : route('admin.data-ibu.ibuhamil.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
+<form action="{{ isset($data) ? route('admin.data-ibu.ibunifas.update', $data->id) : route('admin.data-ibu.ibunifas.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
     @csrf
     @if(isset($data))
     {{ method_field('PUT') }}
@@ -40,25 +40,25 @@
         <div class="panel-body">
             <div class="form-group">
                 <label for="name">Nama</label>
-                <input type="text" id="nama" name="nama" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama ?? old('nama') }}}">
-                <label for="name">Golongan Darah</label>
-                <x-form.Dropdown name="golongan_darah" :options="$golda" selected="{{{ old('golongan_darah') ?? ($data['golongan_darah'] ?? null) }}}" required />
+                <x-form.Dropdown name="nama" :options="$dataibu" selected="{{{ old('nama') ?? ($data['nama'] ?? null) }}}" required />
                 <label for="name">Tanggal Periksa</label>
-                <input type="text" id="tanggal_periksa" name="tanggal_periksa" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tanggal_periksa ?? old('tanggal_periksa') }}}">
+                <input type="date" id="tanggal_periksa" name="tanggal_periksa" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tanggal_periksa ?? old('tanggal_periksa') }}}">
                 <label for="name">Tinggi Badan</label>
                 <input type="text" id="tinggi_badan" name="tinggi_badan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tinggi_badan ?? old('tinggi_badan') }}}">
-                <label for="name">Berat Badan</label>
-                <input type="text" id="berat_badan" name="berat_badan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->berat_badan ?? old('berat_badan') }}}">
-                <label for="name">Riwayat Kesehatan</label>
-                <input type="text" id="riwayat_kesehatanibu" name="riwayat_kesehatanibu" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->riwayat_kesehatanibu ?? old('riwayat_kesehatanibu') }}}">
-                <label for="name">Status Pemberian Vitamin</label>
-                <x-form.Dropdown name="status_pemberian_vitamin" :options="$vitamin" selected="{{{ old('status_pemberian_vitamin') ?? ($data['status_pemberian_vitamin'] ?? null) }}}" required />
-                <label for="name">Riwayat Penyakit Keluarga</label>
-                <input type="text" id="riwayat_penyakit_keluarga" name="riwayat_penyakit_keluarga" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->riwayat_penyakit_keluarga ?? old('riwayat_penyakit_keluarga') }}}">
-                <label for="name">Keluhan Ibu Hamil</label>
-                <input type="text" id="keluhan_ibu_hamil" name="keluhan_ibu_hamil" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->keluhan_ibu_hamil ?? old('keluhan_ibu_hamil') }}}">
-                <label for="name">Tenaga Kesehatan</label>
-                <input type="text" id="tenaga_kesehatan" name="tenaga_kesehatan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tenaga_kesehatan ?? old('tenaga_kesehatan') }}}">
+                <label for="name">Lila</label>
+                <input type="text" id="lila_ibu" name="lila_ibu" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->lila_ibu ?? old('lila_ibu') }}}">
+                <label for="name">Penyakit</label>
+                <input type="text" id="riwayat_kesehatanibu_id" name="riwayat_kesehatanibu_id" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->riwayat_kesehatanibu_id ?? old('riwayat_kesehatanibu_id') }}}">
+                <label for="name">Status Imunisasi</label>
+                <input type="text" id="status_imunisasi" name="status_imunisasi" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->status_imunisasi ?? old('status_imunisasi') }}}">
+                <label for="name">Perilaku Beresiko</label>
+                <input type="text" id="riwayat_beresiko" name="riwayat_beresiko" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->riwayat_beresiko ?? old('riwayat_beresiko') }}}">
+                <label for="name">Riwayat Kehamilan</label>
+                <input type="text" id="riwayat_kehamilan" name="riwayat_kehamilan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->riwayat_kehamilan ?? old('riwayat_kehamilan') }}}">
+                <label for="name">TT Ke-</label>
+                <x-form.Dropdown name="tt_ke" :options="$dataimunisasi" selected="{{{ old('tt_ke') ?? ($data['tt_ke'] ?? null) }}}" required />
+                <label for="name">Kader</label>
+                <x-form.Dropdown name="kader" :options="$kader" selected="{{{ old('kader') ?? ($data['kader'] ?? null) }}}" required />
             </div>
         </div>
         <!-- end panel-body -->

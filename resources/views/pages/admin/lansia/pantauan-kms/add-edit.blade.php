@@ -25,7 +25,8 @@
   @if(isset($data))
   {{ method_field('PUT') }}
   @endif
-
+  <div class="row">
+    <div class="col-xl-6 ui-sortable">
   <div class="panel panel-inverse">
     <!-- begin panel-heading -->
     <div class="panel-heading">
@@ -68,6 +69,55 @@
     </div>
     <!-- end panel-footer -->
   </div>
+    </div>
+
+    <div class="col-xl-6 ui-sortable">
+      <div class="panel panel-inverse">
+        <!-- begin panel-heading -->
+        <div class="panel-heading">
+          <h4 class="panel-title">Kalkulator Indeks Masa Tubuh</h4>
+          <div class="panel-heading-btn">
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+          </div>
+        </div>
+        <!-- end panel-heading -->
+        <!-- begin panel-body -->
+    
+        <div class="panel-body">
+          <div class="form-group">
+            <label for="name">Umur</label>
+            <input type="name" id="tanggal_pemeriksaan" name="tanggal_pemeriksaan" class="form-control" autofocus data-parsley-required="false" value="{{{ $data->tanggal_pemeriksaan ?? old('tanggal_pemeriksaan') }}}">
+            <label for="name">Jenis Kelamin</label>
+            <x-form.genderRadio name="jenis_kelamin" selected="{{{ old('jenis_kelamin') ?? ($data['jenis_kelamin'] ?? null) }}}"/>
+            <label for="name">Tinggi Badan</label>
+            <input type="text" id="kegiatan_harian" name="kegiatan_harian" class="form-control" autofocus data-parsley-required="false" value="{{{ $data->kegiatan_harian ?? old('kegiatan_harian') }}}">
+            <label for="name">Berat Badan</label>
+            <input type="text" id="status_mental" name="status_mental" class="form-control" autofocus data-parsley-required="false" value="{{{ $data->status_mental ?? old('status_mental') }}}">
+            <label for="name">Hasil</label>
+            <input type="text" id="indeks_massa_tubuh" name="indeks_massa_tubuh" class="form-control" autofocus data-parsley-required="false" value="{{{ $data->indeks_massa_tubuh ?? old('indeks_massa_tubuh') }}}">
+         </div>
+        </div>
+        <!-- end panel-body -->
+        <!-- begin panel-footer -->
+        {{-- <div class="panel-footer">
+          <button type="submit" class="btn btn-primary">Simpan</button>
+          <button type="reset" class="btn btn-default">Reset</button>
+        </div> --}}
+        <!-- end panel-footer -->
+      </div>
+        </div>
+  </div>
+      <!-- end panel-body -->
+      <!-- begin panel-footer -->
+      {{-- <div class="panel-footer">
+        <button type="submit" class="btn btn-primary">Simpan</button>
+        <button type="reset" class="btn btn-default">Reset</button>
+      </div> --}}
+      <!-- end panel-footer -->
+    </div>
+      </div>
+    </div>
   <!-- end panel -->
 </form>
 <a href="javascript:history.back(-1);" class="btn btn-success">

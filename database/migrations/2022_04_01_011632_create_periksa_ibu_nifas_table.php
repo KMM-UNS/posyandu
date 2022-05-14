@@ -16,15 +16,14 @@ class CreatePeriksaIbuNifasTable extends Migration
         Schema::create('periksa_ibu_nifas', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->string('golongan_darah');
+            $table->string('golongan_darah_id');
             $table->string('tanggal_periksa');
             $table->string('tinggi_badan');
             $table->string('berat_badan');
             $table->string('riwayat_kesehatanibu');
             $table->string('status_pemberian_vitamin');
             $table->string('riwayat_penyakit_keluarga');
-            $table->string('keluhan_ibu_nifas');
-            $table->string('tenaga_kesehatan');
+            $table->string('kader');
             $table->timestamps();
             $table->softDeletes();
         });

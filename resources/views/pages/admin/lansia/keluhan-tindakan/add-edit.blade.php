@@ -43,7 +43,7 @@
         <label for="name">Nama Lansia</label>
         <x-form.Dropdown name="nama_lansia_id" :options="$nama_lansia" selected="{{{ old('nama_lansia_id') ?? ($data['nama_lansia_id'] ?? null) }}}" required />
         <label for="name">Nama Pemeriksa</label>
-        <input type="name" id="nama_pemeriksa" name="nama_pemeriksa" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama_pemeriksa ?? old('nama_pemeriksa') }}}">
+        <x-form.Dropdown name="nama_pemeriksa" :options="$kaderid" selected="{{{ old('nama_pemeriksa') ?? ($data['nama_pemeriksa'] ?? null) }}}" required />
         <label for="name">Tanggal Pemeriksaan</label>
         <input type="date" id="tanggal_pemeriksaan" name="tanggal_pemeriksaan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tanggal_pemeriksaan ?? old('tanggal_pemeriksaan') }}}">
         <label for="name">Keluhan</label>

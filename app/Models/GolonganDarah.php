@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
 use App\Models\DataIbu;
-use App\Models\PeriksaIbuHamil;
 use App\Models\PeriksaIbuNifas;
 use App\Models\DataLansia;
 
@@ -32,14 +31,9 @@ class GolonganDarah extends Model
         return $query->where('status', static::ACTIVE);
     }
 
-    public function goldaibu()
+    public function goldas()
     {
         return $this->hasMany(DataIbu::class);
-    }
-
-    public function periksaibuhamil()
-    {
-        return $this->hasMany(PeriksaIbuHamil::class);
     }
 
     public function periksaibunifas()

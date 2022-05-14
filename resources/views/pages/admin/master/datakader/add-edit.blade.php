@@ -20,7 +20,7 @@
 
 
 <!-- begin panel -->
-<form action="{{ isset($data) ? route('admin.master-data.datakader.update', $data->id) : route('admin.master-data.datakader.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
+<form action="{{ isset($data) ? route('admin.master-data.kader.update', $data->id) : route('admin.master-data.kader.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
   @csrf
   @if(isset($data))
   {{ method_field('PUT') }}
@@ -41,6 +41,16 @@
       <div class="form-group">
         <label for="name">Nama</label>
         <input type="text" id="nama" name="nama" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama ?? old('nama') }}}">
+        <label for="name">Jabatan</label>
+        <input type="text" id="jabatan" name="jabatan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->jabatan ?? old('jabatan') }}}">
+        <label for="name">Jenis Kelamin</label>
+        <input type="text" id="jenis_kelamin" name="jenis_kelamin" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->jenis_kelamin ?? old('jenis_kelamin') }}}">
+        <label for="name">TTL</label>
+        <input type="text" id="TTL" name="TTL" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->TTL ?? old('TTL') }}}">
+        <label for="name">Pendidikan</label>
+        <input type="text" id="pendidikan" name="pendidikan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->pendidikan ?? old('pendidikan') }}}">
+        <label for="name">Status Absen</label>
+        <input type="text" id="status_absen" name="status_absen" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->status_absen ?? old('status_absen') }}}">
       </div>
     </div>
     <!-- end panel-body -->

@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\KeluhanTindakan;
 use App\Models\DataLansia;
+use App\Models\Kader;
+
 
 class KeluhanTindakanController extends Controller
 {
@@ -28,7 +30,8 @@ class KeluhanTindakanController extends Controller
     public function create()
     {
         $nama_lansia=DataLansia::pluck('nama_lansia','id');
-        return view('pages.admin.lansia.keluhan-tindakan.add-edit', ['nama_lansia' =>  $nama_lansia]);
+        $kaderid=Kader::pluck('nama','id');
+        return view('pages.admin.lansia.keluhan-tindakan.add-edit', ['nama_lansia' =>  $nama_lansia, 'kaderid' => $kaderid ]);
     }
 
     /**
@@ -43,7 +46,8 @@ class KeluhanTindakanController extends Controller
             $request->validate([
                 'nama_lansia_id' => 'required|min:1'
             ]);
-        } catch (\Throwable $th) {
+         }   
+        catch (\Throwable $th) {
             return back()->withInput()->withToastError($th->validator->messages()->all()[0]);
         }
 
@@ -78,8 +82,9 @@ class KeluhanTindakanController extends Controller
     {
         $data = KeluhanTindakan::findOrFail($id);
         $nama_lansia=DataLansia::pluck('nama_lansia','id');
+        $kaderid=Kader::pluck('nama','id');
         return view('pages.admin.lansia.keluhan-tindakan.add-edit',
-        ['data' => $data, 'nama_lansia' => $nama_lansia]);
+        ['data' => $data, 'nama_lansia' => $nama_lansia, 'kaderid' => $kaderid]);
     }
 
     /**

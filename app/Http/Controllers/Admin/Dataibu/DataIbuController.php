@@ -6,7 +6,9 @@ use App\Datatables\Admin\Dataibu\DataIbuDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\DataIbu;
 use App\Models\GolonganDarah;
+use App\Models\Status;
 use Illuminate\Http\Request;
+use PhpOffice\PhpSpreadsheet\Calculation\Token\Stack;
 
 class DataIbuController extends Controller
 {
@@ -27,8 +29,9 @@ class DataIbuController extends Controller
      */
     public function create()
     {
-        $golda = GolonganDarah::pluck('nama');
-        return view('pages.admin.ibu.dataibu.add-edit', ['golda' => $golda]);
+        $golda = GolonganDarah::pluck('nama', 'id');
+        $status = Status::pluck('nama', 'id');
+        return view('pages.admin.ibu.dataibu.add-edit', ['golda' => $golda, 'status' => $status]);
     }
 
     /**
@@ -50,7 +53,7 @@ class DataIbuController extends Controller
         try {
             DataIbu::create($request->all());
         } catch (\Throwable $th) {
-
+            // dd($th);
             return back()->withInput()->withToastError('Something went wrong');
         }
 
@@ -77,8 +80,9 @@ class DataIbuController extends Controller
     public function edit($id)
     {
         $data = DataIbu::findOrFail($id);
-        $golda = GolonganDarah::pluck('nama');
-        return view('pages.admin.ibu.dataibu.add-edit', ['data' => $data, 'golda' => $golda]);
+        $golda = GolonganDarah::pluck('nama', 'id');
+        $status = Status::pluck('nama', 'id');
+        return view('pages.admin.ibu.dataibu.add-edit', ['data' => $data, 'golda' => $golda, 'status' => $status]);
     }
 
     /**

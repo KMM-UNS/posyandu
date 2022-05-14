@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
+use App\Models\DataLansia;
+use App\Models\Kader;
+
 
 class KeluhanTindakan extends Model
 {
@@ -24,6 +27,12 @@ class KeluhanTindakan extends Model
     {
         return $this->belongsTo(DataLansia::class,'nama_lansia_id');
     }
+
+    public function kader()
+    {
+        return $this->belongsTo(Kader::class,'nama_pemeriksa');
+    }
+
 
 
 }

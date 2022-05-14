@@ -28,6 +28,7 @@ class PeriksaIbuNifasDataTable extends DataTable
                 $btn = '<div class="btn-group">';
                 $btn = $btn . '<a href="' . route('admin.data-ibu.ibunifas.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
                 $btn = $btn . '<a href="' . route('admin.data-ibu.ibunifas.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
+                $btn = $btn . '<a href="' . route('admin.data-ibu.ibunifas.show', $row->id) . '" class="btn btn-info buttons-show"><i class="fas fa-info fa-fw"></i></a>';
                 $btn = $btn . '</div>';
 
                 return $btn;
@@ -42,7 +43,7 @@ class PeriksaIbuNifasDataTable extends DataTable
      */
     public function query(PeriksaIbuNifas $model)
     {
-        return $model->select('periksa_ibu_nifas.*')->with(['golda']);
+        return $model->select('periksa_ibu_nifas.*')->with(['golda_ibu', 'data_ibu', 'data_kader']);
     }
 
     /**
@@ -81,16 +82,17 @@ class PeriksaIbuNifasDataTable extends DataTable
                 ->width(60)
                 ->addClass('text-center'),
             Column::make('id'),
-            Column::make('nama'),
-            Column::make('golongan_darah')->data('golda.nama'),
+            Column::make('nama')->data('data_ibu.nama'),
+            // Column::make('golongan_darah_id')->data('golda_ibu.nama'),
+            // ->data('golda.nama')
             Column::make('tanggal_periksa'),
-            Column::make('tinggi_badan'),
-            Column::make('berat_badan'),
-            Column::make('riwayat_kesehatanibu'),
+            // Column::make('tinggi_badan'),
+            // Column::make('berat_badan'),
+            // Column::make('riwayat_kesehatanibu'),
             Column::make('status_pemberian_vitamin'),
-            Column::make('riwayat_penyakit_keluarga'),
-            Column::make('keluhan_ibu_nifas'),
-            Column::make('tenaga_kesehatan')
+            // Column::make('riwayat_penyakit_keluarga'),
+            // Column::make('keluhan_ibu_nifas'),
+            Column::make('kader')->data('data_kader.nama'),
         ];
     }
 

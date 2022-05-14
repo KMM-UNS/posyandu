@@ -21,7 +21,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::resource('/dataibu', 'DataIbuController');
 
 
-// route master data
+        // route master data
         Route::group(['prefix' => '/master-data', 'as' => 'master-data.', 'namespace' => 'Master'], function () {
             Route::resource('agama', 'AgamaController');
             Route::resource('vitamin', 'VitaminController');
@@ -31,22 +31,36 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::resource('status-kawin', 'StatusKawinController');
             Route::resource('pendidikan', 'PendidikanController');
             Route::resource('jenisvaksin', 'JenisVaksinController');
+//<<<<<<< HEAD
           Route::resource('golda', 'GolonganDarahController');
-          Route::resource('datakader', 'DataKaderController');
+          Route::resource('datakader', 'KaderController');
           Route::resource('jaminankesehatan','JaminanKesehatanController');
+//=======
+            Route::resource('golda', 'GolonganDarahController');
+            Route::resource('kader', 'KaderController');
+            Route::resource('status', 'StatusController');
+            Route::resource('daftar_penyakit', 'DaftarPenyakitController');
+            Route::resource('detailimunisasi', 'DetailStatusImunisasi');
+            Route::resource('tenaga_kesehatan', 'TenagaKesehatanController');
+//>>>>>>> 2c5fdcdb0465bb80ea204f1c599c47ec8a4c99c3
         });
 
 
         // route data anak
         Route::group(['prefix' => '/anak-data', 'as' => 'anak-data.', 'namespace' => 'Anak'], function () {
-                Route::resource('dataanak', 'DataAnakController');
-                Route::resource('imunisasi', 'ImunisasiController');
+            Route::resource('dataanak', 'DataAnakController');
+            Route::resource('imunisasi', 'ImunisasiController');
         });
 
-       Route::group(['prefix' => '/data-ibu', 'as' => 'data-ibu.', 'namespace' => 'Dataibu'], function () {
+
+//=======
+        Route::group(['prefix' => '/data-ibu', 'as' => 'data-ibu.', 'namespace' => 'Dataibu'], function () {
             Route::resource('dataibu', 'DataIbuController');
             Route::resource('ibuhamil', 'PeriksaIbuHamilController');
             Route::resource('ibunifas', 'PeriksaIbuNifasController');
+            Route::resource('ibuhamilperiksa', 'IbuHamilPeriksaController');
+            Route::resource('ibunifasperiksa', 'IbuNifasPeriksaController');
+//>>>>>>> 2c5fdcdb0465bb80ea204f1c599c47ec8a4c99c3
         });
 
         Route::group(['prefix' => '/data-lansia', 'as' => 'data-lansia.', 'namespace' => 'Lansia'], function () {
@@ -55,10 +69,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::resource('keluhantindakan', 'KeluhanTindakanController');
 
         });
-});
 
-
-
+        Route::group(['prefix' => '/data-transaksi', 'as' => 'data-transaksi.', 'namespace' => 'Transaksi'], function () {
+            Route::resource('rujukan', 'RujukanController');
         });
-
-
+    });
+});

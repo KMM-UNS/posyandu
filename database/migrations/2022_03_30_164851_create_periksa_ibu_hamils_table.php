@@ -15,16 +15,17 @@ class CreatePeriksaIbuHamilsTable extends Migration
     {
         Schema::create('periksa_ibu_hamils', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
-            $table->string('golongan_darah');
+            $table->string('nama_id');
             $table->string('tanggal_periksa');
             $table->string('tinggi_badan');
             $table->string('berat_badan');
-            $table->string('riwayat_kesehatanibu');
-            $table->string('status_pemberian_vitamin');
-            $table->string('riwayat_penyakit_keluarga');
-            $table->string('keluhan_ibu_hamil');
-            $table->string('tenaga_kesehatan');
+            $table->string('lila_ibu');
+            $table->string('riwayat_kesehatanibu_id');
+            $table->string('status_imunisasi');
+            $table->string('riwayat_beresiko');
+            $table->string('riwayat_kehamilan');
+            $table->string('kader');
+            $table->string('tt_ke');
             $table->timestamps();
             $table->softDeletes();
         });

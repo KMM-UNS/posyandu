@@ -2,22 +2,23 @@
 
 namespace App\Http\Controllers\Admin\Master;
 
-use App\Datatables\Admin\Master\DataKaderDataTable;
 use App\Http\Controllers\Controller;
-use App\Models\DataKader;
 use Illuminate\Http\Request;
+use App\Models\Status;
+use App\Datatables\Admin\Master\StatusDataTable;
 
-class DataKaderController extends Controller
+class StatusController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(DataKaderDataTable $dataTable)
+    public function index(StatusDataTable $dataTable)
     {
-        return $dataTable->render('pages.admin.master.datakader.index');
+        return $dataTable->render('pages.admin.master.status.index');
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -25,7 +26,7 @@ class DataKaderController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.master.datakader.add-edit');
+        return view('pages.admin.master.status.add-edit');
     }
 
     /**
@@ -45,12 +46,12 @@ class DataKaderController extends Controller
         }
 
         try {
-            DataKader::create($request->all());
+            Status::create($request->all());
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Something went wrong');
         }
 
-        return redirect(route('admin.master-data.datakader.index'))->withToastSuccess('Data tersimpan');
+        return redirect(route('admin.master-data.status.index'))->withToastSuccess('Data tersimpan');
     }
 
     /**
@@ -72,8 +73,8 @@ class DataKaderController extends Controller
      */
     public function edit($id)
     {
-        $data = DataKader::findOrFail($id);
-        return view('pages.admin.master.datakader.add-edit', ['data' => $data]);
+        $data = Status::findOrFail($id);
+        return view('pages.admin.master.status.add-edit', ['data' => $data]);
     }
 
     /**
@@ -94,19 +95,25 @@ class DataKaderController extends Controller
         }
 
         try {
-            $data = DataKader::findOrFail($id);
+            $data = Status::findOrFail($id);
             $data->update($request->all());
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Something went wrong');
         }
 
-        return redirect(route('admin.master-data.datakader.index'))->withToastSuccess('Data tersimpan');
+        return redirect(route('admin.master-data.status.index'))->withToastSuccess('Data tersimpan');
     }
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function destroy($id)
     {
         try {
-            DataKader::find($id)->delete();
+            Status::find($id)->delete();
         } catch (\Throwable $th) {
             return response(['error' => 'Something went wrong']);
         }
