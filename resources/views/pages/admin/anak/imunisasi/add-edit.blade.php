@@ -67,7 +67,8 @@
         <x-form.statusRadio name="status_gizi" selected="{{{ old('status_gizi') ?? ($data['status_gizi'] ?? null) }}}"/>
         {{-- <input type="text" id="status_gizi" name="status_gizi" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->status_gizi ?? old('status_gizi') }}}"> --}}
         <label for="name">Nama Kader</label>
-        <input type="text" id="nama_kader" name="nama_kader" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama_kader ?? old('nama_kader') }}}">
+        <x-form.Dropdown name="nama_kader" :options="$kader" selected="{{{ old('nama_kader') ?? ($data['nama_kader'] ?? null) }}}" required />
+        {{-- <input type="text" id="nama_kader" name="nama_kader" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama_kader ?? old('nama_kader') }}}"> --}}
        </div>
     </div>
     <!-- end panel-body -->

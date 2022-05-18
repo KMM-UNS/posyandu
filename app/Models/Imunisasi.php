@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\JenisVaksin;
 use App\Models\DataAnak;
 use App\Models\VitaminAnak;
+use App\Models\Kader;
 class Imunisasi extends Model
 {
     use HasFactory;
@@ -44,5 +45,9 @@ class Imunisasi extends Model
     public function vitamin_anak()
     {
          return $this->belongsTo(VitaminAnak::class,'vitamin');
+    }
+    public function kader()
+    {
+         return $this->belongsTo(Kader::class,'nama_kader');
     }
 }

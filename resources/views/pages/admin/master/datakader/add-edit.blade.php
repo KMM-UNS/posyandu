@@ -1,6 +1,6 @@
 @extends('layouts.default', ['topMenu' => true, 'sidebarHide' => true])
 
-@section('title', isset($data) ? 'Edit Jadwal Imunisasi' : 'Create Jadwal Imunisasi' )
+@section('title', isset($data) ? 'Edit datakader' : 'Create datakader' )
 
 @push('css')
 <link href="{{ asset('/assets/plugins/smartwizard/dist/css/smart_wizard.css') }}" rel="stylesheet" />
@@ -20,7 +20,7 @@
 
 
 <!-- begin panel -->
-<form action="{{ isset($data) ? route('admin.anak-data.jadwalimunisasi.update', $data->id) : route('admin.anak-data.jadwalimunisasi.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
+<form action="{{ isset($data) ? route('admin.master-data.kader.update', $data->id) : route('admin.master-data.kader.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
   @csrf
   @if(isset($data))
   {{ method_field('PUT') }}
@@ -39,11 +39,20 @@
     <!-- begin panel-body -->
     <div class="panel-body">
       <div class="form-group">
-        <label for="name">Tanggal</label>
-        <input type="date" id="tanggal" name="tanggal" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tanggal ?? old('tanggal') }}}">
-        <label for="name">Keterangan</label>
-        <input type="text" id="keterangan" name="keterangan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->keterangan ?? old('keterangan') }}}">
-       </div>
+        <label for="name">Nama</label>
+        <input type="text" id="nama" name="nama" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama ?? old('nama') }}}">
+        <label for="name">Jabatan</label>
+        <input type="text" id="jabatan" name="jabatan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->jabatan ?? old('jabatan') }}}">
+        <label for="name">Jenis Kelamin</label>
+        <x-form.genderRadio name="jenis_kelamin" selected="{{{ old('jenis_kelamin') ?? ($data['jenis_kelamin'] ?? null) }}}"/>
+        {{-- <input type="text" id="jenis_kelamin" name="jenis_kelamin" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->jenis_kelamin ?? old('jenis_kelamin') }}}"> --}}
+        <label for="name">TTL</label>
+        <input type="date" id="TTL" name="TTL" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->TTL ?? old('TTL') }}}">
+        <label for="name">Pendidikan</label>
+        <input type="text" id="pendidikan" name="pendidikan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->pendidikan ?? old('pendidikan') }}}">
+        <label for="name">Status Absen</label>
+        <input type="text" id="status_absen" name="status_absen" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->status_absen ?? old('status_absen') }}}">
+      </div>
     </div>
     <!-- end panel-body -->
     <!-- begin panel-footer -->

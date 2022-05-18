@@ -137,6 +137,42 @@
 
      </div>
     </div>
+    @foreach ($imunisasis as $imunisasi)
+
+    <div class="panel-body">
+        <div class="form-group">
+          <label for="name">Nama Anak</label>
+          {{ $imunisasi->data_anak->nama_anak }}
+          {{-- <input type="text" id="nama_anak" name="nama_anak" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama_anak ?? old('nama_anak') }}}"> --}}
+          {{-- <label for="name">Jenis Kelamin</label> --}}
+          {{-- <input type="text" id="jenis_kelamin" name="jenis_kelamin" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->jenis_kelamin ?? old('jenis_kelamin') }}}"> --}}
+          {{-- <x-form.genderRadio name="jenis_kelamin" selected="{{{ old('jenis_kelamin') ?? ($data['jenis_kelamin'] ?? null) }}}"/> --}}
+          <label for="name">Tanggal Imunisasi</label>
+          {{ $imunisasi->tanggal_imunisasi }}
+          <label for="name">Berat Badan (Kg)</label>
+          {{ $imunisasi->berat_badan}}
+          <label for="name">Tinggi Badan (Cm)</label>
+          {{ $imunisasi->tinggi_badan}}
+          <label for="name">Umur</label>
+          {{ $imunisasi->umur ?? old('umur') }}
+          <label for="name">Jenis Vaksin</label>
+          {{-- <input type="text" id="jenis_vaksin" name="jenis_vaksin" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->jenis_vaksin ?? old('jenis_vaksin') }}}"> --}}
+          {{ $imunisasi->jenis_vaksin }}
+          <label for="name">Vitamin Anak</label>
+         {{ $imunisasi->vitamin }}
+          {{-- <input type="text" id="vitamin" name="vitamin" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->vitamin ?? old('vitamin') }}}"> --}}
+          <label for="name">Keluhan</label>
+          {{ $imunisasi->keluhan }}
+          <label for="name">Tindakan</label>
+          {{ $imunisasi->tindakan }}
+          <label for="name">Status Gizi</label>
+          {{$imunisasi->status_gizi}}
+          {{-- <input type="text" id="status_gizi" name="status_gizi" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->status_gizi ?? old('status_gizi') }}}"> --}}
+          <label for="name">Nama Kader</label>
+          {{ $imunisasi->nama_kader }}
+         </div>
+      </div>
+    @endforeach
     <!-- end panel-body -->
     <!-- begin panel-footer -->
     <div class="panel-footer">

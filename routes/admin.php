@@ -30,7 +30,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::resource('status-kawin', 'StatusKawinController');
             Route::resource('pendidikan', 'PendidikanController');
             Route::resource('jenisvaksin', 'JenisVaksinController');
-          Route::resource('golda', 'GolonganDarahController');
+            Route::resource('golda', 'GolonganDarahController');
+            Route::resource('kader', 'KaderController');
         });
 
 
@@ -47,7 +48,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::resource('ibuhamil', 'PeriksaIbuHamilController');
             Route::resource('ibunifas', 'PeriksaIbuNifasController');
         });
-});
+        Route::group(['prefix' => '/data-transaksi', 'as' => 'data-transaksi.', 'namespace' => 'Transaksi'], function () {
+            Route::resource('rujukan', 'RujukanController');
+        });
+    });
 
 
 

@@ -1,25 +1,26 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Anak;
+namespace App\Http\Controllers\Admin\DataIbu;
 
-use App\Datatables\Admin\Anak\DataAnakDataTable;
+use App\Models\Status;
+use App\Models\DataIbu;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\DataAnak;
-use App\Models\Imunisasi;
+use App\Models\IbuNifasPeriksa;
+use App\Models\TenagaKesehatan;
+use App\Datatables\Admin\Dataibu\IbuNifasPeriksaDataTable;
 
-class DataAnakController extends Controller
+class IbuNifasPeriksaController extends Controller
 {
-     /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(DataAnakDataTable $dataTable)
+    public function index(IbuNifasPeriksaDataTable $dataTable)
     {
-        return $dataTable->render('pages.admin.anak.dataanak.index');
+        return $dataTable->render('pages.admin.ibu.periksaibunifas.index');
     }
-
 
     /**
      * Show the form for creating a new resource.
@@ -28,7 +29,10 @@ class DataAnakController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.anak.dataanak.add-edit');
+        $status = Status::select('id')->where('nama', 'Ibu Nifas')->first()->toArray();
+        $dataibu = DataIbu::where('status_id', $status)->pluck('nama', 'id');
+        $datatenaga = TenagaKesehatan::pluck('nama', 'id');
+        return view('pages.admin.ibu.periksaibunifas.add-edit', ['dataibu' => $dataibu, 'status' => $status, 'datatenaga' => $datatenaga]);
     }
 
     /**
@@ -41,19 +45,20 @@ class DataAnakController extends Controller
     {
         try {
             $request->validate([
-                'nama_anak' => 'required|min:3'
+                'nama' => 'required|min:1'
             ]);
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError($th->validator->messages()->all()[0]);
         }
 
         try {
-            DataAnak::create($request->all());
+            IbuNifasPeriksa::create($request->all());
         } catch (\Throwable $th) {
+            dd($th);
             return back()->withInput()->withToastError('Something went wrong');
         }
 
-        return redirect(route('admin.anak-data.dataanak.index'))->withToastSuccess('Data tersimpan');
+        return redirect(route('admin.data-ibu.ibunifasperiksa.index'))->withToastSuccess('Data tersimpan');
     }
 
     /**
@@ -64,10 +69,10 @@ class DataAnakController extends Controller
      */
     public function show($id)
     {
-        $data = DataAnak::findOrFail($id);
-        $imunisasis = Imunisasi::where('nama_anak_id',$id)->get();
-        return view('pages.admin.anak.dataanak.show', ['data' => $data, 'imunisasis' => $imunisasis]);
-
+        $data = IbuNifasPeriksa::findOrFail($id);
+        $dataibu = DataIbu::pluck('nama', 'id');
+        $datatenaga = TenagaKesehatan::pluck('nama', 'id');
+        return view('pages.admin.ibu.periksaibunifas.show', ['data' => $data, 'dataibu' => $dataibu, 'datatenaga' => $datatenaga]);
     }
 
     /**
@@ -78,8 +83,10 @@ class DataAnakController extends Controller
      */
     public function edit($id)
     {
-        $data = DataAnak::findOrFail($id);
-        return view('pages.admin.anak.dataanak.add-edit', ['data' => $data]);
+        $data = IbuNifasPeriksa::findOrFail($id);
+        $dataibu = DataIbu::pluck('nama', 'id');
+        $datatenaga = TenagaKesehatan::pluck('nama', 'id');
+        return view('pages.admin.ibu.periksaibunifas.add-edit', ['data' => $data, 'dataibu' => $dataibu, 'datatenaga' => $datatenaga]);
     }
 
     /**
@@ -91,22 +98,22 @@ class DataAnakController extends Controller
      */
     public function update(Request $request, $id)
     {
-         try {
+        try {
             $request->validate([
-                'nama_anak' => 'required|min:3'
+                'nama' => 'required|min:1'
             ]);
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError($th->validator->messages()->all()[0]);
         }
 
         try {
-            $data = DataAnak::findOrFail($id);
+            $data = IbuNifasPeriksa::findOrFail($id);
             $data->update($request->all());
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Something went wrong');
         }
 
-        return redirect(route('admin.anak-data.dataanak.index'))->withToastSuccess('Data tersimpan');
+        return redirect(route('admin.data-ibu.ibunifasperiksa.index'))->withToastSuccess('Data tersimpan');
     }
 
     /**
@@ -118,7 +125,7 @@ class DataAnakController extends Controller
     public function destroy($id)
     {
         try {
-            DataAnak::find($id)->delete();
+            IbuNifasPeriksa::find($id)->delete();
         } catch (\Throwable $th) {
             return response(['error' => 'Something went wrong']);
         }

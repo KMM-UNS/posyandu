@@ -89,7 +89,19 @@ return [
         ],
 
 
-
+        [
+            'icon' => 'fa fa-cogs',
+            'title' => 'Transaksi',
+            'url' => 'javascript:;',
+            'caret' => true,
+            'sub_menu' =>
+            [
+                [
+                    'url' => ' /admin/data-transaksi/rujukan',
+                    'title' => '</i class="fa fa-ellipsis-h"></i>&nbsp;Rujukan'
+                ]
+            ]
+        ],
         [
             'icon' => 'fa fa-cogs',
             'title' => 'Master',
@@ -122,7 +134,10 @@ return [
                     'url' => ' /admin/master-data/golda',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Golongan Darah'
 
-                ]
+                ],[
+                    'url' => ' /admin/master-data/kader',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Data Kader'
+                ],
             ]
         ],
     ],

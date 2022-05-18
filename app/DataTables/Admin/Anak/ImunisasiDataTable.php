@@ -43,7 +43,7 @@ class ImunisasiDataTable extends DataTable
      */
     public function query(Imunisasi $model)
     {
-        return $model->select('imunisasis.*')->with(['jenisvaksin','data_anak','vitamin_anak']);
+        return $model->select('imunisasis.*')->with(['jenisvaksin','data_anak','vitamin_anak','kader']);
     }
 
     /**
@@ -92,7 +92,7 @@ class ImunisasiDataTable extends DataTable
             // Column::make('keluhan'),
             // Column::make('tindakan'),
             Column::make('status_gizi'),
-            Column::make('nama_kader'),
+            Column::make('nama_kader')->data('kader.nama'),
         ];
     }
 

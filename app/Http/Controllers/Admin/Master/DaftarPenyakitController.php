@@ -1,25 +1,18 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Anak;
+namespace App\Http\Controllers\Admin\Master;
 
-use App\Datatables\Admin\Anak\DataAnakDataTable;
+use App\Datatables\Admin\Master\DaftarPenyakitDataTable;
 use App\Http\Controllers\Controller;
+use App\Models\DaftarPenyakit;
 use Illuminate\Http\Request;
-use App\Models\DataAnak;
-use App\Models\Imunisasi;
 
-class DataAnakController extends Controller
+class DaftarPenyakitController extends Controller
 {
-     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index(DataAnakDataTable $dataTable)
+    public function index(DaftarPenyakitDataTable $dataTable)
     {
-        return $dataTable->render('pages.admin.anak.dataanak.index');
+        return $dataTable->render('pages.admin.master.daftarpenyakit.index');
     }
-
 
     /**
      * Show the form for creating a new resource.
@@ -28,7 +21,7 @@ class DataAnakController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.anak.dataanak.add-edit');
+        return view('pages.admin.master.daftarpenyakit.add-edit');
     }
 
     /**
@@ -41,19 +34,19 @@ class DataAnakController extends Controller
     {
         try {
             $request->validate([
-                'nama_anak' => 'required|min:3'
+                'nama' => 'required'
             ]);
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError($th->validator->messages()->all()[0]);
         }
 
         try {
-            DataAnak::create($request->all());
+            DaftarPenyakit::create($request->all());
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Something went wrong');
         }
 
-        return redirect(route('admin.anak-data.dataanak.index'))->withToastSuccess('Data tersimpan');
+        return redirect(route('admin.master-data.daftar_penyakit.index'))->withToastSuccess('Data tersimpan');
     }
 
     /**
@@ -64,10 +57,7 @@ class DataAnakController extends Controller
      */
     public function show($id)
     {
-        $data = DataAnak::findOrFail($id);
-        $imunisasis = Imunisasi::where('nama_anak_id',$id)->get();
-        return view('pages.admin.anak.dataanak.show', ['data' => $data, 'imunisasis' => $imunisasis]);
-
+        //
     }
 
     /**
@@ -78,8 +68,8 @@ class DataAnakController extends Controller
      */
     public function edit($id)
     {
-        $data = DataAnak::findOrFail($id);
-        return view('pages.admin.anak.dataanak.add-edit', ['data' => $data]);
+        $data = DaftarPenyakit::findOrFail($id);
+        return view('pages.admin.master.daftarpenyakit.add-edit', ['data' => $data]);
     }
 
     /**
@@ -91,22 +81,22 @@ class DataAnakController extends Controller
      */
     public function update(Request $request, $id)
     {
-         try {
+        try {
             $request->validate([
-                'nama_anak' => 'required|min:3'
+                'nama' => 'required|min:3'
             ]);
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError($th->validator->messages()->all()[0]);
         }
 
         try {
-            $data = DataAnak::findOrFail($id);
+            $data = DaftarPenyakit::findOrFail($id);
             $data->update($request->all());
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Something went wrong');
         }
 
-        return redirect(route('admin.anak-data.dataanak.index'))->withToastSuccess('Data tersimpan');
+        return redirect(route('admin.master-data.daftar_penyakit.index'))->withToastSuccess('Data tersimpan');
     }
 
     /**
@@ -118,7 +108,7 @@ class DataAnakController extends Controller
     public function destroy($id)
     {
         try {
-            DataAnak::find($id)->delete();
+            DaftarPenyakit::find($id)->delete();
         } catch (\Throwable $th) {
             return response(['error' => 'Something went wrong']);
         }

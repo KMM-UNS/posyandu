@@ -9,6 +9,7 @@ use App\Models\Imunisasi;
 use App\Models\JenisVaksin;
 use App\Models\DataAnak;
 use App\Models\VitaminAnak;
+use App\Models\Kader;
 
 class ImunisasiController extends Controller
 {
@@ -32,8 +33,9 @@ class ImunisasiController extends Controller
         $jenisvaksin=JenisVaksin::pluck('vaksin','id');
         $dataanak=DataAnak::pluck('nama_anak','id');
         $vitaminanak=VitaminAnak::pluck('nama_vitamin','id');
+        $kader=Kader::pluck('nama','id');
         return view('pages.admin.anak.imunisasi.add-edit',['jenisvaksin'=>$jenisvaksin,
-        'dataanak'=>$dataanak,'vitaminanak'=>$vitaminanak]);
+        'dataanak'=>$dataanak,'vitaminanak'=>$vitaminanak,'kader'=>$kader]);
     }
 
     /**
@@ -55,6 +57,7 @@ class ImunisasiController extends Controller
         try {
             Imunisasi::create($request->all());
         } catch (\Throwable $th) {
+            dd($th);
             return back()->withInput()->withToastError('Something went wrong');
         }
 
@@ -72,8 +75,9 @@ class ImunisasiController extends Controller
         $jenisvaksin=JenisVaksin::pluck('vaksin','id');
         $dataanak=DataAnak::pluck('nama_anak','id');
         $vitaminanak=VitaminAnak::pluck('nama_vitamin','id');
+        $kader=Kader::pluck('nama','id');
         $data = Imunisasi::findOrFail($id);
-        return view('pages.admin.anak.imunisasi.add-edit', ['data' => $data,'jenisvaksin'=>$jenisvaksin, 'dataanak'=>$dataanak, 'vitaminanak'=>$vitaminanak]);
+        return view('pages.admin.anak.imunisasi.show', ['data' => $data,'jenisvaksin'=>$jenisvaksin, 'dataanak'=>$dataanak, 'vitaminanak'=>$vitaminanak,'kader'=>$kader]);
     }
 
     /**
@@ -87,8 +91,9 @@ class ImunisasiController extends Controller
         $jenisvaksin=JenisVaksin::pluck('vaksin','id');
         $dataanak=DataAnak::pluck('nama_anak','id');
         $vitaminanak=VitaminAnak::pluck('nama_vitamin','id');
+        $kader=Kader::pluck('nama','id');
         $data = Imunisasi::findOrFail($id);
-        return view('pages.admin.anak.imunisasi.add-edit', ['data' => $data,'jenisvaksin'=>$jenisvaksin, 'dataanak'=>$dataanak, 'vitaminanak'=>$vitaminanak]);
+        return view('pages.admin.anak.imunisasi.add-edit', ['data' => $data,'jenisvaksin'=>$jenisvaksin, 'dataanak'=>$dataanak, 'vitaminanak'=>$vitaminanak,'kader'=>$kader]);
     }
 
     /**
