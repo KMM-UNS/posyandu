@@ -17,7 +17,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         Route::resource('/admin', 'AdminController');
         Route::resource('/user', 'UserController');
-        Route::resource('/dataibu', 'DataIbuController');
 
 
 // route master data

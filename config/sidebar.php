@@ -152,6 +152,11 @@ return [
             'url' => '/',
             'caret' => false
         ], [
+            'icon' => 'fa fa-th-large',
+            'title' => 'Jadwal',
+            'url' => '/jadwal',
+            'caret' => false
+        ],[
             'icon' => 'fa fa-cogs',
             'title' => 'Ganti Password',
             'url' => '#',

@@ -65,10 +65,20 @@ class RujukanController extends Controller
     public function show($id)
     {
         $data = Rujukan::findOrFail($id);
-        $data = Rujukan::all();
+        $pdf = PDF::loadview('pages.admin.transaksi.rujukan.showrujukan-pdf',
+        [
+        'kode_surat'=>$data->kode_surat,
+        'tanggal_surat'=>$data->tanggal_surat,
+        'kepada'=>$data->kepada,
+        'nama'=>$data->nama,
+        'umur'=>$data->umur,
+        'alamat'=>$data->alamat,
+        'bb_turun'=>$data->bb_turun,
+        'bb_naik'=>$data->bb_naik,
+        'keluhan'=>$data->keluhan,
+        'keterangan_rujukan'=>$data->keterangan_rujukan,
 
-        view()->share('data', $data);
-        $pdf = PDF::loadview('pages.admin.transaksi.rujukan.showrujukan-pdf');
+        ]);
         return $pdf->download('rujukan.pdf');
         // return view('pages.admin.transaksi.rujukan.show', ['data' => $data]);
     }

@@ -30,22 +30,22 @@
 </div><p align="center" style="margin-bottom: 0.14in"><font face="Times New Roman, serif"><font size="3" style="font-size: 12pt"><span lang="id-ID"><b>Surat
 Rujukan Dari Posyandu</b></span></font></font></p>
 <p style="margin-bottom: 0.14in"><font face="Times New Roman, serif"><font size="3" style="font-size: 12pt"><span lang="id-ID">Kodesurat
-:</span></font></font></p>
+: {{ $kode_surat }}</span></font></font></p>
 <p style="margin-bottom: 0.14in"><font face="Times New Roman, serif"><font size="3" style="font-size: 12pt"><span lang="id-ID">Tanggal
-surat:</span></font></font></p>
+surat: {{ $tanggal_surat }}</span></font></font></p>
 <p align="right" style="margin-bottom: 0.14in"><font face="Times New Roman, serif"><font size="3" style="font-size: 12pt"><span lang="id-ID">Kepada:</span></font></font></p>
 <p style="margin-bottom: 0.14in"><font face="Times New Roman, serif"><font size="3" style="font-size: 12pt"><span lang="id-ID">Dengan
 hormat, Mohon diberikan surat rujukan pasien sebagai berikut :</span></font></font></p>
 <p style="margin-bottom: 0.14in"><font face="Times New Roman, serif"><font size="3" style="font-size: 12pt"><span lang="id-ID">Nama
-:</span></font></font></p>
+: {{ $nama }}</span></font></font></p>
 <p style="margin-bottom: 0.14in"><font face="Times New Roman, serif"><font size="3" style="font-size: 12pt"><span lang="id-ID">Umur
-:</span></font></font></p>
+: {{ $umur }}</span></font></font></p>
 <p style="margin-bottom: 0.14in"><font face="Times New Roman, serif"><font size="3" style="font-size: 12pt"><span lang="id-ID">Alamat
-:</span></font></font></p>
+: {{ $alamat }}</span></font></font></p>
 <p style="margin-bottom: 0.14in"><a name="_GoBack"></a><font face="Times New Roman, serif"><font size="3" style="font-size: 12pt"><span lang="id-ID">Keluhan
-:</span></font></font></p>
+: {{ $keluhan }}</span></font></font></p>
 <p style="margin-bottom: 0.14in"><font face="Times New Roman, serif"><font size="3" style="font-size: 12pt"><span lang="id-ID">Keterangan
-Rujukan :</span></font></font></p>
+Rujukan : {{ $keterangan_rujukan }}</span></font></font></p>
 <p style="margin-bottom: 0.14in"><font face="Times New Roman, serif"><font size="3" style="font-size: 12pt"><span lang="id-ID">Tenaga
 Kesehatan :</span></font></font></p>
 <table width="482" cellpadding="7" cellspacing="0">
@@ -69,7 +69,7 @@ Kesehatan :</span></font></font></p>
 	<tr valign="top">
 		<td width="354" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="id-ID" align="left" style="orphans: 2; widows: 2">
 			<font face="Times New Roman, serif"><font size="3" style="font-size: 12pt">Balita
-			yg berat badanya dibawah garis merah</font></font></p>
+			yg berat badanya dibawah garis merah {{ $bb_turun }}</font></font></p>
 		</td>
 		<td width="43" style="border: 1px solid #000000; padding: 0in 0.08in"><p align="left" style="orphans: 2; widows: 2">
 			<br/>
@@ -85,7 +85,7 @@ Kesehatan :</span></font></font></p>
 	<tr valign="top">
 		<td width="354" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="id-ID" align="left" style="orphans: 2; widows: 2">
 			<font face="Times New Roman, serif"><font size="3" style="font-size: 12pt">Balita
-			terlalu gemuk</font></font></p>
+			terlalu gemuk {{ $bb_turun }}</font></font></p>
 		</td>
 		<td width="43" style="border: 1px solid #000000; padding: 0in 0.08in"><p align="left" style="orphans: 2; widows: 2">
 			<br/>
