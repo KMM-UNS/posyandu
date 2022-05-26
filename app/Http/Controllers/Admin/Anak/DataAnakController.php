@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Admin\Anak;
 
-use App\Datatables\Admin\Anak\DataAnakDataTable;
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\DataAnak;
 use App\Models\Imunisasi;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use App\Datatables\Admin\Anak\DataAnakDataTable;
 
 class DataAnakController extends Controller
 {
@@ -39,19 +40,31 @@ class DataAnakController extends Controller
      */
     public function store(Request $request)
     {
-        try {
-            $request->validate([
-                'nama_anak' => 'required|min:3'
-            ]);
-        } catch (\Throwable $th) {
-            return back()->withInput()->withToastError($th->validator->messages()->all()[0]);
-        }
+        DB::transaction(function () use ($request) {
+            try {
+                $dataanak = DataAnak::create($request->all());
+                $dataanak->createable()->associate($request->user());
+                $dataanak->save();
+            } catch (\Throwable $th) {
+                dd($th);
+                DB::rollback();
+                return back()->withInput()->withToastError('Something what happen');
+            }
+        });
+        // try {
+        //     $request->validate([
+        //         'nama_anak' => 'required|min:3'        //     ]);
+        // } catch (\Throwable $th) {
+        //     dd($th);
+        //     return back()->withInput()->withToastError($th->validator->messages()->all()[0]);
+        // }
 
-        try {
-            DataAnak::create($request->all());
-        } catch (\Throwable $th) {
-            return back()->withInput()->withToastError('Something went wrong');
-        }
+        // try {
+        //     DataAnak::create($request->all());
+        // } catch (\Throwable $th) {
+        //     dd($th);
+        //     return back()->withInput()->withToastError('Something went wrong');
+        // }
 
         return redirect(route('admin.anak-data.dataanak.index'))->withToastSuccess('Data tersimpan');
     }

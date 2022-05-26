@@ -75,7 +75,7 @@ class ImunisasiController extends Controller
         $jenisvaksin=JenisVaksin::pluck('vaksin','id');
         $dataanak=DataAnak::pluck('nama_anak','id');
         $vitaminanak=VitaminAnak::pluck('nama_vitamin','id');
-        $kader=Kader::pluck('nama','id');
+        $kader= Kader::pluck('nama','id');
         $data = Imunisasi::findOrFail($id);
         return view('pages.admin.anak.imunisasi.show', ['data' => $data,'jenisvaksin'=>$jenisvaksin, 'dataanak'=>$dataanak, 'vitaminanak'=>$vitaminanak,'kader'=>$kader]);
     }

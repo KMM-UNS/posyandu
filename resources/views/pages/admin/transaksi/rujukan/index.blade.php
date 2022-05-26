@@ -1,4 +1,4 @@
-@extends('layouts.default', ['topMenu' => true, 'sidebarHide' => true])
+@extends('layouts.default')
 
 @section('title', 'Data Rujukan')
 

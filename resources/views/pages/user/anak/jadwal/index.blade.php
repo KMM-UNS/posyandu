@@ -1,66 +1,114 @@
-<div class="container">
+<html lang="en">
+    <div class="container">
+        </h1>
+        <link href="{{ asset('/assets/css/calender/calender.css') }}" rel="stylesheet" />
+        <script src="{{ asset('/assets/js/calendar/calender.js') }}"></script>
 
-    <h1 class="page-header">
-      <i class="fa fa-calendar"></i> Jadwal Imunisasi
-    </h1>
-    <link href="{{ asset('/assets/css/calender/calender.css') }}" rel="stylesheet" />
-    <script src="{{ asset('/assets/js/calendar/calender.js') }}"></script>
+<head>
 
-    <div class="calendar" id="calendar">
+  <meta charset="UTF-8">
+  <title>Calendar</title>
 
-      <!-- Calendar toolbar -->
-      <div class="calendar-toolbar">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700">
 
-        <!-- Calendar "today" button -->
-        <button data-toggle="calendar" data-action="today" class="btn btn-default">
-          Today
-        </button>
+</head>
 
-        <!-- Calendar "prev" button -->
-        <button data-toggle="calendar" data-action="prev" class="btn btn-default">
-          <i class="fa fa-chevron-left"></i>
-        </button>
+<body>
 
-        <!-- Calendar "date-indicator" span -->
-        <div class="calendar-current-date"
-              data-day-format="MM/DD/YYYY"
-              data-week-format="MM/DD/YYYY"
-              data-month-format="MMMM, YYYY">
-          (placeholder)
-        </div>
+  <div class="container">
 
-        <!-- Calendar "next" button -->
-        <button data-toggle="calendar" data-action="next" class="btn btn-default">
-          <i class="fa fa-chevron-right"></i>
-        </button>
+    <div class="calendar">
 
-        <div class="btn-group pull-right">
+      <header>
 
-          <!-- Calendar "day" button -->
-          <button data-toggle="calendar" data-action="day" class="btn btn-default">
-            Day
-          </button>
+        <h2>April</h2>
 
-          <!-- Calendar "week" button -->
-          <button data-toggle="calendar" data-action="week" class="btn btn-default">
-            Week
-          </button>
+        <a class="btn-prev fontawesome-angle-left" href="1"></a>
+        <a class="btn-next fontawesome-angle-right" href="7"></a>
 
-          <!-- Calendar "month" button -->
-          <button data-toggle="calendar" data-action="month" class="btn btn-default">
-            Month
-          </button>
-          @push('scripts')
-<!-- datatables -->
-<script src="{{ asset('assets/js/calender/calender.js') }}"></script>
-{{-- {{ $dataTable->scripts() }} --}}
-<!-- end datatables -->
+      </header>
 
-        </div>
+      <table>
 
-      </div>
+        <thead>
 
-    </div>
+          <tr>
 
-  </div>
+            <td>Mo</td>
+            <td>Tu</td>
+            <td>We</td>
+            <td>Th</td>
+            <td>Fr</td>
+            <td>Sa</td>
+            <td>Su</td>
 
+          </tr>
+
+        </thead>
+
+        <tbody>
+
+          <tr>
+            <td class="prev-month">29</td>
+            <td class="prev-month">30</td>
+            <td class="prev-month">31</td>
+
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+          </tr>
+          <tr>
+
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+            <td class="event">9</td>
+            <td class="current-day event">10</td>
+            <td>11</td>
+          </tr>
+          <tr>
+            <td>12</td>
+            <td>13</td>
+            <td>14</td>
+            <td>15</td>
+            <td>16</td>
+            <td>17</td>
+            <td>18</td>
+          </tr>
+          <tr>
+
+            <td>19</td>
+            <td>20</td>
+            <td>21</td>
+            <td class="event">22</td>
+            <td>23</td>
+            <td>24</td>
+            <td>25</td>
+          </tr>
+
+          <tr>
+
+            <td>26</td>
+            <td>27</td>
+            <td>28</td>
+            <td>29</td>
+            <td>30</td>
+            <td class="next-month">1</td>
+            <td class="next-month">2</td>
+            <td class="next-month">3</td>
+            <td class="next-month">4</td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div> <!-- end calendar -->
+
+  </div> <!-- end container -->
+
+</body>
+
+</html>

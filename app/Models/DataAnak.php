@@ -9,6 +9,7 @@ use App\Models\Imunisasi;
 
 class DataAnak extends Model
 {
+
     use HasFactory;
     use SoftDeletes;
 
@@ -33,4 +34,10 @@ class DataAnak extends Model
     {
         return $this->hasMany(Imunisasi::class);
     }
+
+    public function createable()
+    {
+        return $this->morphTo();
+    }
+
 }

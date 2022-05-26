@@ -151,10 +151,20 @@ return [
             'title' => 'Dashboard',
             'url' => '/',
             'caret' => false
-        ], [
+        ],[
+            'icon' => 'fa fa-th-large',
+            'title' => 'Biodata',
+            'url' => '/biodata',
+            'caret' => false
+        ],[
             'icon' => 'fa fa-th-large',
             'title' => 'Jadwal',
             'url' => '/jadwal',
+            'caret' => false
+        ],[
+            'icon' => 'fa fa-th-large',
+            'title' => 'Grafik',
+            'url' => '/grafik',
             'caret' => false
         ],[
             'icon' => 'fa fa-cogs',
