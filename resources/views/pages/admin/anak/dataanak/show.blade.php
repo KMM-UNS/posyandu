@@ -141,27 +141,85 @@
 
     <div class="panel-body">
         <div class="form-group">
-        <table id="customers">
-        <tr>
-            <th>
-          <label for="name">Nama Anak</label>
-            </th>
-        </tr>
-    </table>
-          {{ $imunisasi->data_anak->nama_anak }}
+            <div class="row">
+                <div class="col-md-1">
+                    <label for="name"><strong>Nama Anak</strong></label>
+                </div>
+                <div class="col-md-1">
+                    <label for="name"><strong> Imunisasi</strong></label>
+                </div>
+                <div class="col-md-1">
+                    <label for="name"><strong> Berat Badan (Kg)</strong></label>
+                </div>
+                <div class="col-md-1">
+                    <label for="name"><strong> Tinggi Badan (Cm)</strong></label>
+                </div>
+                <div class="col-md-1">
+                    <label for="name"><strong> Umur</strong></label>
+                </div>
+                <div class="col-md-1">
+                    <label for="name"><strong> Vaksin</strong></label>
+                </div>
+                <div class="col-md-1">
+                    <label for="name"><strong> Vitamin Anak</strong></label>
+                </div>
+                <div class="col-md-1">
+                    <label for="name"><strong> Keluhan</strong></label>
+                </div>
+                <div class="col-md-1">
+                    <label for="name"><strong> Tindakan</strong></label>
+                </div>
+                <div class="col-md-1">
+                    <label for="name"><strong> Status Gizi</strong></label>
+                </div>
+                <div class="col-md-1">
+                    <label for="name"><strong>Nama Kader</strong></label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-1">
+                    {{ $imunisasi->data_anak->nama_anak }}
+                </div>
+                <div class="col-md-1">
+                    {{ $imunisasi->tanggal_imunisasi }}
+                </div>
+                <div class="col-md-1">
+                    {{ $imunisasi->berat_badan}}
+                </div>
+                <div class="col-md-1">
+                    {{ $imunisasi->tinggi_badan}}
+                </div>
+                <div class="col-md-1">
+                    {{ $imunisasi->umur ?? old('umur') }}
+                </div>
+                <div class="col-md-1">
+                    {{ $imunisasi->jenisvaksin->vaksin}}
+                </div>
+                <div class="col-md-1">
+                    {{ $imunisasi->vitamin_anak->nama_vitamin }}
+                </div>
+                <div class="col-md-1">
+                    {{ $imunisasi->keluhan }}
+                </div>
+                <div class="col-md-1">
+                    {{ $imunisasi->tindakan }}
+                </div>
+                <div class="col-md-1">
+                    {{$imunisasi->status_gizi}}
+                </div>
+                <div class="col-md-1">
+                    {{ $imunisasi->nama_kader }}
+                </div>
+
+            </div>
+        </div>
           {{-- <input type="text" id="nama_anak" name="nama_anak" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama_anak ?? old('nama_anak') }}}"> --}}
           {{-- <label for="name">Jenis Kelamin</label> --}}
           {{-- <input type="text" id="jenis_kelamin" name="jenis_kelamin" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->jenis_kelamin ?? old('jenis_kelamin') }}}"> --}}
           {{-- <x-form.genderRadio name="jenis_kelamin" selected="{{{ old('jenis_kelamin') ?? ($data['jenis_kelamin'] ?? null) }}}"/> --}}
-          <table id="customers">
-            <tr>
-                <th>
-          <label for="name">Tanggal Imunisasi</label>
-                </th>
-            </tr>
-        </table>
-          {{ $imunisasi->tanggal_imunisasi }}
-          <label for="name">Berat Badan (Kg)</label>
+          {{-- <label for="name">Berat Badan (Kg)</label>
           {{ $imunisasi->berat_badan}}
           <label for="name">Tinggi Badan (Cm)</label>
           {{ $imunisasi->tinggi_badan}}
@@ -169,19 +227,19 @@
           {{ $imunisasi->umur ?? old('umur') }}
           <label for="name">Jenis Vaksin</label>
           {{-- <input type="text" id="jenis_vaksin" name="jenis_vaksin" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->jenis_vaksin ?? old('jenis_vaksin') }}}"> --}}
-          {{ $imunisasi->jenisvaksin->vaksin}}
+          {{-- {{ $imunisasi->jenisvaksin->vaksin}}
           <label for="name">Vitamin Anak</label>
           {{ $imunisasi->vitamin_anak->nama_vitamin }}
           {{-- <input type="text" id="vitamin" name="vitamin" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->vitamin ?? old('vitamin') }}}"> --}}
-          <label for="name">Keluhan</label>
+          {{-- <label for="name">Keluhan</label>
           {{ $imunisasi->keluhan }}
           <label for="name">Tindakan</label>
           {{ $imunisasi->tindakan }}
           <label for="name">Status Gizi</label>
           {{$imunisasi->status_gizi}}
           {{-- <input type="text" id="status_gizi" name="status_gizi" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->status_gizi ?? old('status_gizi') }}}"> --}}
-          <label for="name">Nama Kader</label>
-          {{ $imunisasi->nama_kader }}
+          {{-- <label for="name">Nama Kader</label>
+          {{ $imunisasi->nama_kader }} --}}
          </div>
       </div>
     @endforeach
@@ -192,7 +250,7 @@
       <button type="reset" class="btn btn-default">Reset</button>
     </div> --}}
     <!-- end panel-footer -->
-  </div>
+    </div>
   <!-- end panel -->
 </form>
 <a href="javascript:history.back(-1);" class="btn btn-success">

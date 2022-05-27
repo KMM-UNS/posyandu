@@ -23,7 +23,7 @@
 
         <h2>April</h2>
 
-        <a class="btn-prev fontawesome-angle-left" href="1"></a>
+        <a class="btn-prev fontawesome-angle-left" href=""></a>
         <a class="btn-next fontawesome-angle-right" href="7"></a>
 
       </header>
