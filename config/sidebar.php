@@ -86,7 +86,7 @@ return [
 
 
          [
-            'icon' => 'fa fa-cogs',
+            'icon' => 'fa fa-wheelchair',
             'title' => 'Lansia',
             'url' => 'javascript:;',
             'caret' => true,
@@ -116,6 +116,11 @@ return [
                 [
                     'url' => ' /admin/data-transaksi/rujukan',
                     'title' => '</i>&nbsp;Rujukan'
+
+                ],
+                [
+                    'url' => ' /admin/data-transaksi/rujukanlansia',
+                    'title' => '</i>&nbsp;Rujukan Lansia'
 
                 ]
             ]
@@ -189,6 +194,25 @@ return [
             'url' => '/',
             'caret' => false
         ], [
+            'icon' => 'fa fa-wheelchair',
+            'title' => 'User Lansia',
+            'url' => 'javascript:;',
+            'caret' => true,
+            'sub_menu' => [
+                [
+                    'url' => '/userlansia/biodatalansia',
+                    'title' => '</i>&nbsp;Biodata'
+                ],
+                [
+                    'url' => ' #',
+                    'title' => '</i>&nbsp;KMS Lansia'
+                ],
+                [
+                    'url' => ' #',
+                    'title' => '</i>&nbsp;Rujukan'
+                ]
+            ]
+          ],[
             'icon' => 'fa fa-cogs',
             'title' => 'Ganti Password',
             'url' => '#',
@@ -199,6 +223,7 @@ return [
             'url' => '#',
             'caret' => false
         ]
+
     ],
 
 

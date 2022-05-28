@@ -86,6 +86,11 @@ class PantauanKMSDataTable extends DataTable
             Column::make('hemoglobin'),
             Column::make('reduksi_urine'),
             Column::make('protein_urine'),
+            // Column::make('umur'),
+            // Column::make('jk'),
+            // Column::make('tb'),
+            // Column::make('bb'),
+            // Column::make('hasil'),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)

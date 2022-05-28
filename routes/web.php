@@ -21,13 +21,17 @@ Route::group(['middleware' => 'auth:web', 'as' => 'user.'], function () {
     Route::view('/', 'home')->name('home');
 
     Route::group(['namespace' => 'User'], function () {
-
+        
+        Route::group(['prefix' => '/userlansia', 'as' => 'userlansia.', 'namespace' => 'UserLansia'], function () {
+            Route::resource('biodatalansia', 'BiodataLansiaController');
+            
+        });
     });
 
-
-    
-    
+  
 });
+    
+    
 
 
 require __DIR__ . '/demo.php';

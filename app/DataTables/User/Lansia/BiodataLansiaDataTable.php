@@ -1,7 +1,8 @@
 <?php
 
-namespace App\DataTables\Admin\Lansia;
+namespace App\DataTables\User\Lansia;
 
+use App\Models\BiodataLansia;
 use App\Models\DataLansia;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
@@ -9,7 +10,7 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class DataLansiaDataTable extends DataTable
+class BiodataLansiaDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -26,8 +27,8 @@ class DataLansiaDataTable extends DataTable
             })
             ->addColumn('action', function ($row) {
                 $btn = '<div class="btn-group">';
-                $btn = $btn . '<a href="' . route('admin.data-lansia.datalansia.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
-                $btn = $btn . '<a href="' . route('admin.data-lansia.datalansia.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
+                $btn = $btn . '<a href="' . route('userlansia.biodatalansia.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
+                $btn = $btn . '<a href="' . route('userlansia.biodatalansia.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
                 $btn = $btn . '</div>';
 
                 return $btn;
@@ -40,7 +41,7 @@ class DataLansiaDataTable extends DataTable
      * @param \App\App\Models\Admin\Master\DataLansiaDataTable $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(DataLansia $model)
+    public function query(BiodataLansia $model)
     {
         return $model->select('data_lansia.*')->with(['golongandarah','agama', 'statuskawin', 'jaminankesehatan']);
     }
@@ -107,6 +108,6 @@ class DataLansiaDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'DataLansia_' . date('YmdHis');
+        return 'BiodataLansia_' . date('YmdHis');
     }
 }

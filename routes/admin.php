@@ -72,6 +72,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         Route::group(['prefix' => '/data-transaksi', 'as' => 'data-transaksi.', 'namespace' => 'Transaksi'], function () {
             Route::resource('rujukan', 'RujukanController');
+            Route::resource('rujukanlansia', 'RujukanLansiaController');
         });
     });
 });

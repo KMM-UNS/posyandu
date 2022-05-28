@@ -1,24 +1,22 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Lansia;
+namespace App\Http\Controllers\Admin\Transaksi;
 
-use App\Datatables\Admin\Lansia\PantauanKMSDataTable;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\PantauanKMS;
-use App\Models\DataLansia;
+use App\Models\RujukanLansia;
+use App\Datatables\Admin\Transaksi\RujukanLansiaDataTable;
 
-
-class PantauanKMSController extends Controller
+class RujukanLansiaController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(PantauanKMSDataTable $dataTable)
+    public function index(RujukanLansiaDataTable $dataTable)
     {
-        return $dataTable->render('pages.admin.lansia.pantauan-kms.index');
+        return $dataTable->render('pages.admin.transaksi.rujukanlansia.index');
     }
 
     /**
@@ -28,8 +26,7 @@ class PantauanKMSController extends Controller
      */
     public function create()
     {
-        $nama_lansia=DataLansia::pluck('nama_lansia','id');
-        return view('pages.admin.lansia.pantauan-kms.add-edit',['nama_lansia' =>  $nama_lansia]);
+        return view('pages.admin.transaksi.rujukanlansia.add-edit');
     }
 
     /**
@@ -42,20 +39,20 @@ class PantauanKMSController extends Controller
     {
         try {
             $request->validate([
-                'nama_lansia1' => 'required|min:1'
+                'namalansia' => 'required|min:1'
             ]);
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError($th->validator->messages()->all()[0]);
         }
 
         try {
-            PantauanKMS::create($request->all());
+            RujukanLansia::create($request->all());
         } catch (\Throwable $th) {
             dd($th);
             return back()->withInput()->withToastError('Something went wrong');
         }
 
-        return redirect(route('admin.data-lansia.pantauankms.index'))->withToastSuccess('Data tersimpan');
+        return redirect(route('admin.data-transaksi.rujukanlansia.index'))->withToastSuccess('Data tersimpan');
     }
 
     /**
@@ -66,7 +63,8 @@ class PantauanKMSController extends Controller
      */
     public function show($id)
     {
-        
+        $data = RujukanLansia::findOrFail($id);
+        return view('pages.admin.transaksi.rujukanlansia.show', ['data' => $data]);
     }
 
     /**
@@ -77,9 +75,8 @@ class PantauanKMSController extends Controller
      */
     public function edit($id)
     {
-        $data = PantauanKMS::findOrFail($id);
-        $nama_lansia=DataLansia::pluck('nama_lansia','id');
-        return view('pages.admin.lansia.pantauan-kms.add-edit', ['data' => $data, 'nama_lansia' => $nama_lansia]);
+        $data = RujukanLansia::findOrFail($id);
+        return view('pages.admin.transaksi.rujukanlansia.add-edit', ['data' => $data]);
     }
 
     /**
@@ -93,20 +90,20 @@ class PantauanKMSController extends Controller
     {
         try {
             $request->validate([
-                'nama_lansia1' => 'required|min:1'
+                'nama' => 'required|min:1'
             ]);
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError($th->validator->messages()->all()[0]);
         }
 
         try {
-            $data = PantauanKMS::findOrFail($id);
+            $data = RujukanLansia::findOrFail($id);
             $data->update($request->all());
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Something went wrong');
         }
 
-        return redirect(route('admin.data-lansia.pantauankms.index'))->withToastSuccess('Data tersimpan');
+        return redirect(route('admin.data-transaksi.rujukanlansia.index'))->withToastSuccess('Data tersimpan');
     }
 
     /**
@@ -118,7 +115,7 @@ class PantauanKMSController extends Controller
     public function destroy($id)
     {
         try {
-            PantauanKMS::find($id)->delete();
+            RujukanLansia::find($id)->delete();
         } catch (\Throwable $th) {
             return response(['error' => 'Something went wrong']);
         }

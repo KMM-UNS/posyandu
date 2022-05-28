@@ -17,7 +17,7 @@ class PantauanKMS extends Model
 
     protected $table = 'pantauan_kms';
     protected $fillable = [
-        'tanggal_pemeriksaan' , 'nama_lansia1', 'kegiatan_harian' , 'status_mental' , 'indeks_massa_tubuh', 'tekanan_darah', 'hemoglobin','reduksi_urine', 'protein_urine'
+        'tanggal_pemeriksaan' , 'nama_lansia1', 'kegiatan_harian' , 'status_mental' , 'indeks_massa_tubuh', 'tekanan_darah', 'hemoglobin','reduksi_urine', 'protein_urine', 'umur', 'jk', 'tb', 'bb', 'hasil'
     ];
     public $timestamps = false;
 
@@ -25,6 +25,7 @@ class PantauanKMS extends Model
     {
         return $this->belongsTo(DataLansia::class,'nama_lansia1');
     }
+    
 
 
 }

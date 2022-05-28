@@ -49,7 +49,7 @@
         <label for="name">Keluhan</label>
         <input type="text" id="keluhan" name="keluhan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->keluhan ?? old('keluhan') }}}">
         <label for="name">Tindakan</label>
-        <input type="text" id="tindakan" name="tindakan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tindakan ?? old('tindakan') }}}">
+        <input type="text" id="tindakan" name="tindakan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tindakan ?? old('tindakan') }}}"> 
      </div>
     </div>
     <!-- end panel-body -->

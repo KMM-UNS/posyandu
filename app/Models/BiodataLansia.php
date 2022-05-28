@@ -6,14 +6,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
-//use App\Models\GolonganDarah;
 use App\Models\StatusKawin;
 use App\Models\Agama;
 use App\Models\GolonganDarah;
 use App\Models\JaminanKesehatan;
 
 
-class DataLansia extends Model
+class BiodataLansia extends Model
 {
     use HasFactory;
     use SoftDeletes;

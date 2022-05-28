@@ -25,7 +25,8 @@ class AgamaController extends Controller
             $request->validate([
                 'nama' => 'required|min:3'
             ]);
-        } catch (\Throwable $th) {
+        } catch (\Throwable $th)
+         {
             return back()->withInput()->withToastError($th->validator->messages()->all()[0]);
         }
 
@@ -57,7 +58,9 @@ class AgamaController extends Controller
         try {
             $data = Agama::findOrFail($id);
             $data->update($request->all());
-        } catch (\Throwable $th) {
+            // dd($data);
+        } catch (\Throwable $th)
+         {
             return back()->withInput()->withToastError('Something went wrong');
         }
 

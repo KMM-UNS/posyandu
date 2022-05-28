@@ -29,6 +29,7 @@ class KeluhanTindakanDataTable extends DataTable
                 $btn = '<div class="btn-group">';
                 $btn = $btn . '<a href="' . route('admin.data-lansia.keluhantindakan.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
                 $btn = $btn . '<a href="' . route('admin.data-lansia.keluhantindakan.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
+                $btn = $btn . '<a href="/admin/data-transaksi/rujukanlansia/create' . '" class="btn btn-warning buttons"><i class="fas fa-clinic-medical fa-fw"></i></a>';
                 $btn = $btn . '</div>';
 
                 return $btn;

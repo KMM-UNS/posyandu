@@ -1,6 +1,6 @@
 @extends('layouts.default', ['topMenu' => true, 'sidebarHide' => true])
 
-@section('title', 'Pantauan KMS')
+@section('title', 'Data Lansia')
 
 @push('css')
 <!-- datatables -->
@@ -54,5 +54,5 @@
   $(document).on('delete-with-confirmation.success', function() {
     $('.buttons-reload').trigger('click')
   })
-</script> 
+</script>
 @endpush
