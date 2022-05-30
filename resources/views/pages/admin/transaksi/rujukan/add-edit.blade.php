@@ -56,7 +56,7 @@
                                 <label for="name"> Tanggal Surat</label>
                             </div>
                             <div class="col-md-8">
-                                <input type="text" id="tanggal_surat" name="tanggal_surat" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tanggal_surat ?? old('tanggal_surat') }}}">
+                                <input type="date" id="tanggal_surat" name="tanggal_surat" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tanggal_surat ?? old('tanggal_surat') }}}">
                             </div>
                         </div>
                     </div>
@@ -104,7 +104,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <div class="row">
                             <div class="col-md-4 my-auto">
                                 <label for="name">Keterangan Rujukan</label>
@@ -113,7 +113,7 @@
                                 <input type="text" id="keterangan_rujukan" name="keterangan_rujukan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->keterangan_rujukan ?? old('keterangan_rujukan') }}}">
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="panel-footer">
                     <button type="submit" class="btn btn-primary">Simpan</button>
@@ -188,6 +188,17 @@
                         </div>
                     </div>
 
+                    {{-- <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-7 my-auto">
+                                <label for="name">Keterangan Rujukan</label>
+                            </div>
+                            <div class="col-md-5">
+                                <input type="text" id="keterangan_rujukan" name="keterangan_rujukan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->keterangan_rujukan ?? old('keterangan_rujukan') }}}">
+                            </div>
+                        </div>
+                    </div>
+
                 <div class="form-group">
                         <div class="row">
                             <div class="col-md-7 my-auto">
@@ -198,7 +209,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
