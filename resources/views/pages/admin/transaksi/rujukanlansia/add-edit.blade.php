@@ -44,7 +44,7 @@
                 <label for="name">Kepada</label>
                 <input type="text" id="kepada" name="kepada" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->kepada ?? old('kepada') }}}">
                 <label for="name">Tanggal Surat</label>
-                <input type="text" id="tanggal_surat" name="tanggal_surat" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tanggal_surat ?? old('tanggal_surat') }}}">
+                <input type="date" id="tanggal_surat" name="tanggal_surat" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tanggal_surat ?? old('tanggal_surat') }}}">
                 <label for="name">Nama Lansia</label>
                 <input type="text" id="namalansia" name="namalansia" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->namalansia ?? old('namalansia') }}}">
                 <label for="name">Umur</label>

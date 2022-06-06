@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\RujukanLansia;
 use App\Datatables\Admin\Transaksi\RujukanLansiaDataTable;
+//use PhpOffice\PhpWord\Writer\PDF;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class RujukanLansiaController extends Controller
 {
@@ -64,7 +66,19 @@ class RujukanLansiaController extends Controller
     public function show($id)
     {
         $data = RujukanLansia::findOrFail($id);
-        return view('pages.admin.transaksi.rujukanlansia.show', ['data' => $data]);
+        // return view('pages.admin.transaksi.rujukanlansia.showrujukanlansia-pdf', ['data' => $data]);
+        $pdf = PDF::loadview('pages.admin.transaksi.rujukanlansia.showrujukanlansia-pdf',
+        [
+            'no_surat'=>$data->no_surat,
+            'kepada'=>$data->kepada,
+            'tanggal_surat'=>$data->tanggal_surat,
+            'namalansia'=>$data->namalansia,
+            'umur'=>$data->umur,
+            'jeniskelamin'=>$data->jeniskelamin,
+            'alamat'=>$data->alamat,
+            'keluhan'=>$data->keluhan,
+        ]);
+        return $pdf->download('Rujukan.pdf');
     }
 
     /**
@@ -120,4 +134,13 @@ class RujukanLansiaController extends Controller
             return response(['error' => 'Something went wrong']);
         }
     }
+
+    // public function exportpdf(){
+    //     $data = rujukan_lansia::all();
+
+    //     view()->share('data', $data);
+    //     $pdf = PDF::loadview('rujukanlansia-pdf');
+    //     return $pdf->download('Rujukan.pdf');
+
+    // }
 }

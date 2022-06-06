@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\Transaksi\RujukanLansiaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,6 +31,8 @@ Route::group(['middleware' => 'auth:web', 'as' => 'user.'], function () {
 
   
 });
+// //export pdf
+// Route::get('/exportpdf',[RujukanLansiaController::class, 'exportpdf'])->name('exportpdf');
     
     
 
