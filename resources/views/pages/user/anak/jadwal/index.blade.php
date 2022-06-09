@@ -1,47 +1,65 @@
 @extends('layouts.user')
 
-@section('title', 'Timeline')
+@section('title', 'Jadwal Imunisasi')
 
 @section('content')
 	<!-- begin breadcrumb -->
 	<ol class="breadcrumb float-xl-right">
 		<li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
 		<li class="breadcrumb-item"><a href="javascript:;">Extra</a></li>
-		<li class="breadcrumb-item active">Timeline</li>
+		<li class="breadcrumb-item active">Jadwal Imunisasi</li>
 	</ol>
 	<!-- end breadcrumb -->
 	<!-- begin page-header -->
-	<h1 class="page-header">Timeline </h1>
+	<h1 class="page-header">Jadwal Imunisasi </h1>
+    {{-- @foreach ($jadwalimunisasis as $jadwalimunisasi)
+    {{ $jadwalimunisasi->tanggal }}
+    @endforeach --}}
 	<!-- end page-header -->
 	<!-- begin timeline -->
-	<ul class="timeline">
-		<li>
+	{{-- <ul class="timeline">
+		<li> --}}
 			<!-- begin timeline-time -->
 			<div class="timeline-time">
-				<span class="date">Tanggal</span>
-				<span class="time">04:20</span>
-			</div>
+				{{-- <span class="date">Tanggal</span> --}}
+                @foreach ($jadwalimunisasis as $jadwalimunisasi)
+                <div class="date">Tanggal
+                         :{{ $jadwalimunisasi->tanggal }}
+                </div>
+                 {{-- @endforeach --}}
+                {{-- {{$jadwalimunisasi->tanggal}} --}}
+				{{-- <span class="time">Keterangan</span> --}}
+                {{-- {{$jadwalimunisasi->keterangan}} --}}
+
+
+			{{-- </div> --}}
 			<!-- end timeline-time -->
 			<!-- begin timeline-icon -->
-			<div class="timeline-icon">
+			{{-- <div class="timeline-icon">
 				<a href="javascript:;">&nbsp;</a>
 			</div>
 			<!-- end timeline-icon -->
 			<!-- begin timeline-body -->
 			<div class="timeline-body">
-				<div class="timeline-header">
-					<span class="username"><a href="javascript:;">John Smith</a> <small></small></span>
-				</div>
+				<div class="timeline-header"> --}}
+					{{-- <span > Keterangan </span> --}}
+                    {{-- @foreach ($jadwalimunisasis as $jadwalimunisasi) --}}
+                    <div class="date">Keterangan
+                    :{{ $jadwalimunisasi->keterangan }}
+                </div>
+            </div>
+            @endforeach
+                {{-- </div> --}}
 				{{-- <div class="timeline-content">
 					<p>
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc faucibus turpis quis tincidunt luctus.
 						Nam sagittis dui in nunc consequat, in imperdiet nunc sagittis.
 					</p>
 				</div> --}}
-			<!-- end timeline-body -->
+			{{-- <!-- end timeline-body -->
 		</li>
-		<li>
-			<!-- begin timeline-time -->
+		<li> --}}
+			{{-- <!-- begin timeline-time -->
 			<div class="timeline-time">
 				<span class="date">yesterday</span>
 				<span class="time">20:17</span>
@@ -86,8 +104,8 @@
 						<i class="fa fa-quote-left fa-fw pull-left"></i>
 						Quisque sed varius nisl. Nulla facilisi. Phasellus consequat sapien sit amet nibh molestie placerat. Donec nulla quam, ullamcorper ut velit vitae, lobortis condimentum magna. Suspendisse mollis in sem vel mollis.
 						<i class="fa fa-quote-right fa-fw pull-right"></i>
-					</p>
-				</div>
+					</p> --}}
+				{{-- </div>
 				<div class="timeline-footer">
 					<a href="javascript:;" class="m-r-15 text-inverse-lighter"><i class="fa fa-thumbs-up fa-fw fa-lg m-r-3"></i> Like</a>
 					<a href="javascript:;" class="m-r-15 text-inverse-lighter"><i class="fa fa-comments fa-fw fa-lg m-r-3"></i> Comment</a>
@@ -145,7 +163,7 @@
 			</div>
 			<!-- begin timeline-body -->
 		</li>
-	</ul>
+	</ul> --}}
 	<!-- end timeline -->
 @endsection
 

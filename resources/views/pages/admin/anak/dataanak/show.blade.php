@@ -210,7 +210,7 @@
                     {{$imunisasi->status_gizi}}
                 </div>
                 <div class="col-md-1">
-                    {{ $imunisasi->nama_kader }}
+                    {{ $imunisasi->kader->nama }}
                 </div>
 
             </div>

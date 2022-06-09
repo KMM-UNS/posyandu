@@ -17,8 +17,8 @@ class JadwalController extends Controller
      */
     public function index()
     {
-        // $jadwalimunisasi = JadwalImunisasi::;
-        return view('pages.user.anak.jadwal.index');
+        $jadwalimunisasis = JadwalImunisasi::get();
+        return view('pages.user.anak.jadwal.index',['jadwalimunisasis'=> $jadwalimunisasis]);
         // ,['jadwalimunisasi' => $jadwalimunisasi]);
     }
 
