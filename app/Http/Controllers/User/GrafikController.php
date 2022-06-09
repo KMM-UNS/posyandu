@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\user;
 
+use App\Models\Imunisasi;
 use App\Http\Controllers\Controller;
+use App\Models\DataAnak;
 use Illuminate\Http\Request;
 
 class GrafikController extends Controller
@@ -14,7 +16,9 @@ class GrafikController extends Controller
      */
     public function index()
     {
-        return view('pages.user.anak.grafik.index');
+        $dataanak = DataAnak::select('id')->where('createable_id', auth()->user()->id)->first()->id;
+        $imunisasis = Imunisasi::where('nama_anak_id', $dataanak)->get();
+        return view('pages.user.anak.grafik.index', ['imunisasis' => $imunisasis]);
     }
 
 }

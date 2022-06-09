@@ -137,82 +137,40 @@
 
      </div>
     </div>
-    @foreach ($imunisasis as $imunisasi)
-
-    <div class="panel-body">
-        <div class="form-group">
-            <div class="row">
-                <div class="col-md-1">
-                    <label for="name"><strong>Nama Anak</strong></label>
-                </div>
-                <div class="col-md-1">
-                    <label for="name"><strong> Imunisasi</strong></label>
-                </div>
-                <div class="col-md-1">
-                    <label for="name"><strong> Berat Badan (Kg)</strong></label>
-                </div>
-                <div class="col-md-1">
-                    <label for="name"><strong> Tinggi Badan (Cm)</strong></label>
-                </div>
-                <div class="col-md-1">
-                    <label for="name"><strong> Umur</strong></label>
-                </div>
-                <div class="col-md-1">
-                    <label for="name"><strong> Vaksin</strong></label>
-                </div>
-                <div class="col-md-1">
-                    <label for="name"><strong> Vitamin Anak</strong></label>
-                </div>
-                <div class="col-md-1">
-                    <label for="name"><strong> Keluhan</strong></label>
-                </div>
-                <div class="col-md-1">
-                    <label for="name"><strong> Tindakan</strong></label>
-                </div>
-                <div class="col-md-1">
-                    <label for="name"><strong> Status Gizi</strong></label>
-                </div>
-                <div class="col-md-1">
-                    <label for="name"><strong>Nama Kader</strong></label>
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="row">
-                <div class="col-md-1">
-                    {{ $imunisasi->data_anak->nama_anak }}
-                </div>
-                <div class="col-md-1">
-                    {{ $imunisasi->tanggal_imunisasi }}
-                </div>
-                <div class="col-md-1">
-                    {{ $imunisasi->berat_badan}}
-                </div>
-                <div class="col-md-1">
-                    {{ $imunisasi->tinggi_badan}}
-                </div>
-                <div class="col-md-1">
-                    {{ $imunisasi->umur ?? old('umur') }}
-                </div>
-                <div class="col-md-1">
-                    {{ $imunisasi->jenisvaksin->vaksin}}
-                </div>
-                <div class="col-md-1">
-                    {{ $imunisasi->vitamin_anak->nama_vitamin }}
-                </div>
-                <div class="col-md-1">
-                    {{ $imunisasi->keluhan }}
-                </div>
-                <div class="col-md-1">
-                    {{ $imunisasi->tindakan }}
-                </div>
-                <div class="col-md-1">
-                    {{$imunisasi->status_gizi}}
-                </div>
-                <div class="col-md-1">
-                    {{ $imunisasi->kader->nama }}
-                </div>
-
+    <table class="table table-primary table-striped">
+        <thead>
+            <tr>
+                <th scope="col"><strong> Nama Anak </strong></th>
+                <th scope="col"><strong> Tanggal Imunisasi </strong></th>
+                <th scope="col"><strong> Berat Badan (kg) </strong></th>
+                <th scope="col"><strong> Tinggi Badan (Cm) </strong></th>
+                <th scope="col"><strong> Umur </strong></th>
+                <th scope="col"><strong> Vaksin </strong></th>
+                <th scope="col"><strong> Vitamin Anak </strong></th>
+                <th scope="col"><strong> Keluhan </strong></th>
+                <th scope="col"><strong> Tindakan </strong></th>
+                <th scope="col"><strong> Status Gizi </strong></th>
+                <th scope="col"><strong> Nama Kader </strong></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($imunisasis as $imunisasi)
+            <tr>
+                <td>{{ $imunisasi->data_anak->nama_anak }}</td>
+                <td>{{ $imunisasi->tanggal_imunisasi }}</td>
+                <td>{{ $imunisasi->berat_badan}}</td>
+                <td>{{ $imunisasi->tinggi_badan}}</td>
+                <td>{{ $imunisasi->umur ?? old('umur') }}</td>
+                <td>{{ $imunisasi->jenisvaksin->vaksin}}</td>
+                <td>{{ $imunisasi->vitamin_anak->nama_vitamin }}</td>
+                <td>{{ $imunisasi->keluhan }}</td>
+                <td>{{ $imunisasi->tindakan }}</td>
+                <td>{{ $imunisasi->status_gizi}}</td>
+                <td>{{ $imunisasi->kader->nama }}</td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
             </div>
         </div>
           {{-- <input type="text" id="nama_anak" name="nama_anak" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama_anak ?? old('nama_anak') }}}"> --}}
@@ -240,9 +198,9 @@
           {{-- <input type="text" id="status_gizi" name="status_gizi" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->status_gizi ?? old('status_gizi') }}}"> --}}
           {{-- <label for="name">Nama Kader</label>
           {{ $imunisasi->nama_kader }} --}}
-         </div>
+         {{-- </div>
       </div>
-    @endforeach
+    @endforeach --}}
     <!-- end panel-body -->
     <!-- begin panel-footer -->
     {{-- <div class="panel-footer">

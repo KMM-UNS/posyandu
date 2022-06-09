@@ -163,7 +163,7 @@ return [
             'caret' => false
         ],[
             'icon' => 'fa fa-th-large',
-            'title' => 'Grafik',
+            'title' => 'KMS',
             'url' => '/grafik',
             'caret' => false
         ],[
