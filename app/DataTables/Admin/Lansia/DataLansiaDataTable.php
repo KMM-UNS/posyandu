@@ -26,6 +26,7 @@ class DataLansiaDataTable extends DataTable
             })
             ->addColumn('action', function ($row) {
                 $btn = '<div class="btn-group">';
+                $btn = $btn . '<a href="' . route('admin.data-lansia.datalansia.show', $row->id) . '" class="btn btn-warning buttons-detail"><i class="fa fa-eye"></i></a>';
                 $btn = $btn . '<a href="' . route('admin.data-lansia.datalansia.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
                 $btn = $btn . '<a href="' . route('admin.data-lansia.datalansia.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
                 $btn = $btn . '</div>';
@@ -80,16 +81,16 @@ class DataLansiaDataTable extends DataTable
             Column::make('nama_lansia'),
             // Column::make('email'),
             // Column::make('no_hp'),
-            Column::make('no_KMS'),
             Column::make('NIK'),
+            Column::make('no_KMS'),
             Column::make('jenis_kelamin'),
-            Column::make('ttl'),
-            Column::make('umur'),
-            Column::make('status_perkawinan')->data('statuskawin.nama'),
-            Column::make('alamat'),
-            Column::make('agama')->data('agama.nama'),
-            Column::make('pendidikan_terakhir'),
-            Column::make('golongan_darah')->data('golongandarah.nama'),
+            // Column::make('ttl'),
+            // Column::make('umur'),
+            // Column::make('status_perkawinan')->data('statuskawin.nama'),
+            // Column::make('alamat'),
+            // Column::make('agama')->data('agama.nama'),
+            // Column::make('pendidikan_terakhir'),
+            // Column::make('golongan_darah')->data('golongandarah.nama'),
             Column::make('jaminan_kesehatan')->data('jaminankesehatan.jaminan_kesehatan_id'),
             Column::computed('action')
                 ->exportable(false)

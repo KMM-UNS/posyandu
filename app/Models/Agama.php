@@ -38,4 +38,8 @@ class Agama extends Model
     {
         return $this->hasMany(DataLansia::class);
     }
+    // public function BiodataLansiaAgama()
+    // {
+    //     return $this->hasMany(DataLansia::class);
+    // }
 }

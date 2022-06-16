@@ -24,8 +24,24 @@ class PantauanKMSDataTable extends DataTable
             ->setRowId(function ($row) {
                 return $row->id;
             })
+            ->addColumn('more', '<i class="fa fa-plus"> </i>')
+            ->rawColumns(['more', 'action'])
+            ->addColumn('show', function(PantauanKMS $data){
+                return view('pages.admin.lansia.pantauan-kms.show',compact('data'));
+            })
+            // ->addColumn('show','Detail dari {{$namalansia1}}')
             ->addColumn('action', function ($row) {
+
+
                 $btn = '<div class="btn-group">';
+                //                 $btn = $btn . 'type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+                //   Launch demo modal
+                // </button>
+                // $btn = $btn . '<a href="' . '" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong"></a>';
+
+
+                // $btn = $btn . '<a href="' . route('admin.data-lansia.pantauankms.show', $row->id) . '" class="btn btn-dark buttons-edit" id="example"><i class="fas fa-edit"></i></a>';
+
                 $btn = $btn . '<a href="' . route('admin.data-lansia.pantauankms.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
                 $btn = $btn . '<a href="' . route('admin.data-lansia.pantauankms.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
                 $btn = $btn . '</div>';
@@ -52,9 +68,33 @@ class PantauanKMSDataTable extends DataTable
      */
     public function html()
     {
+
         return $this->builder()
+            ->parameters([
+                'initComplete' => 'function(){
+                    let table = this.api();
+                    $("#pantauan_kms-table").on("click", "td.details-control", function(){
+                        let tr = $(this).closest("tr");
+                        let row = table.row(tr);
+                        if ( row.child.isShown() ) {
+                            row.child.hide();
+                            tr.removeClass("shown");
+                        }
+                        else {
+                            row.child(row.data().show).show();
+                            tr.addClass("shown");
+                        }
+                     })
+
+                    }'
+            ])
+            //  $("#pantauan_kms-table").on("click", "td.details-control", function(){
+            // alert("Hello")
+            // })
+            // }'
+            // ])
             ->setTableId('pantauan_kms-table')
-            ->columns($this->getColumns())
+            ->columns($this->getColumns('nama_lansia1'))
             ->minifiedAjax()
             ->dom('<"dataTables_wrapper dt-bootstrap"B<"row"<"col-xl-7 d-block d-sm-flex d-xl-block justify-content-center"<"d-block d-lg-inline-flex"l>><"col-xl-5 d-flex d-xl-block justify-content-center"fr>>t<"row"<"col-sm-5"i><"col-sm-7"p>>>')
             ->orderBy(1)
@@ -79,15 +119,13 @@ class PantauanKMSDataTable extends DataTable
             //Column::make('no'),
             Column::make('tanggal_pemeriksaan'),
             Column::make('nama_lansia1')->data('lansia.nama_lansia'),
-            Column::make('kegiatan_harian'),
-            Column::make('status_mental'),
+            // Column::make('kegiatan_harian'),
+            // Column::make('status_mental'),
             Column::make('indeks_massa_tubuh'),
-            Column::make('tekanan_darah'),
-            Column::make('hemoglobin'),
-            Column::make('reduksi_urine'),
-            Column::make('protein_urine'),
-            // Column::make('umur'),
-            // Column::make('jk'),
+            // Column::make('tekanan_darah'),
+            // Column::make('hemoglobin'),
+            // Column::make('reduksi_urine'),
+            // Column::make('protein_urine'),
             // Column::make('tb'),
             // Column::make('bb'),
             // Column::make('hasil'),
@@ -96,6 +134,7 @@ class PantauanKMSDataTable extends DataTable
                 ->printable(false)
                 ->width(60)
                 ->addClass('text-center'),
+            Column::computed('more')->addClass('details-control'),
 
         ];
     }

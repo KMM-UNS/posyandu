@@ -22,19 +22,19 @@ Route::group(['middleware' => 'auth:web', 'as' => 'user.'], function () {
     Route::view('/', 'home')->name('home');
 
     Route::group(['namespace' => 'User'], function () {
-        
+
         Route::group(['prefix' => '/userlansia', 'as' => 'userlansia.', 'namespace' => 'UserLansia'], function () {
             Route::resource('biodatalansia', 'BiodataLansiaController');
-            
+            Route::resource('kmslansia', 'KMSLansiaController');
+            Route::resource('riwayatrujukan', 'RiwayatRujukanController'); 
         });
+        
     });
-
-  
 });
 // //export pdf
 // Route::get('/exportpdf',[RujukanLansiaController::class, 'exportpdf'])->name('exportpdf');
-    
-    
+
+
 
 
 require __DIR__ . '/demo.php';

@@ -1,8 +1,7 @@
 <?php
 
-namespace App\DataTables\User\Lansia;
+namespace App\DataTables\Admin\Lansia;
 
-use App\Models\BiodataLansia;
 use App\Models\DataLansia;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
@@ -10,7 +9,7 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class BiodataLansiaDataTable extends DataTable
+class DetailDataLansiaDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -22,15 +21,12 @@ class BiodataLansiaDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
-            ->setRowId(function ($row) {
-                return $row->id;
-            })
+            ->addIndexColumn()
             ->addColumn('action', function ($row) {
                 $btn = '<div class="btn-group">';
-                $btn = $btn . '<a href="' . route('userlansia.biodatalansia.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
-                $btn = $btn . '<a href="' . route('userlansia.biodatalansia.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
+                $btn = $btn . '<a href="' . route('admin.data-lansia.datalansia.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
+                $btn = $btn . '<a href="' . route('admin.data-lansia.datalansia.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
                 $btn = $btn . '</div>';
-
                 return $btn;
             });
     }
@@ -38,13 +34,14 @@ class BiodataLansiaDataTable extends DataTable
     /**
      * Get query source of dataTable.
      *
-     * @param \App\App\Models\Admin\Master\DataLansiaDataTable $model
+     * @param \App\App\Models\Admin\DetailDataLansiaDataTable $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(BiodataLansia $model)
-    {
-        return $model->select('data_lansia.*')->with(['golongandarah','agama', 'statuskawin', 'jaminankesehatan']);
-    }
+    // public function query(Warga $model)
+    // {
+    //     $id = request()->segment(3);
+    //     return $model->select('warga.*')->with(['agama', 'status_keluarga'])->where('keluarga_id', $id);
+    // }
 
     /**
      * Optional method if you want to use html builder.
@@ -57,15 +54,19 @@ class BiodataLansiaDataTable extends DataTable
             ->setTableId('data_lansia-table')
             ->columns($this->getColumns())
             ->minifiedAjax()
-            ->dom('<"dataTables_wrapper dt-bootstrap"B<"row"<"col-xl-7 d-block d-sm-flex d-xl-block justify-content-center"<"d-block d-lg-inline-flex"l>><"col-xl-5 d-flex d-xl-block justify-content-center"fr>>t<"row"<"col-sm-5"i><"col-sm-7"p>>>')
+            // ->dom('<"dataTables_wrapper dt-bootstrap"B<"row"<"col-xl-7 d-block d-sm-flex d-xl-block justify-content-center"<"d-block d-lg-inline-flex"l>><"col-xl-5 d-flex d-xl-block justify-content-center"fr>>t<"row"<"col-sm-5"i><"col-sm-7"p>>>')
             ->orderBy(1)
-            ->buttons(
-                Button::make('create'),
-                Button::make('export'),
-                Button::make('print'),
-                Button::make('reset'),
-                Button::make('reload')
-            );
+            ->parameters([
+                'responsive' => true,
+                'autoWidth' => false
+            ]);
+        // ->buttons(
+        //     Button::make('create'),
+        //     Button::make('export'),
+        //     Button::make('print'),
+        //     Button::make('reset'),
+        //     Button::make('reload')
+        // );
     }
 
     /**
@@ -79,8 +80,8 @@ class BiodataLansiaDataTable extends DataTable
             // Column::make('id'),
             //Column::make('no'),
             Column::make('nama_lansia'),
-            // Column::make('email'),
-            // Column::make('no_hp'),
+            Column::make('email'),
+            Column::make('no_hp'),
             Column::make('no_KMS'),
             Column::make('NIK'),
             Column::make('jenis_kelamin'),
@@ -96,8 +97,9 @@ class BiodataLansiaDataTable extends DataTable
                 ->exportable(false)
                 ->printable(false)
                 ->width(60)
-                ->addClass('text-center'),
-
+                ->addClass('text-center')
+                
+            
         ];
     }
 
@@ -108,6 +110,6 @@ class BiodataLansiaDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'BiodataLansia_' . date('YmdHis');
+        return 'Admin\DetailKeluarga_' . date('YmdHis');
     }
 }

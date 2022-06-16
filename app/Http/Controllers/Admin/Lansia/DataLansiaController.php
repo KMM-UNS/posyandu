@@ -11,6 +11,8 @@ use App\Models\GolonganDarah;
 use App\Models\StatusKawin;
 use Illuminate\Http\Request;
 use App\Models\JaminanKesehatan;
+use App\DataTables\Admin\Lansia\DetailDataLansiaDataTable;
+
 
 class DataLansiaController extends Controller
 {
@@ -31,12 +33,11 @@ class DataLansiaController extends Controller
      */
     public function create()
     {
-        $agamas=Agama::pluck('nama','id'); 
-        $goldas=GolonganDarah::pluck('nama','id'); 
-        $statuskawins=StatusKawin::pluck('nama','id');
-        $jaminankesehatans=JaminanKesehatan::pluck('jaminan_kesehatan_id','id');
-        return view('pages.admin.lansia.data-lansia.add-edit', ['agamas' =>  $agamas, 'goldas'=> $goldas, 'statuskawins' => $statuskawins, 'jaminankesehatans' => $jaminankesehatans ]);
-        
+        $agamas = Agama::pluck('nama', 'id');
+        $goldas = GolonganDarah::pluck('nama', 'id');
+        $statuskawins = StatusKawin::pluck('nama', 'id');
+        $jaminankesehatans = JaminanKesehatan::pluck('jaminan_kesehatan_id', 'id');
+        return view('pages.admin.lansia.data-lansia.add-edit', ['agamas' =>  $agamas, 'goldas' => $goldas, 'statuskawins' => $statuskawins, 'jaminankesehatans' => $jaminankesehatans]);
     }
 
     /**
@@ -71,9 +72,18 @@ class DataLansiaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(DetailDataLansiaDataTable $dataTable, $id)
     {
-        //
+        $data = DataLansia::findorFail($id);
+        $agamas = Agama::pluck('nama', 'id');
+        $goldas = GolonganDarah::pluck('nama', 'id');
+        $statuskawins = StatusKawin::pluck('nama', 'id');
+        $jaminankesehatans = JaminanKesehatan::pluck('jaminan_kesehatan_id', 'id');
+
+        return $dataTable->render('pages.admin.lansia.data-lansia.show', [
+            'data' => $data, 'agamas' =>  $agamas, 'goldas' => $goldas, 'statuskawins' => $statuskawins, 'jaminankesehatans' => $jaminankesehatans
+            // 'status_tinggal' => $status_tinggal
+        ]);
     }
 
     /**
@@ -85,12 +95,12 @@ class DataLansiaController extends Controller
     public function edit($id)
     {
         $data = DataLansia::findOrFail($id);
-        $agamas=Agama::pluck('nama','id'); 
-        $goldas=GolonganDarah::pluck('nama','id'); 
-        $statuskawins=StatusKawin::pluck('nama','id');
-        $jaminankesehatans=JaminanKesehatan::pluck('jaminan_kesehatan_id','id');
-   
-        return view('pages.admin.lansia.data-lansia.add-edit', ['data' => $data, 'agamas' =>  $agamas, 'goldas'=> $goldas, 'statuskawins' => $statuskawins, 'jaminankesehatans' => $jaminankesehatans]);
+        $agamas = Agama::pluck('nama', 'id');
+        $goldas = GolonganDarah::pluck('nama', 'id');
+        $statuskawins = StatusKawin::pluck('nama', 'id');
+        $jaminankesehatans = JaminanKesehatan::pluck('jaminan_kesehatan_id', 'id');
+
+        return view('pages.admin.lansia.data-lansia.add-edit', ['data' => $data, 'agamas' =>  $agamas, 'goldas' => $goldas, 'statuskawins' => $statuskawins, 'jaminankesehatans' => $jaminankesehatans]);
     }
 
     /**

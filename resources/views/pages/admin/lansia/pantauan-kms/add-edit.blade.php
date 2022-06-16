@@ -21,6 +21,7 @@
 
 <!-- begin panel -->
 <form action="{{ isset($data) ? route('admin.data-lansia.pantauankms.update', $data->id) : route('admin.data-lansia.pantauankms.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
+  
   @csrf
   @if(isset($data))
   {{ method_field('PUT') }}
@@ -128,7 +129,7 @@
         <label for="Tidak Ada">Tidak Ada</label><br>
         {{-- <input type="text" id="status_mental" name="status_mental" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->status_mental ?? old('status_mental') }}}"> --}}
         <label for="name">Indeks Massa Tubuh</label>
-        <input type="text" id="indeks_massa_tubuh" name="indeks_massa_tubuh" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->indeks_massa_tubuh ?? old('indeks_massa_tubuh') }}}">
+        <input type="text" id="indeks_massa_tubuh" name="indeks_massa_tubuh" class="form-control" autofocus data-parsley-required="false" onkeyup="hitung();" value="{{{ $data->indeks_massa_tubuh ?? old('indeks_massa_tubuh') }}}">
         <label for="name">Tekanan Darah</label>
         <input type="text" id="tekanan_darah" name="tekanan_darah" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tekanan_darah ?? old('tekanan_darah') }}}">
         <label for="name">Hemoglobin</label>
@@ -167,10 +168,10 @@
         
         <div class="panel-body">
           <div class="form-group">
-            <label for="name">Umur</label>
+            {{-- <label for="name">Umur</label>
             <input type="number" id="umur" name="umur" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->umur ?? old('umur') }}}">
             <label for="name">Jenis Kelamin</label>
-            <x-form.genderRadio name="jk" selected="{{{ old('jk') ?? ($data['jk'] ?? null) }}}"/>
+            <x-form.genderRadio name="jk" selected="{{{ old('jk') ?? ($data['jk'] ?? null) }}}"/> --}}
             <label for="name">Tinggi Badan (cm)</label>
             <input type="number" id="tb" name="tb" onkeyup="hitung();" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tb ?? old('tb') }}}">
             <label for="name">Berat Badan (kg)</label>
@@ -189,10 +190,12 @@
         <div class="panel-body">
           <div class="form-group">
             
-            <br><label for="name">Sistole</label>
-            
-            <label for="name">Diastole</label>
-            
+            <label for="name">Sistol</label>
+            <input type="number" id="sistol" onkeyup="tekanan();" name="sistol" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->sistol ?? old('sistol') }}}">
+            <label for="name">Diastol</label>
+            <input type="number" id="diastol" onkeyup="tekanan();" name="diastol" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->diastol ?? old('diastol') }}}">
+            <label for="name">Hasil</label>
+            <input type="text" id="hasiltekanan" name="hasiltekanan" onkeyup="tekanan();" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->hasiltekanan ?? old('hasiltekanan') }}}">
             
          </div>
 
@@ -233,111 +236,48 @@
 
 <script>
 
-  // if(isset($_GET['proses'])){
-  //       $tbp = $_GET['tb'];
-  //       $bb = $_GET['bb'];
-
-  //       $tb = $tbp/100;
-  //       $hitung = $bb / ($tb * $tb);
-  //       if($hitung <= 18.4){
-  //       echo'
-  //       <div class="alert alert-warning alert-dismissible fade show" role="alert">
-  //           Tinggi Badan: '.$tbp.' Cm<br>
-  //           Berat Badan : '.$bb.' Kg<br>
-  //           BMI         : '.number_format($hitung,1).'<br>
-  //           Keterangan : Kurus
-  //           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-  //               <span aria-hidden="true">&times;</span>
-  //           </button>
-  //        </div>
-  //        ';
-  //       }elseif($hitung <= 25){
-  //         echo'
-  //         <div class="alert alert-warning alert-dismissible fade show" role="alert">
-  //             Tinggi Badan: '.$tbp.' Cm<br>
-  //             Berat Badan : '.$bb.' Kg<br>
-  //             BMI         : '.number_format($hitung,1).'<br>
-  //             Keterangan : Normal
-  //             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-  //                 <span aria-hidden="true">&times;</span>
-  //             </button>
-  //          </div>
-  //          ';
-  //       }elseif($hitung <= 27){
-  //           echo'
-  //           <div class="alert alert-warning alert-dismissible fade show" role="alert">
-  //               Tinggi Badan: '.$tbp.' Cm<br>
-  //               Berat Badan : '.$bb.' Kg<br>
-  //               BMI         : '.number_format($hitung,1).'<br>
-  //               Keterangan : Gemuk
-  //               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-  //                   <span aria-hidden="true">&times;</span>
-  //               </button>
-  //           </div>
-  //           ';
-  //       }elseif($hitung > 27 ){
-  //           echo'
-  //           <div class="alert alert-warning alert-dismissible fade show" role="alert">
-  //               Tinggi Badan: '.$tbp.' Cm<br>
-  //               Berat Badan : '.$bb.' Kg<br>
-  //               BMI         : '.number_format($hitung,1).'<br>
-  //               Keterangan : Obesitas
-  //               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-  //                   <span aria-hidden="true">&times;</span>
-  //               </button>
-  //           </div>
-  //           ';
-  //       }
-  //   }
     function hitung(){
+
       var txtFirstNumberValue = document.getElementById('tb').value/100;
       var txtSecondNumberValue = document.getElementById('bb').value;
       // var txtThirdNumberValue = document.getElementById('tb' * 'tb').value;
       var result = parseInt(txtSecondNumberValue) / ((txtFirstNumberValue)* (txtFirstNumberValue));
-      if (!isNaN(result)) {
-        document.getElementById('hasil').value=result;
-      }
-    }
-    
-    // if (!isNaN(result <= 18.5)){
-      //   $hasil="Underweight";
-      // } else if  (!isNaN(result > 18.5 AND result <= 24.9)){
-      //   $hasil="Normal Weight";
-      // }else if  (!isNaN(result > 29 AND result <= 29.9)){
-      //   $hasil="Overweight";
-      // }else if  (!isNaN(result > 30.0)){
-      //   $hasil="Obese";
+      // if (!isNaN(result)) {
+      //   document.getElementById('hasil').value=result;
       // }
+      if (result<17) {
+        ab = "Berat Sangat Kurang";
+      } else if (result >=17 && result <18) {
+        ab = "Berat Kurang";
+      } else if (result >=18 && result <25) {
+        ab = "Normal";
+      }else if (result >=25 && result <30) {
+        ab= "Obesitas Tingkat Rendah"
+      } else {
+        ab="Obesitas Tingkat Tinggi"
+      }
+      document.getElementById('hasil').value=result;
+      document.getElementById('indeks_massa_tubuh').value=ab;
 
-//     if($_POST!=null)
-// {
-//     $h=empty($_POST["tb"]) ? 0 : $_POST["tb"];
-//     $w=empty($_POST["bb"]) ? 0 : $_POST["bb"];
-//     $index =0;
-//     if($h !=0 && $w !=0)
-//         $index = round($w/($h*$h)* 703,2);
- 
-//     $bmi="";
-//     $bmiStyle="alert alert-primary";
-//     if ($index < 18.5) {
-//         $bmi="underweight - BMI : " . $index;
-//         $bmiStyle="alert alert-secondary";
-//     } else if ($index < 25) {
-//         $bmi="normal - BMI : ". $index;
-//         $bmiStyle="alert alert-success";
-//     } else if ($index < 30) {
-//         $bmi="overweight - BMI : " . $index;  
-//         $bmiStyle="alert alert-warning";
-//     } else {
-//         $bmi="obese - BMI : " .$index;  
-//         $bmiStyle="alert alert-danger";
-//     }
-// }
+      }
 
-  // $(document).on('blur','#tb', function(){
-  //   let bb = parseInt($('#bb').val())
-  //   let tb = parseInt($(this).val())
-  //   $('#hasil').val(tb * bb)
-  // })
+      function tekanan(){
+        var txtFirstNumberValue = document.getElementById('sistol').value;
+      var txtSecondNumberValue = document.getElementById('diastol').value;
+      // var txtThirdNumberValue = document.getElementById('tb' * 'tb').value;
+      var result = ((2*(txtSecondNumberValue))+parseInt(txtFirstNumberValue))/3;
+      if (result<60)
+      ab = "Hipotensi";
+      else if (result >=60 && result <100) {
+        ab = "Normal";
+       } else {
+        ab="Hipertensi"
+       }
+
+      document.getElementById('hasiltekanan').value=ab;
+      // document.getElementById('tekanan_darah').value=ab;
+      }
+     
+
 </script>
 @endpush

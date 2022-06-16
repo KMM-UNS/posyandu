@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Transaksi;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Rujukan;
+use App\Models\DataLansia;
 use App\Datatables\Admin\Transaksi\RujukanDataTable;
 
 class RujukanController extends Controller
@@ -26,7 +27,8 @@ class RujukanController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.transaksi.rujukan.add-edit');
+        $nama_lansia=DataLansia::pluck('nama_lansia','id');
+        return view('pages.admin.transaksi.rujukan.add-edit',['nama_lansia'=>$nama_lansia]);
     }
 
     /**
@@ -64,7 +66,8 @@ class RujukanController extends Controller
     public function show($id)
     {
         $data = Rujukan::findOrFail($id);
-        return view('pages.admin.transaksi.rujukan.show', ['data' => $data]);
+        $nama_lansia=DataLansia::pluck('nama_lansia','id');
+        return view('pages.admin.transaksi.rujukan.show', ['data' => $data,'nama_lansia'=>$nama_lansia]);
     }
 
     /**

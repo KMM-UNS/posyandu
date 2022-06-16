@@ -17,7 +17,7 @@ class PantauanKMS extends Model
 
     protected $table = 'pantauan_kms';
     protected $fillable = [
-        'tanggal_pemeriksaan' , 'nama_lansia1', 'kegiatan_harian' , 'status_mental' , 'indeks_massa_tubuh', 'tekanan_darah', 'hemoglobin','reduksi_urine', 'protein_urine', 'umur', 'jk', 'tb', 'bb', 'hasil'
+        'tanggal_pemeriksaan' , 'nama_lansia1', 'kegiatan_harian' , 'status_mental' , 'indeks_massa_tubuh', 'tekanan_darah', 'hemoglobin','reduksi_urine', 'protein_urine', 'tb', 'bb', 'hasil','sistol','diastol','hasiltekanan'
     ];
     public $timestamps = false;
 

@@ -13,6 +13,7 @@ use App\Models\GolonganDarah;
 use App\Models\JaminanKesehatan;
 
 
+
 class DataLansia extends Model
 {
     use HasFactory;
@@ -22,9 +23,22 @@ class DataLansia extends Model
 
     protected $table = 'data_lansia';
     protected $fillable = [
-        'nama_lansia','no_KMS','email', 'no_hp', 'NIK', 'jenis_kelamin', 'ttl', 'umur', 'status_perkawinan', 'alamat', 'agama', 'pendidikan_terakhir','golongan_darah','jaminan_kesehatan'
+        'nama_lansia',
+        'no_KMS',
+        'email', 
+        'no_hp', 
+        'NIK', 
+        'jenis_kelamin', 
+        'ttl', 
+        'umur', 
+        'status_perkawinan', 
+        'alamat', 
+        'agama', 
+        'pendidikan_terakhir',
+        'golongan_darah',
+        'jaminan_kesehatan',
     ];
-    public $timestamps = false;
+    
 
     public function KeluhanTindakan()
     {
@@ -56,6 +70,15 @@ class DataLansia extends Model
         return $this->belongsTo(JaminanKesehatan::class,'jaminan_kesehatan');
     }
 
+    public function createable()
+    {
+        return $this->morphTo();
+    }
+
+    public function RujukanLansia()
+    {
+        return $this->hasMany(RujukanLansia::class);
+    }
 
 
 

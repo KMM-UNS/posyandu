@@ -33,7 +33,7 @@
         <h3 id=judul>SURAT Rujukan Posyandu Lansia</h3>
         <h4 id=judul> No {{ $no_surat }} </h4>
 
-        <h5><p class="right"> Kepada<br>
+        <h5><p class="left"> Kepada<br>
             Yth. {{ $kepada }}<br>
             Bag. Rujukan<br>
             Di Tempat <p> </h5>             

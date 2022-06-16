@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\RujukanLansia;
 use App\Datatables\Admin\Transaksi\RujukanLansiaDataTable;
 //use PhpOffice\PhpWord\Writer\PDF;
+use App\Models\DataLansia;
 use Barryvdh\DomPDF\Facade\Pdf;
 
 class RujukanLansiaController extends Controller
@@ -28,7 +29,8 @@ class RujukanLansiaController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.transaksi.rujukanlansia.add-edit');
+        $nama_lansia=DataLansia::pluck('nama_lansia','id');
+        return view('pages.admin.transaksi.rujukanlansia.add-edit',['nama_lansia'=>$nama_lansia]);
     }
 
     /**
@@ -66,6 +68,7 @@ class RujukanLansiaController extends Controller
     public function show($id)
     {
         $data = RujukanLansia::findOrFail($id);
+        
         // return view('pages.admin.transaksi.rujukanlansia.showrujukanlansia-pdf', ['data' => $data]);
         $pdf = PDF::loadview('pages.admin.transaksi.rujukanlansia.showrujukanlansia-pdf',
         [
@@ -90,7 +93,8 @@ class RujukanLansiaController extends Controller
     public function edit($id)
     {
         $data = RujukanLansia::findOrFail($id);
-        return view('pages.admin.transaksi.rujukanlansia.add-edit', ['data' => $data]);
+        $nama_lansia=DataLansia::pluck('nama_lansia','id');
+        return view('pages.admin.transaksi.rujukanlansia.add-edit', ['data' => $data,'nama_lansia'=>$nama_lansia]);
     }
 
     /**

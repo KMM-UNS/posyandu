@@ -66,7 +66,7 @@ class PantauanKMSController extends Controller
      */
     public function show($id)
     {
-        
+        // return view('pages.admin.lansia.pantauan-kms.show');
     }
 
     /**
@@ -75,10 +75,23 @@ class PantauanKMSController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id, Request $request)
     {
         $data = PantauanKMS::findOrFail($id);
         $nama_lansia=DataLansia::pluck('nama_lansia','id');
+        // $tb = $request->input('tb');
+        // $bb = $request->input('bb');
+
+        // $hasil = $bb / ($tb * $tb) ;
+        // if ($hasil <= 18.5){
+        //     $indeks_massa_tubuh = 'Underweight';
+        // }elseif($hasil > 18.5 && $hasil <= 24.9){
+        //     $indeks_massa_tubuh = 'Normal Weight';
+        // }elseif($hasil > 29 && $hasil <= 29.9){
+        //     $indeks_massa_tubuh = 'Overweight';
+        // }elseif($hasil > 30){
+        //     $indeks_massa_tubuh = 'Obese';
+        // }
         return view('pages.admin.lansia.pantauan-kms.add-edit', ['data' => $data, 'nama_lansia' => $nama_lansia]);
     }
 
@@ -123,4 +136,23 @@ class PantauanKMSController extends Controller
             return response(['error' => 'Something went wrong']);
         }
     }
+
+    // public function hitung(Request $request)
+    // {
+    //     $tb = $request->input('tb');
+    //     $bb = $request->input('bb');
+
+    //     $hasil = $bb / ($tb * $tb) ;
+    //     if ($hasil <= 18.5){
+    //         $indeks_massa_tubuh = 'Underweight';
+    //     }elseif($hasil > 18.5 && $hasil <= 24.9){
+    //         $indeks_massa_tubuh = 'Normal Weight';
+    //     }elseif($hasil > 29 && $hasil <= 2.9){
+    //         $indeks_massa_tubuh = 'Overweight';
+    //     }elseif($hasil > 30){
+    //         $indeks_massa_tubuh = 'Obese';
+    //     }
+    //     return view('pages.admin.lansia.pantauan-kms.add-edit', [ 'indeks_massa_tubuh' => $indeks_massa_tubuh]);
+    
+    // }
 }

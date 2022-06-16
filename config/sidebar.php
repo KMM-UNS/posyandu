@@ -204,11 +204,11 @@ return [
                     'title' => '</i>&nbsp;Biodata'
                 ],
                 [
-                    'url' => ' #',
+                    'url' => ' /userlansia/kmslansia',
                     'title' => '</i>&nbsp;KMS Lansia'
                 ],
                 [
-                    'url' => ' #',
+                    'url' => ' /userlansia/riwayatrujukan',
                     'title' => '</i>&nbsp;Rujukan'
                 ]
             ]

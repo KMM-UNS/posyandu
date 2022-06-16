@@ -24,11 +24,15 @@ class CreatePantauanKms extends Migration
             $table->string('hemoglobin');
             $table->string('reduksi_urine');
             $table->string('protein_urine');
-            $table->string('umur');
-            $table->string('jk');
+            // $table->string('umur');
+            // $table->string('jk');
             $table->integer('tb');
             $table->string('bb');
             $table->string('hasil');
+            $table->integer('sistol');
+            $table->integer('diastol');
+            $table->string('hasiltekanan');
+
 
             
             $table->timestamps();

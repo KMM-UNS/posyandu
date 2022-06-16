@@ -12,6 +12,7 @@ use App\Models\GolonganDarah;
 use App\Models\StatusKawin;
 use Illuminate\Http\Request;
 use App\Models\JaminanKesehatan;
+use Illuminate\Support\Facades\DB;
 
 class BiodataLansiaController extends Controller
 {
@@ -22,13 +23,9 @@ class BiodataLansiaController extends Controller
      */
     public function index()
     {
-        $data =DataLansia::all();
-        // $agamas=Agama::pluck('nama','id'); 
-        // $goldas=GolonganDarah::pluck('nama','id'); 
-        // $statuskawins=StatusKawin::pluck('nama','id');
-        // $jaminankesehatans=JaminanKesehatan::pluck('jaminan_kesehatan_id','id');
-        // return view('pages.user.lansia.biodatalansia.add-edit', ['agamas' =>  $agamas, 'goldas'=> $goldas, 'statuskawins' => $statuskawins, 'jaminankesehatans' => $jaminankesehatans ]);
-        return view('pages.user.lansia.biodatalansia.add-edit');
+        $data =DataLansia::where('createable_id', auth()->user()->id)->first();
+        return view('pages.user.lansia.biodatalansia.index', ['data' => $data]);
+        
     }
 
     /**
@@ -38,11 +35,11 @@ class BiodataLansiaController extends Controller
      */
     public function create()
     {
-        $agamas=Agama::pluck('nama','id'); 
-        $goldas=GolonganDarah::pluck('nama','id'); 
-        $statuskawins=StatusKawin::pluck('nama','id');
-        $jaminankesehatans=JaminanKesehatan::pluck('jaminan_kesehatan_id','id');
-        return view('pages.user.lansia.biodatalansia.add-edit', ['agamas' =>  $agamas, 'goldas'=> $goldas, 'statuskawins' => $statuskawins, 'jaminankesehatans' => $jaminankesehatans ]);
+        $agamas = Agama::pluck('nama', 'id');
+        $goldas = GolonganDarah::pluck('nama', 'id');
+        $statuskawins = StatusKawin::pluck('nama', 'id');
+        $jaminankesehatans = JaminanKesehatan::pluck('jaminan_kesehatan_id', 'id');
+        return view('pages.user.lansia.biodatalansia.add-edit', ['agamas' =>  $agamas, 'goldas' => $goldas, 'statuskawins' => $statuskawins, 'jaminankesehatans' => $jaminankesehatans]);
         
     }
 
@@ -54,43 +51,22 @@ class BiodataLansiaController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-        'nama_lansia'=>'required',
-        'no_KMS'=>'required',
-        'email'=>'required', 
-        'no_hp'=>'required', 
-        'NIK'=>'required', 
-        'jenis_kelamin'=>'required', 
-        'ttl'=>'required', 
-        'umur'=>'required', 
-        'status_perkawinan'=>'required', 
-        'alamat'=>'required', 
-        'agama'=>'required', 
-        'pendidikan_terakhir'=>'required',
-        'golongan_darah'=>'required',
-        'jaminan_kesehatan'=>'required'
-        ]);
+        DB::transaction(function () use ($request) {
+            try {
+                // dd($request->user());
+                $data = DataLansia::create($request->all());
+                $data->createable()->associate($request->user());
+                $data->save();
+                // dd($data);
 
-        $data = new DataLansia;
-        $data->namalansia=$request->input('namalansia');
-        $data->no_KMS=$request->input('no_KMS');
-        $data->email=$request->input('email');
-        $data->no_hp=$request->input('no_hp');
-        $data->NIK=$request->input('NIK');
-        $data->jenis_kelamin=$request->input('jenis_kelamin');
-        $data->ttl=$request->input('ttl');
-        $data->umur=$request->input('umur');
-        $data->status_perkawinan=$request->input('status_perkawinan');
-        $data->alamat=$request->input('alamat');
-        $data->agama=$request->input('agama');
-        $data->pendidikan_terakhir=$request->input('pendidikan_terakhir');
-        $data->golongan_darah=$request->input('golongan_darah');
-        $data->jaminan_kesehatan=$request->input('jaminan_kesehatan');
-
-        $data->save();
-
-        return redirect()->with('success','data saved');
-
+                // dd($data);
+            } catch (\Throwable $th) {
+                DB::rollBack();
+                dd($th);
+                return back()->withInput()->withToastError('Something went wrong');
+            }
+        });
+        return redirect(route('user.userlansia.biodatalansia.index'))->withToastSuccess('Data tersimpan');
     }
 
     /**
@@ -112,13 +88,12 @@ class BiodataLansiaController extends Controller
      */
     public function edit($id)
     {
-        $data = DataLansia::findOrFail($id);
-        $agamas=Agama::pluck('nama','id'); 
-        $goldas=GolonganDarah::pluck('nama','id'); 
-        $statuskawins=StatusKawin::pluck('nama','id');
-        $jaminankesehatans=JaminanKesehatan::pluck('jaminan_kesehatan_id','id');
-   
-        return view('pages.user.lansia.biodatalansia.add-edit', ['data' => $data, 'agamas' =>  $agamas, 'goldas'=> $goldas, 'statuskawins' => $statuskawins, 'jaminankesehatans' => $jaminankesehatans]);
+        
+        $agamas = Agama::pluck('nama', 'id');
+        $goldas = GolonganDarah::pluck('nama', 'id');
+        $statuskawins = StatusKawin::pluck('nama', 'id');
+        $jaminankesehatans = JaminanKesehatan::pluck('jaminan_kesehatan_id', 'id');
+        return view('pages.user.lansia.biodatalansia.add-edit', ['agamas' =>  $agamas, 'goldas' => $goldas, 'statuskawins' => $statuskawins, 'jaminankesehatans' => $jaminankesehatans]);
     }
 
     /**
@@ -139,8 +114,8 @@ class BiodataLansiaController extends Controller
         }
 
         try {
-            $data = DataLansia::findOrFail($id);
-            $data->update($request->all());
+            // $data = DataLansia::findOrFail($id);
+            // $data->update($request->all());
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Something went wrong');
         }

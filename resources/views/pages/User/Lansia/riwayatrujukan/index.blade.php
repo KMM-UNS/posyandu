@@ -1,6 +1,4 @@
-@extends('layouts.default', ['topMenu' => true, 'sidebarHide' => true])
-
-@section('title', 'Pantauan KMS')
+@extends('layouts.user')
 
 @push('css')
 <!-- datatables -->
@@ -11,36 +9,45 @@
 @endpush
 
 @section('content')
-<!-- begin breadcrumb -->
-<ol class="breadcrumb float-xl-right">
-  <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
-  <li class="breadcrumb-item"><a href="javascript:;">Master Data</a></li>
-  <li class="breadcrumb-item active">@yield('title')</li>
-</ol>
-<!-- end breadcrumb -->
-<!-- begin page-header -->
-<h1 class="page-header">Lansia<small> @yield('title')</small></h1>
-<!-- end page-header -->
-
-
+<h1 class="page-header">Riwayat Rujukan Lansia<small> @yield('title')</small></h1>
 <!-- begin panel -->
 <div class="panel panel-inverse">
   <!-- begin panel-heading -->
   <div class="panel-heading">
-    <h4 class="panel-title">DataTable - @yield('title')</h4>
+    
     <div class="panel-heading-btn">
       <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
       <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
     </div>
+    
   </div>
-  <!-- end panel-heading -->
-  <!-- begin panel-body -->
+  
+  
+
+
   <div class="panel-body">
+    
     {{ $dataTable->table() }}
   </div>
-  <!-- end panel-body -->
 </div>
-<!-- end panel -->
+
+  {{-- <table class="table">
+    
+    <thead>
+      <tr>
+        <th scope="col">Tanggal Surat</th>
+        <th scope="col">Nama Lansia</th>
+        <th scope="col">Umur</th>
+        <th scope="col">Jenis Kelamin</th>
+        <th scope="col">Alamat</th>
+        <th scope="col">Keluhan</th>
+        <th scope="col">Status</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+</div> --}}
+
+
 @endsection
 
 @push('scripts')
@@ -56,21 +63,4 @@
   })
 </script> 
 
-{{-- <script>
-  $(document).ready(function() {
-    $('#example').DataTable( {
-        responsive: {
-            details: {
-                display: $.fn.dataTable.Responsive.display.modal( {
-                    header: function ( row ) {
-                        var data = row.data();
-                        return 'Details for '+data[0]+' '+data[1];
-                    }
-                } ),
-                renderer: $.fn.dataTable.Responsive.renderer.tableAll()
-            }
-        }
-    } );
-} );
-</script> --}}
 @endpush

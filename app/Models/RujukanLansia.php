@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+
 class RujukanLansia extends Model
 {
     use HasFactory;
@@ -19,4 +20,10 @@ class RujukanLansia extends Model
     ];
     // 
     public $timestamps = false;
+
+    public function rujukan()
+    {
+        return $this->belongsTo(DataLansia::class,'namalansia');
+    }
 }
+

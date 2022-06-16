@@ -61,7 +61,7 @@
         <label for="name">Alamat</label>
         <input type="text" id="alamat" name="alamat" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->alamat ?? old('alamat') }}}">
         <label for="name">Agama</label>
-        <x-form.Dropdown name="agama" :options="$agamas" selected="{{{ old('agama') ?? ($data['agama'] ?? null) }}}" required />
+        <input type="text" id="agama" name="agama" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->agama ?? old('agama') }}}">
         <label for="name">Pendidikan Terakhir</label>
         <input type="text" id="pendidikan_terakhir" name="pendidikan_terakhir" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->pendidikan_terakhir ?? old('pendidikan_terakhir') }}}">
         <label for="name">Golongan Darah</label>
