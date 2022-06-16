@@ -40,7 +40,7 @@ return [
 
 
         [
-            'icon' => 'fa fa-cogs',
+            'icon' => 'fa fa-child',
             'title' => 'Anak',
             'url' => 'javascript:;',
             'caret' => true,
@@ -111,30 +111,38 @@ return [
                 [
                     'url' => '/admin/setting',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;App'
-                ], [
-                    'url' => '/admin/master-data/agama',
-                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Agama'
-                ], [
-                    'url' => '/admin/master-data/vitamin',
-                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Vitamin'
-                ],[
-                    'url' => '/admin/master-data/pekerjaan',
-                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Pekerjaan'
-                ], [
-                    'url' => '/admin/master-data/status-kawin',
-                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Status Kawin'
-                ], [
-                    'url' => '/admin/master-data/pendidikan',
-                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Pendidikan'
-                ], [
+                ],
+                // [
+                //     'url' => '/admin/master-data/agama',
+                //     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Agama'
+                // ],
+                // [
+                //     'url' => '/admin/master-data/vitamin',
+                //     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Vitamin'
+                // ],
+                // [
+                //     'url' => '/admin/master-data/pekerjaan',
+                //     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Pekerjaan'
+                // ],
+                // [
+                //     'url' => '/admin/master-data/status-kawin',
+                //     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Status Kawin'
+                // ],
+                // [
+                //     'url' => '/admin/master-data/pendidikan',
+                //     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Pendidikan'
+                // ],
+                [
 
                     'url' => '/admin/master-data/jenisvaksin',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Jenis Vaksin'
-                ],[
-                    'url' => ' /admin/master-data/golda',
-                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Golongan Darah'
+                ],
+                // [
+                //     'url' => ' /admin/master-data/golda',
+                //     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Golongan Darah'
 
-                ],[
+                // ],
+                [
                     'url' => ' /admin/master-data/kader',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Data Kader'
                 ],
@@ -150,23 +158,54 @@ return [
             'icon' => 'fa fa-th-large',
             'title' => 'Dashboard',
             'url' => '/',
-            'caret' => false
-        ],[
-            'icon' => 'fa fa-th-large',
-            'title' => 'Biodata',
-            'url' => '/biodata',
-            'caret' => false
-        ],[
-            'icon' => 'fa fa-th-large',
-            'title' => 'Jadwal',
-            'url' => '/jadwal',
-            'caret' => false
-        ],[
-            'icon' => 'fa fa-th-large',
-            'title' => 'KMS',
-            'url' => '/grafik',
-            'caret' => false
-        ],[
+            'caret' => false,
+            // 'sub_menu' => [[
+            //     'icon' => 'fa fa-th-large',
+            //     'title' => 'Biodata',
+            //     'url' => '/biodata',
+                // 'caret' => false
+        ],
+        [
+            'icon' => 'fa fa-child',
+            'title' => 'Anak',
+            'url' => 'javascript:;',
+            'caret' => true,
+            'sub_menu' => [[
+                'icon' => 'fa fa-th-large',
+                'title' => 'Biodata',
+                'url' => '/biodata',
+                'caret' => false
+            ],[
+                'icon' => 'fa fa-th-large',
+                'title' => 'Jadwal',
+                'url' => '/jadwal',
+                'caret' => false
+            ],[
+                'icon' => 'fa fa-th-large',
+                'title' => 'KMS',
+                'url' => '/grafik',
+                'caret' => false
+            ],
+            ]
+        ],
+        // [
+        //     'icon' => 'fa fa-th-large',
+        //     'title' => 'Biodata',
+        //     'url' => '/biodata',
+        //     'caret' => false
+        // ],
+        // [
+        //     'icon' => 'fa fa-th-large',
+        //     'title' => 'Jadwal',
+        //     'url' => '/jadwal',
+        //     'caret' => false
+        // ],[
+        //     'icon' => 'fa fa-th-large',
+        //     'title' => 'KMS',
+        //     'url' => '/grafik',
+        //     'caret' => false
+        // ],
+        [
             'icon' => 'fa fa-cogs',
             'title' => 'Ganti Password',
             'url' => '#',

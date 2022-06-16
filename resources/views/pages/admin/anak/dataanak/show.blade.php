@@ -122,14 +122,18 @@
               </div>
               <div class="col-md 3">
                : {{ $data->nama_orangtua }}
-                {{-- <input type="text" id="nama_orangtua" name="nama_orangtua" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama_orangtua ?? old('nama_orangtua') }}}"> --}}
               </div>
               <div class="col-md-1">
                   <label for="name">No Handphone Orangtua</label>
               </div>
               <div class="col-md-3">
                 : {{ $data->no_hp_orangtua }}
-                {{-- <input type="text" id="no_hp_orangtua" name="no_hp_orangtua" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->no_hp_orangtua ?? old('no_hp_orangtua') }}}"> --}}
+              </div>
+              <div class="col-md-1">
+              <label for="name">Alamat</label>
+              </div>
+              <div class="col-md-3">
+                : {{ $data->alamat }}
               </div>
 
 

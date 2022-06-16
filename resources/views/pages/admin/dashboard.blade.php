@@ -21,40 +21,24 @@
 
 <!-- begin row -->
 <div class="row">
-  <!-- begin col-3 -->
-  <div class="col-xl-3 col-md-6">
-    <div class="widget widget-stats bg-blue">
-      <div class="stats-icon"><i class="fa fa-desktop"></i></div>
-      <div class="stats-info">
-        <h2>Ibu Hamil</h2>
-      </div>
-      <br>
-      <div class="stats-link">
-        <a href="/ibuhamil">View Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
-      </div>
-    </div>
-  </div>
-  <!-- end col-3 -->
-  <!-- begin col-3 -->
-  <div class="col-xl-3 col-md-6">
-    <div class="widget widget-stats bg-info">
-      <div class="stats-icon"><i class="fa fa-link"></i></div>
-      <div class="stats-info">
-        <h2>Ibu Nifas</h2>
-      </div>
-      <br>
-      <div class="stats-link">
-        <a href="javascript:;">View Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
-      </div>
-    </div>
-  </div>
-  <!-- end col-3 -->
-  <!-- begin col-3 -->
   <div class="col-xl-3 col-md-6">
     <div class="widget widget-stats bg-orange">
       <div class="stats-icon"><i class="fa fa-users"></i></div>
       <div class="stats-info">
-        <h4>UNIQUE VISITORS</h4>
+        <h4>JUMLAH ANAK</h4>
+        <p>{{ $anak }}</p>
+      </div>
+      <div class="stats-link">
+        <a href=/admin/anak-data/dataanak>View Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xl-3 col-md-6">
+    <div class="widget widget-stats bg-red">
+      <div class="stats-icon"><i class="fa fa-users"></i></div>
+      <div class="stats-info">
+        <h4>JUMLAH LANSIA</h4>
         <p>1,291,922</p>
       </div>
       <div class="stats-link">
@@ -64,7 +48,7 @@
   </div>
   <!-- end col-3 -->
   <!-- begin col-3 -->
-  <div class="col-xl-3 col-md-6">
+  {{-- <div class="col-xl-3 col-md-6">
     <div class="widget widget-stats bg-red">
       <div class="stats-icon"><i class="fa fa-clock"></i></div>
       <div class="stats-info">
@@ -75,12 +59,12 @@
         <a href="javascript:;">View Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
       </div>
     </div>
-  </div>
+  </div> --}}
   <!-- end col-3 -->
 </div>
 <!-- end row -->
 <!-- begin row -->
-<div class="row">
+{{-- <div class="row">
   <!-- begin col-8 -->
   <div class="col-xl-8">
     <!-- begin panel -->
@@ -585,7 +569,7 @@
     <!-- end panel -->
   </div>
   <!-- end col-4 -->
-</div>
+</div> --}}
 <!-- end row -->
 @endsection
 

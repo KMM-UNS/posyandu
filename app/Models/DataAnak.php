@@ -19,6 +19,7 @@ class DataAnak extends Model
     protected $fillable = [
         'nama_anak',
         'NIK',
+        'alamat',
         'tempat_lahir',
         'tanggal_lahir',
         'berat_badan_lahir',

@@ -1,5 +1,8 @@
 <?php
 
+// use App\Http\Controllers\DashboardController;
+
+use App\Models\DataAnak;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
@@ -12,7 +15,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             return redirect(route('admin.dashboard'));
         });
 
-        Route::view('/dashboard', 'pages.admin.dashboard')->name('dashboard');
+        Route::view('/dashboard', 'pages.admin.dashboard', [
+            'anak' => DataAnak::count() ])->name('dashboard');
+        // Route::resource('dashboard', 'DashboardController');
+        // Route::get('/dashboard', DashboardController::class, 'index');
 
 
         Route::resource('/admin', 'AdminController');

@@ -120,6 +120,12 @@
               <div class="col-md-3">
                   <input type="text" id="no_hp_orangtua" name="no_hp_orangtua" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->no_hp_orangtua ?? old('no_hp_orangtua') }}}">
               </div>
+              <div class="col-md-1">
+                <label for="name">Alamat</label>
+            </div>
+            <div class="col-md-3">
+                <input type="text" id="alamat" name="alamat" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->alamat ?? old('alamat') }}}">
+            </div>
      </div>
     </div>
     <!-- end panel-body -->

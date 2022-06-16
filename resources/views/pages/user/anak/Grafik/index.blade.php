@@ -7,17 +7,12 @@
 @endpush
 
 @section('content')
-	<!-- begin breadcrumb -->
-	<ol class="breadcrumb float-xl-right">
-		<li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
-		<li class="breadcrumb-item"><a href="javascript:;">Chart</a></li>
-		<li class="breadcrumb-item active">Morris Chart</li>
-	</ol>
-	<!-- end breadcrumb -->
-	<!-- begin page-header -->
-	<h1 class="page-header">Kartu Menuju Sehat Anak </h1>
+<div align="center">
+	<h1 class="page-header"><strong> Kartu Menuju Sehat (KMS) </strong></h1>
+    </div>
 	<!-- end page-header -->
 	<!-- begin row -->
+
     <div class="row">
         <div class="col-md-12">
 
@@ -58,52 +53,61 @@
                 </table>
         </div>
     </div>
-    <h1 class="page-header">Grafik Tumbuh Kembang Anak </h1>
-    <div class="form-group">
-	<div class="row">
-			<!-- end panel -->
-            <div class="col-md-12">
-			<!-- begin panel -->
-			<div class="panel panel-inverse" data-sortable-id="morris-chart-2">
-				<div class="panel-heading">
-					<h4 class="panel-title">Morris Area Chart</h4>
-					<div class="panel-heading-btn">
-						<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
-						<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-redo"></i></a>
-						<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
-						<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
-					</div>
-				</div>
-				<div class="panel-body">
-					<h4 class="text-center">Quarterly Apple iOS device unit sales</h4>
-					<div id="morris-line-chart" class="height-sm"></div>
-				</div>
-			</div>
-            {{-- <div class="col-md-6"> --}}
-                <!-- begin panel -->
-                <div class="panel panel-inverse" data-sortable-id="morris-chart-2">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">Morris Area Chart</h4>
-                        <div class="panel-heading-btn">
-                            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
-                            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-redo"></i></a>
-                            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
-                            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
-                        </div>
-                    </div>
-                    <div class="panel-body">
-                        <h4 class="text-center">Quarterly Apple iOS device unit sales</h4>
-                        <div id="morris-bar-chart" class="height-sm"></div>
-                    </div>
-                </div>
-			<!-- end panel -->
-		</div>
 
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<figure class="highcharts-figure">
+    <div id="container"></div>
+</figure>
+<script type="text/javascript">
+
+Highcharts.chart('container', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Grafik Berat Badan'
+    },
+    xAxis: {
+        categories: [
+            'Jan',
+            'Feb',
+            'Mar',
+            'Apr',
+            'May',
+            'Jun',
+            'Jul',
+            'Aug',
+            'Sep',
+            'Oct',
+            'Nov',
+            'Dec'
+        ],
+        crosshair: true
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Berat Badan ( Kg )'
+        }
+    },
+    tooltip: {
+        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            '<td style="padding:0"><b>{point.y:.1f} kg</b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+    },
+    plotOptions: {
+        column: {
+            pointPadding: 0.2,
+            borderWidth: 0
+        }
+    },
+    series: [{
+        name: 'Umur',
+        data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
+}],
+});
+</script>
 @endsection
-
-
-@push('scripts')
-  <script src="/assets/plugins/raphael/raphael.min.js"></script>
-	<script src="/assets/plugins/morris.js/morris.min.js"></script>
-	<script src="/assets/js/demo/chart-morris.demo.js"></script>
-@endpush

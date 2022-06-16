@@ -75,6 +75,11 @@
                                                     <td>{{$dataanak->NIK}}</td>
                                                 </tr>
                                                 <tr>
+                                                    <td class="textt">Alamat</td>
+                                                    <td>:</td>
+                                                    <td>{{$dataanak->alamat}}</td>
+                                                </tr>
+                                                <tr>
                                                     <td class="textt">Tempat Lahir</td>
                                                     <td>:</td>
                                                     <td>{{$dataanak->tempat_lahir}}</td>

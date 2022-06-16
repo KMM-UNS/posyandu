@@ -17,6 +17,7 @@ class CreateDataAnaksTable extends Migration
             $table->id();
             $table->string('nama_anak');
             $table->string('NIK');
+            $table->string('alamat');
             $table->string('tempat_lahir');
             $table->string('tanggal_lahir');
             $table->string('berat_badan_lahir');
