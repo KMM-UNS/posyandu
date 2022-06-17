@@ -1,3 +1,12 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {{-- <title>Chart Sample</title> --}}
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+</head>
 @extends('layouts.user')
 
 @section('title', 'Morris Chart')
@@ -15,8 +24,6 @@
 
     <div class="row">
         <div class="col-md-12">
-
-            {{-- <div class="text"><strong>Riwayat Vaksin</strong></div> --}}
              <table class="table table-primary table-striped">
                     <thead>
                         <tr>
@@ -53,61 +60,20 @@
                 </table>
         </div>
     </div>
+<body class="h-screen bg-gray-100">
 
-<script src="https://code.highcharts.com/highcharts.js"></script>
-<figure class="highcharts-figure">
-    <div id="container"></div>
-</figure>
-<script type="text/javascript">
+<div class="container px-4 mx-auto">
 
-Highcharts.chart('container', {
-    chart: {
-        type: 'column'
-    },
-    title: {
-        text: 'Grafik Berat Badan'
-    },
-    xAxis: {
-        categories: [
-            'Jan',
-            'Feb',
-            'Mar',
-            'Apr',
-            'May',
-            'Jun',
-            'Jul',
-            'Aug',
-            'Sep',
-            'Oct',
-            'Nov',
-            'Dec'
-        ],
-        crosshair: true
-    },
-    yAxis: {
-        min: 0,
-        title: {
-            text: 'Berat Badan ( Kg )'
-        }
-    },
-    tooltip: {
-        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-            '<td style="padding:0"><b>{point.y:.1f} kg</b></td></tr>',
-        footerFormat: '</table>',
-        shared: true,
-        useHTML: true
-    },
-    plotOptions: {
-        column: {
-            pointPadding: 0.2,
-            borderWidth: 0
-        }
-    },
-    series: [{
-        name: 'Umur',
-        data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
-}],
-});
-</script>
+    <div class="p-6 m-20 bg-white rounded shadow">
+        {!! $chart->container() !!}
+    </div>
+
+</div>
+
+<script src="{{ $chart->cdn() }}"></script>
+
+{{ $chart->script() }}
+
 @endsection
+</body>
+</html>
