@@ -16,14 +16,18 @@ class RujukanLansia extends Model
 
     protected $table = 'rujukan_lansia';
     protected $fillable = [
-        'id', 'no_surat','kepada','tanggal_surat','namalansia','umur','jeniskelamin','alamat','keluhan'
+        'id', 'no_surat','kepada','tanggal_surat','namalansia','umur','jeniskelamin','alamat','keluhan','status'
     ];
     // 
-    public $timestamps = false;
+    // public $timestamps = false;
 
     public function rujukan()
     {
         return $this->belongsTo(DataLansia::class,'namalansia');
+    }
+    public function createable()
+    {
+        return $this->morphTo();
     }
 }
 

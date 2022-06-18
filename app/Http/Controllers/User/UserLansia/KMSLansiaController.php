@@ -10,7 +10,7 @@ use App\Models\DataLansia;
 use App\Models\Kader;
 use App\Models\KeluhanTindakan;
 use yajra\DataTables\Facades\DataTables;
-
+use App\Charts\IMTChart;
 use Illuminate\Http\Request;
 
 class KMSLansiaController extends Controller
@@ -20,7 +20,7 @@ class KMSLansiaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(KMSLansiaDataTable $dataTable)
+    public function index(KMSLansiaDataTable $dataTable, IMTChart $chart)
     {
         // if ($request->ajax()) {
         //     $query = PantauanKMS::with(['lansia']);
@@ -48,7 +48,7 @@ class KMSLansiaController extends Controller
         ];
 
         // return DataTables::of($kmslansia)->view('pages.user.lansia.kmslansia.index');
-        return $dataTable->render('pages.user.lansia.kmslansia.index', $data);
+        return $dataTable->render('pages.user.lansia.kmslansia.index', $data , ['chart' => $chart->build()]);
 
     }
 

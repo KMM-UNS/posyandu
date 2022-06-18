@@ -15,11 +15,11 @@
 <ol class="breadcrumb float-xl-right">
   <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
   <li class="breadcrumb-item"><a href="javascript:;">Master Data</a></li>
-  <li class="breadcrumb-item active">@yield('title')</li>
+  <li class="breadcrumb-item active">@yield('Riwayat Pantauan KMS')</li>
 </ol>
 <!-- end breadcrumb -->
 <!-- begin page-header -->
-<h1 class="page-header">Riwayat KMS Lansia<small> @yield('title')</small></h1>
+<h1 class="page-header">Riwayat KMS Lansia<small> </small></h1>
 <!-- end page-header -->
 
 
@@ -27,7 +27,7 @@
 <div class="panel panel-inverse">
   <!-- begin panel-heading -->
   <div class="panel-heading">
-    <h4 class="panel-title">DataTable - @yield('Riwayat KMS Lansia')</h4>
+    
     <div class="panel-heading-btn">
       <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
       <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
@@ -73,7 +73,7 @@
   <div class="panel panel-inverse">
 	<!-- begin panel-heading -->
 	<div class="panel-heading">
-	  <h4 class="panel-title">DataTable - @yield('title')</h4>
+	  
 	  <div class="panel-heading-btn">
 		<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
 		<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
@@ -109,7 +109,32 @@
 </div>
 	<!-- end panel-body -->
   
- 
+	<h1 class="page-header">Grafik Indeks Massa Tubuh<small> </small></h1>
+
+	 <!-- begin panel -->
+	 <div class="panel panel-inverse">
+		<!-- begin panel-heading -->
+		<div class="panel-heading">
+			<div class="panel-heading-btn">
+				<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+				<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+			  </div>
+			</div>	
+	<body class="h-screen bg-gray-100">
+
+		<div class="container px-4 mx-auto">
+		
+			<div class="p-6 m-20 bg-white rounded shadow">
+				{!! $chart->container() !!}
+			</div>
+		
+		</div>
+		
+		<script src="{{ $chart->cdn() }}"></script>
+		{{ $chart->script() }}
+	</body>
+	 </div>
+
   
 @endsection
 
@@ -164,6 +189,7 @@
 		]
 	})
 </script> --}}
+
 <script src="{{ asset('assets/js/custom/delete-with-confirmation.js') }}"></script>
 <script>
   $(document).on('delete-with-confirmation.success', function() {

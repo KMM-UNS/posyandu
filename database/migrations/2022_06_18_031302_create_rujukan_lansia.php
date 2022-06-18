@@ -23,6 +23,9 @@ class CreateRujukanLansia extends Migration
             $table->string('jeniskelamin');
             $table->string('alamat');
             $table->string('keluhan');
+            $table->string('status');
+            $table->bigInteger('createable_id')->nullable();
+            $table->text('createable_type')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

@@ -24,15 +24,18 @@ class RiwayatRujukanDataTable extends DataTable
             ->eloquent($query)
             ->setRowId(function ($row) {
                 return $row->id;
-            });
-            // ->addColumn('action', function ($row) {
-            //     $btn = '<div class="btn-group">';
-            //     $btn = $btn . '<a href="' . route('userlansia.biodatalansia.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
-            //     $btn = $btn . '<a href="' . route('userlansia.biodatalansia.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
-            //     $btn = $btn . '</div>';
+            })
+            ->addColumn('action', function ($row) {
+                $btn = '<div class="btn-group">';
+                if($row->status == '0'){
+                    $btn = $btn . '<a class="btn btn-secondary">Belum dikonfirmasi</a>';
+                }else{
+                    $btn = $btn . '<a class="btn btn-info">Sudah dikonfirmasi</a>';
+                    $btn = $btn . '<a href="'  . route('admin.data-transaksi.rujukanlansia.show', $row->id) . '" class="btn btn-info buttons-show"><i class="fa fa-print fa-fw"></i></a>';
 
-            //     return $btn;
-            // });
+                }
+                return $btn;
+            });
     }
     
 
@@ -47,6 +50,7 @@ class RiwayatRujukanDataTable extends DataTable
         
         // return $model->select('pantauan_kms.*')->with(['lansia']->where('createable_id', auth()->user()->id))->where('createable_type', 'App\Models\User');
         $data = DataLansia::select('id')->where('createable_id', auth()->user()->id)->first()->id;
+        // $data = RujukanLansia::select('id')->where('createable_id', auth()->user()->id)->first()->id;
         return $model->select('rujukan_lansia.*')->with(['rujukan'])->where('namalansia', $data);
         // return $model->select('pantauan_kms.*')->with(['lansia']);
     }
@@ -59,7 +63,7 @@ class RiwayatRujukanDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-            // ->setTableId('rujukan_lansia-table')
+            ->setTableId('rujukan_lansia-table')
             ->columns($this->getColumns())
             ->minifiedAjax()
             ->dom('<"dataTables_wrapper dt-bootstrap"B<"row"<"col-xl-7 d-block d-sm-flex d-xl-block justify-content-center"<"d-block d-lg-inline-flex"l>><"col-xl-5 d-flex d-xl-block justify-content-center"fr>>t<"row"<"col-sm-5"i><"col-sm-7"p>>>')
@@ -85,12 +89,17 @@ class RiwayatRujukanDataTable extends DataTable
             Column::make('no_surat'),
             Column::make('kepada'),
             Column::make('tanggal_surat'),
-            Column::make('namalansia')->data('rujukan.nama_lansia'),
+            // Column::make('namalansia')->data('rujukan.nama_lansia'),
             Column::make('umur'),
             Column::make('jeniskelamin'),
             Column::make('alamat'),
             Column::make('keluhan'),
-                
+            // Column::make('status'),
+            Column::computed('action')
+                ->exportable(false)
+                ->printable(false)
+                ->width(60)
+                ->addClass('text-center'),
 
         ];
         

@@ -73,6 +73,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::group(['prefix' => '/data-transaksi', 'as' => 'data-transaksi.', 'namespace' => 'Transaksi'], function () {
             Route::resource('rujukan', 'RujukanController');
             Route::resource('rujukanlansia', 'RujukanLansiaController');
+            Route::get('/update/status/{id}', 'RujukanLansiaController@status')->name('rujukanlansia.status');
         });
     });
 });

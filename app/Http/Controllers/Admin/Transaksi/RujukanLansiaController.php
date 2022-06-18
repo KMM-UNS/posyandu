@@ -138,6 +138,12 @@ class RujukanLansiaController extends Controller
             return response(['error' => 'Something went wrong']);
         }
     }
+    public function status($id)
+    {
+        $datarujukan = RujukanLansia::find($id);
+        $datarujukan->status = !$datarujukan->status;
+        $datarujukan->save();
+        return redirect()->back();    }
 
     // public function exportpdf(){
     //     $data = rujukan_lansia::all();
