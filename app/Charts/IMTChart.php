@@ -43,8 +43,6 @@ class IMTChart
             ->setSubtitle('Indeks Massa Tubuh')
             ->setTitle('Grafik Indeks Massa Tubuh')
             // ->addData('Berat Badan', $berat)
-            ->setColors(['#ffc63b'])
-            
             ->addData('IMT (kg/cm^2)',$imt)
             ->setXAxis( $tanggal);
             dd($tanggal);

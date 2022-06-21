@@ -37,6 +37,7 @@ class DataLansia extends Model
         'pendidikan_terakhir',
         'golongan_darah',
         'jaminan_kesehatan',
+      
     ];
     
 
@@ -78,6 +79,10 @@ class DataLansia extends Model
     public function RujukanLansia()
     {
         return $this->hasMany(RujukanLansia::class);
+    }
+    public function DataKematianLansia()
+    {
+        return $this->hasMany(DataKematianLansia::class);
     }
 
 

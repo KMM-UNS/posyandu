@@ -143,7 +143,8 @@ class RujukanLansiaController extends Controller
         $datarujukan = RujukanLansia::find($id);
         $datarujukan->status = !$datarujukan->status;
         $datarujukan->save();
-        return redirect()->back();    }
+        return redirect()->back();    
+    }
 
     // public function exportpdf(){
     //     $data = rujukan_lansia::all();

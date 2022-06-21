@@ -144,4 +144,12 @@ class DataLansiaController extends Controller
             return response(['error' => 'Something went wrong']);
         }
     }
+
+    // public function status($id)
+    // {
+    //     $datakematian = DataLansia::find($id);
+    //     $datakematian->status = !$datakematian->status;
+    //     $datakematian->save();
+    //     return redirect()->back();    
+    // }
 }

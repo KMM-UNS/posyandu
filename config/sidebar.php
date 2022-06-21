@@ -19,18 +19,18 @@ return [
             'url' => '/admin/dashboard',
             'caret' => false
         ],
-        [
-            'icon' => 'fa fa-users',
-            'title' => 'Pengguna',
-            'url' => '/admin/user',
-            'caret' => false,
-        ],
-        [
-            'icon' => 'fa fa-users',
-            'title' => 'Admin',
-            'url' => '/admin/admin',
-            'caret' => false,
-        ],
+        // [
+        //     'icon' => 'fa fa-users',
+        //     'title' => 'Pengguna',
+        //     'url' => '/admin/user',
+        //     'caret' => false,
+        // ],
+        // [
+        //     'icon' => 'fa fa-users',
+        //     'title' => 'Admin',
+        //     'url' => '/admin/admin',
+        //     'caret' => false,
+        // ],
 
 
 
@@ -96,6 +96,10 @@ return [
                     'title' => '</i>&nbsp;Data Lansia'
                 ],
                 [
+                    'url' => ' /admin/data-lansia/datakematianlansia',
+                    'title' => '</i>&nbsp;Data Kematian'
+                ],
+                [
                     'url' => ' /admin/data-lansia/pantauankms',
                     'title' => '</i>&nbsp;Catatan Pemantauan KMS'
                 ],
@@ -107,22 +111,56 @@ return [
                 ],
 
         [
-            'icon' => 'fa fa-cogs',
-            'title' => 'Transaksi',
+            'icon' => 'fas fa-hospital',
+            'title' => 'Rujukan',
             'url' => 'javascript:;',
             'caret' => true,
             'sub_menu' =>
             [
-                [
-                    'url' => ' /admin/data-transaksi/rujukan',
-                    'title' => '</i>&nbsp;Rujukan'
+                // [
+                //     'url' => ' /admin/data-transaksi/rujukan',
+                //     'title' => '</i>&nbsp;Rujukan'
 
-                ],
+                // ],
                 [
                     'url' => ' /admin/data-transaksi/rujukanlansia',
                     'title' => '</i>&nbsp;Rujukan Lansia'
 
                 ]
+            ]
+        ],
+        [
+            'icon' => '	far fa-calendar-check',
+            'title' => 'Kegiatan',
+            'url' => 'javascript:;',
+            'caret' => true,
+            'sub_menu' =>
+            [
+                // [
+                //     'url' => ' /admin/data-transaksi/rujukan',
+                //     'title' => '</i>&nbsp;Rujukan'
+
+                // ],
+                [
+                    'url' => '#',
+                    'title' => '</i>&nbsp;Data Kegiatan'
+
+                ],
+            ]
+        ],
+        [
+            'icon' => '	fas fa-file-alt',
+            'title' => 'Laporan',
+            'url' => 'javascript:;',
+            'caret' => true,
+            'sub_menu' =>
+            [
+                [
+                    'url' => ' /admin/data-lansia/laporankematian',
+                    'title' => '</i>&nbsp;Laporan Kematian Lansia'
+
+                ],
+                
             ]
         ],
 

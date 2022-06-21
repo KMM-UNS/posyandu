@@ -29,14 +29,15 @@ class RujukanLansiaDataTable extends DataTable
                 $btn = '<div class="btn-group">';
              
                 if($row->status == '0'){
-                    $btn = $btn . '<a href="' . route('admin.data-transaksi.rujukanlansia.status', $row->id) . '" class="btn btn-dark buttons-edit">Belum dikonfirmasi</a>';
+                    $btn = $btn . '<a href="' . route('admin.data-transaksi.rujukanlansia.status', $row->id) . '" class="btn btn-secondary buttons-edit">Belum dikonfirmasi</a>';
                 }else{
                     $btn = $btn . '<a href="' . route('admin.data-transaksi.rujukanlansia.status', $row->id) . '" class="btn btn-info buttons-edit">Sudah dikonfirmasi</a>';
+                    $btn = $btn . '<a href="'  . route('admin.data-transaksi.rujukanlansia.show', $row->id) . '" class="btn btn-info buttons-show"><i class="fa fa-print fa-fw"></i></a>';
                 }
                
                 $btn = $btn . '<a href="' . route('admin.data-transaksi.rujukanlansia.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
                 $btn = $btn . '<a href="' . route('admin.data-transaksi.rujukanlansia.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
-                $btn = $btn . '<a href="'  . route('admin.data-transaksi.rujukanlansia.show', $row->id) . '" class="btn btn-info buttons-show"><i class="fa fa-print fa-fw"></i></a>';
+                // $btn = $btn . '<a href="'  . route('admin.data-transaksi.rujukanlansia.show', $row->id) . '" class="btn btn-info buttons-show"><i class="fa fa-print fa-fw"></i></a>';
                 $btn = $btn . '</div>';
 
                 return $btn;

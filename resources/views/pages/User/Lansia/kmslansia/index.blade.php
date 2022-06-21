@@ -106,34 +106,36 @@
 		</tbody>
 	</table>
 </div>
-</div>
+{{-- </div> --}}
 	<!-- end panel-body -->
   
-	<h1 class="page-header">Grafik Indeks Massa Tubuh<small> </small></h1>
+	<h1 class="page-header">Grafik Indeks Massa Tubuh<small> @yield('title') </small></h1>
 
 	 <!-- begin panel -->
-	 <div class="panel panel-inverse">
+	<div class="panel panel-inverse">
 		<!-- begin panel-heading -->
 		<div class="panel-heading">
 			<div class="panel-heading-btn">
 				<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
 				<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
 			  </div>
-			</div>	
-	<body class="h-screen bg-gray-100">
+		</div>	
+		<div>
+				<body class="h-screen bg-gray-100">
 
-		<div class="container px-4 mx-auto">
-		
-			<div class="p-6 m-20 bg-white rounded shadow">
-				{!! $chart->container() !!}
+					<div class="container px-4 mx-auto">
+					
+						<div class="p-6 m-20 bg-white rounded shadow">
+							{!! $chart->container() !!}
+						</div>
+					
+					</div>
+					
+					<script src="{{ $chart->cdn() }}"></script>
+					{{ $chart->script() }}
+				</body>
 			</div>
-		
-		</div>
-		
-		<script src="{{ $chart->cdn() }}"></script>
-		{{ $chart->script() }}
-	</body>
-	 </div>
+	</div>
 
   
 @endsection

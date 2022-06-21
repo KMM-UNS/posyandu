@@ -122,7 +122,7 @@ class PantauanKMSDataTable extends DataTable
             // Column::make('kegiatan_harian'),
             // Column::make('status_mental'),
             Column::make('indeks_massa_tubuh'),
-            // Column::make('tekanan_darah'),
+            Column::make('tekanan_darah'),
             // Column::make('hemoglobin'),
             // Column::make('reduksi_urine'),
             // Column::make('protein_urine'),

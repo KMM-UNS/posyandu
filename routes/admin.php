@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\JaminanKesehatan;
+
 use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
@@ -65,8 +65,13 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         Route::group(['prefix' => '/data-lansia', 'as' => 'data-lansia.', 'namespace' => 'Lansia'], function () {
             Route::resource('datalansia', 'DataLansiaController');
+            Route::resource('datakematianlansia', 'DataKematianLansiaController');
+            Route::get('/laporankematian', 'DataKematianLansiaController@laporankematian')->name('laporankematian');
+            Route::get('/cetak-laporankematian/{tglawal}/{tglakhir}', 'DataKematianLansiaController@cetakLaporanKematian')->name('cetak-laporankematian');
+
             Route::resource('pantauankms', 'PantauanKMSController');
             Route::resource('keluhantindakan', 'KeluhanTindakanController');
+            Route::resource('', 'KeluhanTindakanController');
 
         });
 
@@ -75,5 +80,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::resource('rujukanlansia', 'RujukanLansiaController');
             Route::get('/update/status/{id}', 'RujukanLansiaController@status')->name('rujukanlansia.status');
         });
+
+        Route::group(['prefix' => '/data-kegiatan', 'as' => 'data-kegiatan.', 'namespace' => 'Kegiatan'], function () {
+            Route::resource('datakegiatan', 'KegiatanController');
+        });
+
+    
     });
 });

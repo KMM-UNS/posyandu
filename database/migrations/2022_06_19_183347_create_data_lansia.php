@@ -29,6 +29,7 @@ class CreateDataLansia extends Migration
             $table->string('pendidikan_terakhir');
             $table->string('golongan_darah');
             $table->string('jaminan_kesehatan');
+            
             $table->bigInteger('createable_id')->nullable();
             $table->text('createable_type')->nullable();
             $table->timestamps();
