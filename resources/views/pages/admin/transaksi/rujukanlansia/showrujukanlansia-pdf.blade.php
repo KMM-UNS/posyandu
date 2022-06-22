@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <head>
     <title>Surat Rujukan</title>
@@ -7,7 +8,7 @@
             text-align:center;
         }
 
-        #halaman{
+        /* #halaman{
             width: auto; 
             height: auto; 
             position: absolute; 
@@ -16,7 +17,7 @@
             padding-left: 30px; 
             padding-right: 30px; 
             padding-bottom: 80px;
-        }
+        } */
 
         #css{
         .left    { text-align: left;}
@@ -30,7 +31,25 @@
 
 <body>
     <div id=halaman>
-        <h3 id=judul>SURAT Rujukan Posyandu Lansia</h3>
+         <h1 style="font-size: 16px; text-align: center;">
+        POSYANDU SEBELAS MARET
+    </h1>
+    <h1 style="font-size: 16px; text-align: center;">
+        KELURAHAN JEBRES KECAMATAN JEBRES
+    </h1>
+    <h1 style="font-size: 16px; text-align: center;">
+        KOTA SURAKARTA
+    </h1>
+    <h4 style="text-align: center; font-weight: normal; margin-bottom: 0;">
+        JALAN SEBELAS MARET, JEBRES, Kec. JEBRES, Kota SURAKARTA, JAWA TENGAH
+    </h4>
+    <h4 style="text-align: center; font-weight: normal; margin: 0;">
+        Telepon: 08988777788 Surel : uns@mail.com Kode Pos : 5612
+    </h4>
+    <hr style="border: 3px solid; margin-bottom: 1px;">
+    <hr style="margin-top: 0;">
+
+    <h3 style="font-size: 16px; text-align: center;">SURAT Rujukan Posyandu Lansia</h1>
         <h4 id=judul> No {{ $no_surat }} </h4>
 
         <h5><p class="left"> Kepada<br>
@@ -70,11 +89,12 @@
 
         <br>
         <div style="width: 50%; text-align: left; float: right;">Solo, {{ $tanggal_surat }}</div><br>
-        <div style="width: 50%; text-align: left; float: right;">Hormat Kami,</div><br>
-        <br><br><br><br>
+        <div style="width: 50%; text-align: left; float: right;">Hormat Kami,</div>
+    </br>
+</br></br></br></br>
         <div style="width: 50%; text-align: left; float: right;">Kader Posyandu</div>
 
     </div>
 </body>
 
-</html>
+</html> 

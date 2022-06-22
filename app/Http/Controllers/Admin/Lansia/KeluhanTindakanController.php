@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\Models\KeluhanTindakan;
 use App\Models\DataLansia;
 use App\Models\Kader;
+use Illuminate\Support\Str;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 
 class KeluhanTindakanController extends Controller
@@ -127,5 +129,37 @@ class KeluhanTindakanController extends Controller
         } catch (\Throwable $th) {
             return response(['error' => 'Something went wrong']);
         }
+    }
+
+    public function laporanKeluhanTindakan(){
+        return view('pages.admin.lansia.keluhan-tindakan.laporankeluhantindakan');
+    }
+
+    public function sortir(Request $request){
+    
+        $startDate = Str::before($request->tglawal, ' -');
+        $endDate = Str::after($request->tglakhir, '- ');
+        switch ($request->submit) {
+            case 'table':
+
+                $data = KeluhanTindakan::all()
+                    ->whereBetween('tanggal_pemeriksaan', [$startDate, $endDate]);
+             
+                return view('pages.admin.lansia.keluhan-tindakan.laporankeluhantindakan', compact( 'data', 'startDate', 'endDate'));
+                break;
+        }
+    }
+
+    public function cetakLaporanKeluhanTindakan($start, $end){
+        //dd(["Tanggal Awal :".$tglawal, "Tanggal Akhir :".$tglakhir]); 
+        $startDate = $start;
+        $endDate =$end;
+        $data = KeluhanTindakan::get()
+            ->whereBetween('tanggal_pemeriksaan', [$startDate, $endDate]);
+
+         $pdf = PDF::loadview('pages.admin.lansia.keluhan-tindakan.cetakkeluhantindakan',['data' =>$data]);
+         return $pdf->download('Laporan Keluhan dan Tindakan Lansia.pdf');
+      
+       
     }
 }

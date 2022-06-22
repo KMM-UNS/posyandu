@@ -1,6 +1,5 @@
 @extends('layouts.default', ['topMenu' => true, 'sidebarHide' => true])
 
-@section('title', 'Data Lansia')
 
 @push('css')
 
@@ -9,12 +8,12 @@
 @section('content')
 
 <!-- begin page-header -->
-<h1 class="page-header">Laporan Kematian Lansia</h1>
+<h1 class="page-header">Laporan Rujukan Lansia</h1>
 <!-- end page-header -->
 
 <div class="panel panel-inverse">
   <div class="panel-heading">
-    <h4 class="panel-title">Laporan Kematian Lansia</h4>
+    <h4 class="panel-title">Laporan Rujukan Lansia</h4>
     <div class="panel-heading-btn">
       <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
       <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-redo"></i></a>
@@ -22,7 +21,7 @@
       <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
     </div>
   </div>
-  <form action="/admin/data-lansia/laporankematian" method="post">
+  <form action="/admin/data-transaksi/laporanrujukanlansia" method="post">
     @csrf
   <div class="panel-body">
     <div class="form-group">
@@ -45,28 +44,32 @@
     <br>
 
     <div class="panel-body">
-      <center><h4> Laporan Kematian Lansia</h4></center>
-      <a href="/admin/data-lansia/cetaklaporankematian/{{ $startDate }}/{{ $endDate }}" class="btn btn-secondary btn-sm float-right mr-4"><i class="fa fa-print fa-fw"></i> Cetak Laporan </a>
+      <center><h4> Laporan Rujukan Lansia</h4></center>
+      <a href="/admin/data-transaksi/cetaklaporanrujukanlansia/{{ $startDate }}/{{ $endDate }}" class="btn btn-secondary btn-sm float-right mr-4"><i class="fa fa-print fa-fw"></i> Cetak Laporan </a>
       <br>
       
     <div class="form-group my-5">
     
     <table id="rekaps" class="table table-bordered my-5" align="center" rules="all" border="1px" style="width: 95%; margin-top: 1 rem;
     margin-bottom: 1 rem;">
-      <tr>
+       <tr>
         <th>No. </th>
-        <th>Nama Lansia </th>
+        <th>Nama Lansia</th>
+        <th>Tanggal Pemeriksaan</th>
+        <th>Umur</th>
         <th>Jenis Kelamin</th>
-        <th>Tanggal Lahir</th>
-        <th>Tanggal Meninggal</th>
+        <th>Alamat</th>
+        <th>Keluhan</th>
       </tr>
-      @foreach ( $data as $cetak)
+      @foreach ( $data as $cetakrl)
       <tr>
         <td> {{ $loop->iteration }}</td>
-        <td> {{ $cetak->kematian->nama_lansia }}</td>
-        <td> {{ $cetak->jenis_kelamin }}</td>
-        <td> {{ $cetak->tgl_lahir }}</td>
-        <td> {{ $cetak->tgl_meninggal }}</td>
+        <td> {{ $cetakrl->rujukan->nama_lansia }}</td>
+        <td> {{ $cetakrl->tanggal_surat }}</td>
+        <td> {{ $cetakrl->umur }}</td>
+        <td> {{ $cetakrl->jeniskelamin }}</td>
+        <td> {{ $cetakrl->alamat }}</td>
+        <td> {{ $cetakrl->keluhan }}</td>
       </tr>
       @endforeach
     </div>

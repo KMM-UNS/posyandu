@@ -153,16 +153,76 @@ return [
             'title' => 'Laporan',
             'url' => 'javascript:;',
             'caret' => true,
-            'sub_menu' =>
-            [
+            'sub_menu' => [
                 [
-                    'url' => ' /admin/data-lansia/laporankematian',
-                    'title' => '</i>&nbsp;Laporan Kematian Lansia'
-
+                    'title' => 'Laporan Bulanan Lansia',
+                    'url' => 'javascript:;',
+                    'sub_menu' => [
+                        [
+                            'url' => ' /admin/data-lansia/laporankematian',
+                            'title' => '</i>&nbsp;Laporan Kematian Lansia'
+                        ],[
+                            'url' => ' /admin/data-lansia/laporankmslansia',
+                             'title' => '</i>&nbsp;Laporan KMS Lansia'
+                        ],
+                        [
+                            'url' => ' /admin/data-lansia/laporankeluhantindakan',
+                             'title' => '</i>&nbsp;Laporan Keluhan dan Tindakan'
+                        ],
+                        [
+                            'url' => ' /admin/data-transaksi/laporanrujukanlansia',
+                             'title' => '</i>&nbsp;Laporan Rujukan Lansia'
+                        ],
+                    ]
                 ],
-                
+                [
+                    'title' => 'Laporan Data Lansia',
+                    'url' => 'javascript:;',
+                    'sub_menu' => [
+                        [
+                            'url' => ' #',
+                            'title' => '</i>&nbsp;Laporan DataKematian Lansia'
+                        ],[
+                            'url' => '#',
+                            'title' => '</i>&nbsp;Laporan Data KMS Lansia'
+                        ],
+                        [
+                            'url' => ' #',
+                            'title' => '</i>&nbsp;Laporan Data Keluhan Tindakan'
+                        ],
+                        [
+                            'url' => '#',
+                            'title' => '</i>&nbsp;Laporan Data Rujukan Lansia'
+                        ],
+                    ]
+                ],
             ]
         ],
+
+
+                
+
+        // [
+        //     'icon' => '	fas fa-file-alt',
+        //     'title' => 'Laporan',
+        //     'url' => 'javascript:;',
+        //     'caret' => true,
+        //     'sub_menu' =>
+        //     [
+        //         [
+        //             'url' => ' /admin/data-lansia/laporankematian',
+        //             'title' => '</i>&nbsp;Laporan Kematian Lansia'
+                    
+
+        //         ],
+        //         [
+        //             'url' => ' /admin/data-lansia/laporankmslansia',
+        //             'title' => '</i>&nbsp;Laporan KMS Lansia'
+
+        //         ],
+                
+        //     ]
+        // ],
 
         [
             'icon' => 'fa fa-cogs',

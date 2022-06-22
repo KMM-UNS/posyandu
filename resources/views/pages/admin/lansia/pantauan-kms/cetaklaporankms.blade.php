@@ -41,25 +41,29 @@
     <hr style="border: 3px solid; margin-bottom: 1px;">
     <hr style="margin-top: 0;">
 
-    <h3 style="font-size: 16px; text-align: center;">Laporan Kematian Lansia</h1>
+    <h3 style="font-size: 16px; text-align: center;">Laporan KMS Lansia</h1>
         <div class="form-group">
             <table class="static" align="center" rules="all" border="1px" style="width: 95%;">
                 <tr>
                     <th>No. </th>
-                    <th>Nama Lansia </th>
-                    <th>Jenis Kelamin</th>
-                    <th>Tanggal Lahir</th>
-                    <th>Tanggal Meninggal</th>
+                    <th>Tanggal Pemeriksaan </th>
+                    <th>Nama Lansia</th>
+                    <th>Tekanan Darah</th>
+                    <th>Tinggi Badan</th>
+                    <th>Berat Badan</th>
+                    <th>Indeks Massa Tubuh</th>
                 </tr>
-                @foreach ($data as $cetak)
+                @foreach ($data as $cetakkms)
                     <tr>
                         <td> {{ $loop->iteration }}</td>
-                        <td> {{ $cetak->kematian->nama_lansia }}</td>
-                        <td> {{ $cetak->jenis_kelamin }}</td>
-                        <td> {{ $cetak->tgl_lahir }}</td>
-                        <td> {{ $cetak->tgl_meninggal }}</td>
+                        <td> {{ $cetakkms->tanggal_pemeriksaan }}</td>
+                        <td> {{ $cetakkms->lansia->nama_lansia }}</td>
+                        <td> {{ $cetakkms->tekanan_darah }}</td>
+                        <td> {{ $cetakkms->tb }}</td>
+                        <td> {{ $cetakkms->bb }}</td>
+                        <td> {{ $cetakkms->indeks_massa_tubuh }}</td>
+                    </tr>
                 @endforeach
-
         </div>
 </body>
 

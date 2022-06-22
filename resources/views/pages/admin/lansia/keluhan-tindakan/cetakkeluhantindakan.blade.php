@@ -41,25 +41,25 @@
     <hr style="border: 3px solid; margin-bottom: 1px;">
     <hr style="margin-top: 0;">
 
-    <h3 style="font-size: 16px; text-align: center;">Laporan Kematian Lansia</h1>
+    <h3 style="font-size: 16px; text-align: center;">Laporan Keluhan dan Tindakan</h1>
+    <br>
         <div class="form-group">
             <table class="static" align="center" rules="all" border="1px" style="width: 95%;">
                 <tr>
                     <th>No. </th>
-                    <th>Nama Lansia </th>
-                    <th>Jenis Kelamin</th>
-                    <th>Tanggal Lahir</th>
-                    <th>Tanggal Meninggal</th>
+                    <th>Nama Lansia</th>
+                    <th>Tanggal Pemeriksaan </th>
+                    <th>Keluhan</th>
+                    <th>Tindakan</th>
                 </tr>
-                @foreach ($data as $cetak)
+                @foreach ($data as $cetakkt)
                     <tr>
                         <td> {{ $loop->iteration }}</td>
-                        <td> {{ $cetak->kematian->nama_lansia }}</td>
-                        <td> {{ $cetak->jenis_kelamin }}</td>
-                        <td> {{ $cetak->tgl_lahir }}</td>
-                        <td> {{ $cetak->tgl_meninggal }}</td>
+                        <td> {{ $cetakkt->lansia->nama_lansia }}</td>
+                        <td> {{ $cetakkt->tanggal_pemeriksaan }}</td>
+                        <td> {{ $cetakkt->keluhan }}</td>
+                        <td> {{ $cetakkt->tindakan }}</td>
                 @endforeach
-
         </div>
 </body>
 

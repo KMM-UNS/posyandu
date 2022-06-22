@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Models\DataKematianLansia;
 use App\Models\DataLansia;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class DataKematianLansiaController extends Controller
 {
@@ -79,13 +81,28 @@ class DataKematianLansiaController extends Controller
     public function laporankematian(){
         return view('pages.admin.lansia.datakematian.laporankematian');
     }
+    public function sortir(Request $request){
+    
+        $startDate = Str::before($request->tglawal, ' -');
+        $endDate = Str::after($request->tglakhir, '- ');
+        switch ($request->submit) {
+            case 'table':
 
-    public function cetakLaporanKematian($tglawal, $tglakhir){
-        //dd(["Tanggal Awal :".$tglawal, "Tanggal Akhir :".$tglakhir]); 
+                $data = DataKematianLansia::all()
+                    ->whereBetween('tgl_meninggal', [$startDate, $endDate]);
+             
+                return view('pages.admin.lansia.datakematian.laporankematian', compact( 'data', 'startDate', 'endDate'));
+                break;
+        }
+    }
+    public function cetakLaporanKematian($start, $end){
 
-        $cetakdatakematian = DataKematianLansia::whereBetween('tgl_meninggal',[$tglawal, $tglakhir])->latest()->get();
-        return view('pages.admin.lansia.datakematian.cetaklaporankematian',compact('cetakdatakematian'));
-        // $cetaklaporankematian = DataKematianLansia::whereBetween('tgl_meninggal',[$tglawal, $tglakhir]);
-        // return view('pages.admin.lansia.datakematian.cetaklaporankematian',compact('cetaklaporankematian'));
+        $startDate = $start;
+        $endDate =$end;
+        $data = DataKematianLansia::get()
+            ->whereBetween('tgl_meninggal', [$startDate, $endDate]);
+
+        $pdf = PDF::loadview('pages.admin.lansia.datakematian.cetaklaporankematian',['data' =>$data]);
+        return $pdf->download('Laporan Kematian Lansia.pdf');
     }
 }

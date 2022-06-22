@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\RujukanLansia;
 use App\Datatables\Admin\Transaksi\RujukanLansiaDataTable;
-//use PhpOffice\PhpWord\Writer\PDF;
 use App\Models\DataLansia;
+use Illuminate\Support\Str;
 use Barryvdh\DomPDF\Facade\Pdf;
 
 class RujukanLansiaController extends Controller
@@ -68,6 +68,7 @@ class RujukanLansiaController extends Controller
     public function show($id)
     {
         $data = RujukanLansia::findOrFail($id);
+        $nama_lansia=DataLansia::pluck('nama_lansia','id');
         
         // return view('pages.admin.transaksi.rujukanlansia.showrujukanlansia-pdf', ['data' => $data]);
         $pdf = PDF::loadview('pages.admin.transaksi.rujukanlansia.showrujukanlansia-pdf',
@@ -75,7 +76,7 @@ class RujukanLansiaController extends Controller
             'no_surat'=>$data->no_surat,
             'kepada'=>$data->kepada,
             'tanggal_surat'=>$data->tanggal_surat,
-            'namalansia'=>$data->namalansia,
+            'namalansia'=>$data->rujukan->nama_lansia,
             'umur'=>$data->umur,
             'jeniskelamin'=>$data->jeniskelamin,
             'alamat'=>$data->alamat,
@@ -146,12 +147,35 @@ class RujukanLansiaController extends Controller
         return redirect()->back();    
     }
 
-    // public function exportpdf(){
-    //     $data = rujukan_lansia::all();
+    public function laporanRujukanLansia(){
+        return view('pages.admin.transaksi.rujukanlansia.laporanrujukanlansia');
+    }
 
-    //     view()->share('data', $data);
-    //     $pdf = PDF::loadview('rujukanlansia-pdf');
-    //     return $pdf->download('Rujukan.pdf');
+    public function sortir(Request $request){
+    
+        $startDate = Str::before($request->tglawal, ' -');
+        $endDate = Str::after($request->tglakhir, '- ');
+        switch ($request->submit) {
+            case 'table':
 
-    // }
+                $data = RujukanLansia::all()
+                    ->whereBetween('tanggal_surat', [$startDate, $endDate]);
+             
+                return view('pages.admin.transaksi.rujukanlansia.laporanrujukanlansia', compact( 'data', 'startDate', 'endDate'));
+                break;
+        }
+    }
+    
+    public function cetakLaporanRujukanLansia($start, $end){
+        
+        $startDate = $start;
+        $endDate =$end;
+            $data = RujukanLansia::all()
+                  ->whereBetween('tanggal_surat', [$startDate, $endDate]);
+
+        $pdf = PDF::loadview('pages.admin.transaksi.rujukanlansia.cetakrujukanlansia',['data' =>$data]);
+        
+        return $pdf->download('Laporan Rujukan Lansia.pdf');
+       
+    }
 }

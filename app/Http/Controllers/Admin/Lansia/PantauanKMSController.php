@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\PantauanKMS;
 use App\Models\DataLansia;
+use Illuminate\Support\Str;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 
 class PantauanKMSController extends Controller
@@ -137,22 +139,33 @@ class PantauanKMSController extends Controller
         }
     }
 
-    // public function hitung(Request $request)
-    // {
-    //     $tb = $request->input('tb');
-    //     $bb = $request->input('bb');
+    public function laporanKMS(){
+        return view('pages.admin.lansia.pantauan-kms.laporanKMS');
+    }
 
-    //     $hasil = $bb / ($tb * $tb) ;
-    //     if ($hasil <= 18.5){
-    //         $indeks_massa_tubuh = 'Underweight';
-    //     }elseif($hasil > 18.5 && $hasil <= 24.9){
-    //         $indeks_massa_tubuh = 'Normal Weight';
-    //     }elseif($hasil > 29 && $hasil <= 2.9){
-    //         $indeks_massa_tubuh = 'Overweight';
-    //     }elseif($hasil > 30){
-    //         $indeks_massa_tubuh = 'Obese';
-    //     }
-    //     return view('pages.admin.lansia.pantauan-kms.add-edit', [ 'indeks_massa_tubuh' => $indeks_massa_tubuh]);
+    public function sortir(Request $request){
     
-    // }
+        $startDate = Str::before($request->tglawal, ' -');
+        $endDate = Str::after($request->tglakhir, '- ');
+        switch ($request->submit) {
+            case 'table':
+
+                $data = PantauanKMS::all()
+                    ->whereBetween('tanggal_pemeriksaan', [$startDate, $endDate]);
+             
+                return view('pages.admin.lansia.pantauan-kms.laporanKMS', compact( 'data', 'startDate', 'endDate'));
+                break;
+        }
+    }
+
+    public function cetakLaporanKMS($start, $end){
+        $startDate = $start;
+        $endDate =$end;
+        $data = PantauanKMS::get()
+            ->whereBetween('tanggal_pemeriksaan', [$startDate, $endDate]);
+
+        $pdf = PDF::loadview('pages.admin.lansia.pantauan-kms.cetaklaporankms',['data' =>$data]);
+        return $pdf->download('Laporan KMS Lansia.pdf'); 
+    }
+
 }
