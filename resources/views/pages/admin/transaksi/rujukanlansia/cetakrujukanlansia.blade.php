@@ -41,7 +41,7 @@
     <hr style="border: 3px solid; margin-bottom: 1px;">
     <hr style="margin-top: 0;">
 
-    <h3 style="font-size: 16px; text-align: center;">Laporan Keluhan dan Tindakan</h1>
+    <h3 style="font-size: 16px; text-align: center;">Laporan Riwayat Rujukan Lansia</h1>
         <div class="form-group">
 
             <table class="static" align="center" rules="all" border="1px" style="width: 95%;">

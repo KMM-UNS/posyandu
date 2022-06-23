@@ -31,9 +31,9 @@ class KeluhanTindakanController extends Controller
      */
     public function create()
     {
-        $nama_lansia=DataLansia::pluck('nama_lansia','id');
-        $kaderid=Kader::pluck('nama','id');
-        return view('pages.admin.lansia.keluhan-tindakan.add-edit', ['nama_lansia' =>  $nama_lansia, 'kaderid' => $kaderid ]);
+        $nama_lansia = DataLansia::pluck('nama_lansia', 'id');
+        $kaderid = Kader::pluck('nama', 'id');
+        return view('pages.admin.lansia.keluhan-tindakan.add-edit', ['nama_lansia' =>  $nama_lansia, 'kaderid' => $kaderid]);
     }
 
     /**
@@ -48,8 +48,7 @@ class KeluhanTindakanController extends Controller
             $request->validate([
                 'nama_lansia_id' => 'required|min:1'
             ]);
-         }   
-        catch (\Throwable $th) {
+        } catch (\Throwable $th) {
             return back()->withInput()->withToastError($th->validator->messages()->all()[0]);
         }
 
@@ -83,10 +82,12 @@ class KeluhanTindakanController extends Controller
     public function edit($id)
     {
         $data = KeluhanTindakan::findOrFail($id);
-        $nama_lansia=DataLansia::pluck('nama_lansia','id');
-        $kaderid=Kader::pluck('nama','id');
-        return view('pages.admin.lansia.keluhan-tindakan.add-edit',
-        ['data' => $data, 'nama_lansia' => $nama_lansia, 'kaderid' => $kaderid]);
+        $nama_lansia = DataLansia::pluck('nama_lansia', 'id');
+        $kaderid = Kader::pluck('nama', 'id');
+        return view(
+            'pages.admin.lansia.keluhan-tindakan.add-edit',
+            ['data' => $data, 'nama_lansia' => $nama_lansia, 'kaderid' => $kaderid]
+        );
     }
 
     /**
@@ -130,13 +131,15 @@ class KeluhanTindakanController extends Controller
             return response(['error' => 'Something went wrong']);
         }
     }
-
-    public function laporanKeluhanTindakan(){
+    //riwayat pertanggal
+    public function laporanKeluhanTindakan()
+    {
         return view('pages.admin.lansia.keluhan-tindakan.laporankeluhantindakan');
     }
 
-    public function sortir(Request $request){
-    
+    public function sortir(Request $request)
+    {
+
         $startDate = Str::before($request->tglawal, ' -');
         $endDate = Str::after($request->tglakhir, '- ');
         switch ($request->submit) {
@@ -144,22 +147,42 @@ class KeluhanTindakanController extends Controller
 
                 $data = KeluhanTindakan::all()
                     ->whereBetween('tanggal_pemeriksaan', [$startDate, $endDate]);
-             
-                return view('pages.admin.lansia.keluhan-tindakan.laporankeluhantindakan', compact( 'data', 'startDate', 'endDate'));
+
+                return view('pages.admin.lansia.keluhan-tindakan.laporankeluhantindakan', compact('data', 'startDate', 'endDate'));
                 break;
         }
     }
 
-    public function cetakLaporanKeluhanTindakan($start, $end){
+    public function cetakLaporanKeluhanTindakan($start, $end)
+    {
         //dd(["Tanggal Awal :".$tglawal, "Tanggal Akhir :".$tglakhir]); 
         $startDate = $start;
-        $endDate =$end;
+        $endDate = $end;
         $data = KeluhanTindakan::get()
             ->whereBetween('tanggal_pemeriksaan', [$startDate, $endDate]);
 
-         $pdf = PDF::loadview('pages.admin.lansia.keluhan-tindakan.cetakkeluhantindakan',['data' =>$data]);
-         return $pdf->download('Laporan Keluhan dan Tindakan Lansia.pdf');
-      
-       
+        $pdf = PDF::loadview('pages.admin.lansia.keluhan-tindakan.cetakkeluhantindakan', ['data' => $data]);
+        return $pdf->download('Laporan Keluhan dan Tindakan Lansia.pdf');
+    }
+
+
+    //riwayat pernama
+    public function riwayatKeluhanTindakan(){
+        $nama_lansia=DataLansia::pluck('nama_lansia','id');
+        //$nama_lansia=PantauanKMS::with('lansia')->get()->pluck('lansia.nama_lansia','id');
+        return view('pages.admin.lansia.keluhan-tindakan.riwayatkeluhantindakan', ['nama_lansia'=> $nama_lansia]);
+    }
+
+    public function sortirriwayat(Request $request){
+        $data = KeluhanTindakan::where('nama_lansia_id', $request->nama_lansia_id)->get();
+        // dd($data);
+        return redirect()->route('admin.data-lansia.riwayatkeluhantindakan')->with(['data' => $data]);
+    }
+    public function cetakriwayatKeluhanTindakan($id){
+
+        $data = KeluhanTindakan::where('nama_lansia_id', $id)->get();
+        $pdf = PDF::loadview('pages.admin.lansia.keluhan-tindakan.cetakkeluhantindakan',['data' =>$data]);
+        return $pdf->download('Laporan Keluhan Tindakan Lansia.pdf'); 
+        
     }
 }

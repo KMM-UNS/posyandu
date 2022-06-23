@@ -179,19 +179,16 @@ return [
                     'title' => 'Laporan Data Lansia',
                     'url' => 'javascript:;',
                     'sub_menu' => [
-                        [
-                            'url' => ' #',
-                            'title' => '</i>&nbsp;Laporan DataKematian Lansia'
-                        ],[
-                            'url' => '#',
+                       [
+                            'url' => '/admin/data-lansia/laporandatakmslansia',
                             'title' => '</i>&nbsp;Laporan Data KMS Lansia'
                         ],
                         [
-                            'url' => ' #',
+                            'url' => ' /admin/data-lansia/riwayatkeluhantindakan',
                             'title' => '</i>&nbsp;Laporan Data Keluhan Tindakan'
                         ],
                         [
-                            'url' => '#',
+                            'url' => '/admin/data-transaksi/riwayatrujukan',
                             'title' => '</i>&nbsp;Laporan Data Rujukan Lansia'
                         ],
                     ]

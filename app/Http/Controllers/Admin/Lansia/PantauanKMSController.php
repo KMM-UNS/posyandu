@@ -81,19 +81,7 @@ class PantauanKMSController extends Controller
     {
         $data = PantauanKMS::findOrFail($id);
         $nama_lansia=DataLansia::pluck('nama_lansia','id');
-        // $tb = $request->input('tb');
-        // $bb = $request->input('bb');
 
-        // $hasil = $bb / ($tb * $tb) ;
-        // if ($hasil <= 18.5){
-        //     $indeks_massa_tubuh = 'Underweight';
-        // }elseif($hasil > 18.5 && $hasil <= 24.9){
-        //     $indeks_massa_tubuh = 'Normal Weight';
-        // }elseif($hasil > 29 && $hasil <= 29.9){
-        //     $indeks_massa_tubuh = 'Overweight';
-        // }elseif($hasil > 30){
-        //     $indeks_massa_tubuh = 'Obese';
-        // }
         return view('pages.admin.lansia.pantauan-kms.add-edit', ['data' => $data, 'nama_lansia' => $nama_lansia]);
     }
 
@@ -139,6 +127,7 @@ class PantauanKMSController extends Controller
         }
     }
 
+    //cetak pertanggal
     public function laporanKMS(){
         return view('pages.admin.lansia.pantauan-kms.laporanKMS');
     }
@@ -166,6 +155,26 @@ class PantauanKMSController extends Controller
 
         $pdf = PDF::loadview('pages.admin.lansia.pantauan-kms.cetaklaporankms',['data' =>$data]);
         return $pdf->download('Laporan KMS Lansia.pdf'); 
+    }
+
+    //cetak pernama
+    public function laporanDataKMS(){
+        $nama_lansia=DataLansia::pluck('nama_lansia','id');
+        //$nama_lansia=PantauanKMS::with('lansia')->get()->pluck('lansia.nama_lansia','id');
+        return view('pages.admin.lansia.pantauan-kms.laporandataKMS', ['nama_lansia'=> $nama_lansia]);
+    }
+
+    public function sortirriwayat(Request $request){
+        $data = PantauanKMS::where('nama_lansia1', $request->nama_lansia1)->get();
+        // dd($data);
+        return redirect()->route('admin.data-lansia.laporandatakmslansia')->with(['data' => $data]);
+    }
+    public function cetakLaporandataKMS($id){
+
+        $data = PantauanKMS::where('nama_lansia1', $id)->get();
+        $pdf = PDF::loadview('pages.admin.lansia.pantauan-kms.cetaklaporankms',['data' =>$data]);
+        return $pdf->download('Laporan KMS Lansia.pdf'); 
+        
     }
 
 }

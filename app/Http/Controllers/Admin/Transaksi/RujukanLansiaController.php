@@ -139,6 +139,7 @@ class RujukanLansiaController extends Controller
             return response(['error' => 'Something went wrong']);
         }
     }
+    //status
     public function status($id)
     {
         $datarujukan = RujukanLansia::find($id);
@@ -146,7 +147,7 @@ class RujukanLansiaController extends Controller
         $datarujukan->save();
         return redirect()->back();    
     }
-
+    //cetak pertanggal
     public function laporanRujukanLansia(){
         return view('pages.admin.transaksi.rujukanlansia.laporanrujukanlansia');
     }
@@ -176,6 +177,23 @@ class RujukanLansiaController extends Controller
         $pdf = PDF::loadview('pages.admin.transaksi.rujukanlansia.cetakrujukanlansia',['data' =>$data]);
         
         return $pdf->download('Laporan Rujukan Lansia.pdf');
-       
+    }
+    //cetak pernama
+    public function riwayatRujukanLansia(){
+        $nama_lansia=DataLansia::pluck('nama_lansia','id');
+        //$nama_lansia=PantauanKMS::with('lansia')->get()->pluck('lansia.nama_lansia','id');
+        return view('pages.admin.transaksi.rujukanlansia.riwayatrujukanlansia', ['nama_lansia'=> $nama_lansia]);
+    }
+    public function sortirriwayat(Request $request){
+        $data = RujukanLansia::where('namalansia', $request->namalansia)->get();
+        // dd($data);
+        return redirect()->route('admin.data-transaksi.riwayatrujukan')->with(['data' => $data]);
+    }
+    public function cetakriwayatRujukanLansia($id){
+
+        $data = RujukanLansia::where('namalansia', $id)->get();
+        $pdf = PDF::loadview('pages.admin.transaksi.rujukanlansia.cetakrujukanlansia',['data' =>$data]);
+        return $pdf->download('Laporan KMS Lansia.pdf'); 
+        
     }
 }

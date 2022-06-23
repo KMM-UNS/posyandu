@@ -69,22 +69,38 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
             //data kematian
             Route::resource('datakematianlansia', 'DataKematianLansiaController');
+            //cetak kematian pertgl
             Route::get('/laporankematian', 'DataKematianLansiaController@laporankematian')->name('laporankematian');
             Route::post('/laporankematian', 'DataKematianLansiaController@sortir');
             Route::get('/cetaklaporankematian/{start}/{end}', 'DataKematianLansiaController@cetakLaporanKematian');
+    
             
             //pantauan kms
             Route::resource('pantauankms', 'PantauanKMSController');
+            //cetak kms per tgl
             Route::get('/laporankmslansia', 'PantauanKMSController@laporanKMS')->name('laporankmslansia');
             Route::post('/laporankmslansia', 'PantauanKMSController@sortir');
             Route::get('/cetaklaporankms/{start}/{end}', 'PantauanKMSController@cetakLaporanKMS');
+             //cetak per nama
+            Route::get('/laporandatakmslansia', 'PantauanKMSController@laporanDataKMS')->name('laporandatakmslansia');
+            Route::post('/laporandatakmslansia', 'PantauanKMSController@sortirriwayat');
+            Route::get('/cetaklaporandatakms/{id}', 'PantauanKMSController@cetakLaporandataKMS');
+
+
 
             //keluhan tindakan
             Route::resource('keluhantindakan', 'KeluhanTindakanController');
+            //cetak keluhan pertgl
             Route::get('/laporankeluhantindakan', 'KeluhanTindakanController@laporanKeluhanTindakan')->name('laporankeluhantindakan');
             Route::post('/laporankeluhantindakan', 'KeluhanTindakanController@sortir');
             Route::get('/cetaklaporankeluhantindakan/{start}/{end}', 'KeluhanTindakanController@cetakLaporanKeluhanTindakan');
             Route::resource('', 'KeluhanTindakanController');
+             //cetak per nama   
+             Route::get('/riwayatkeluhantindakan', 'KeluhanTindakanController@riwayatKeluhanTindakan')->name('riwayatkeluhantindakan');
+             Route::post('/riwayatkeluhantindakan', 'KeluhanTindakanController@sortirriwayat');
+            Route::get('/cetakriwayatkeluhantindakan/{id}', 'KeluhanTindakanController@cetakriwayatKeluhanTindakan');
+
+
 
         });
 
@@ -92,16 +108,23 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::resource('rujukan', 'RujukanController');
             //Rujukan Lansia
             Route::resource('rujukanlansia', 'RujukanLansiaController');
+            //Status
             Route::get('/update/status/{id}', 'RujukanLansiaController@status')->name('rujukanlansia.status');
+            //riwayat pertanggal
             Route::get('/laporanrujukanlansia', 'RujukanLansiaController@laporanRujukanLansia')->name('laporanrujukanlansia');
             Route::post('/laporanrujukanlansia', 'RujukanLansiaController@sortir');
             Route::get('/cetaklaporanrujukanlansia/{start}/{end}', 'RujukanLansiaController@cetakLaporanRujukanLansia');
+            //riwayat pernama
+            Route::get('/riwayatrujukan', 'RujukanLansiaController@riwayatRujukanLansia')->name('riwayatrujukan');
+            Route::post('/riwayatrujukan', 'RujukanLansiaController@sortirriwayat');
+            Route::get('/cetakriwayatrujukan/{id}', 'RujukanLansiaController@cetakriwayatRujukanLansia');
+
 
         });
 
-        Route::group(['prefix' => '/data-kegiatan', 'as' => 'data-kegiatan.', 'namespace' => 'Kegiatan'], function () {
-            Route::resource('datakegiatan', 'KegiatanController');
-        });
+        // Route::group(['prefix' => '/data-kegiatan', 'as' => 'data-kegiatan.', 'namespace' => 'Kegiatan'], function () {
+        //     Route::resource('datakegiatan', 'KegiatanController');
+        // });
 
     
     });
