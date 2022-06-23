@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
+use App\Models\DataAnak;
 class Rujukan extends Model
 {
     use HasFactory;
@@ -19,4 +19,9 @@ class Rujukan extends Model
     ];
     //
     public $timestamps = false;
+
+    public function data_anak()
+    {
+        return $this->belongsTo(DataAnak::class,'nama');
+    }
 }

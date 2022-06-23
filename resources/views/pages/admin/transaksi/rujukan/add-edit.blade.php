@@ -78,7 +78,9 @@
                                 <label for="name">Nama Anak</label>
                             </div>
                             <div class="col-md-8">
-                                <input type="text" id="nama" name="nama" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama ?? old('nama') }}}">
+                                <x-form.Dropdown name="nama" :options="$dataanak" selected="{{{ old('nama') ?? ($data['nama'] ?? null) }}}" required />
+                                {{-- <x-form.Dropdown name="nama" :options="$imunisasi" selected="{{{ old('nama') ?? ($data['nama'] ?? null) }}}" required /> --}}
+                                {{-- <input type="text" id="nama" name="nama" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama ?? old('nama') }}}"> --}}
                             </div>
                         </div>
                     </div>

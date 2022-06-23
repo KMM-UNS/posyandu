@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Transaksi;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Rujukan;
+use App\Models\DataAnak;
 use App\Datatables\Admin\Transaksi\RujukanDataTable;
 use Barryvdh\DomPDF\Facade\Pdf;
 
@@ -27,7 +28,9 @@ class RujukanController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.transaksi.rujukan.add-edit');
+        // $imunisasi=Imunisasi::pluck('nama_anak_id','id');
+        $dataanak=DataAnak::pluck('nama_anak','id');
+        return view('pages.admin.transaksi.rujukan.add-edit', ['dataanak'=>$dataanak]);
     }
 
     /**
@@ -64,13 +67,15 @@ class RujukanController extends Controller
      */
     public function show($id)
     {
+        // $imunisasi=Imunisasi::pluck('nama','id');
+        // $data=DataAnak::pluck('nama_anak','id');
         $data = Rujukan::findOrFail($id);
         $pdf = PDF::loadview('pages.admin.transaksi.rujukan.showrujukan-pdf',
         [
         'kode_surat'=>$data->kode_surat,
         'tanggal_surat'=>$data->tanggal_surat,
         'kepada'=>$data->kepada,
-        'nama'=>$data->nama,
+        'nama'=>$data->data_anak->nama_anak,
         'umur'=>$data->umur,
         'alamat'=>$data->alamat,
         'bb_turun'=>$data->bb_turun,
@@ -91,8 +96,10 @@ class RujukanController extends Controller
      */
     public function edit($id)
     {
+        // $imunisasi=Imunisasi::pluck('nama','id');
+        $dataanak=DataAnak::pluck('nama_anak','id');
         $data = Rujukan::findOrFail($id);
-        return view('pages.admin.transaksi.rujukan.add-edit', ['data' => $data]);
+        return view('pages.admin.transaksi.rujukan.add-edit', ['data' => $data, 'dataanak'=>$dataanak]);
     }
 
     /**

@@ -43,7 +43,7 @@ class RujukanDataTable extends DataTable
      */
     public function query(Rujukan $model)
     {
-        return $model->newQuery();
+        return $model->select('rujukans.*')->with(['data_anak']);
     }
 
     /**
@@ -85,7 +85,7 @@ class RujukanDataTable extends DataTable
             Column::make('kode_surat'),
             Column::make('tanggal_surat'),
             Column::make('kepada'),
-            Column::make('nama'),
+            Column::make('nama')->data('data_anak.nama_anak'),
             Column::make('umur'),
             Column::make('alamat'),
             // Column::make('bb_turun'),

@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Imunisasi;
+use App\Models\Rujukan;
+
 
 class DataAnak extends Model
 {
@@ -34,6 +36,11 @@ class DataAnak extends Model
     public function imunisasi()
     {
         return $this->hasMany(Imunisasi::class);
+    }
+
+    public function rujukan()
+    {
+        return $this->hasMany(Rujukan::class);
     }
 
     public function createable()

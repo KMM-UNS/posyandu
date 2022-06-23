@@ -40,6 +40,8 @@ class DataAnakController extends Controller
      */
     public function store(Request $request)
     {
+        // $validateData= $request->validate([
+        //     'nik' => 'unique.data_anaks,nik',]);
         DB::transaction(function () use ($request) {
             try {
                 $dataanak = DataAnak::create($request->all());
@@ -51,20 +53,6 @@ class DataAnakController extends Controller
                 return back()->withInput()->withToastError('Something what happen');
             }
         });
-        // try {
-        //     $request->validate([
-        //         'nama_anak' => 'required|min:3'        //     ]);
-        // } catch (\Throwable $th) {
-        //     dd($th);
-        //     return back()->withInput()->withToastError($th->validator->messages()->all()[0]);
-        // }
-
-        // try {
-        //     DataAnak::create($request->all());
-        // } catch (\Throwable $th) {
-        //     dd($th);
-        //     return back()->withInput()->withToastError('Something went wrong');
-        // }
 
         return redirect(route('admin.anak-data.dataanak.index'))->withToastSuccess('Data tersimpan');
     }

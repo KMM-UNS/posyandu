@@ -16,7 +16,12 @@
 @endpush
 
 @section('content')
-<div align="center">
+ {{-- @if(empty($dataanak) || $dataanak->count()==0)
+    <div class="panel-body">
+        <h1 class="text-center">Anak Belum Imunisasi!</h1>
+    </div>
+    @else --}}
+    <div align="center">
 	<h1 class="page-header"><strong> Kartu Menuju Sehat (KMS) </strong></h1>
     </div>
 	<!-- end page-header -->
@@ -73,7 +78,10 @@
 <script src="{{ $chart->cdn() }}"></script>
 
 {{ $chart->script() }}
-
+{{-- @endif --}}
+<div class="panel-footer">
+     <a class="btn btn-info buttons-show"><i class="fas fa-download"> Download</i></a>
+</div>
 @endsection
 </body>
 </html>

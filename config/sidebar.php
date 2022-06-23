@@ -32,12 +32,6 @@ return [
             'caret' => false,
         ],
 
-        // "menu_ibu" =>  [
-        //     'icon' => 'fa fa-users',
-        //     'title' => 'Data Ibu',
-        //     'url' => ' /admin/dataibu',
-        //     'title' => '</i>&nbsp;Data Ibu'
-
 
         [
             'icon' => 'fa fa-child',
@@ -150,7 +144,7 @@ return [
         ],
     ],
 
-    // ini buat naro url bagian anak
+    // ini buat naro url user bagian anak
 
 
     'menu_user' => [
@@ -159,11 +153,6 @@ return [
             'title' => 'Dashboard',
             'url' => '/',
             'caret' => false,
-            // 'sub_menu' => [[
-            //     'icon' => 'fa fa-th-large',
-            //     'title' => 'Biodata',
-            //     'url' => '/biodata',
-                // 'caret' => false
         ],
         [
             'icon' => 'fa fa-child',
@@ -185,26 +174,14 @@ return [
                 'title' => 'KMS',
                 'url' => '/grafik',
                 'caret' => false
+            ],[
+                'icon' => 'fa fa-th-large',
+                'title' => 'Rujukan',
+                'url' => '/rujuk',
+                'caret' => false
             ],
             ]
         ],
-        // [
-        //     'icon' => 'fa fa-th-large',
-        //     'title' => 'Biodata',
-        //     'url' => '/biodata',
-        //     'caret' => false
-        // ],
-        // [
-        //     'icon' => 'fa fa-th-large',
-        //     'title' => 'Jadwal',
-        //     'url' => '/jadwal',
-        //     'caret' => false
-        // ],[
-        //     'icon' => 'fa fa-th-large',
-        //     'title' => 'KMS',
-        //     'url' => '/grafik',
-        //     'caret' => false
-        // ],
         [
             'icon' => 'fa fa-cogs',
             'title' => 'Ganti Password',

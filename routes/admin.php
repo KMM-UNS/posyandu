@@ -17,8 +17,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         Route::view('/dashboard', 'pages.admin.dashboard', [
             'anak' => DataAnak::count() ])->name('dashboard');
-        // Route::resource('dashboard', 'DashboardController');
-        // Route::get('/dashboard', DashboardController::class, 'index');
+            //menghitung jumlah data anak di dashboard
 
 
         Route::resource('/admin', 'AdminController');
@@ -29,8 +28,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::group(['prefix' => '/master-data', 'as' => 'master-data.', 'namespace' => 'Master'], function () {
             Route::resource('agama', 'AgamaController');
             Route::resource('vitamin', 'VitaminController');
-            // Route::get('file-upload', [ SliderController::class, 'Slider' ])->name('file.upload');
-            // Route::post('file-upload', [ SliderController::class, 'Slider' ])->name('file.upload.post');
             Route::resource('pekerjaan', 'PekerjaanController');
             Route::resource('status-kawin', 'StatusKawinController');
             Route::resource('pendidikan', 'PendidikanController');
@@ -48,6 +45,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
                 Route::resource('vitaminanak', 'VitaminAnakController');
         });
 
+        // route data ibu
        Route::group(['prefix' => '/data-ibu', 'as' => 'data-ibu.', 'namespace' => 'Dataibu'], function () {
             Route::resource('dataibu', 'DataIbuController');
             Route::resource('ibuhamil', 'PeriksaIbuHamilController');

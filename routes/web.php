@@ -24,6 +24,7 @@ Route::group(['middleware' => 'auth:web', 'as' => 'user.'], function () {
         Route::resource('jadwal', 'JadwalController');
         Route::resource('biodata', 'BiodataController');
         Route::resource('grafik', 'GrafikController');
+        Route::resource('rujuk', 'RujukController');
     });
 
 

@@ -1,37 +1,54 @@
 @extends('layouts.user')
 
-@section('title', 'Jadwal Imunisasi')
+@section('title', 'Timeline')
 
 @section('content')
-    <!-- begin breadcrumb -->
-    <ol class="breadcrumb float-xl-right">
-        <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
-        <li class="breadcrumb-item"><a href="javascript:;">Extra</a></li>
-        <li class="breadcrumb-item active">Jadwal Imunisasi</li>
-    </ol>
-    <!-- end breadcrumb -->
-    <!-- begin page-header -->
-    <h1 class="page-header">Jadwal Imunisasi </h1>
-                <table class="table table-danger table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col"><strong> Tanggal </strong></th>
-                            <th scope="col"><strong> Keterangan </strong></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                     @foreach ($jadwalimunisasis as $jadwalimunisasi)
-                     <tr>
-                        <td>{{ $jadwalimunisasi->tanggal }}</td>
-                        <td>{{ $jadwalimunisasi->keterangan }}</td>
-                     </tr>
-                    @endforeach
-                    </tbody>
-                    </table>
-
+<!-- begin breadcrumb -->
+<ol class="breadcrumb float-xl-right">
+    {{-- <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
+    <li class="breadcrumb-item"><a href="javascript:;">Extra</a></li> --}}
+    <li class="breadcrumb-item active">Timeline</li>
+</ol>
+<!-- end breadcrumb -->
+<!-- begin page-header -->
+<div align="center">
+<h1 class="page-header"><strong>Jadwal Imunisasi Anak</strong></h1>
+</div>
+<!-- end page-header -->
+<!-- begin timeline -->
+<ul class="timeline">
+    @foreach($jadwalimunisasis as $jadwalimunisasi)
+    <li>
+        {{-- <div class="text"></div> --}}
+            {{-- <div class="text">Tanggal --}}
+            {{-- </div> --}}
+            <div class="timeline-time">
+            <span class="date">{{$jadwalimunisasi->tanggal}}</span>
+        </div>
+        <!-- end timeline-time -->
+        <!-- begin timeline-icon -->
+        <div class="timeline-icon">
+            <a href="javascript:;">&nbsp;</a>
+        </div>
+        <!-- end timeline-icon -->
+        <!-- begin timeline-body -->
+        <div class="timeline-body">
+            <div class="timeline-header"><strong>Keterangan </strong>
+            </div>
+            <div class="timeline-content">
+                <p>
+                    {{$jadwalimunisasi->keterangan}}
+                </p>
+            </div>
+        </div>
+        <!-- end timeline-body -->
+    </li>
+    @endforeach
+</ul>
+<!-- end timeline -->
 @endsection
 
 @push('scripts')
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
-    <script src="/assets/js/demo/timeline.demo.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
+<script src="/assets/js/demo/timeline.demo.js"></script>
 @endpush
