@@ -75,11 +75,6 @@ class KaderDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::computed('action')
-                ->exportable(false)
-                ->printable(false)
-                ->width(60)
-                ->addClass('text-center'),
             Column::make('id'),
             Column::make('nama'),
             Column::make('jabatan'),
@@ -87,6 +82,18 @@ class KaderDataTable extends DataTable
             Column::make('TTL'),
             Column::make('pendidikan'),
             Column::make('status_absen'),
+            Column::computed('action')
+                ->exportable(false)
+                ->printable(false)
+                ->width(60)
+                ->addClass('text-center'),
+            // Column::make('id'),
+            // Column::make('nama'),
+            // Column::make('jabatan'),
+            // Column::make('jenis_kelamin'),
+            // Column::make('TTL'),
+            // Column::make('pendidikan'),
+            // Column::make('status_absen'),
         ];
     }
 

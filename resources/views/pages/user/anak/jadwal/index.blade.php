@@ -14,6 +14,16 @@
 <div align="center">
 <h1 class="page-header"><strong>Jadwal Imunisasi Anak</strong></h1>
 </div>
+{{-- <div class="form-group">
+    <div class="row">
+        <div class="col-md-1">
+            <label for="name">Tanggal Lahir</label>
+            <div class="col-md-3">
+            <input type="date" id="tanggal_lahir" name="tanggal_lahir" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tanggal_lahir ?? old('tanggal_lahir') }}}">
+            </div>
+        </div>
+    </div>
+</div> --}}
 <!-- end page-header -->
 <!-- begin timeline -->
 <ul class="timeline">

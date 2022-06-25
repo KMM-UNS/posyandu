@@ -7,7 +7,7 @@
     {{-- <title>Chart Sample</title> --}}
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 </head>
-@extends('layouts.user')
+{{-- @extends('layouts.user')
 
 @section('title', 'Morris Chart')
 
@@ -15,13 +15,13 @@
 	<link href="/assets/plugins/morris.js/morris.css" rel="stylesheet" />
 @endpush
 
-@section('content')
+@section('content') --}}
  {{-- @if(empty($dataanak) || $dataanak->count()==0)
     <div class="panel-body">
         <h1 class="text-center">Anak Belum Imunisasi!</h1>
     </div>
     @else --}}
-    <div align="center">
+    <div class="text-center">
 	<h1 class="page-header"><strong> Kartu Menuju Sehat (KMS) </strong></h1>
     </div>
 	<!-- end page-header -->
@@ -33,7 +33,6 @@
                     <thead>
                         <tr>
                             {{-- <th scope="col"><strong> Nama Anak </strong></th> --}}
-                            <th scope="col"><strong> No </strong></th>
                             <th scope="col"><strong> Tanggal Imunisasi </strong></th>
                             <th scope="col"><strong> Berat Badan (kg) </strong></th>
                             <th scope="col"><strong> Tinggi Badan (Cm) </strong></th>
@@ -50,7 +49,6 @@
                         @foreach($imunisasis as $imunisasi)
                         <tr>
                             {{-- <td>{{ $imunisasi->data_anak->nama_anak }}</td> --}}
-                            <td>{{ $loop->iteration }}</td>
                             <td>{{ $imunisasi->tanggal_imunisasi }}</td>
                             <td>{{ $imunisasi->berat_badan}}</td>
                             <td>{{ $imunisasi->tinggi_badan}}</td>
@@ -81,10 +79,9 @@
 
 {{ $chart->script() }}
 {{-- @endif --}}
-<div class="panel-footer">
-    {{-- <a href="{{route('user.rujuk.show', $rujukan->id)}}" class="btn btn-sm btn-primary width-60 m-r-2">Deta</a> --}}
-    <a href="{{route('user.grafik.cetak', $chart->id)}}"class="btn btn-info buttons-show"><i class="fas fa-download"> Download</i></a>
-</div>
-@endsection
+{{-- <div class="panel-footer">
+     <a class="btn btn-info buttons-show"><i class="fas fa-download"> Download</i></a>
+</div> --}}
+{{-- @endsection --}}
 </body>
 </html>

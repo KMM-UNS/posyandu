@@ -43,6 +43,7 @@
         <table class="table table-striped m-b-0">
             <thead>
                 <tr>
+                    <th><b>No</b></th>
                     <th><b>Tanggal Surat</b></th>
                     <th><b>Nama</b></th>
                     <th><b>Keterangan Rujukan</b></th>
@@ -54,12 +55,13 @@
             <tbody>
                 <tr>
                     {{-- @foreach ($rujukans as $rujukan ) --}}
+                    <td>{{ $loop->iteration }}</td>
                     <td >{{ $rujukan->tanggal_surat }}</td>
                     <td>{{ $rujukan->data_anak->nama_anak }}</td>
                     <td>{{ $rujukan->keterangan_rujukan }}</td>
                     <td class="with-btn" nowrap>
-                        <a href="{{route('user.rujuk.show', $rujukan->id)}}" class="btn btn-sm btn-primary width-60 m-r-2">Detail</a>
-                        <a href="#" class="btn btn-sm btn-white width-60">Unduh</a>
+                        {{-- <a href="{{ route('user.rujuk.cetak', $rujukan->id) }}" class="btn btn-sm btn-primary width-60 m-r-2">Detail</a> --}}
+                        <a href="{{ route('user.rujuk.cetak', $rujukan->id) }}" class="btn btn-sm btn-white width-60">Unduh</a>
                     </td>
                 </tr>
             </tbody>

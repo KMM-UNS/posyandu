@@ -8,6 +8,7 @@ use App\Models\Rujukan;
 use App\Models\DataAnak;
 use App\Datatables\Admin\Transaksi\RujukanDataTable;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Str;
 
 class RujukanController extends Controller
 {
@@ -142,5 +143,35 @@ class RujukanController extends Controller
         } catch (\Throwable $th) {
             return response(['error' => 'Something went wrong']);
         }
+    }
+
+    public function laporan(){
+        return view('pages.admin.transaksi.rujukan.laporanrujukananak');
+    }
+
+    public function sortir(Request $request){
+
+        $startDate = Str::before($request->tglawal, ' -');
+        $endDate = Str::after($request->tglakhir, '- ');
+        switch ($request->submit) {
+            case 'table':
+
+                $data = Rujukan::all()
+                    ->whereBetween('tanggal_surat', [$startDate, $endDate]);
+
+                return view('pages.admin.transaksi.rujukan.laporanrujukananak', compact( 'data', 'startDate', 'endDate'));
+                break;
+        }
+    }
+
+    public function cetak($start, $end){
+
+        $startDate = $start;
+        $endDate =$end;
+        $data = Rujukan::get()
+            ->whereBetween('tanggal_surat', [$startDate, $endDate]);
+
+        $pdf = PDF::loadview('pages.admin.transaksi.rujukan.cetaklaporanrujukan',['data' =>$data]);
+        return $pdf->download('Laporan Rujukan Anak.pdf');
     }
 }

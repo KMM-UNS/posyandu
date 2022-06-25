@@ -76,11 +76,6 @@ class DataAnakDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::computed('action')
-                  ->exportable(false)
-                  ->printable(false)
-                  ->width(60)
-                  ->addClass('text-center'),
             // Column::make('id'),
             Column::make('nama_anak'),
             Column::make('NIK'),
@@ -90,6 +85,23 @@ class DataAnakDataTable extends DataTable
             Column::make('tinggi_badan_lahir'),
             Column::make('umur'),
             Column::make('jenis_kelamin'),
+            // Column::make('anak_ke'),
+            // Column::make('nama_orangtua'),
+            // Column::make('no_hp_orangtua'),
+            Column::computed('action')
+                  ->exportable(false)
+                  ->printable(false)
+                  ->width(60)
+                  ->addClass('text-center'),
+            // Column::make('id'),
+            // Column::make('nama_anak'),
+            // Column::make('NIK'),
+            // Column::make('tempat_lahir'),
+            // Column::make('tanggal_lahir'),
+            // Column::make('berat_badan_lahir'),
+            // Column::make('tinggi_badan_lahir'),
+            // Column::make('umur'),
+            // Column::make('jenis_kelamin'),
             // Column::make('anak_ke'),
             // Column::make('nama_orangtua'),
             // Column::make('no_hp_orangtua'),

@@ -142,6 +142,23 @@ return [
                 ],
             ]
         ],
+        [
+            'icon' => 'fa fa-cogs',
+            'title' => 'Laporan',
+            'url' => 'javascript:;',
+            'caret' => true,
+            'sub_menu' =>
+            [
+                [
+                    'url' => ' /admin/anak-data/laporanimunisasi',
+                    'title' => '</i class="fa fa-ellipsis-h"></i>&nbsp;Laporan Imunisasi'
+                ],
+                [
+                    'url' => ' /admin/data-transaksi/laporanrujukananak',
+                    'title' => '</i class="fa fa-ellipsis-h"></i>&nbsp;Laporan Rujukan Anak'
+                ]
+            ]
+        ],
     ],
 
     // ini buat naro url user bagian anak

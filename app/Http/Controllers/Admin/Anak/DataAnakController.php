@@ -38,11 +38,25 @@ class DataAnakController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request )
     {
-        // $validateData= $request->validate([
-        //     'nik' => 'unique.data_anaks,nik',]);
+        // try {
+        //         $request->validate([
+        //             'NIK' => 'unique:data_anaks.NIK'
+        //         ]);
+        //     } catch (\Throwable $th) {
+        //         return back()->withInput()->withToastError($th->validator->messages()->all()[0]);
+        //     }
+        //  $request ->validate([
+        //     'NIK' => 'unique.data_anaks,NIK',]);
         DB::transaction(function () use ($request) {
+            // try {
+            //     $request->validate([
+            //         'NIK' => 'unique.data_anaks.NIK'
+            //     ]);
+            // } catch (\Throwable $th) {
+            //     return back()->withInput()->withToastError($th->validator->messages()->all()[0]);
+            // }
             try {
                 $dataanak = DataAnak::create($request->all());
                 $dataanak->createable()->associate($request->user());
@@ -52,6 +66,13 @@ class DataAnakController extends Controller
                 DB::rollback();
                 return back()->withInput()->withToastError('Something what happen');
             }
+            // try {
+            //     $request->validate([
+            //         'NIK' => 'unique:data_anaks.NIK'
+            //     ]);
+            // } catch (\Throwable $th) {
+            //     return back()->withInput()->withToastError($th->validator->messages()->all()[0]);
+            // }
         });
 
         return redirect(route('admin.anak-data.dataanak.index'))->withToastSuccess('Data tersimpan');

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\user\GrafikController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,8 +24,10 @@ Route::group(['middleware' => 'auth:web', 'as' => 'user.'], function () {
     Route::group(['namespace' => 'User'], function () {
         Route::resource('jadwal', 'JadwalController');
         Route::resource('biodata', 'BiodataController');
-        Route::resource('grafik', 'GrafikController');
+        Route::get('rujuk/{id}', 'RujukController@cetak')->name('rujuk.cetak');
         Route::resource('rujuk', 'RujukController');
+        Route::get('grafik/{id}', 'GrafikController@cetak')->name('grafik.cetak');
+        Route::resource('grafik', 'GrafikController');
     });
 
 

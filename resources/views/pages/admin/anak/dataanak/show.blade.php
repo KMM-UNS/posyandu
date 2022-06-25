@@ -144,6 +144,7 @@
     <table class="table table-primary table-striped">
         <thead>
             <tr>
+                <th scope="col"><strong> No </strong></th>
                 <th scope="col"><strong> Nama Anak </strong></th>
                 <th scope="col"><strong> Tanggal Imunisasi </strong></th>
                 <th scope="col"><strong> Berat Badan (kg) </strong></th>
@@ -160,6 +161,7 @@
         <tbody>
             @foreach($imunisasis as $imunisasi)
             <tr>
+                <td>{{ $loop->iteration }}</td>
                 <td>{{ $imunisasi->data_anak->nama_anak }}</td>
                 <td>{{ $imunisasi->tanggal_imunisasi }}</td>
                 <td>{{ $imunisasi->berat_badan}}</td>

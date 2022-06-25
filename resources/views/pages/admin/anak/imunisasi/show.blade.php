@@ -45,29 +45,28 @@
         {{-- <label for="name">Jenis Kelamin</label> --}}
         {{-- <input type="text" id="jenis_kelamin" name="jenis_kelamin" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->jenis_kelamin ?? old('jenis_kelamin') }}}"> --}}
         {{-- <x-form.genderRadio name="jenis_kelamin" selected="{{{ old('jenis_kelamin') ?? ($data['jenis_kelamin'] ?? null) }}}"/> --}}
-        <label for="name">Tanggal Imunisasi</label>
-        <input disabled type="date" id="tanggal_imunisasi" name="tanggal_imunisasi" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tanggal_imunisasi ?? old('tanggal_imunisasi') }}}">
+        {{-- <label for="name">Tanggal Imunisasi</label> --}}
+        {{-- <input disabled type="date" id="tanggal_imunisasi" name="tanggal_imunisasi" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tanggal_imunisasi ?? old('tanggal_imunisasi') }}}"> --}}
         <label for="name">Berat Badan (Kg)</label>
         <input disabled type="text" id="berat_badan" name="berat_badan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->berat_badan ?? old('berat_badan') }}}">
         <label for="name">Tinggi Badan (Cm)</label>
         <input disabled type="text" id="tinggi_badan" name="tinggi_badan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tinggi_badan ?? old('tinggi_badan') }}}">
         <label for="name">Umur</label>
         <input disabled type="text" id="umur" name="umur" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->umur ?? old('umur') }}}">
-        <label for="name">Jenis Vaksin</label>
-        {{-- <input type="text" id="jenis_vaksin" name="jenis_vaksin" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->jenis_vaksin ?? old('jenis_vaksin') }}}"> --}}
-        <x-form.Dropdown disabled name="jenis_vaksin" :options="$jenisvaksin" selected="{{{ old('jenis_vaksin') ?? ($data['jenis_vaksin'] ?? null) }}}" required />
-        <label for="name">Vitamin Anak</label>
-        <x-form.Dropdown disabled name="vitamin" :options="$vitaminanak" selected="{{{ old('vitamin') ?? ($data['vitamin'] ?? null) }}}" required />
+        {{-- <label for="name">Jenis Vaksin</label> --}}
+        {{-- <x-form.Dropdown disabled name="jenis_vaksin" :options="$jenisvaksin" selected="{{{ old('jenis_vaksin') ?? ($data['jenis_vaksin'] ?? null) }}}" required /> --}}
+        {{-- <label for="name">Vitamin Anak</label> --}}
+        {{-- <x-form.Dropdown disabled name="vitamin" :options="$vitaminanak" selected="{{{ old('vitamin') ?? ($data['vitamin'] ?? null) }}}" required /> --}}
         {{-- <input type="text" id="vitamin" name="vitamin" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->vitamin ?? old('vitamin') }}}"> --}}
-        <label for="name">Keluhan</label>
-        <input disabled type="text" id="keluhan" name="keluhan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->keluhan ?? old('keluhan') }}}">
-        <label for="name">Tindakan</label>
-        <input disabled type="text" id="tindakan" name="tindakan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tindakan ?? old('tindakan') }}}">
+        {{-- <label for="name">Keluhan</label> --}}
+        {{-- <input disabled type="text" id="keluhan" name="keluhan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->keluhan ?? old('keluhan') }}}"> --}}
+        {{-- <label for="name">Tindakan</label> --}}
+        {{-- <input disabled type="text" id="tindakan" name="tindakan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tindakan ?? old('tindakan') }}}"> --}}
         <label for="name">Status Gizi</label>
         <x-form.statusRadio disabled name="status_gizi" selected="{{{ old('status_gizi') ?? ($data['status_gizi'] ?? null) }}}"/>
         {{-- <input type="text" id="status_gizi" name="status_gizi" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->status_gizi ?? old('status_gizi') }}}"> --}}
-        <label for="name">Nama Kader</label>
-        <input disabled type="text" id="nama_kader" name="nama_kader" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama_kader ?? old('nama_kader') }}}">
+        {{-- <label for="name">Nama Kader</label> --}}
+        {{-- <input disabled type="text" id="nama_kader" name="nama_kader" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama_kader ?? old('nama_kader') }}}"> --}}
        </div>
     </div>
     <!-- end panel-body -->

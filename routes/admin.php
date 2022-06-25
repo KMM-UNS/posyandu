@@ -41,6 +41,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::group(['prefix' => '/anak-data', 'as' => 'anak-data.', 'namespace' => 'Anak'], function () {
                 Route::resource('dataanak', 'DataAnakController');
                 Route::resource('imunisasi', 'ImunisasiController');
+                Route::get('/laporanimunisasi', 'ImunisasiController@laporan')->name('laporanimunisasi');
+                Route::post('/laporanimunisasi','ImunisasiController@sortir');
+                Route::get('/cetaklaporanimunisasi/{start}/{end}', 'ImunisasiController@cetak')->name('cetaklaporanimunisasi');
                 Route::resource('jadwalimunisasi', 'JadwalImunisasiController');
                 Route::resource('vitaminanak', 'VitaminAnakController');
         });
@@ -53,6 +56,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         });
         Route::group(['prefix' => '/data-transaksi', 'as' => 'data-transaksi.', 'namespace' => 'Transaksi'], function () {
             Route::resource('rujukan', 'RujukanController');
+            Route::get('/laporanrujukananak', 'RujukanController@laporan')->name('laporanrujukananak');
+            Route::post('/laporanrujukananak','RujukanController@sortir');
+            Route::get('/cetaklaporanrujukan/{start}/{end}', 'RujukanController@cetak')->name('cetaklaporanrujukan');
         });
     });
 

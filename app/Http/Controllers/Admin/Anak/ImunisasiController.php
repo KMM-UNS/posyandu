@@ -10,6 +10,8 @@ use App\Models\JenisVaksin;
 use App\Models\DataAnak;
 use App\Models\VitaminAnak;
 use App\Models\Kader;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Str;
 
 class ImunisasiController extends Controller
 {
@@ -137,5 +139,35 @@ class ImunisasiController extends Controller
         } catch (\Throwable $th) {
             return response(['error' => 'Something went wrong']);
         }
+    }
+
+    public function laporan(){
+        return view('pages.admin.anak.imunisasi.laporanimunisasi');
+    }
+
+    public function sortir(Request $request){
+
+        $startDate = Str::before($request->tglawal, ' -');
+        $endDate = Str::after($request->tglakhir, '- ');
+        switch ($request->submit) {
+            case 'table':
+
+                $data = Imunisasi::all()
+                    ->whereBetween('tanggal_imunisasi', [$startDate, $endDate]);
+
+                return view('pages.admin.anak.imunisasi.laporanimunisasi', compact( 'data', 'startDate', 'endDate'));
+                break;
+        }
+    }
+
+    public function cetak($start, $end){
+
+        $startDate = $start;
+        $endDate =$end;
+        $data = Imunisasi::get()
+            ->whereBetween('tanggal_imunisasi', [$startDate, $endDate]);
+
+        $pdf = PDF::loadview('pages.admin.anak.imunisasi.cetaklaporanimunisasi',['data' =>$data]);
+        return $pdf->download('Laporan Imunisasi.pdf');
     }
 }

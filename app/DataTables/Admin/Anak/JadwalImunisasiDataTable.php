@@ -75,14 +75,17 @@ class JadwalImunisasiDataTable extends DataTable
     protected function getColumns()
     {
         return [
+            Column::make('id'),
+            Column::make('tanggal'),
+            Column::make('keterangan'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
                   ->width(60)
                   ->addClass('text-center'),
-            Column::make('id'),
-            Column::make('tanggal'),
-            Column::make('keterangan'),
+            // Column::make('id'),
+            // Column::make('tanggal'),
+            // Column::make('keterangan'),
         ];
     }
 

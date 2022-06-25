@@ -76,11 +76,6 @@ class RujukanDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::computed('action')
-                ->exportable(false)
-                ->printable(false)
-                ->width(60)
-                ->addClass('text-center'),
             Column::make('id'),
             Column::make('kode_surat'),
             Column::make('tanggal_surat'),
@@ -92,6 +87,22 @@ class RujukanDataTable extends DataTable
             // Column::make('bb_naik'),
             Column::make('keluhan'),
             Column::make('keterangan_rujukan'),
+            Column::computed('action')
+                ->exportable(false)
+                ->printable(false)
+                ->width(60)
+                ->addClass('text-center'),
+            // Column::make('id'),
+            // Column::make('kode_surat'),
+            // Column::make('tanggal_surat'),
+            // Column::make('kepada'),
+            // Column::make('nama')->data('data_anak.nama_anak'),
+            // Column::make('umur'),
+            // Column::make('alamat'),
+            // Column::make('bb_turun'),
+            // Column::make('bb_naik'),
+            // Column::make('keluhan'),
+            // Column::make('keterangan_rujukan'),
 
         ];
     }
