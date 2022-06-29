@@ -6,11 +6,13 @@
 
 @section('content')
 <!-- begin page-header -->
-<h1 class="page-header">Laporan KMS Lansia</h1>
+<h1 class="page-header"><center>Laporan KMS Lansia</center></h1>
+<br>
 <!-- end page-header -->
-
-<div class="panel panel-inverse">
-  <div class="panel-heading">
+<div class="d-flex justify-content-center ">
+ <div class="col-7 ui-sortable">
+<div class="panel panel-inverse ">
+  <div class="panel-heading ">
     <h4 class="panel-title">Laporan KMS Lansia</h4>
     <div class="panel-heading-btn">
       <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
@@ -36,6 +38,8 @@
 </div>
 </form>
   </div>
+</div>
+</div>
 
   @isset($data)
   <div class="panel panel-inverse">

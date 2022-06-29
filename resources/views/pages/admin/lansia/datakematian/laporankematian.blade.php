@@ -9,9 +9,10 @@
 @section('content')
 
 <!-- begin page-header -->
-<h1 class="page-header">Laporan Kematian Lansia</h1>
+<h1 class="page-header"><center>Laporan Kematian Lansia</center></h1>
 <!-- end page-header -->
-
+<div class="d-flex justify-content-center ">
+  <div class="col-7 ui-sortable">
 <div class="panel panel-inverse">
   <div class="panel-heading">
     <h4 class="panel-title">Laporan Kematian Lansia</h4>
@@ -39,6 +40,9 @@
 </div>
 </form>
   </div>
+</div>
+</div>
+
 
   @isset($data)
   <div class="panel panel-inverse">

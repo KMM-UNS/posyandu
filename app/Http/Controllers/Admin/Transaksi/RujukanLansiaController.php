@@ -147,6 +147,7 @@ class RujukanLansiaController extends Controller
         $datarujukan->save();
         return redirect()->back();    
     }
+    
     //cetak pertanggal
     public function laporanRujukanLansia(){
         return view('pages.admin.transaksi.rujukanlansia.laporanrujukanlansia');

@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/token', function () {
     return csrf_token();
 });
+Route::get('posyandu', 'HomeController@index');
 
 Route::group(['middleware' => 'auth:web', 'as' => 'user.'], function () {
     Route::view('/', 'home')->name('home');

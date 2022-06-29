@@ -6,9 +6,10 @@
 
 @section('content')
 <!-- begin page-header -->
-<h1 class="page-header">Laporan Riwayat Keluhan Tindakan Lansia</h1>
+<h1 class="page-header"><center>Laporan Riwayat Keluhan Tindakan Lansia</center></h1>
 <!-- end page-header -->
-
+<div class="d-flex justify-content-center ">
+  <div class="col-7 ui-sortable">
 <div class="panel panel-inverse">
   <div class="panel-heading">
     <h4 class="panel-title">Laporan Riwayat Keluhan Tindakan Lansia</h4>
@@ -32,6 +33,9 @@
 </div>
 </form>
   </div>
+  </div>
+</div>
+
 
   @if(session('data'))
   <div class="panel panel-inverse">

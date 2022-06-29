@@ -122,9 +122,15 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         });
 
-        // Route::group(['prefix' => '/data-kegiatan', 'as' => 'data-kegiatan.', 'namespace' => 'Kegiatan'], function () {
-        //     Route::resource('datakegiatan', 'KegiatanController');
-        // });
+        Route::group(['prefix' => '/data-kegiatan', 'as' => 'data-kegiatan.', 'namespace' => 'Kegiatan'], function () {
+            Route::resource('datakegiatanlansia', 'KegiatanLansiaController');
+            Route::get('/update/status/{id}', 'KegiatanLansiaController@status')->name('datakegiatanlansia.status');
+            Route::post('/create_peserta/{id}', 'KegiatanLansiaController@create_peserta')->name('create_peserta');
+            Route::get('/status_peserta/{id}', 'KegiatanLansiaController@status_peserta');
+
+
+
+        });
 
     
     });

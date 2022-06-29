@@ -11,6 +11,7 @@ use App\Models\StatusKawin;
 use App\Models\Agama;
 use App\Models\GolonganDarah;
 use App\Models\JaminanKesehatan;
+use App\Models\PesertaKegiatan;
 
 
 
@@ -84,7 +85,8 @@ class DataLansia extends Model
     {
         return $this->hasMany(DataKematianLansia::class);
     }
-
-
-
+    public function peserta()
+    {
+        return $this->belongsTo(PesertaKegiatan::class);
+    }
 }

@@ -142,7 +142,7 @@ return [
 
                 // ],
                 [
-                    'url' => '#',
+                    'url' => '/admin/data-kegiatan/datakegiatanlansia',
                     'title' => '</i>&nbsp;Data Kegiatan'
 
                 ],
