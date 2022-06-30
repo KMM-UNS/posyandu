@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\user\GrafikController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/', function () {
+    return redirect('/admin');
+})->middleware('auth');
 
 Route::get('/token', function () {
     return csrf_token();
@@ -35,5 +40,10 @@ Route::group(['middleware' => 'auth:web', 'as' => 'user.'], function () {
 
 });
 
+
+Route::get('/edit-profile', 'ProfileController@edit')->name('edit-profile');
+
+Route::group(['middleware' => 'auth:web', 'as' => 'user.'], function () {
+});
 
 require __DIR__ . '/demo.php';

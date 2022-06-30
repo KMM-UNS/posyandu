@@ -15,7 +15,7 @@ $headerTopMenu = !empty($headerTopMenu) ? $headerTopMenu : '';
             <span class="icon-bar"></span>
         </button>
         @endif
-        <a href="/" class="navbar-brand"><span class="navbar-logo"></span> <b>Color</b>&nbsp;Admin</a>
+        <a href="/" class="navbar-brand"><span class="navbar-logo"></span> <b>E-Layanan</b>&nbsp;Polres</a>
         @if ($headerMegaMenu)
         <button type="button" class="navbar-toggle pt-0 pb-0 mr-0" data-toggle="collapse" data-target="#top-navbar">
             <span class="fa-stack fa-lg text-inverse">
@@ -155,10 +155,9 @@ $headerTopMenu = !empty($headerTopMenu) ? $headerTopMenu : '';
                 @endauth
             </a>
             <div class="dropdown-menu dropdown-menu-right">
-                <a href="javascript:;" class="dropdown-item">Edit Profile</a>
-                <a href="javascript:;" class="dropdown-item">Change Password</a>
+                <a href="{{ route('edit-profile') }}" class="dropdown-item">Edit Profile</a>
                 <div class="dropdown-divider"></div>
-                <form action="{{ request()->is('admin*') ? route('admin.logout') : route('logout') }}" method="post">
+                <form action="{{ route('logout') }}" method="post" redirect="/">
                     @csrf
                     <button type="submit" class="dropdown-item">Log Out</button>
                 </form>
