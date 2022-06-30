@@ -7,4 +7,4 @@
 <script src="{{ $cdn ?? asset('vendor/sweetalert/sweetalert.all.js')  }}"></script>
 @include('sweetalert::alert')
 @stack('scripts')
-@stack('scripts')
+

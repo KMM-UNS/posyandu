@@ -10,11 +10,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::resource('/setting', 'SettingController');
 
 
-    Route::group(['namespace' => 'Admin', 'middleware' => 'auth:admin'], function () 
-
-	Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
-    // require base_path('vendor/laravel/fortify/routes/routes.php');
-
     Route::group(['namespace' => 'Admin', 'middleware' => ['role:admin|manager']], function () {
         Route::get('/', function () {
             return redirect(route('admin.dashboard'));
@@ -76,5 +71,4 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         Route::resource('/users', 'UserController');
         Route::resource('/settings', 'SettingController');
-    });
-});
+

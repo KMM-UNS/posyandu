@@ -16,10 +16,6 @@ class User extends Authenticatable implements MustVerifyEmail
 
     protected $fillableMapPrefix = 'user';
 
-class User extends Authenticatable implements MustVerifyEmail
-{
-    use HasFactory, Notifiable;
-
     /**
      * The attributes that are mass assignable.
      *
@@ -29,7 +25,6 @@ class User extends Authenticatable implements MustVerifyEmail
         'name',
         'email',
         'password'
-        'password',
     ];
 
     /**
@@ -54,24 +49,5 @@ class User extends Authenticatable implements MustVerifyEmail
     public function profile()
     {
         return $this->hasOne(UserProfile::class);
-
-    public function permohonanSkck()
-    {
-        return $this->morphMany(PermohonanSKCK::class, 'createable');
-    }
-
-    public function pemohon()
-    {
-        return $this->morphMany(Pemohon::class, 'createable');
-    }
-
-    public function kehilanganBarang()
-    {
-        return $this->morphMany(KehilanganBarang::class, 'createable');
-    }
-
-    public function spkt()
-    {
-        return $this->morphMany(SPKT::class, 'createable');
     }
 }
