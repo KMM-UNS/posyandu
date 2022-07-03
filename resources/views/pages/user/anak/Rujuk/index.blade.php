@@ -20,7 +20,7 @@
 </ol>
 <!-- end breadcrumb -->
 <!-- begin page-header -->
-<h1 class="page-header">Master Data<small></small></h1>
+<h1 class="page-header">Data Surat Rujukan<small></small></h1>
 <!-- end page-header -->
 <div class="col-lg-12">
     <!-- begin panel -->
@@ -61,7 +61,19 @@
                     <td>{{ $rujukan->keterangan_rujukan }}</td>
                     <td class="with-btn" nowrap>
                         {{-- <a href="{{ route('user.rujuk.cetak', $rujukan->id) }}" class="btn btn-sm btn-primary width-60 m-r-2">Detail</a> --}}
-                        <a href="{{ route('user.rujuk.cetak', $rujukan->id) }}" class="btn btn-sm btn-white width-60">Unduh</a>
+                        {{-- <a href="{{ route('user.rujuk.cetak', $rujukan->id) }}" class="btn btn-sm btn-white width-60">Unduh</a> --}}
+                        {{-- <a href class="btn btn-sm btn-white width-60">Konfirmasi</a> --}}
+                        @if($rujukan->status == '0')
+                        <a href="{{ route('user.rujuk.index', $rujukan->id) }}" class="btn btn-secondary buttons-edit">Belum dikonfirmasi</a>
+                        @else
+                        <a href="{{ route('user.rujuk.index', $rujukan->id) }}" class="btn btn-info buttons-edit">Sudah dikonfirmasi</a>
+                        <a href=" {{ route('user.rujuk.cetak', $rujukan->id) }}" class="btn btn-info buttons-show"><i class="fa fa-print fa-fw"></i></a>
+
+                        @endif
+                        {{-- @return $btn;
+                           $btn = $btn . '</div>';
+
+                            return $btn; --}}
                     </td>
                 </tr>
             </tbody>

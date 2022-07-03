@@ -57,7 +57,7 @@
                     <tr>
                         <td> {{ $loop->iteration }}</td>
                         <td> {{ $cetak->data_anak->nama_anak }}</td>
-                        <td> {{ $cetak->kepada}}</td>
+                        <td> {{ $cetak->instansi->nama_instansi}}</td>
                         <td> {{ $cetak->umur}}</td>
                         <td> {{ $cetak->alamat}}</td>
                         <td> {{ $cetak->keluhan }}</td>

@@ -48,9 +48,14 @@
         <label for="name">Tanggal Imunisasi</label>
         <input type="date" id="tanggal_imunisasi" name="tanggal_imunisasi" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tanggal_imunisasi ?? old('tanggal_imunisasi') }}}">
         <label for="name">Berat Badan (Kg)</label>
-        <input type="text" id="berat_badan" name="berat_badan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->berat_badan ?? old('berat_badan') }}}">
+        <input type="text" id="berat_badan" name="berat_badan" onkeyup="hitung();" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->berat_badan ?? old('berat_badan') }}}">
         <label for="name">Tinggi Badan (Cm)</label>
-        <input type="text" id="tinggi_badan" name="tinggi_badan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tinggi_badan ?? old('tinggi_badan') }}}">
+        <input type="text" id="tinggi_badan" onkeyup="hitung();" name="tinggi_badan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tinggi_badan ?? old('tinggi_badan') }}}">
+        <label for="name">Total Imt </label>
+        <input type="text" id="total_imt" name="total_imt" onkeyup="hitung();"class="form-control" autofocus data-parsley-required="true" value="{{{ $data->total_imt ?? old('total_imt') }}}">
+        <label for="name">Keterangan Berat Masa Ideal </label>
+        <input type="text" id="ket_imt" name="ket_imt" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->ket_imt ?? old('ket_imt') }}}">
+
         <label for="name">Umur</label>
         <input type="text" id="umur" name="umur" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->umur ?? old('umur') }}}">
         <label for="name">Jenis Vaksin</label>
@@ -89,4 +94,27 @@
 
 @push('scripts')
 <script src="{{ asset('/assets/plugins/parsleyjs/dist/parsley.js') }}"></script>
+
+<script>
+    function hitung(){
+
+var txtFirstNumberValue = document.getElementById('tinggi_badan').value/100;
+var txtSecondNumberValue = document.getElementById('berat_badan').value;
+var result = parseInt(txtSecondNumberValue) / ((txtFirstNumberValue)* (txtFirstNumberValue));
+if (result<18.4) {
+        ab = "Berat Badan Kurang";
+      } else if (result >=18.5 && result <24.9) {
+        ab = "Berat Badan Ideal";
+      } else if (result >=25 && result <29.9) {
+        ab = "Berat Badan Lebih";
+      }else if (result >=30 && result <39.9) {
+        ab= "Gemuk"
+      } else {
+        ab="Sangat Gemuk"
+      }
+document.getElementById('total_imt').value=result;
+document.getElementById('ket_imt').value=ab;
+
+}
+</script>
 @endpush

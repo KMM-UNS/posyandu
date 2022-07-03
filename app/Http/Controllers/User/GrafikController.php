@@ -18,7 +18,8 @@ class GrafikController extends Controller
      */
     public function index(ImunisasiChart $chart)
     {
-        $dataanak = DataAnak::select('id')->where('createable_id', auth()->user()->id)->first()->id;
+        // $dataanak = DataAnak::select('id')->where('createable_id', auth()->user()->id)->first()->id;
+        $dataanak = DataAnak::where('createable_id', auth()->user()->id)->first()->id;
         $imunisasis = Imunisasi::where('nama_anak_id', $dataanak, auth()->user()->id)->get();
         return view('pages.user.anak.grafik.index', ['imunisasis' => $imunisasis], ['chart' => $chart->build()] );
     }
@@ -49,7 +50,7 @@ public function cetak(ImunisasiChart $chart)
         // $imunisasi = Imunisasi::findOrFail($id);
         // $rujukan = Rujukan::where('createable_id', auth()->user()->id)->where('createable_type', 'App\Models\User')->findOrFail($id);
         // $pdf = PDF::loadview('pages.user.anak.grafik.index', ['imunisasi' => $imunisasi]);
-        return $pdf->download('cetak.pdf');
+        return $pdf->download('cetakkms.pdf');
     }
 }
 

@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\DataAnak;
+use App\Models\Instansi;
+
 class Rujukan extends Model
 {
     use HasFactory;
@@ -15,7 +17,7 @@ class Rujukan extends Model
 
     protected $table = 'rujukans';
     protected $fillable = [
-        'id', 'kode_surat', 'tanggal_surat', 'kepada', 'nama', 'umur', 'alamat', 'bb_turun', 'bb_naik', 'keluhan',  'keterangan_rujukan'
+        'id', 'kode_surat', 'tanggal_surat', 'kepada', 'nama', 'umur', 'alamat', 'bb_turun', 'bb_naik', 'keluhan',  'keterangan_rujukan', 'status',
     ];
     //
     public $timestamps = false;
@@ -23,5 +25,10 @@ class Rujukan extends Model
     public function data_anak()
     {
         return $this->belongsTo(DataAnak::class,'nama');
+    }
+
+    public function instansi()
+    {
+        return $this->belongsTo(Instansi::class,'kepada');
     }
 }

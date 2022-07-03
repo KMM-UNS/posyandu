@@ -48,6 +48,7 @@ class ImunisasiController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         try {
             $request->validate([
                 'nama_anak_id' => 'required|min:1'

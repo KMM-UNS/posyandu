@@ -21,6 +21,7 @@ class DataAnakDataTable extends DataTable
     {
         return datatables()
         ->eloquent($query)
+        ->addIndexColumn()
         ->setRowId(function ($row) {
             return $row->id;
         })
@@ -77,6 +78,7 @@ class DataAnakDataTable extends DataTable
     {
         return [
             // Column::make('id'),
+            Column::make('DT_RowIndex')->title('No')->orderable(false)->searchable(false)->addClass('text-center'),
             Column::make('nama_anak'),
             Column::make('NIK'),
             Column::make('tempat_lahir'),

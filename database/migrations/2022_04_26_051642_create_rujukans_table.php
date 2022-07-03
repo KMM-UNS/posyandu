@@ -25,6 +25,7 @@ class CreateRujukansTable extends Migration
             $table->string('bb_naik');
             $table->string('keluhan');
             $table->string('keterangan_rujukan');
+            $table->string('status');
             $table->timestamps();
             $table->softDeletes();
         });

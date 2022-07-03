@@ -22,6 +22,8 @@ class Imunisasi extends Model
         'tanggal_imunisasi',
         'berat_badan',
         'tinggi_badan',
+        'total_imt',
+        'ket_imt',
         'umur',
         'jenis_vaksin',
         'vitamin',

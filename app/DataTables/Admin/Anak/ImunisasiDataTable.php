@@ -21,6 +21,7 @@ class ImunisasiDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
+            ->addIndexColumn()
             ->setRowId(function ($row) {
                 return $row->id;
             })
@@ -59,6 +60,10 @@ class ImunisasiDataTable extends DataTable
                     ->minifiedAjax()
                     ->dom('<"dataTables_wrapper dt-bootstrap"B<"row"<"col-xl-7 d-block d-sm-flex d-xl-block justify-content-center"<"d-block d-lg-inline-flex"l>><"col-xl-5 d-flex d-xl-block justify-content-center"fr>>t<"row"<"col-sm-5"i><"col-sm-7"p>>>')
                     ->orderBy(1)
+                    ->parameters([
+                        'responsive' => true,
+                        'autowidth' => false
+                    ])
                     ->buttons(
                         Button::make('create'),
                         Button::make('export'),
@@ -76,6 +81,7 @@ class ImunisasiDataTable extends DataTable
     protected function getColumns()
     {
         return [
+            Column::make('DT_RowIndex')->title('No')->orderable(false)->searchable(false)->addClass('text-center'),
             // Column::make('id'),
             Column::make('nama_anak_id')->data('data_anak.nama_anak'),
             Column::make('tanggal_imunisasi'),
@@ -91,7 +97,7 @@ class ImunisasiDataTable extends DataTable
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
-                  ->width(60)
+                //   ->width(50)
                   ->addClass('text-center'),
             // Column::make('id'),
             // Column::make('nama_anak_id')->data('data_anak.nama_anak'),

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Rujukan;
 use App\Models\DataAnak;
+use App\Models\Instansi;
 use App\Datatables\Admin\Transaksi\RujukanDataTable;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Str;
@@ -31,7 +32,8 @@ class RujukanController extends Controller
     {
         // $imunisasi=Imunisasi::pluck('nama_anak_id','id');
         $dataanak=DataAnak::pluck('nama_anak','id');
-        return view('pages.admin.transaksi.rujukan.add-edit', ['dataanak'=>$dataanak]);
+        $instansi=Instansi::pluck('nama_instansi','id');
+        return view('pages.admin.transaksi.rujukan.add-edit', ['dataanak'=>$dataanak, 'instansi'=>$instansi]);
     }
 
     /**
@@ -75,7 +77,7 @@ class RujukanController extends Controller
         [
         'kode_surat'=>$data->kode_surat,
         'tanggal_surat'=>$data->tanggal_surat,
-        'kepada'=>$data->kepada,
+        'kepada'=>$data->instansi->nama_instansi,
         'nama'=>$data->data_anak->nama_anak,
         'umur'=>$data->umur,
         'alamat'=>$data->alamat,
@@ -99,8 +101,9 @@ class RujukanController extends Controller
     {
         // $imunisasi=Imunisasi::pluck('nama','id');
         $dataanak=DataAnak::pluck('nama_anak','id');
+        $instansi=Instansi::pluck('nama_instansi','id');
         $data = Rujukan::findOrFail($id);
-        return view('pages.admin.transaksi.rujukan.add-edit', ['data' => $data, 'dataanak'=>$dataanak]);
+        return view('pages.admin.transaksi.rujukan.add-edit', ['data' => $data, 'dataanak'=>$dataanak, 'instansi'=>$instansi]);
     }
 
     /**
@@ -173,5 +176,13 @@ class RujukanController extends Controller
 
         $pdf = PDF::loadview('pages.admin.transaksi.rujukan.cetaklaporanrujukan',['data' =>$data]);
         return $pdf->download('Laporan Rujukan Anak.pdf');
+    }
+
+    public function status($id)
+    {
+        $datarujukan = Rujukan::find($id);
+        $datarujukan->status = !$datarujukan->status;
+        $datarujukan->save();
+        return redirect()->back();
     }
 }

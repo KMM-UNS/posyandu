@@ -21,6 +21,7 @@ class RujukanDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
+            ->addIndexColumn()
             ->setRowId(function ($row) {
                 return  $row->id;
             })
@@ -28,8 +29,17 @@ class RujukanDataTable extends DataTable
                 $btn = '<div class="btn-group">';
                 $btn = $btn . '<a href="' . route('admin.data-transaksi.rujukan.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
                 $btn = $btn . '<a href="' . route('admin.data-transaksi.rujukan.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
-                $btn = $btn . '<a href="' . route('admin.data-transaksi.rujukan.show', $row->id) . '" class="btn btn-info buttons-show"><i class="fa fa-download fa-fw"></i></a>';
-                $btn = $btn . '</div>';
+               // $btn = $btn . '<a href="' . route('admin.data-transaksi.rujukan.show', $row->id) . '" class="btn btn-info buttons-show"><i class="fa fa-download fa-fw"></i></a>';
+               if($row->status == '0'){
+                $btn = $btn . '<a href="' . route('admin.data-transaksi.rujukan.status', $row->id) . '" class="btn btn-secondary buttons-edit">Belum dikonfirmasi</a>';
+                $btn = $btn . '<a href="'  . route('admin.data-transaksi.rujukan.show', $row->id) . '" class="btn btn-info buttons-show"><i class="fa fa-print fa-fw"></i></a>';
+
+            }else{
+                $btn = $btn . '<a href="' . route('admin.data-transaksi.rujukan.status', $row->id) . '" class="btn btn-info buttons-edit">Sudah dikonfirmasi</a>';
+                $btn = $btn . '<a href="'  . route('admin.data-transaksi.rujukan.show', $row->id) . '" class="btn btn-info buttons-show"><i class="fa fa-print fa-fw"></i></a>';
+            }
+            return $btn;
+               $btn = $btn . '</div>';
 
                 return $btn;
             });
@@ -43,7 +53,7 @@ class RujukanDataTable extends DataTable
      */
     public function query(Rujukan $model)
     {
-        return $model->select('rujukans.*')->with(['data_anak']);
+        return $model->select('rujukans.*')->with(['data_anak', 'instansi']);
     }
 
     /**
@@ -59,6 +69,10 @@ class RujukanDataTable extends DataTable
             ->minifiedAjax()
             ->dom('<"dataTables_wrapper dt-bootstrap"B<"row"<"col-xl-7 d-block d-sm-flex d-xl-block justify-content-center"<"d-block d-lg-inline-flex"l>><"col-xl-5 d-flex d-xl-block justify-content-center"fr>>t<"row"<"col-sm-5"i><"col-sm-7"p>>>')
             ->orderBy(1)
+            ->parameters([
+                'responsive' => true,
+                'autowidth' => false
+            ])
             ->buttons(
                 Button::make('create'),
                 Button::make('export'),
@@ -76,10 +90,11 @@ class RujukanDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::make('id'),
+            Column::make('DT_RowIndex')->title('No')->orderable(false)->searchable(false)->addClass('text-center'),
+            // Column::make('id'),
             Column::make('kode_surat'),
             Column::make('tanggal_surat'),
-            Column::make('kepada'),
+            Column::make('kepada')->data('instansi.nama_instansi'),
             Column::make('nama')->data('data_anak.nama_anak'),
             Column::make('umur'),
             Column::make('alamat'),
@@ -90,8 +105,9 @@ class RujukanDataTable extends DataTable
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)
-                ->width(60)
+                // ->width(60)
                 ->addClass('text-center'),
+
             // Column::make('id'),
             // Column::make('kode_surat'),
             // Column::make('tanggal_surat'),

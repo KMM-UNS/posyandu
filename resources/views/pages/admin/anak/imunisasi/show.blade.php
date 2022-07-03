@@ -1,6 +1,6 @@
 @extends('layouts.default', ['topMenu' => true, 'sidebarHide' => true])
 
-@section('title', 'Detai Imunisasi' )
+@section('title', 'Detail Imunisasi' )
 
 @push('css')
 <link href="{{ asset('/assets/plugins/smartwizard/dist/css/smart_wizard.css') }}" rel="stylesheet" />
@@ -64,6 +64,21 @@
         {{-- <input disabled type="text" id="tindakan" name="tindakan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tindakan ?? old('tindakan') }}}"> --}}
         <label for="name">Status Gizi</label>
         <x-form.statusRadio disabled name="status_gizi" selected="{{{ old('status_gizi') ?? ($data['status_gizi'] ?? null) }}}"/>
+        <label for="name">Berat Masa Ideal</label>
+        @if ($data->berat_badan / (($data->tinggi_badan / 100) * ($data->tinggi_badan / 100)) <= 18.4)
+            <input disabled type="text" id="bmi" name="bmi" class="form-control" autofocus data-parsley-required="true" value="Berat Badan Kurang">
+        @elseif ($data->berat_badan / (($data->tinggi_badan / 100) * ($data->tinggi_badan / 100)) >= 18.5 && $data->berat_badan / (($data->tinggi_badan / 100) * ($data->tinggi_badan / 100)) <= 24.9)
+            <input disabled type="text" id="bmi" name="bmi" class="form-control" autofocus data-parsley-required="true" value="Berat Badan Ideal">
+        @elseif ($data->berat_badan / (($data->tinggi_badan / 100) * ($data->tinggi_badan / 100)) >= 25 && $data->berat_badan / (($data->tinggi_badan / 100) * ($data->tinggi_badan / 100)) <= 29.9)
+            <input disabled type="text" id="bmi" name="bmi" class="form-control" autofocus data-parsley-required="true" value="Berat Badan Lebih">
+        @elseif ($data->berat_badan / (($data->tinggi_badan / 100) * ($data->tinggi_badan / 100)) >= 30 && $data->berat_badan / (($data->tinggi_badan / 100) * ($data->tinggi_badan / 100)) <= 39.9)
+            <input disabled type="text" id="bmi" name="bmi" class="form-control" autofocus data-parsley-required="true" value="Gemuk">
+        @elseif ($data->berat_badan / (($data->tinggi_badan / 100) * ($data->tinggi_badan / 100)) >= 40)
+            <input disabled type="text" id="bmi" name="bmi" class="form-control" autofocus data-parsley-required="true" value="Sangat Gemuk">
+        @else
+        <input disabled type="text" id="bmi" name="bmi" class="form-control" autofocus data-parsley-required="true" value="Salah Memasukkan Berat dan Tinggi">
+        @endif
+
         {{-- <input type="text" id="status_gizi" name="status_gizi" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->status_gizi ?? old('status_gizi') }}}"> --}}
         {{-- <label for="name">Nama Kader</label> --}}
         {{-- <input disabled type="text" id="nama_kader" name="nama_kader" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama_kader ?? old('nama_kader') }}}"> --}}

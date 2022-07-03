@@ -106,10 +106,10 @@ return [
                     'url' => '/admin/setting',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;App'
                 ],
-                // [
-                //     'url' => '/admin/master-data/agama',
-                //     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Agama'
-                // ],
+                [
+                    'url' => '/admin/master-data/golda',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Golongan Darah'
+                ],
                 // [
                 //     'url' => '/admin/master-data/vitamin',
                 //     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Vitamin'
@@ -131,11 +131,11 @@ return [
                     'url' => '/admin/master-data/jenisvaksin',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Jenis Vaksin'
                 ],
-                // [
-                //     'url' => ' /admin/master-data/golda',
-                //     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Golongan Darah'
+                [
+                    'url' => ' /admin/master-data/instansi',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Instansi'
 
-                // ],
+                ],
                 [
                     'url' => ' /admin/master-data/kader',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Data Kader'

@@ -67,7 +67,8 @@
                                 <label for="name"> Kepada</label>
                             </div>
                             <div class="col-md-8">
-                                <input type="text" id="kepada" name="kepada" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->kepada ?? old('kepada') }}}">
+                                <x-form.Dropdown name="kepada" :options="$instansi" selected="{{{ old('kepada') ?? ($data['kepada'] ?? null) }}}" required />
+                                {{-- <input type="text" id="kepada" name="kepada" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->kepada ?? old('kepada') }}}"> --}}
                             </div>
                         </div>
                     </div>
@@ -148,10 +149,11 @@
                         <br>
                         <div class="row">
                             <div class="col-md-7 my-auto">
-                                <label for="name">Balita yang berat badannya dibawah garis merah </label>
+                                <label for="name">Berat Badan Balita Sangat Kurang </label>
                             </div>
                             <div class="col-md-5">
-                                <input type="text" id="bb_turun" name="bb_turun" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->bb_turun ?? old('bb_turun') }}}">
+                                <x-form.sakitRadio name="bb_turun" selected="{{{ old('bb_turun') ?? ($data['bb_turun'] ?? null) }}}"/>
+                                {{-- <input type="text" id="bb_turun" name="bb_turun" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->bb_turun ?? old('bb_turun') }}}"> --}}
                             </div>
                         </div>
                     </div>
@@ -163,7 +165,8 @@
                                 <label for="name">Balita terlalu gemuk</label>
                             </div>
                             <div class="col-md-5">
-                                <input type="text" id="bb_naik" name="bb_naik" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->bb_naik ?? old('bb_naik') }}}">
+                                <x-form.sakitRadio name="bb_naik" selected="{{{ old('bb_naik') ?? ($data['bb_naik'] ?? null) }}}"/>
+                                {{-- <input type="text" id="bb_naik" name="bb_naik" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->bb_naik ?? old('bb_naik') }}}"> --}}
                             </div>
                         </div>
                     </div>

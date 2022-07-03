@@ -21,6 +21,7 @@ class GolonganDarahDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
+            ->addIndexColumn()
             ->setRowId(function ($row) {
                 return $row->id;
             })
@@ -75,13 +76,14 @@ class GolonganDarahDataTable extends DataTable
     protected function getColumns()
     {
         return [
+            Column::make('DT_RowIndex')->title('No')->orderable(false)->searchable(false)->addClass('text-center'),
+            Column::make('nama'),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)
                 ->width(60)
                 ->addClass('text-center'),
             // Column::make('id'),
-            Column::make('nama'),
         ];
     }
 

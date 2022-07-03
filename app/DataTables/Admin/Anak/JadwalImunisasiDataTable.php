@@ -21,6 +21,7 @@ class JadwalImunisasiDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
+            ->addIndexColumn()
             ->setRowId(function ($row) {
                 return $row->id;
             })
@@ -75,7 +76,8 @@ class JadwalImunisasiDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::make('id'),
+            Column::make('DT_RowIndex')->title('No')->orderable(false)->searchable(false)->addClass('text-center'),
+            // Column::make('id'),
             Column::make('tanggal'),
             Column::make('keterangan'),
             Column::computed('action')

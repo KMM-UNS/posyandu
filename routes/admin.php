@@ -33,6 +33,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::resource('pendidikan', 'PendidikanController');
             Route::resource('jenisvaksin', 'JenisVaksinController');
             Route::resource('golda', 'GolonganDarahController');
+            Route::resource('instansi', 'InstansiController');
             Route::resource('kader', 'KaderController');
         });
 
@@ -59,6 +60,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::get('/laporanrujukananak', 'RujukanController@laporan')->name('laporanrujukananak');
             Route::post('/laporanrujukananak','RujukanController@sortir');
             Route::get('/cetaklaporanrujukan/{start}/{end}', 'RujukanController@cetak')->name('cetaklaporanrujukan');
+            Route::get('/update/status/{id}', 'RujukanController@status')->name('rujukan.status');
         });
     });
 

@@ -21,6 +21,7 @@ class VitaminAnakDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
+            ->addIndexColumn()
             ->setRowId(function ($row) {
                 return $row->id;
             })
@@ -75,7 +76,8 @@ class VitaminAnakDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::make('id'),
+            Column::make('DT_RowIndex')->title('No')->orderable(false)->searchable(false)->addClass('text-center'),
+            // Column::make('id'),
             Column::make('nama_vitamin'),
             Column::make('keterangan'),
             Column::computed('action')
