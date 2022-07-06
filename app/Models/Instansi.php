@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\Rujukan;
 
 class Instansi extends Model
 {
@@ -16,4 +17,9 @@ class Instansi extends Model
     protected $table = 'instansis';
     protected $fillable = ['nama_instansi'];
     public $timestamps = false;
+
+    public function rujukan()
+    {
+        return $this->hasMany(Rujukan::class);
+    }
 }

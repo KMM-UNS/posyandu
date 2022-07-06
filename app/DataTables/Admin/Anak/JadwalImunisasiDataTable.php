@@ -27,8 +27,8 @@ class JadwalImunisasiDataTable extends DataTable
             })
             ->addColumn('action', function ($row) {
                 $btn = '<div class="btn-group">';
-                $btn = $btn . '<a href="' . route('admin.anak-data.jadwalimunisasi.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
-                $btn = $btn . '<a href="' . route('admin.anak-data.jadwalimunisasi.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
+                $btn = $btn . '<a href="' . route('admin.anak-data.jadwalkegiatan.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
+                $btn = $btn . '<a href="' . route('admin.anak-data.jadwalkegiatan.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
                 $btn = $btn . '</div>';
 
                 return $btn;
@@ -43,7 +43,7 @@ class JadwalImunisasiDataTable extends DataTable
      */
     public function query(JadwalImunisasi $model)
     {
-        return $model->newQuery();
+        return $model->select('jadwal_imunisasis.*')->with(['kader']);
     }
 
     /**
@@ -79,7 +79,9 @@ class JadwalImunisasiDataTable extends DataTable
             Column::make('DT_RowIndex')->title('No')->orderable(false)->searchable(false)->addClass('text-center'),
             // Column::make('id'),
             Column::make('tanggal'),
+            Column::make('tempat'),
             Column::make('keterangan'),
+            Column::make('penanggung_jawab')->data('kader.nama'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)

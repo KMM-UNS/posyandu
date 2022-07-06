@@ -6,7 +6,7 @@ return [
             'users' => 'c,r,u,d',
             'profile' => 'c,r,u,d'
         ],
-        'manager' => [
+        'petugas_kesehatan' => [
             'users' => 'c,r,u',
             'profile' => 'r,u'
         ],

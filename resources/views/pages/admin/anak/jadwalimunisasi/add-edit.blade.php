@@ -20,7 +20,7 @@
 
 
 <!-- begin panel -->
-<form action="{{ isset($data) ? route('admin.anak-data.jadwalimunisasi.update', $data->id) : route('admin.anak-data.jadwalimunisasi.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
+<form action="{{ isset($data) ? route('admin.anak-data.jadwalkegiatan.update', $data->id) : route('admin.anak-data.jadwalkegiatan.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
   @csrf
   @if(isset($data))
   {{ method_field('PUT') }}
@@ -41,8 +41,13 @@
       <div class="form-group">
         <label for="name">Tanggal</label>
         <input type="date" id="tanggal" name="tanggal" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tanggal ?? old('tanggal') }}}">
+        <label for="name">Tempat</label>
+        <input type="text" id="tempat" name="tempat" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tempat ?? old('tempat') }}}">
         <label for="name">Keterangan</label>
         <input type="text" id="keterangan" name="keterangan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->keterangan ?? old('keterangan') }}}">
+        <label for="name">Penanggung Jawab</label>
+        <x-form.Dropdown name="penanggung_jawab" :options="$kader" selected="{{{ old('penanggung_jawab') ?? ($data['penanggung_jawab'] ?? null) }}}" required />
+       {{-- <input type="text" id="penanggung_jawab" name="penanggung_jawab" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->penanggung_jawab ?? old('penanggung_jawab') }}}"> --}}
        </div>
     </div>
     <!-- end panel-body -->

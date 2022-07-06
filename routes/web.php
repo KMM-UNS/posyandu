@@ -29,6 +29,7 @@ Route::group(['middleware' => 'auth:web', 'as' => 'user.'], function () {
 
     Route::group(['namespace' => 'User'], function () {
         Route::resource('jadwal', 'JadwalController');
+        Route::resource('kegiatan', 'KegiatanController');
         Route::resource('biodata', 'BiodataController');
         Route::get('rujuk/{id}', 'RujukController@cetak')->name('rujuk.cetak');
         Route::resource('rujuk', 'RujukController');

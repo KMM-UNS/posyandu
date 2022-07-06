@@ -1,6 +1,6 @@
 @extends('layouts.default', ['topMenu' => true, 'sidebarHide' => true])
 
-@section('title', 'Data Imunisasi Anak')
+@section('title', 'Data Rujukan Anak')
 
 @push('css')
 
@@ -9,12 +9,12 @@
 @section('content')
 
 <!-- begin page-header -->
-<h1 class="page-header">Laporan Imunisasi Anak</h1>
+<h1 class="page-header">Laporan Rujukan Anak</h1>
 <!-- end page-header -->
 
 <div class="panel panel-inverse">
   <div class="panel-heading">
-    <h4 class="panel-title">Laporan Imunisasi Anak</h4>
+    <h4 class="panel-title">Laporan Rujukan Anak</h4>
     <div class="panel-heading-btn">
       <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
       <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-redo"></i></a>
@@ -26,13 +26,10 @@
     @csrf
   <div class="panel-body">
     <div class="form-group">
-    <div class="input-group mb-3">
-      <label for="label"> Tanggal Awal</label>
-      <input type="date" name="tglawal" id="tglawal" class="form-control"/>
-    </div>
-    <div class="input-group mb-3">
-      <label for="label"> Tanggal Akhir</label>
-      <input type="date" name="tglakhir" id="tglakhir" class="form-control"/>
+        <label for="name">Tanggal Awal</label>
+        <input type="date" id="tglawal" name="tglawal" class="form-control"/>
+        <label for="name">Tanggal Akhir</label>
+        <input type="date" id="tglakhir" name="tglakhir" class="form-control"/>
     </div>
     <button class="btn btn-success" type="submit" name="submit" value="table">Search</button>
   </div>
@@ -45,7 +42,7 @@
     <br>
 
     <div class="panel-body">
-      <center><h4> Laporan Imunisasi</h4></center>
+      <center><h4> Laporan Rujukan</h4></center>
       <a href="/admin/data-transaksi/cetaklaporanrujukan/{{ $startDate }}/{{ $endDate }}" class="btn btn-secondary btn-sm float-right mr-4"><i class="fa fa-print fa-fw"></i> Cetak Laporan </a>
       <br>
 

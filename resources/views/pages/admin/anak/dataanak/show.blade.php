@@ -145,10 +145,12 @@
         <thead>
             <tr>
                 <th scope="col"><strong> No </strong></th>
-                <th scope="col"><strong> Nama Anak </strong></th>
+                {{-- <th scope="col"><strong> Nama Anak </strong></th> --}}
                 <th scope="col"><strong> Tanggal Imunisasi </strong></th>
                 <th scope="col"><strong> Berat Badan (kg) </strong></th>
                 <th scope="col"><strong> Tinggi Badan (Cm) </strong></th>
+                <th scope="col"><strong> Total IMT </strong></th>
+                <th scope="col"><strong> Kategori IMT </strong></th>
                 <th scope="col"><strong> Umur </strong></th>
                 <th scope="col"><strong> Vaksin </strong></th>
                 <th scope="col"><strong> Vitamin Anak </strong></th>
@@ -162,10 +164,12 @@
             @foreach($imunisasis as $imunisasi)
             <tr>
                 <td>{{ $loop->iteration }}</td>
-                <td>{{ $imunisasi->data_anak->nama_anak }}</td>
+                {{-- <td>{{ $imunisasi->data_anak->nama_anak }}</td> --}}
                 <td>{{ $imunisasi->tanggal_imunisasi }}</td>
                 <td>{{ $imunisasi->berat_badan}}</td>
                 <td>{{ $imunisasi->tinggi_badan}}</td>
+                <td>{{ $imunisasi->total_imt}}</td>
+                <td>{{ $imunisasi->ket_imt}}</td>
                 <td>{{ $imunisasi->umur ?? old('umur') }}</td>
                 <td>{{ $imunisasi->jenisvaksin->vaksin}}</td>
                 <td>{{ $imunisasi->vitamin_anak->nama_vitamin }}</td>

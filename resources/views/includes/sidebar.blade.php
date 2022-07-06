@@ -80,8 +80,21 @@ $sidebarClass = (!empty($sidebarTransparent)) ? 'sidebar-transparent' : '';
 			}
 			return $subMenu;
 			}
+            if (
+                auth()
+                    ->user()
+                    ->hasRole('admin')
+            ) {
+                $menuh = config('sidebar.menu');
+            } elseif (
+                auth()
+                    ->user()
+                    ->hasRole('petugas_kesehatan')
+            ) {
+                $menuh = config('sidebar.menu_petugas_kesehatan');
+            }
 
-			foreach (config('sidebar.menu') as $key => $menu) {
+			foreach ($menuh as $key => $menu) {
 			$GLOBALS['parent_active'] = '';
 
 			$hasSub = (!empty($menu['sub_menu'])) ? 'has-sub' : '';

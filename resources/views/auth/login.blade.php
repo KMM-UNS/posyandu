@@ -1,6 +1,6 @@
 @extends('layouts.empty', ['paceTop' => true, 'bodyExtraClass' => 'bg-white'])
 
-@section('title', 'Polres')
+@section('title', 'Anak')
 
 @section('content')
 <!-- begin login -->
@@ -11,7 +11,7 @@
 		<div class="news-caption">
 			<h4 class="caption-title"><b>e</b>Layanan</h4>
 			<p>
-				Sistem Informasi Layanan
+				Sistem Informasi Posyandu
 			</p>
 		</div>
 	</div>

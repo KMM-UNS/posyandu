@@ -1,50 +1,67 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    {{-- <title>Chart Sample</title> --}}
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 5px;
+            text-align: left;
+        }
+    </style>
 </head>
-{{-- @extends('layouts.user')
 
-@section('title', 'Morris Chart')
-
-@push('css')
-	<link href="/assets/plugins/morris.js/morris.css" rel="stylesheet" />
-@endpush
-
-@section('content') --}}
- {{-- @if(empty($dataanak) || $dataanak->count()==0)
-    <div class="panel-body">
-        <h1 class="text-center">Anak Belum Imunisasi!</h1>
-    </div>
-    @else --}}
-    <div class="text-center">
-	<h1 class="page-header"><strong> Kartu Menuju Sehat (KMS) </strong></h1>
-    </div>
+<body>
+    <h1 style="font-size: 16px; text-align: center;">
+        POSYANDU SEBELAS MARET
+    </h1>
+    <h1 style="font-size: 16px; text-align: center;">
+        KELURAHAN JEBRES KECAMATAN JEBRES
+    </h1>
+    <h1 style="font-size: 16px; text-align: center;">
+        KOTA SURAKARTA
+    </h1>
+    <h4 style="text-align: center; font-weight: normal; margin-bottom: 0;">
+        JALAN SEBELAS MARET, JEBRES, Kec. JEBRES, Kota SURAKARTA, JAWA TENGAH
+    </h4>
+    <h4 style="text-align: center; font-weight: normal; margin: 0;">
+        Telepon: 08988777788 Surel : uns@mail.com Kode Pos : 5612
+    </h4>
+    <hr style="border: 3px solid; margin-bottom: 1px;">
+    <hr style="margin-top: 0;">
+<p style='margin-top:0cm;margin-right:0cm;margin-bottom:10.0pt;margin-left:0cm;line-height:115%;font-size:15px;font-family:"Calibri","sans-serif";text-align:center;'><strong><span style='font-size:16px;line-height:115%;font-family:"Times New Roman","serif";'>Riwayat KMS</span></strong></p>
 	<!-- end page-header -->
 	<!-- begin row -->
 
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-10">
              <table class="table table-primary table-striped">
                     <thead>
                         <tr>
                             {{-- <th scope="col"><strong> Nama Anak </strong></th> --}}
-                            <th scope="col"><strong> Tanggal Imunisasi </strong></th>
-                            <th scope="col"><strong> Berat Badan (kg) </strong></th>
-                            <th scope="col"><strong> Tinggi Badan (Cm) </strong></th>
-                            <th scope="col"><strong> Total IMT </strong></th>
-                            <th scope="col"><strong> Keterangan IMT </strong></th>
-                            <th scope="col"><strong> Umur </strong></th>
-                            <th scope="col"><strong> Vaksin </strong></th>
-                            <th scope="col"><strong> Vitamin Anak </strong></th>
+                            <th> Tanggal Imunisasi </th>
+                            <th> Berat Badan (kg) </th>
+                            <th> Tinggi Badan (Cm) </th>
+                            {{-- <th> Total IMT </th> --}}
+                            <th> Keterangan IMT </th>
+                            <th> Umur </th>
+                            <th> Vaksin </th>
+                            <th> Vitamin Anak </th>
                             {{-- <th scope="col"><strong> Keluhan </strong></th> --}}
                             {{-- <th scope="col"><strong> Tindakan </strong></th> --}}
-                            <th scope="col"><strong> Status Gizi </strong></th>
-                            <th scope="col"><strong> Nama Kader </strong></th>
+                            <th> Status Gizi </th>
+                            <th> Nama Kader </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -54,7 +71,7 @@
                             <td>{{ $imunisasi->tanggal_imunisasi }}</td>
                             <td>{{ $imunisasi->berat_badan}}</td>
                             <td>{{ $imunisasi->tinggi_badan}}</td>
-                            <td>{{ $imunisasi->total_imt }}</td>
+                            {{-- <td>{{ $imunisasi->total_imt }}</td> --}}
                             <td>{{ $imunisasi->ket_imt}}</td>
                             <td>{{ $imunisasi->umur ?? old('umur') }}</td>
                             <td>{{ $imunisasi->jenisvaksin->vaksin}}</td>

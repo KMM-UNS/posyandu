@@ -22,7 +22,7 @@ return [
         [
             'icon' => 'fa fa-users',
             'title' => 'Pengguna',
-            'url' => '/admin/user',
+            'url' => '/admin/users',
             'caret' => false,
         ],
         [
@@ -48,8 +48,8 @@ return [
             'url' => '/admin/anak-data/imunisasi',
             'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Imunisasi'
         ],[
-            'url' => '/admin/anak-data/jadwalimunisasi',
-            'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Jadwal Imunisasi'
+            'url' => '/admin/anak-data/jadwalkegiatan',
+            'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Jadwal Kegiatan'
         ],[
             'url' => '/admin/anak-data/vitaminanak',
             'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Vitamin Anak'
@@ -61,26 +61,26 @@ return [
 
 
 
-        [
-            'icon' => 'fa fa-cogs',
-            'title' => 'Data Ibu',
-            'url' => 'javascript:;',
-            'caret' => true,
-            'sub_menu' => [
-                [
-                    'url' => ' /admin/data-ibu/dataibu',
-                    'title' => '</i>&nbsp;Data Ibu'
-                ],
-                [
-                    'url' => ' /admin/data-ibu/ibuhamil',
-                    'title' => '</i>&nbsp;Periksa Ibu Hamil'
-                ],
-                [
-                    'url' => ' /admin/data-ibu/ibunifas',
-                    'title' => '</i>&nbsp;Periksa Ibu Nifas'
-                ]
-            ]
-        ],
+        // [
+        //     'icon' => 'fa fa-cogs',
+        //     'title' => 'Data Ibu',
+        //     'url' => 'javascript:;',
+        //     'caret' => true,
+        //     'sub_menu' => [
+        //         [
+        //             'url' => ' /admin/data-ibu/dataibu',
+        //             'title' => '</i>&nbsp;Data Ibu'
+        //         ],
+        //         [
+        //             'url' => ' /admin/data-ibu/ibuhamil',
+        //             'title' => '</i>&nbsp;Periksa Ibu Hamil'
+        //         ],
+        //         [
+        //             'url' => ' /admin/data-ibu/ibunifas',
+        //             'title' => '</i>&nbsp;Periksa Ibu Nifas'
+        //         ]
+        //     ]
+        // ],
 
 
         [
@@ -114,18 +114,6 @@ return [
                 //     'url' => '/admin/master-data/vitamin',
                 //     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Vitamin'
                 // ],
-                // [
-                //     'url' => '/admin/master-data/pekerjaan',
-                //     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Pekerjaan'
-                // ],
-                // [
-                //     'url' => '/admin/master-data/status-kawin',
-                //     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Status Kawin'
-                // ],
-                // [
-                //     'url' => '/admin/master-data/pendidikan',
-                //     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Pendidikan'
-                // ],
                 [
 
                     'url' => '/admin/master-data/jenisvaksin',
@@ -152,6 +140,10 @@ return [
                 [
                     'url' => ' /admin/anak-data/laporanimunisasi',
                     'title' => '</i class="fa fa-ellipsis-h"></i>&nbsp;Laporan Imunisasi'
+                ],
+                [
+                    'url' => ' /admin/anak-data/laporankegiatan',
+                    'title' => '</i class="fa fa-ellipsis-h"></i>&nbsp;Laporan Kegiatan'
                 ],
                 [
                     'url' => ' /admin/data-transaksi/laporanrujukananak',
@@ -181,14 +173,20 @@ return [
                 'title' => 'Biodata',
                 'url' => '/biodata',
                 'caret' => false
-            ],[
+            ],
+            [
                 'icon' => 'fa fa-th-large',
-                'title' => 'Jadwal',
+                'title' => 'Jadwal Imunisasi',
                 'url' => '/jadwal',
                 'caret' => false
             ],[
                 'icon' => 'fa fa-th-large',
-                'title' => 'KMS',
+                'title' => 'Kegiatan Posyandu',
+                'url' => '/kegiatan',
+                'caret' => false
+            ],[
+                'icon' => 'fa fa-th-large',
+                'title' => 'Riwayat Imunisasi',
                 'url' => '/grafik',
                 'caret' => false
             ],[
@@ -212,7 +210,57 @@ return [
         ]
     ],
 
+    'menu_petugas_kesehatan' => [
+        [
+            'icon' => 'fa fa-th-large',
+            'title' => 'Dashboard',
+            'url' => '/admin',
+            'caret' => false
+        ],
 
+        [
+            'icon' => 'fa fa-wheelchair',
+            'title' => 'Anak',
+            'url' => 'javascript:;',
+            'caret' => true,
+            'sub_menu' => [
+                [
+                    'url' => ' /admin/anak-data/dataanak',
+                    'title' => '</i>&nbsp;Data Anak'
+                ],
+                [
+                    'url' => ' /admin/anak-data/imunisasi',
+                    'title' => '</i>&nbsp;Imunisasi'
+                ],
+            ]
+        ],
+        [
+            'icon' => '	fas fa-file-alt',
+            'title' => 'Laporan',
+            'url' => 'javascript:;',
+            'caret' => true,
+            'sub_menu' => [
+                [
+                    'title' => 'Laporan Posyandu Anak',
+                    'url' => 'javascript:;',
+                    'sub_menu' => [
+                        [
+                            'url' => ' /admin/anak-data/laporanimunisasi',
+                            'title' => '</i>&nbsp;Laporan Imunisasi'
+                        ], [
+                            'url' => ' /admin/anak-data/laporankegiatan',
+                            'title' => '</i>&nbsp;Laporan Kegiatan'
+                        ],
+                        [
+                            'url' => ' /admin/anak-data/laporanrujukananak',
+                            'title' => '</i>&nbsp;Laporan Rujukan Anak'
+                        ],
+                    ]
+                ],
+            ]
+        ],
+
+    ],
     'menu_demo' => [[
         'icon' => 'fa fa-th-large',
         'title' => 'Dashboard',

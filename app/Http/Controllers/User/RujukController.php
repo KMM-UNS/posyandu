@@ -43,7 +43,7 @@ class RujukController extends Controller
         [
         'kode_surat'=>$data->kode_surat,
         'tanggal_surat'=>$data->tanggal_surat,
-        'kepada'=>$data->kepada,
+        'kepada'=>$data->instansi->nama_instansi,
         'nama'=>$data->data_anak->nama_anak,
         'umur'=>$data->umur,
         'alamat'=>$data->alamat,

@@ -10,7 +10,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::resource('/setting', 'SettingController');
 
 
-    Route::group(['namespace' => 'Admin', 'middleware' => ['role:admin|manager']], function () {
+    Route::group(['namespace' => 'Admin', 'middleware' => ['role:admin|petugas_kesehatan']], function () {
         Route::get('/', function () {
             return redirect(route('admin.dashboard'));
         });
@@ -21,10 +21,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
 
         Route::resource('/admin', 'AdminController');
-        Route::resource('/user', 'UserController');
+        Route::resource('/users', 'UserController');
 
 
-// route master data
+        // route master data
         Route::group(['prefix' => '/master-data', 'as' => 'master-data.', 'namespace' => 'Master'], function () {
             Route::resource('agama', 'AgamaController');
             Route::resource('vitamin', 'VitaminController');
@@ -45,7 +45,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
                 Route::get('/laporanimunisasi', 'ImunisasiController@laporan')->name('laporanimunisasi');
                 Route::post('/laporanimunisasi','ImunisasiController@sortir');
                 Route::get('/cetaklaporanimunisasi/{start}/{end}', 'ImunisasiController@cetak')->name('cetaklaporanimunisasi');
-                Route::resource('jadwalimunisasi', 'JadwalImunisasiController');
+                Route::resource('jadwalkegiatan', 'JadwalImunisasiController');
+                Route::get('/laporankegiatan', 'JadwalImunisasiController@laporan')->name('laporankegiatan');
+                Route::post('/laporankegiatan','JadwalImunisasiController@sortir');
+                Route::get('/cetaklaporankegiatan/{start}/{end}', 'JadwalImunisasiController@cetak')->name('cetaklaporankegiatan');
                 Route::resource('vitaminanak', 'VitaminAnakController');
         });
 

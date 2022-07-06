@@ -59,10 +59,10 @@
                             </ul>
                         </li> --}}
                         <li><a href="#home" data-click="scroll-to-target">Beranda</a></li>
-                        <li><a href="#about" data-click="scroll-to-target">Tentang</a></li>
+                        {{-- <li><a href="#about" data-click="scroll-to-target">Tentang</a></li> --}}
                         {{-- <li><a href="#team" data-click="scroll-to-target">TEAM</a></li> --}}
                         <li><a href="#service" data-click="scroll-to-target">Layanan</a></li>
-                        <li><a href="#work" data-click="scroll-to-target">Galeri</a></li>
+                        {{-- <li><a href="#work" data-click="scroll-to-target">Galeri</a></li> --}}
                         {{-- <li><a href="#client" data-click="scroll-to-target">CLIENT</a></li> --}}
                         {{-- <li><a href="#pricing" data-click="scroll-to-target">PRICING</a></li> --}}
                         <li><a href="#contact" data-click="scroll-to-target">Kontak</a></li>
@@ -88,7 +88,7 @@
                 <h3>Pos Pelayanan Kesehatan Terpadu</h3>
                 <p>
                     Posyandu adalah singkatan dari Pos Pelayanan Kesehatan Terpadu. <br />
-                    Use our <a href="#">theme panel</a> to select your favorite theme color.
+                    {{-- Use our <a href="#">theme panel</a> to select your favorite theme color. --}}
                 </p>
 
             </div>
@@ -97,7 +97,7 @@
         <!-- end #home -->
 
         <!-- begin #about -->
-        <div id="about" class="content" data-scrollview="true">
+        {{-- <div id="about" class="content" data-scrollview="true">
             <!-- begin container -->
             <div class="container" data-animation="true" data-animation-type="fadeInDown">
                 <h2 class="content-title">About Us</h2>
@@ -240,7 +240,7 @@
                 <!-- end row -->
             </div>
             <!-- end container -->
-        </div>
+        </div> --}}
         <!-- end #milestone -->
 
         {{-- <!-- begin #team -->
@@ -337,10 +337,10 @@
                 <div class="row">
                     <!-- begin col-12 -->
                     <div class="col-md-12 quote">
-                        <i class="fa fa-quote-left"></i> Passion leads to design, design leads to performance, <br />
-                        performance leads to <span class="text-theme">success</span>!
+                        <i class="fa fa-quote-left"></i>Posyandu Meningkatkan derajat kesehatan, melalui pemberdayaan masyarakat, termasuk swasta dan masyarakat madani.<br />
+                         <span class="text-theme"></span>
                         <i class="fa fa-quote-right"></i>
-                        <small>Sean Themes, Developer Teams in Malaysia</small>
+                        {{-- <small>Sean Themes, Developer Teams in Malaysia</small> --}}
                     </div>
                     <!-- end col-12 -->
                 </div>
@@ -438,7 +438,7 @@
         <!-- end #about -->
 
         <!-- beign #action-box -->
-        <div id="action-box" class="content has-bg" data-scrollview="true">
+        {{-- <div id="action-box" class="content has-bg" data-scrollview="true">
             <!-- begin content-bg -->
             <div class="content-bg">
                 <img src="{{asset('assets')}}/img/bg/bg-action.jpg" alt="Action" />
@@ -468,11 +468,11 @@
                 <!-- end row -->
             </div>
             <!-- end container -->
-        </div>
+        </div> --}}
         <!-- end #action-box -->
 
         <!-- begin #work -->
-        <div id="work" class="content" data-scrollview="true">
+        {{-- <div id="work" class="content" data-scrollview="true">
             <!-- begin container -->
             <div class="container" data-animation="true" data-animation-type="fadeInDown">
                 <h2 class="content-title">Galeri</h2>
@@ -609,7 +609,7 @@
                 <!-- end row -->
             </div>
             <!-- end container -->
-        </div>
+        </div> --}}
         <!-- end #work -->
 
         <!-- begin #client -->
@@ -811,7 +811,7 @@
                     <div class="col-md-6 form-col" data-animation="true" data-animation-type="fadeInRight">
                         <form class="form-horizontal">
                             <div class="form-group">
-                                <label class="control-label col-md-3">Name <span class="text-theme">*</span></label>
+                                <label class="control-label col-md-3">Nama <span class="text-theme">*</span></label>
                                 <div class="col-md-9">
                                     <input type="text" class="form-control" />
                                 </div>
@@ -823,7 +823,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-3">Message <span class="text-theme">*</span></label>
+                                <label class="control-label col-md-3">Saran <span class="text-theme">*</span></label>
                                 <div class="col-md-9">
                                     <textarea class="form-control" rows="10"></textarea>
                                 </div>
@@ -831,7 +831,7 @@
                             <div class="form-group">
                                 <label class="control-label col-md-3"></label>
                                 <div class="col-md-9 text-left">
-                                    <button type="submit" class="btn btn-theme btn-block">Send Message</button>
+                                    <button type="submit" class="btn btn-theme btn-block">Kirim Saran</button>
                                 </div>
                             </div>
                         </form>

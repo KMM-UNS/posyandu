@@ -34,7 +34,7 @@
     </div>
   </div>
 
-  <div class="col-xl-3 col-md-6">
+  {{-- <div class="col-xl-3 col-md-6">
     <div class="widget widget-stats bg-red">
       <div class="stats-icon"><i class="fa fa-users"></i></div>
       <div class="stats-info">
@@ -45,7 +45,7 @@
         <a href="javascript:;">View Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
       </div>
     </div>
-  </div>
+  </div> --}}
   <!-- end col-3 -->
   <!-- begin col-3 -->
   {{-- <div class="col-xl-3 col-md-6">

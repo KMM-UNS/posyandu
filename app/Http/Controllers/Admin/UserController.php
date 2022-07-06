@@ -25,6 +25,7 @@ class UserController extends Controller
 
     public function store(UserForm $request)
     {
+        // dd($request->all());
         return DB::transaction(function () use ($request) {
             $msg = "Data Tersimpan";
             try {
@@ -41,6 +42,7 @@ class UserController extends Controller
                 $profile->save();
             } catch (\Throwable $th) {
                 DB::rollBack();
+                dd($th);
                 $msg = "Error saving data";
 
                 if ($request->wantsJson()) {

@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Imunisasi;
+use App\Models\JadwalImunisasi;
+
 
 class Kader extends Model
 {
@@ -24,5 +26,10 @@ class Kader extends Model
     public function imunisasi()
     {
         return $this->hasMany(Imunisasi::class);
+    }
+
+    public function jadwal_imunisasi()
+    {
+        return $this->hasMany(JadwalImunisasi::class);
     }
 }

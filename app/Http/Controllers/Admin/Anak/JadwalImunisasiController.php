@@ -6,6 +6,9 @@ use App\Datatables\Admin\Anak\JadwalImunisasiDataTable;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\JadwalImunisasi;
+use App\Models\Kader;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Str;
 
 class JadwalImunisasiController extends Controller
 {
@@ -26,7 +29,8 @@ class JadwalImunisasiController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.anak.jadwalimunisasi.add-edit');
+        $kader=Kader::pluck('nama','id');
+        return view('pages.admin.anak.jadwalimunisasi.add-edit', ['kader'=>$kader]);
     }
 
     /**
@@ -51,7 +55,7 @@ class JadwalImunisasiController extends Controller
             return back()->withInput()->withToastError('Something went wrong');
         }
 
-        return redirect(route('admin.anak-data.jadwalimunisasi.index'))->withToastSuccess('Data tersimpan');
+        return redirect(route('admin.anak-data.jadwalkegiatan.index'))->withToastSuccess('Data tersimpan');
 
     }
 
@@ -75,7 +79,8 @@ class JadwalImunisasiController extends Controller
     public function edit($id)
     {
         $data = JadwalImunisasi::findOrFail($id);
-        return view('pages.admin.anak.jadwalimunisasi.add-edit', ['data' => $data]);
+        $kader=Kader::pluck('nama','id');
+        return view('pages.admin.anak.jadwalimunisasi.add-edit', ['data' => $data, 'kader'=>$kader]);
 
     }
 
@@ -103,7 +108,7 @@ class JadwalImunisasiController extends Controller
             return back()->withInput()->withToastError('Something went wrong');
         }
 
-        return redirect(route('admin.anak-data.jadwalimunisasi.index'))->withToastSuccess('Data tersimpan');
+        return redirect(route('admin.anak-data.jadwalkegiatan.index'))->withToastSuccess('Data tersimpan');
     }
 
     /**
@@ -119,5 +124,35 @@ class JadwalImunisasiController extends Controller
         } catch (\Throwable $th) {
             return response(['error' => 'Something went wrong']);
         }
+    }
+
+    public function laporan(){
+        return view('pages.admin.anak.jadwalimunisasi.laporankegiatan');
+    }
+
+    public function sortir(Request $request){
+
+        $startDate = Str::before($request->tglawal, ' -');
+        $endDate = Str::after($request->tglakhir, '- ');
+        switch ($request->submit) {
+            case 'table':
+
+                $data = JadwalImunisasi::all()
+                    ->whereBetween('tanggal', [$startDate, $endDate]);
+
+                return view('pages.admin.anak.jadwalimunisasi.laporankegiatan', compact( 'data', 'startDate', 'endDate'));
+                break;
+        }
+    }
+
+    public function cetak($start, $end){
+
+        $startDate = $start;
+        $endDate =$end;
+        $data = JadwalImunisasi::get()
+            ->whereBetween('tanggal', [$startDate, $endDate]);
+
+        $pdf = PDF::loadview('pages.admin.anak.jadwalimunisasi.cetaklaporankegiatan',['data' =>$data]);
+        return $pdf->download('Laporan Kegiatan.pdf');
     }
 }
