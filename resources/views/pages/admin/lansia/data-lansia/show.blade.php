@@ -36,6 +36,15 @@
                         <div class="panel-body" style="font-size: 14px">
                             <div class="row mx-auto">
                                 <div class="col-md-6">
+                                    {{-- <div>
+                                        <label>Foto</label>
+                                        <p class="font-weight-bold">
+                                            <td>
+                                                <img src="{{ asset('fotolansia/' . $data['foto_lansia']) }}"
+                                                    style="width: 150px;" alt="...">
+                                            </td>
+                                        </p>
+                                    </div> --}}
                                     <div>
                                         <label>Nama</label>
                                         <p class="font-weight-bold">{{ $data['nama_lansia'] }}</p>
@@ -50,7 +59,7 @@
                                     </div>
                                     <div>
                                         <label>No KMS</label>
-                                        <p class="font-weight-bold">{{ $data['no_KMS'] }}</p>
+                                        <p class="font-weight-bold">{{ $data['no_kms'] }}</p>
                                     </div>
                                     <div>
                                         <label>Jenis Kelamin</label>
@@ -98,8 +107,8 @@
                                                     <label>No HP</label>
                                                     <p class="font-weight-bold">{{ $data['no_hp'] }}</p>
                                                 </div>
-                                                <a class="btn btn-secondary" href="/admin/data-lansia/datalansia/2/edit"
-                                                    role="button">Edit Data</a>
+                                                {{-- <a class="btn btn-secondary" href="/admin/data-lansia/datalansia/1/edit"
+                                                    role="button">Edit Data</a> --}}
 
 
 
@@ -112,5 +121,8 @@
                     </div>
                 </div>
             </div>
-            <!-- end panel -->
-        @endsection
+        </div>
+    </div>
+
+    <!-- end panel -->
+@endsection

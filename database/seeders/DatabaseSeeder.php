@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\JenisKehilangan;
 use Illuminate\Database\Seeder;
 use Database\Seeders\AgamaSeeder;
 use Database\Factories\UserFactory;
@@ -24,6 +25,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
+            // SettingSeeder::class,
+            LaravelEntrustSeeder::class,
             IndoRegionSeeder::class,
             AgamaSeeder::class,
             PekerjaanSeeder::class,

@@ -80,13 +80,13 @@ class KaderDataTable extends DataTable
                 ->printable(false)
                 ->width(60)
                 ->addClass('text-center'),
-            Column::make('id'),
+            //Column::make('id'),
             Column::make('nama'),
             Column::make('jabatan'),
             Column::make('jenis_kelamin'),
             Column::make('TTL'),
             Column::make('pendidikan'),
-            Column::make('status_absen'),
+
         ];
     }
 

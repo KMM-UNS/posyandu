@@ -28,7 +28,8 @@
       <label for="label"> Nama Lansia</label>
       <x-form.Dropdown name="nama_lansia1" :options="$nama_lansia" selected="{{{ old('nama_lansia1') ?? ($data['nama_lansia1'] ?? null) }}}" required />
     </div>
-    <button class="btn btn-success" type="submit" name="submit" value="table">Search</button>
+    <button class="btn btn-primary btn-md float-right " type="submit" name="submit" value="table">Search</button>
+
   </div>
 </div>
 </form>
@@ -64,6 +65,8 @@
         <td> {{ $cetakkms->bb }}</td>
         <td> {{ $cetakkms->indeks_massa_tubuh }}</td>
       </tr> 
+    </table>
+    
       @endforeach
     </div>
 

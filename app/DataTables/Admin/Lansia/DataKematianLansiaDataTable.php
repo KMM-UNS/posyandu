@@ -67,8 +67,8 @@ class DataKematianLansiaDataTable extends DataTable
                 Button::make('create'),
                 Button::make('export'),
                 Button::make('print'),
-                Button::make('reset'),
-                Button::make('reload')
+                // Button::make('reset'),
+                // Button::make('reload')
             );
     }
 
@@ -88,7 +88,7 @@ class DataKematianLansiaDataTable extends DataTable
             Column::make('jenis_kelamin'),
             Column::make('tgl_lahir'),
             Column::make('tgl_meninggal'),
-            
+
             // Column::make('ttl'),
             // Column::make('umur'),
             // Column::make('status_perkawinan')->data('statuskawin.nama'),
@@ -96,7 +96,7 @@ class DataKematianLansiaDataTable extends DataTable
             // Column::make('agama')->data('agama.nama'),
             // Column::make('pendidikan_terakhir'),
             // Column::make('golongan_darah')->data('golongandarah.nama'),
-         
+
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)

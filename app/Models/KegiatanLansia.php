@@ -28,5 +28,9 @@ class KegiatanLansia extends Model
     {
         return $this->hasMany(PesertaKegiatan::class);
     }
+    public function createable()
+    {
+        return $this->morphTo();
+    }
 
 }

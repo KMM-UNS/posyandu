@@ -18,29 +18,29 @@ use App\Models\PesertaKegiatan;
 class DataLansia extends Model
 {
     use HasFactory;
-    use SoftDeletes;
+
 
     public const ACTIVE = "aktif";
 
     protected $table = 'data_lansia';
     protected $fillable = [
         'nama_lansia',
-        'no_KMS',
-        'email', 
-        'no_hp', 
-        'NIK', 
-        'jenis_kelamin', 
-        'ttl', 
-        'umur', 
-        'status_perkawinan', 
-        'alamat', 
-        'agama', 
+        'no_kms',
+        'email',
+        'no_hp',
+        'NIK',
+        'jenis_kelamin',
+        'ttl',
+        'umur',
+        'status_perkawinan',
+        'alamat',
+        'agama',
         'pendidikan_terakhir',
         'golongan_darah',
         'jaminan_kesehatan',
-      
+
     ];
-    
+
 
     public function KeluhanTindakan()
     {
@@ -54,22 +54,22 @@ class DataLansia extends Model
 
     public function statuskawin()
     {
-        return $this->belongsTo(StatusKawin::class,'status_perkawinan');
+        return $this->belongsTo(StatusKawin::class, 'status_perkawinan');
     }
 
     public function agama()
     {
-        return $this->belongsTo(Agama::class,'agama');
+        return $this->belongsTo(Agama::class, 'agama');
     }
 
     public function golongandarah()
     {
-        return $this->belongsTo(GolonganDarah::class,'golongan_darah');
+        return $this->belongsTo(GolonganDarah::class, 'golongan_darah');
     }
 
     public function jaminankesehatan()
     {
-        return $this->belongsTo(JaminanKesehatan::class,'jaminan_kesehatan');
+        return $this->belongsTo(JaminanKesehatan::class, 'jaminan_kesehatan');
     }
 
     public function createable()
@@ -88,5 +88,9 @@ class DataLansia extends Model
     public function peserta()
     {
         return $this->belongsTo(PesertaKegiatan::class);
+    }
+    public function pesertakader()
+    {
+        return $this->belongsTo(PesertaKader::class);
     }
 }

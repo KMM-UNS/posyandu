@@ -1,31 +1,32 @@
-
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 <!--[if !IE]><!-->
 <html lang="en">
 <!--<![endif]-->
+
 <head>
-	<meta charset="utf-8" />
-	<title>POSYANDU</title>
-	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
-	<meta content="" name="description" />
-	<meta content="" name="author" />
-	
-	<!-- ================== BEGIN BASE CSS STYLE ================== -->
-	<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
-	<link href="{{asset('template')}}/plugins/bootstrap3/css/bootstrap.min.css" rel="stylesheet" />
-	<link href="{{asset('template')}}/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
-	<link href="{{asset('template')}}/plugins/animate/animate.min.css" rel="stylesheet" />
-	<link href="{{asset('template')}}/css/one-page-parallax/style.min.css" rel="stylesheet" />
-	<link href="{{asset('template')}}/css/one-page-parallax/style-responsive.min.css" rel="stylesheet" />
-	<link href="{{asset('template')}}/css/one-page-parallax/theme/default.css" id="theme" rel="stylesheet" />
-	<!-- ================== END BASE CSS STYLE ================== -->
-	
-	<!-- ================== BEGIN BASE JS ================== -->
-	<script src="{{asset('template')}}/plugins/pace/pace.min.js"></script>
-	<!-- ================== END BASE JS ================== -->
+    <meta charset="utf-8" />
+    <title>POSYANDU</title>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+
+    <!-- ================== BEGIN BASE CSS STYLE ================== -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+    <link href="{{ asset('template') }}/plugins/bootstrap3/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="{{ asset('template') }}/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="{{ asset('template') }}/plugins/animate/animate.min.css" rel="stylesheet" />
+    <link href="{{ asset('template') }}/css/one-page-parallax/style.min.css" rel="stylesheet" />
+    <link href="{{ asset('template') }}/css/one-page-parallax/style-responsive.min.css" rel="stylesheet" />
+    <link href="{{ asset('template') }}/css/one-page-parallax/theme/default.css" id="theme" rel="stylesheet" />
+    <!-- ================== END BASE CSS STYLE ================== -->
+
+    <!-- ================== BEGIN BASE JS ================== -->
+    <script src="{{ asset('template') }}/plugins/pace/pace.min.js"></script>
+    <!-- ================== END BASE JS ================== -->
 </head>
-<body data-spy="scroll" data-target="#header-navbar" data-offset="51">
+
+<body data-spy="scroll" data-target="#header-navbar" data-offset="60">
     <!-- begin #page-container -->
     <div id="page-container" class="fade">
         <!-- begin #header -->
@@ -34,15 +35,17 @@
             <div class="container">
                 <!-- begin navbar-header -->
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#header-navbar">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#header-navbar">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
                     <a href="index.html" class="navbar-brand">
-                        <span class="brand-logo"></span>
+
+                        <img src="{{ asset('template') }}/img/posyandu/logoposyandu.png" />
                         <span class="brand-text">
-                            <span class="text-theme">Posyandu</span> UNS
+                            {{-- <span class="text-theme">Posyandu</span> UNS --}}
                         </span>
                     </a>
                 </div>
@@ -75,12 +78,12 @@
             <!-- end container -->
         </div>
         <!-- end #header -->
-        
+
         <!-- begin #home -->
         <div id="home" class="content has-bg home">
             <!-- begin content-bg -->
             <div class="content-bg">
-                <img src="{{asset('template')}}/img/bg/bg-home.jpg" alt="Home" />
+                <img src="{{ asset('template') }}/img/posyandu/bg-home.jpg" alt="Home" />
             </div>
             <!-- end content-bg -->
             <!-- begin container -->
@@ -91,12 +94,12 @@
                     Posyandu adalah singkatan dari Pos Pelayanan Kesehatan Terpadu. <br />
                     Use our <a href="#">theme panel</a> to select your favorite theme color.
                 </p>
-               
+
             </div>
             <!-- end container -->
         </div>
         <!-- end #home -->
-        
+
         <!-- begin #about -->
         <div id="about" class="content" data-scrollview="true">
             <!-- begin container -->
@@ -114,18 +117,18 @@
                         <div class="about">
                             <h3>Our Story</h3>
                             <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                                Vestibulum posuere augue eget ante porttitor fringilla. 
-                                Aliquam laoreet, sem eu dapibus congue, velit justo ullamcorper urna, 
-                                non rutrum dolor risus non sapien. Vivamus vel tincidunt quam. 
-                                Donec ultrices nisl ipsum, sed elementum ex dictum nec. 
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                Vestibulum posuere augue eget ante porttitor fringilla.
+                                Aliquam laoreet, sem eu dapibus congue, velit justo ullamcorper urna,
+                                non rutrum dolor risus non sapien. Vivamus vel tincidunt quam.
+                                Donec ultrices nisl ipsum, sed elementum ex dictum nec.
                             </p>
                             <p>
-                                In non libero at orci rutrum viverra at ac felis. 
-                                Curabitur a efficitur libero, eu finibus quam. 
-                                Pellentesque pretium ante vitae est molestie, ut faucibus tortor commodo. 
-                                Donec gravida, eros ac pretium cursus, est erat dapibus quam, 
-                                sit amet dapibus nisl magna sit amet orci. 
+                                In non libero at orci rutrum viverra at ac felis.
+                                Curabitur a efficitur libero, eu finibus quam.
+                                Pellentesque pretium ante vitae est molestie, ut faucibus tortor commodo.
+                                Donec gravida, eros ac pretium cursus, est erat dapibus quam,
+                                sit amet dapibus nisl magna sit amet orci.
                             </p>
                         </div>
                         <!-- end about -->
@@ -133,24 +136,22 @@
                     <!-- end col-4 -->
                     <!-- begin col-4 -->
                     <div class="col-md-4 col-sm-6">
-                        <h3>Our Philosophy</h3>
+                        <h3>Our Story</h3>
                         <!-- begin about-author -->
-                        <div class="about-author">
-                            <div class="quote bg-silver">
-                                <i class="fa fa-quote-left"></i>
-                                <h3>We work harder,<br /><span>to let our user keep simple</span></h3>
-                                <i class="fa fa-quote-right"></i>
-                            </div>
-                            <div class="author">
-                                <div class="image">
-                                    <img src="{{asset('template')}}/img/user/user-1.jpg" alt="Sean Ngu" />
-                                </div>
-                                <div class="info">
-                                    Sean Ngu
-                                    <small>Front End Developer</small>
-                                </div>
-                            </div>
-                        </div>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            Vestibulum posuere augue eget ante porttitor fringilla.
+                            Aliquam laoreet, sem eu dapibus congue, velit justo ullamcorper urna,
+                            non rutrum dolor risus non sapien. Vivamus vel tincidunt quam.
+                            Donec ultrices nisl ipsum, sed elementum ex dictum nec.
+                        </p>
+                        <p>
+                            In non libero at orci rutrum viverra at ac felis.
+                            Curabitur a efficitur libero, eu finibus quam.
+                            Pellentesque pretium ante vitae est molestie, ut faucibus tortor commodo.
+                            Donec gravida, eros ac pretium cursus, est erat dapibus quam,
+                            sit amet dapibus nisl magna sit amet orci.
+                        </p>
                         <!-- end about-author -->
                     </div>
                     <!-- end col-4 -->
@@ -193,12 +194,12 @@
             <!-- end container -->
         </div>
         <!-- end #about -->
-    
+
         <!-- begin #milestone -->
-        <div id="milestone" class="content bg-black-darker has-bg" data-scrollview="true">
+        <div id="milestone" class="content bg-none has-bg" data-scrollview="true">
             <!-- begin content-bg -->
             <div class="content-bg">
-                <img src="{{asset('template')}}/img/bg/bg-milestone.jpg" alt="Milestone" />
+                <img src="{{ asset('template') }}/img/bg/bg-milestone.jpg" alt="Milestone" />
             </div>
             <!-- end content-bg -->
             <!-- begin container -->
@@ -208,7 +209,8 @@
                     <!-- begin col-3 -->
                     <div class="col-md-3 col-sm-3 milestone-col">
                         <div class="milestone">
-                            <div class="number" data-animation="true" data-animation-type="number" data-final-number="1292">1,292</div>
+                            <div class="number" data-animation="true" data-animation-type="number"
+                                data-final-number="1292">1,292</div>
                             <div class="title">Themes & Template</div>
                         </div>
                     </div>
@@ -216,7 +218,8 @@
                     <!-- begin col-3 -->
                     <div class="col-md-3 col-sm-3 milestone-col">
                         <div class="milestone">
-                            <div class="number" data-animation="true" data-animation-type="number" data-final-number="9039">9,039</div>
+                            <div class="number" data-animation="true" data-animation-type="number"
+                                data-final-number="9039">9,039</div>
                             <div class="title">Registered Members</div>
                         </div>
                     </div>
@@ -224,7 +227,8 @@
                     <!-- begin col-3 -->
                     <div class="col-md-3 col-sm-3 milestone-col">
                         <div class="milestone">
-                            <div class="number" data-animation="true" data-animation-type="number" data-final-number="89291">89,291</div>
+                            <div class="number" data-animation="true" data-animation-type="number"
+                                data-final-number="89291">89,291</div>
                             <div class="title">Items Sold</div>
                         </div>
                     </div>
@@ -232,7 +236,8 @@
                     <!-- begin col-3 -->
                     <div class="col-md-3 col-sm-3 milestone-col">
                         <div class="milestone">
-                            <div class="number" data-animation="true" data-animation-type="number" data-final-number="129">129</div>
+                            <div class="number" data-animation="true" data-animation-type="number"
+                                data-final-number="129">129</div>
                             <div class="title">Theme Authors</div>
                         </div>
                     </div>
@@ -243,7 +248,7 @@
             <!-- end container -->
         </div>
         <!-- end #milestone -->
-        
+
         {{-- <!-- begin #team -->
         <div id="team" class="content" data-scrollview="true">
             <!-- begin container -->
@@ -324,12 +329,12 @@
             <!-- end container -->
         </div>
         <!-- end #team --> --}}
-        
+
         <!-- begin #quote -->
         <div id="quote" class="content bg-black-darker has-bg" data-scrollview="true">
             <!-- begin content-bg -->
             <div class="content-bg">
-                <img src="{{asset('template')}}/img/bg/bg-quote.jpg" alt="Quote" />
+                <img src="{{ asset('template') }}/img/bg/bg-quote.jpg" alt="Quote" />
             </div>
             <!-- end content-bg -->
             <!-- begin container -->
@@ -339,7 +344,7 @@
                     <!-- begin col-12 -->
                     <div class="col-md-12 quote">
                         <i class="fa fa-quote-left"></i> Passion leads to design, design leads to performance, <br />
-                        performance leads to <span class="text-theme">success</span>!  
+                        performance leads to <span class="text-theme">success</span>!
                         <i class="fa fa-quote-right"></i>
                         <small>Sean Themes, Developer Teams in Malaysia</small>
                     </div>
@@ -350,7 +355,7 @@
             <!-- end container -->
         </div>
         <!-- end #quote -->
-        
+
         <!-- beign #service -->
         <div id="service" class="content" data-scrollview="true">
             <!-- begin container -->
@@ -364,10 +369,12 @@
                     <!-- begin col-4 -->
                     <div class="col-md-4 col-sm-4">
                         <div class="service">
-                            <div class="icon bg-theme" data-animation="true" data-animation-type="bounceIn"><i class="fa fa-cog"></i></div>
+                            <div class="icon bg-theme" data-animation="true" data-animation-type="bounceIn"><i
+                                    class="fa fa-cog"></i></div>
                             <div class="info">
                                 <h4 class="title">Indeks Massa Tubuh</h4>
-                                <p class="desc">Menilai status gizi pada seorang individu. Pengukuran dan penilaian menggunakan IMT berhubungan dengan kekerungan dan kelebihan status gizi.</p>
+                                <p class="desc">Menilai status gizi pada seorang individu. Pengukuran dan penilaian
+                                    menggunakan IMT berhubungan dengan kekerungan dan kelebihan status gizi.</p>
                             </div>
                         </div>
                     </div>
@@ -375,7 +382,8 @@
                     <!-- begin col-4 -->
                     <div class="col-md-4 col-sm-4">
                         <div class="service">
-                            <div class="icon bg-theme" data-animation="true" data-animation-type="bounceIn"><i class="fa fa-paint-brush"></i></div>
+                            <div class="icon bg-theme" data-animation="true" data-animation-type="bounceIn"><i
+                                    class="fa fa-paint-brush"></i></div>
                             <div class="info">
                                 <h4 class="title">Imunisasi</h4>
                                 <p class="desc">Memberikan informasi jadwal imunisasi.</p>
@@ -386,10 +394,12 @@
                     <!-- begin col-4 -->
                     <div class="col-md-4 col-sm-4">
                         <div class="service">
-                            <div class="icon bg-theme" data-animation="true" data-animation-type="bounceIn"><i class="fa fa-file"></i></div>
+                            <div class="icon bg-theme" data-animation="true" data-animation-type="bounceIn"><i
+                                    class="fa fa-file"></i></div>
                             <div class="info">
                                 <h4 class="title">Grafik KMS</h4>
-                                <p class="desc">Hasil KMS ditampilkan dalam bentuk grafik agar mudah dipahami seperti KMS pada umumnya.</p>
+                                <p class="desc">Hasil KMS ditampilkan dalam bentuk grafik agar mudah dipahami seperti
+                                    KMS pada umumnya.</p>
                             </div>
                         </div>
                     </div>
@@ -401,10 +411,12 @@
                     <!-- begin col-4 -->
                     <div class="col-md-4 col-sm-4">
                         <div class="service">
-                            <div class="icon bg-theme" data-animation="true" data-animation-type="bounceIn"><i class="fa fa-code"></i></div>
+                            <div class="icon bg-theme" data-animation="true" data-animation-type="bounceIn"><i
+                                    class="fa fa-code"></i></div>
                             <div class="info">
                                 <h4 class="title">Rujukan</h4>
-                                <p class="desc">Keterangan lanjutan tentang satu hal yang berdasarkan data yang ada di Laporan KMS.</p>
+                                <p class="desc">Keterangan lanjutan tentang satu hal yang berdasarkan data yang ada
+                                    di Laporan KMS.</p>
                             </div>
                         </div>
                     </div>
@@ -437,12 +449,12 @@
             <!-- end container -->
         </div>
         <!-- end #about -->
-        
+
         <!-- beign #action-box -->
         <div id="action-box" class="content has-bg" data-scrollview="true">
             <!-- begin content-bg -->
             <div class="content-bg">
-                <img src="{{asset('template')}}/img/bg/bg-action.jpg" alt="Action" />
+                <img src="{{ asset('template') }}/img/bg/bg-action.jpg" alt="Action" />
             </div>
             <!-- end content-bg -->
             <!-- begin container -->
@@ -453,7 +465,7 @@
                     <div class="col-md-9 col-sm-9">
                         <div class="icon-large text-theme">
                             <i class="fa fa-binoculars"></i>
-                        </div> 
+                        </div>
                         <h3>Rujukan</h3>
                         <p>
                             Keterangan lanjutan tentang satu hal yang berdasarkan data yang ada di Laporan KMS.
@@ -471,7 +483,7 @@
             <!-- end container -->
         </div>
         <!-- end #action-box -->
-        
+
         <!-- begin #work -->
         <div id="work" class="content" data-scrollview="true">
             <!-- begin container -->
@@ -487,7 +499,8 @@
                         <!-- begin work -->
                         <div class="work">
                             <div class="image">
-                                <a href="#"><img src="{{asset('template')}}/img/work/work-img-1.jpg" alt="Work 1" /></a>
+                                <a href="#"><img src="{{ asset('template') }}/img/work/work-img-1.jpg"
+                                        alt="Work 1" /></a>
                             </div>
                             <div class="desc">
                                 <span class="desc-title">Aliquam molestie</span>
@@ -502,7 +515,8 @@
                         <!-- begin work -->
                         <div class="work">
                             <div class="image">
-                                <a href="#"><img src="{{asset('template')}}/img/work/work-img-2.jpg" alt="Work 2" /></a>
+                                <a href="#"><img src="{{ asset('template') }}/img/work/work-img-2.jpg"
+                                        alt="Work 2" /></a>
                             </div>
                             <div class="desc">
                                 <span class="desc-title">Quisque at pulvinar lacus</span>
@@ -517,7 +531,8 @@
                         <!-- begin work -->
                         <div class="work">
                             <div class="image">
-                                <a href="#"><img src="{{asset('template')}}/img/work/work-img-3.jpg" alt="Work 3" /></a>
+                                <a href="#"><img src="{{ asset('template') }}/img/work/work-img-3.jpg"
+                                        alt="Work 3" /></a>
                             </div>
                             <div class="desc">
                                 <span class="desc-title">Vestibulum et erat ornare</span>
@@ -532,7 +547,8 @@
                         <!-- begin work -->
                         <div class="work">
                             <div class="image">
-                                <a href="#"><img src="{{asset('template')}}/img/work/work-img-4.jpg" alt="Work 4" /></a>
+                                <a href="#"><img src="{{ asset('template') }}/img/work/work-img-4.jpg"
+                                        alt="Work 4" /></a>
                             </div>
                             <div class="desc">
                                 <span class="desc-title">Sed vitae mollis magna</span>
@@ -551,7 +567,8 @@
                         <!-- begin work -->
                         <div class="work">
                             <div class="image">
-                                <a href="#"><img src="{{asset('template')}}/img/work/work-img-5.jpg" alt="Work 5" /></a>
+                                <a href="#"><img src="{{ asset('template') }}/img/work/work-img-5.jpg"
+                                        alt="Work 5" /></a>
                             </div>
                             <div class="desc">
                                 <span class="desc-title">Suspendisse at mattis odio</span>
@@ -566,7 +583,8 @@
                         <!-- begin work -->
                         <div class="work">
                             <div class="image">
-                                <a href="#"><img src="{{asset('template')}}/img/work/work-img-6.jpg" alt="Work 6" /></a>
+                                <a href="#"><img src="{{ asset('template') }}/img/work/work-img-6.jpg"
+                                        alt="Work 6" /></a>
                             </div>
                             <div class="desc">
                                 <span class="desc-title">Aliquam vitae commodo diam</span>
@@ -581,7 +599,8 @@
                         <!-- begin work -->
                         <div class="work">
                             <div class="image">
-                                <a href="#"><img src="{{asset('template')}}/img/work/work-img-7.jpg" alt="Work 7" /></a>
+                                <a href="#"><img src="{{ asset('template') }}/img/work/work-img-7.jpg"
+                                        alt="Work 7" /></a>
                             </div>
                             <div class="desc">
                                 <span class="desc-title">Phasellus eu vehicula lorem</span>
@@ -596,7 +615,8 @@
                         <!-- begin work -->
                         <div class="work">
                             <div class="image">
-                                <a href="#"><img src="{{asset('template')}}/img/work/work-img-8.jpg" alt="Work 8" /></a>
+                                <a href="#"><img src="{{ asset('template') }}/img/work/work-img-8.jpg"
+                                        alt="Work 8" /></a>
                             </div>
                             <div class="desc">
                                 <span class="desc-title">Morbi bibendum pellentesque</span>
@@ -612,7 +632,7 @@
             <!-- end container -->
         </div>
         <!-- end #work -->
-        
+
         <!-- begin #client -->
         {{-- <div id="client" class="content has-bg bg-green" data-scrollview="true">
             <!-- begin content-bg -->
@@ -675,7 +695,7 @@
             <!-- end containter -->
         </div> --}}
         <!-- end #client -->
-        
+
         <!-- begin #pricing -->
         {{-- <div id="pricing" class="content" data-scrollview="true">
             <!-- begin container -->
@@ -778,7 +798,7 @@
             <!-- end container -->
         </div> --}}
         <!-- end #pricing -->
-        
+
         <!-- begin #contact -->
         <div id="contact" class="content bg-silver-lighter" data-scrollview="true">
             <!-- begin container -->
@@ -794,7 +814,8 @@
                     <div class="col-md-6" data-animation="true" data-animation-type="fadeInLeft">
                         <h3>If you have a project you would like to discuss, get in touch with us.</h3>
                         <p>
-                            Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, magna a ullamcorper laoreet, lectus arcu pulvinar risus, vitae facilisis libero dolor a purus.
+                            Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, magna a ullamcorper laoreet,
+                            lectus arcu pulvinar risus, vitae facilisis libero dolor a purus.
                         </p>
                         <p>
                             <strong>SeanTheme Studio, Inc</strong><br />
@@ -824,7 +845,8 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-3">Message <span class="text-theme">*</span></label>
+                                <label class="control-label col-md-3">Message <span
+                                        class="text-theme">*</span></label>
                                 <div class="col-md-9">
                                     <textarea class="form-control" rows="10"></textarea>
                                 </div>
@@ -844,7 +866,7 @@
             <!-- end container -->
         </div>
         <!-- end #contact -->
-        
+
         <!-- begin #footer -->
         <div id="footer" class="footer">
             <div class="container">
@@ -866,41 +888,59 @@
             </div>
         </div>
         <!-- end #footer -->
-        
+
         <!-- begin theme-panel -->
         <div class="theme-panel">
-            <a href="javascript:;" data-click="theme-panel-expand" class="theme-collapse-btn"><i class="fa fa-cog"></i></a>
+            <a href="javascript:;" data-click="theme-panel-expand" class="theme-collapse-btn"><i
+                    class="fa fa-cog"></i></a>
             <div class="theme-panel-content">
                 <ul class="theme-list clearfix">
-                    <li><a href="javascript:;" class="bg-purple" data-theme="purple" data-theme-file="{{asset('template')}}/css/one-page-parallax/theme/purple.css" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Purple">&nbsp;</a></li>
-                    <li><a href="javascript:;" class="bg-blue" data-theme="blue" data-theme-file="{{asset('template')}}/css/one-page-parallax/theme/blue.css" data-theme-file="" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Blue">&nbsp;</a></li>
-                    <li class="active"><a href="javascript:;" class="bg-green" data-theme-file="{{asset('template')}}/css/one-page-parallax/theme/default.css" data-theme-file="" data-theme="default" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Default">&nbsp;</a></li>
-                    <li><a href="javascript:;" class="bg-orange" data-theme="orange" data-theme-file="{{asset('template')}}/css/one-page-parallax/theme/orange.css" data-theme-file="" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Orange">&nbsp;</a></li>
-                    <li><a href="javascript:;" class="bg-red" data-theme="red" data-theme-file="{{asset('template')}}/css/one-page-parallax/theme/red.css" data-theme-file="" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Red">&nbsp;</a></li>
+                    <li><a href="javascript:;" class="bg-purple" data-theme="purple"
+                            data-theme-file="{{ asset('template') }}/css/one-page-parallax/theme/purple.css"
+                            data-click="theme-selector" data-toggle="tooltip" data-trigger="hover"
+                            data-container="body" data-title="Purple">&nbsp;</a></li>
+                    <li><a href="javascript:;" class="bg-blue" data-theme="blue"
+                            data-theme-file="{{ asset('template') }}/css/one-page-parallax/theme/blue.css"
+                            data-theme-file="" data-click="theme-selector" data-toggle="tooltip"
+                            data-trigger="hover" data-container="body" data-title="Blue">&nbsp;</a></li>
+                    <li class="active"><a href="javascript:;" class="bg-green"
+                            data-theme-file="{{ asset('template') }}/css/one-page-parallax/theme/default.css"
+                            data-theme-file="" data-theme="default" data-click="theme-selector"
+                            data-toggle="tooltip" data-trigger="hover" data-container="body"
+                            data-title="Default">&nbsp;</a></li>
+                    <li><a href="javascript:;" class="bg-orange" data-theme="orange"
+                            data-theme-file="{{ asset('template') }}/css/one-page-parallax/theme/orange.css"
+                            data-theme-file="" data-click="theme-selector" data-toggle="tooltip"
+                            data-trigger="hover" data-container="body" data-title="Orange">&nbsp;</a></li>
+                    <li><a href="javascript:;" class="bg-red" data-theme="red"
+                            data-theme-file="{{ asset('template') }}/css/one-page-parallax/theme/red.css"
+                            data-theme-file="" data-click="theme-selector" data-toggle="tooltip"
+                            data-trigger="hover" data-container="body" data-title="Red">&nbsp;</a></li>
                 </ul>
             </div>
         </div>
         <!-- end theme-panel -->
     </div>
     <!-- end #page-container -->
-	
-	<!-- ================== BEGIN BASE JS ================== -->
-	<script src="{{asset('template')}}/plugins/jquery/jquery-3.2.1.min.js"></script>
-	<script src="{{asset('template')}}/plugins/bootstrap3/js/bootstrap.min.js"></script>
-	<!--[if lt IE 9]>
-		<script src="assets/crossbrowserjs/html5shiv.js"></script>
-		<script src="assets/crossbrowserjs/respond.min.js"></script>
-		<script src="assets/crossbrowserjs/excanvas.min.js"></script>
-	<![endif]-->
-	<script src="{{asset('template')}}/plugins/js-cookie/js.cookie.js"></script>
-	<script src="{{asset('template')}}/plugins/scrollMonitor/scrollMonitor.js"></script>
-	<script src="{{asset('template')}}/js/one-page-parallax/apps.min.js"></script>
-	<!-- ================== END BASE JS ================== -->
-	
-	<script>    
-	    $(document).ready(function() {
-	        App.init();
-	    });
-	</script>
+
+    <!-- ================== BEGIN BASE JS ================== -->
+    <script src="{{ asset('template') }}/plugins/jquery/jquery-3.2.1.min.js"></script>
+    <script src="{{ asset('template') }}/plugins/bootstrap3/js/bootstrap.min.js"></script>
+    <!--[if lt IE 9]>
+  <script src="assets/crossbrowserjs/html5shiv.js"></script>
+  <script src="assets/crossbrowserjs/respond.min.js"></script>
+  <script src="assets/crossbrowserjs/excanvas.min.js"></script>
+ <![endif]-->
+    <script src="{{ asset('template') }}/plugins/js-cookie/js.cookie.js"></script>
+    <script src="{{ asset('template') }}/plugins/scrollMonitor/scrollMonitor.js"></script>
+    <script src="{{ asset('template') }}/js/one-page-parallax/apps.min.js"></script>
+    <!-- ================== END BASE JS ================== -->
+
+    <script>
+        $(document).ready(function() {
+            App.init();
+        });
+    </script>
 </body>
+
 </html>

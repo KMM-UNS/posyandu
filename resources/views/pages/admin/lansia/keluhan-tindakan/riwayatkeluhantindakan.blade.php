@@ -28,7 +28,8 @@
       <label for="label"> Nama Lansia</label>
       <x-form.Dropdown name="nama_lansia_id" :options="$nama_lansia" selected="{{{ old('nama_lansia_id') ?? ($data['nama_lansia_id'] ?? null) }}}" required />
     </div>
-    <button class="btn btn-success" type="submit" name="submit" value="table">Search</button>
+    <button class="btn btn-primary btn-md float-right " type="submit" name="submit" value="table">Search</button>
+
   </div>
 </div>
 </form>

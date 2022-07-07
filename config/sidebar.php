@@ -16,76 +16,34 @@ return [
         [
             'icon' => 'fa fa-th-large',
             'title' => 'Dashboard',
-            'url' => '/admin/dashboard',
+            'url' => '/admin',
             'caret' => false
         ],
-        // [
-        //     'icon' => 'fa fa-users',
-        //     'title' => 'Pengguna',
-        //     'url' => '/admin/user',
-        //     'caret' => false,
-        // ],
-        // [
-        //     'icon' => 'fa fa-users',
-        //     'title' => 'Admin',
-        //     'url' => '/admin/admin',
-        //     'caret' => false,
-        // ],
-
-
 
         [
-            'icon' => 'fa fa-cogs',
-            'title' => 'Anak',
-            'url' => 'javascript:;',
-            'caret' => true,
-            'sub_menu' => [
-
-                [
-
-                    'url' => '/admin/anak-data/dataanak',
-                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Data Anak'
-                ], [
-                    'url' => '/admin/anak-data/imunisasi',
-                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Imunisasi'
-                ],
-
-            ]
-        ],
-        // ini buat naro url bagian Master
-
-
-
-        [
-            'icon' => 'fa fa-cogs',
-            'title' => 'Ibu',
+            'icon' => 'fa fa-users',
+            'title' => 'Pengguna',
             'url' => 'javascript:;',
             'caret' => true,
             'sub_menu' =>
             [
                 [
-                    'url' => ' /admin/data-ibu/dataibu',
-                    'title' => '</i>&nbsp;Data Ibu'
+                    'url' => ' /admin/users',
+                    'title' => '</i>&nbsp; Semua Pengguna'
                 ],
                 [
-                    'url' => ' /admin/data-ibu/ibuhamil',
-                    'title' => '</i>&nbsp;Evaluasi Kesehatan Ibu Hamil'
-                ], [
-                    'url' => ' /admin/data-ibu/ibuhamilperiksa',
-                    'title' => '</i>&nbsp;Periksa Ibu Hamil'
+                    'url' => ' /admin/master-data/datakader',
+                    'title' => '</i>&nbsp;Data Kader'
                 ],
                 [
-                    'url' => ' /admin/data-ibu/ibunifas',
-                    'title' => '</i>&nbsp;Evaluasi Kesehatan Ibu Nifas'
-                ], [
-                    'url' => ' /admin/data-ibu/ibunifasperiksa',
-                    'title' => '</i>&nbsp;Periksa Ibu Nifas'
-                ]
+                    'url' => ' /admin/master-data/datakader',
+                    'title' => '</i>&nbsp;Data Ketua Kader'
+                ],
+
+
             ]
         ],
-
-
-         [
+        [
             'icon' => 'fa fa-wheelchair',
             'title' => 'Lansia',
             'url' => 'javascript:;',
@@ -108,7 +66,7 @@ return [
                     'title' => '</i>&nbsp;Catatan Keluhan dan Tindakan'
                 ]
             ]
-                ],
+        ],
 
         [
             'icon' => 'fas fa-hospital',
@@ -117,11 +75,6 @@ return [
             'caret' => true,
             'sub_menu' =>
             [
-                // [
-                //     'url' => ' /admin/data-transaksi/rujukan',
-                //     'title' => '</i>&nbsp;Rujukan'
-
-                // ],
                 [
                     'url' => ' /admin/data-transaksi/rujukanlansia',
                     'title' => '</i>&nbsp;Rujukan Lansia'
@@ -136,14 +89,14 @@ return [
             'caret' => true,
             'sub_menu' =>
             [
-                // [
-                //     'url' => ' /admin/data-transaksi/rujukan',
-                //     'title' => '</i>&nbsp;Rujukan'
-
-                // ],
                 [
                     'url' => '/admin/data-kegiatan/datakegiatanlansia',
                     'title' => '</i>&nbsp;Data Kegiatan'
+
+                ],
+                [
+                    'url' => '/admin/data-kegiatan/laporankegiatanlansia',
+                    'title' => '</i>&nbsp;Laporan Keuangan'
 
                 ],
             ]
@@ -161,17 +114,17 @@ return [
                         [
                             'url' => ' /admin/data-lansia/laporankematian',
                             'title' => '</i>&nbsp;Laporan Kematian Lansia'
-                        ],[
+                        ], [
                             'url' => ' /admin/data-lansia/laporankmslansia',
-                             'title' => '</i>&nbsp;Laporan KMS Lansia'
+                            'title' => '</i>&nbsp;Laporan KMS Lansia'
                         ],
                         [
                             'url' => ' /admin/data-lansia/laporankeluhantindakan',
-                             'title' => '</i>&nbsp;Laporan Keluhan dan Tindakan'
+                            'title' => '</i>&nbsp;Laporan Keluhan dan Tindakan'
                         ],
                         [
                             'url' => ' /admin/data-transaksi/laporanrujukanlansia',
-                             'title' => '</i>&nbsp;Laporan Rujukan Lansia'
+                            'title' => '</i>&nbsp;Laporan Rujukan Lansia'
                         ],
                     ]
                 ],
@@ -179,7 +132,7 @@ return [
                     'title' => 'Laporan Data Lansia',
                     'url' => 'javascript:;',
                     'sub_menu' => [
-                       [
+                        [
                             'url' => '/admin/data-lansia/laporandatakmslansia',
                             'title' => '</i>&nbsp;Laporan Data KMS Lansia'
                         ],
@@ -197,7 +150,7 @@ return [
         ],
 
 
-                
+
 
         // [
         //     'icon' => '	fas fa-file-alt',
@@ -209,7 +162,7 @@ return [
         //         [
         //             'url' => ' /admin/data-lansia/laporankematian',
         //             'title' => '</i>&nbsp;Laporan Kematian Lansia'
-                    
+
 
         //         ],
         //         [
@@ -217,7 +170,7 @@ return [
         //             'title' => '</i>&nbsp;Laporan KMS Lansia'
 
         //         ],
-                
+
         //     ]
         // ],
 
@@ -228,28 +181,28 @@ return [
             'caret' => true,
             'sub_menu' => [
                 // master data inggrit
-                [
+                // [
 
-                    'url' => '/admin/master-data/jenisvaksin',
-                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Jenis Vaksin'
-                ],
+                //     'url' => '/admin/master-data/jenisvaksin',
+                //     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Jenis Vaksin'
+                // ],
                 // master data Jes
                 [
                     'url' => '/admin/master-data/agama',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Agama'
-                ], [
-                    'url' => '/admin/master-data/vitamin',
-                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Vitamin'
-                ], [
+                ],
+                // [
+                //     'url' => '/admin/master-data/vitamin',
+                //     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Vitamin'
+                // ], 
+                [
                     'url' => '/admin/master-data/status-kawin',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Status Kawin'
 
-                ], [
+                ],
+                [
                     'url' => '/admin/master-data/pendidikan',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Pendidikan'
-                ],  [
-                    'url' => ' /admin/master-data/datakader',
-                  'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Data Kader'
                 ],
                 [
                     'url' => ' /admin/master-data/golda',
@@ -260,17 +213,21 @@ return [
 
                     'url' => ' /admin/master-data/jaminankesehatan',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Jaminan Kesehatan'
-                ],[
+                ],
+                [
 
                     'url' => ' /admin/master-data/status',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Status'
-                ], [
-                    'url' => ' /admin/master-data/daftar_penyakit',
-                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Daftar Penyakit'
-                ], [
+                ],
+                // [
+                //     'url' => ' /admin/master-data/daftar_penyakit',
+                //     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Daftar Penyakit'
+                // ], 
+                [
                     'url' => ' /admin/master-data/detailimunisasi',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Detail Imunisasi'
-                ], [
+                ],
+                [
                     'url' => ' /admin/master-data/tenaga_kesehatan',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Tenaga Kesehatan'
 
@@ -290,29 +247,29 @@ return [
             'caret' => false
         ], [
             'icon' => 'fa fa-wheelchair',
-            'title' => 'User Lansia',
-            'url' => 'javascript:;',
-            'caret' => true,
-            'sub_menu' => [
-                [
-                    'url' => '/userlansia/biodatalansia',
-                    'title' => '</i>&nbsp;Biodata'
-                ],
-                [
-                    'url' => ' /userlansia/kmslansia',
-                    'title' => '</i>&nbsp;KMS Lansia'
-                ],
-                [
-                    'url' => ' /userlansia/riwayatrujukan',
-                    'title' => '</i>&nbsp;Rujukan'
-                ]
-            ]
-          ],[
-            'icon' => 'fa fa-cogs',
-            'title' => 'Ganti Password',
-            'url' => '#',
+            'title' => 'Biodata Lansia',
+            'url' => 'user/userlansia/biodatalansia',
+            'caret' => false,
+        ],
+        [
+            'icon' => 'fas fa-clipboard-list',
+            'title' => 'KMS Lansia',
+            'url' => '/user/userlansia/kmslansia',
             'caret' => false
-        ], [
+        ],
+        [
+            'icon' => 'fas fa-briefcase-medical',
+            'title' => 'Rujukan',
+            'url' => '/user/userlansia/riwayatrujukan',
+            'caret' => false
+        ],
+        [
+            'icon' => 'far fa-calendar-check',
+            'title' => 'Jadwal Kegiatan',
+            'url' => '/user/userlansia/riwayatrujukan',
+            'caret' => false
+        ],
+        [
             'icon' => 'fa fa-sign-out-alt',
             'title' => 'Logout',
             'url' => '#',
@@ -321,6 +278,201 @@ return [
 
     ],
 
+    'menu_petugas_kesehatan' => [
+        [
+            'icon' => 'fa fa-th-large',
+            'title' => 'Dashboard',
+            'url' => '/admin',
+            'caret' => false
+        ],
+
+        [
+            'icon' => 'fa fa-wheelchair',
+            'title' => 'Lansia',
+            'url' => 'javascript:;',
+            'caret' => true,
+            'sub_menu' => [
+                [
+                    'url' => ' /admin/data-lansia/datalansia',
+                    'title' => '</i>&nbsp;Data Lansia'
+                ],
+                [
+                    'url' => ' /admin/data-lansia/pantauankms',
+                    'title' => '</i>&nbsp;Catatan Pemantauan KMS'
+                ],
+            ]
+        ],
+        [
+            'icon' => '	fas fa-file-alt',
+            'title' => 'Laporan',
+            'url' => 'javascript:;',
+            'caret' => true,
+            'sub_menu' => [
+                [
+                    'title' => 'Laporan Bulanan Lansia',
+                    'url' => 'javascript:;',
+                    'sub_menu' => [
+                        [
+                            'url' => ' /admin/data-lansia/laporankematian',
+                            'title' => '</i>&nbsp;Laporan Kematian Lansia'
+                        ], [
+                            'url' => ' /admin/data-lansia/laporankmslansia',
+                            'title' => '</i>&nbsp;Laporan KMS Lansia'
+                        ],
+                        [
+                            'url' => ' /admin/data-lansia/laporankeluhantindakan',
+                            'title' => '</i>&nbsp;Laporan Keluhan dan Tindakan'
+                        ],
+                        [
+                            'url' => ' /admin/data-transaksi/laporanrujukanlansia',
+                            'title' => '</i>&nbsp;Laporan Rujukan Lansia'
+                        ],
+                    ]
+                ],
+                [
+                    'title' => 'Laporan Data Lansia',
+                    'url' => 'javascript:;',
+                    'sub_menu' => [
+                        [
+                            'url' => '/admin/data-lansia/laporandatakmslansia',
+                            'title' => '</i>&nbsp;Laporan Data KMS Lansia'
+                        ],
+                        [
+                            'url' => ' /admin/data-lansia/riwayatkeluhantindakan',
+                            'title' => '</i>&nbsp;Laporan Data Keluhan Tindakan'
+                        ],
+                        [
+                            'url' => '/admin/data-transaksi/riwayatrujukan',
+                            'title' => '</i>&nbsp;Laporan Data Rujukan Lansia'
+                        ],
+                    ]
+                ],
+            ]
+        ],
+
+    ],
+
+    'menu_ketua_kader' => [
+        [
+            'icon' => 'fa fa-th-large',
+            'title' => 'Dashboard',
+            'url' => '/admin',
+            'caret' => false
+        ],
+
+        // [
+        //     'icon' => 'fa fa-users',
+        //     'title' => 'Pengguna',
+        //     'url' => '/admin/users',
+        //     'caret' => false,
+        // ],
+        [
+            'icon' => 'fa fa-wheelchair',
+            'title' => 'Lansia',
+            'url' => 'javascript:;',
+            'caret' => true,
+            'sub_menu' => [
+                [
+                    'url' => ' /admin/data-lansia/datalansia',
+                    'title' => '</i>&nbsp;Data Lansia'
+                ],
+                // [
+                //     'url' => ' /admin/data-lansia/datakematianlansia',
+                //     'title' => '</i>&nbsp;Data Kematian'
+                // ],
+                // [
+                //     'url' => ' /admin/data-lansia/pantauankms',
+                //     'title' => '</i>&nbsp;Catatan Pemantauan KMS'
+                // ],
+                // [
+                //     'url' => ' /admin/data-lansia/keluhantindakan',
+                //     'title' => '</i>&nbsp;Catatan Keluhan dan Tindakan'
+                // ]
+            ]
+        ],
+
+        // [
+        //     'icon' => 'fas fa-hospital',
+        //     'title' => 'Rujukan',
+        //     'url' => 'javascript:;',
+        //     'caret' => true,
+        //     'sub_menu' =>
+        //     [
+        //         [
+        //             'url' => ' /admin/data-transaksi/rujukanlansia',
+        //             'title' => '</i>&nbsp;Rujukan Lansia'
+
+        //         ]
+        //     ]
+        // ],
+        // [
+        //     'icon' => '	far fa-calendar-check',
+        //     'title' => 'Kegiatan',
+        //     'url' => 'javascript:;',
+        //     'caret' => true,
+        //     'sub_menu' =>
+        //     [
+        //         [
+        //             'url' => '/admin/data-kegiatan/datakegiatanlansia',
+        //             'title' => '</i>&nbsp;Data Kegiatan'
+
+        //         ],
+
+        //     ]
+        // ],
+        [
+            'icon' => '	fas fa-file-alt',
+            'title' => 'Laporan',
+            'url' => 'javascript:;',
+            'caret' => true,
+            'sub_menu' => [
+                [
+                    'url' => '/admin/data-kegiatan/pengajuan',
+                    'title' => '</i>&nbsp;Laporan Keuangan'
+
+                ],
+                [
+                    'title' => 'Laporan Bulanan Lansia',
+                    'url' => 'javascript:;',
+                    'sub_menu' => [
+                        [
+                            'url' => ' /admin/data-lansia/laporankematian',
+                            'title' => '</i>&nbsp;Laporan Kematian Lansia'
+                        ], [
+                            'url' => ' /admin/data-lansia/laporankmslansia',
+                            'title' => '</i>&nbsp;Laporan KMS Lansia'
+                        ],
+                        [
+                            'url' => ' /admin/data-lansia/laporankeluhantindakan',
+                            'title' => '</i>&nbsp;Laporan Keluhan dan Tindakan'
+                        ],
+                        [
+                            'url' => ' /admin/data-transaksi/laporanrujukanlansia',
+                            'title' => '</i>&nbsp;Laporan Rujukan Lansia'
+                        ],
+                    ]
+                ],
+                [
+                    'title' => 'Laporan Data Lansia',
+                    'url' => 'javascript:;',
+                    'sub_menu' => [
+                        [
+                            'url' => '/admin/data-lansia/laporandatakmslansia',
+                            'title' => '</i>&nbsp;Laporan Data KMS Lansia'
+                        ],
+                        [
+                            'url' => ' /admin/data-lansia/riwayatkeluhantindakan',
+                            'title' => '</i>&nbsp;Laporan Data Keluhan Tindakan'
+                        ],
+                        [
+                            'url' => '/admin/data-transaksi/riwayatrujukan',
+                            'title' => '</i>&nbsp;Laporan Data Rujukan Lansia'
+                        ],
+                    ]
+                ],
+            ]
+        ],
+    ],
 
     'menu_demo' => [[
         'icon' => 'fa fa-th-large',
@@ -779,4 +931,4 @@ return [
             'title' => 'Menu 1.3'
         ]]
     ]]
-        ];
+];

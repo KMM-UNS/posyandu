@@ -17,7 +17,7 @@ class Kader extends Model
     protected $table = 'kaders';
     protected $fillable =
     [
-        'nama', 'jabatan', 'jenis_kelamin', 'TTL', 'pendidikan', 'status_absen'
+        'nama', 'jabatan', 'jenis_kelamin', 'TTL', 'pendidikan',
     ];
     public $timestamps = false;
 

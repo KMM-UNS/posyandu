@@ -44,7 +44,7 @@ class KeluhanTindakanDataTable extends DataTable
      */
     public function query(KeluhanTindakan $model)
     {
-        return $model->select('keluhan_tindakan.*')->with(['lansia','kader']);
+        return $model->select('keluhan_tindakan.*')->with(['lansia', 'kader']);
     }
 
     /**
@@ -64,8 +64,7 @@ class KeluhanTindakanDataTable extends DataTable
                 Button::make('create'),
                 Button::make('export'),
                 Button::make('print'),
-                Button::make('reset'),
-                Button::make('reload')
+
             );
     }
 

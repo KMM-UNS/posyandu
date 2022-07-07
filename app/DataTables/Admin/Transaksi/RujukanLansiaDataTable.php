@@ -25,23 +25,37 @@ class RujukanLansiaDataTable extends DataTable
             ->setRowId(function ($row) {
                 return  $row->id;
             })
+
             ->addColumn('action', function ($row) {
                 $btn = '<div class="btn-group">';
-             
-                if($row->status == '0'){
-                    $btn = $btn . '<a href="' . route('admin.data-transaksi.rujukanlansia.status', $row->id) . '" class="btn btn-secondary buttons-edit">Belum dikonfirmasi</a>';
-                }else{
-                    $btn = $btn . '<a href="' . route('admin.data-transaksi.rujukanlansia.status', $row->id) . '" class="btn btn-info buttons-edit">Sudah dikonfirmasi</a>';
-                    $btn = $btn . '<a href="'  . route('admin.data-transaksi.rujukanlansia.show', $row->id) . '" class="btn btn-info buttons-show"><i class="fa fa-print fa-fw"></i></a>';
-                }
-               
+
+                // if($row->status == '0'){
+                //     $btn = $btn . '<a href="' . route('admin.data-transaksi.rujukanlansia.status', $row->id) . '" class="btn btn-secondary buttons-edit">Belum dikonfirmasi</a>';
+                // }else{
+                //     $btn = $btn . '<a href="' . route('admin.data-transaksi.rujukanlansia.status', $row->id) . '" class="btn btn-info buttons-edit">Sudah dikonfirmasi</a>';
+                //     $btn = $btn . '<a href="'  . route('admin.data-transaksi.rujukanlansia.show', $row->id) . '" class="btn btn-info buttons-show"><i class="fa fa-print fa-fw"></i></a>';
+                // }
+
                 $btn = $btn . '<a href="' . route('admin.data-transaksi.rujukanlansia.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
                 $btn = $btn . '<a href="' . route('admin.data-transaksi.rujukanlansia.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
                 // $btn = $btn . '<a href="'  . route('admin.data-transaksi.rujukanlansia.show', $row->id) . '" class="btn btn-info buttons-show"><i class="fa fa-print fa-fw"></i></a>';
                 $btn = $btn . '</div>';
 
                 return $btn;
-            });
+            })
+            ->addColumn('status', function ($row) {
+                $btn = '<div class="btn-group">';
+
+                if ($row->status == '0') {
+                    $btn = $btn . '<a href="' . route('admin.data-transaksi.rujukanlansia.status', $row->id) . '" class="btn btn-secondary btn-xs">Non-aktif</a>';
+                } else {
+                    $btn = $btn . '<a href="' . route('admin.data-transaksi.rujukanlansia.status', $row->id) . '" class="btn btn-info btn-xs">Aktif</a>';
+                    $btn = $btn . '<a href="'  . route('admin.data-transaksi.rujukanlansia.show', $row->id) . '" class="btn btn-info btn-xs"><i class="fa fa-print fa-fw"></i></a>';
+                }
+                $btn = $btn . '</div>';
+                return $btn;
+            })
+            ->rawColumns(['status', 'action']);
     }
 
     /**
@@ -72,8 +86,7 @@ class RujukanLansiaDataTable extends DataTable
                 Button::make('create'),
                 Button::make('export'),
                 Button::make('print'),
-                Button::make('reset'),
-                Button::make('reload')
+
             );
     }
 
@@ -85,7 +98,7 @@ class RujukanLansiaDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            
+
             // Column::make('id'),
             Column::make('no_surat'),
             Column::make('kepada'),
@@ -96,14 +109,18 @@ class RujukanLansiaDataTable extends DataTable
             Column::make('alamat'),
             Column::make('keluhan'),
             // Column::make('Status'),
+            Column::computed('status')
+                ->exportable(false)
+                ->printable(false)
+                ->width(60)
+                ->addClass('text-center'),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)
                 ->width(60)
                 ->addClass('text-center'),
-            
-        ];
 
+        ];
     }
 
     /**

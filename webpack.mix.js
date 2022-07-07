@@ -19,6 +19,7 @@ mix.js('resources/js/ajax-form-handler.js', 'public/assets/js/custom/');
 mix.js('resources/js/delete-with-confirmation.js', 'public/assets/js/custom/');
 mix.js('resources/js/string-helper.js', 'public/assets/js/custom/');
 mix.js('resources/js/wilayah-dropdown.js', 'public/assets/js/custom/');
+mix.copy('resources/js/', 'public/assets/js/custom/');
 mix.combine([
     'node_modules/moment/moment.js',
     'node_modules/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',

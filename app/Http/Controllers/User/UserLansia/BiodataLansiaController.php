@@ -23,9 +23,9 @@ class BiodataLansiaController extends Controller
      */
     public function index()
     {
-        $data =DataLansia::where('createable_id', auth()->user()->id)->first();
+        $data = DataLansia::where('createable_id', auth()->user()->id)->first();
+        //$data = DataLansia::all();
         return view('pages.user.lansia.biodatalansia.index', ['data' => $data]);
-        
     }
 
     /**
@@ -33,14 +33,16 @@ class BiodataLansiaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
+
         $agamas = Agama::pluck('nama', 'id');
         $goldas = GolonganDarah::pluck('nama', 'id');
         $statuskawins = StatusKawin::pluck('nama', 'id');
         $jaminankesehatans = JaminanKesehatan::pluck('jaminan_kesehatan_id', 'id');
+
+
         return view('pages.user.lansia.biodatalansia.add-edit', ['agamas' =>  $agamas, 'goldas' => $goldas, 'statuskawins' => $statuskawins, 'jaminankesehatans' => $jaminankesehatans]);
-        
     }
 
     /**
@@ -51,18 +53,40 @@ class BiodataLansiaController extends Controller
      */
     public function store(Request $request)
     {
+
+        // DB::transaction(function () use ($request) {
+        //     try {
+        //         // dd($request->user());
+        //         $data = DataLansia::create($request->all());
+        //         $data->createable()->associate($request->user());
+        //         $data->save();
+        //         // dd($data);
+
+        //         // dd($data);
+        //     } catch (\Throwable $th) {
+        //         DB::rollBack();
+        //         dd($th);
+        //         return back()->withInput()->withToastError('Something went wrong');
+        //     }
+        // });
+        // return redirect(route('user.userlansia.biodatalansia.index'))->withToastSuccess('Data tersimpan');
         DB::transaction(function () use ($request) {
             try {
                 // dd($request->user());
+                // $data = DataLansia::create($request->all());
+                // $data->createable()->associate($request->user());
+                // $data->save();
+
                 $data = DataLansia::create($request->all());
                 $data->createable()->associate($request->user());
-                $data->save();
-                // dd($data);
-
-                // dd($data);
+                if ($request->hasFile('foto_lansia')) {
+                    $request->file('foto_lansia')->move('fotolansia/', $request->file('foto_lansia')->getClientOriginalName());
+                    $data->foto_lansia = $request->file('foto_lansia')->getClientOriginalName();
+                    $data->save();
+                }
             } catch (\Throwable $th) {
                 DB::rollBack();
-                dd($th);
+                // dd($th);
                 return back()->withInput()->withToastError('Something went wrong');
             }
         });
@@ -88,7 +112,7 @@ class BiodataLansiaController extends Controller
      */
     public function edit($id)
     {
-        
+
         $agamas = Agama::pluck('nama', 'id');
         $goldas = GolonganDarah::pluck('nama', 'id');
         $statuskawins = StatusKawin::pluck('nama', 'id');

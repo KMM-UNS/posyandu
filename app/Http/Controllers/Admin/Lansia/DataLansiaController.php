@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin\Lansia;
 use App\Datatables\Admin\Lansia\DataLansiaDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\DataLansia;
+use Illuminate\Support\Str;
+
 //use App\Models\GolonganDarah;
 use App\Models\Agama;
 use App\Models\GolonganDarah;
@@ -12,10 +14,17 @@ use App\Models\StatusKawin;
 use Illuminate\Http\Request;
 use App\Models\JaminanKesehatan;
 use App\DataTables\Admin\Lansia\DetailDataLansiaDataTable;
-
+use App\Models\Admin;
+use App\Models\Role;
 
 class DataLansiaController extends Controller
 {
+    // function __construct()
+    // {
+    //     $this->middleware('admin');
+    //     //$this->middleware('petugas_kesehatan');
+    //     // $this->middleware('role:kepala_kader');
+    // }
     /**
      * Display a listing of the resource.
      *
@@ -64,6 +73,29 @@ class DataLansiaController extends Controller
         }
 
         return redirect(route('admin.data-lansia.datalansia.index'))->withToastSuccess('Data tersimpan');
+        // try {
+        //     $request->validate([
+        //         'nama_lansia' => 'required|min:1'
+        //     ]);
+        // } catch (\Throwable $th) {
+        //     return back()->withInput()->withToastError($th->validator->messages()->all()[0]);
+        // }
+
+        // try {
+        //     $nokms = DataLansia::max('no_kms');
+        //     $huruf = "PL";
+        //     $urutan = (int)substr($nokms, 3, 3);
+        //     $urutan++;
+        //     $kms = $huruf . sprintf("%04s", $urutan);
+        //     $data = $request->all();
+        //     $data['no_kms'] = $kms;
+        //     DataLansia::create($data);
+        // } catch (\Throwable $th) {
+        //     // dd($th);
+        //     return back()->withInput()->withToastError('Something went wrong');
+        // }
+
+        // return redirect(route('admin.data-lansia.datalansia.index'))->withToastSuccess('Data tersimpan');
     }
 
     /**

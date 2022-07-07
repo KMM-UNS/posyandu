@@ -23,6 +23,8 @@ class CreateKegiatanLansiaTable extends Migration
             $table->string('waktu_selesai');
             $table->integer('jumlah_iuran')->nullable();
             $table->string('status')->default(0);
+            $table->string('waktu')->nullable();
+
 
             $table->timestamps();
             $table->softDeletes();

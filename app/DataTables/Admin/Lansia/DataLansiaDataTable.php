@@ -48,7 +48,7 @@ class DataLansiaDataTable extends DataTable
      */
     public function query(DataLansia $model)
     {
-        return $model->select('data_lansia.*')->with(['golongandarah','agama', 'statuskawin', 'jaminankesehatan']);
+        return $model->select('data_lansia.*')->with(['golongandarah', 'agama', 'statuskawin', 'jaminankesehatan']);
     }
 
     /**
@@ -68,8 +68,8 @@ class DataLansiaDataTable extends DataTable
                 Button::make('create'),
                 Button::make('export'),
                 Button::make('print'),
-                Button::make('reset'),
-                Button::make('reload')
+                // Button::make('reset'),
+                // Button::make('reload')
             );
     }
 
@@ -87,7 +87,7 @@ class DataLansiaDataTable extends DataTable
             // Column::make('email'),
             // Column::make('no_hp'),
             Column::make('NIK'),
-            Column::make('no_KMS'),
+            Column::make('no_kms'),
             Column::make('jenis_kelamin'),
             // Column::make('ttl'),
             // Column::make('umur'),

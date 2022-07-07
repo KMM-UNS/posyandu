@@ -12,6 +12,12 @@ use Barryvdh\DomPDF\Facade\Pdf;
 
 class DataKematianLansiaController extends Controller
 {
+    // function __construct()
+    // {
+    //     $this->middleware('admin');
+    //     $this->middleware('petugas_kesehatan');
+    //     // $this->middleware('role:kepala_kader');
+    // }
     public function index(DataKematianLansiaDataTable $dataTable)
     {
         return $dataTable->render('pages.admin.lansia.datakematian.index');
@@ -19,8 +25,8 @@ class DataKematianLansiaController extends Controller
 
     public function create()
     {
-        $nama_lansia=DataLansia::pluck('nama_lansia','id');
-        return view('pages.admin.lansia.datakematian.add-edit',['nama_lansia' =>  $nama_lansia]);
+        $nama_lansia = DataLansia::pluck('nama_lansia', 'id');
+        return view('pages.admin.lansia.datakematian.add-edit', ['nama_lansia' =>  $nama_lansia]);
     }
     public function store(Request $request)
     {
@@ -43,13 +49,13 @@ class DataKematianLansiaController extends Controller
     }
     public function show()
     {
-       //
+        //
     }
     public function edit($id)
     {
         $data = DataKematianLansia::findOrFail($id);
-        $nama_lansia=DataLansia::pluck('nama_lansia','id');
-        return view('pages.admin.lansia.datakematian.add-edit',['data'=>$data, 'nama_lansia' =>  $nama_lansia]);
+        $nama_lansia = DataLansia::pluck('nama_lansia', 'id');
+        return view('pages.admin.lansia.datakematian.add-edit', ['data' => $data, 'nama_lansia' =>  $nama_lansia]);
     }
     public function update(Request $request, $id)
     {
@@ -78,11 +84,13 @@ class DataKematianLansiaController extends Controller
             return response(['error' => 'Something went wrong']);
         }
     }
-    public function laporankematian(){
+    public function laporankematian()
+    {
         return view('pages.admin.lansia.datakematian.laporankematian');
     }
-    public function sortir(Request $request){
-    
+    public function sortir(Request $request)
+    {
+
         $startDate = Str::before($request->tglawal, ' -');
         $endDate = Str::after($request->tglakhir, '- ');
         switch ($request->submit) {
@@ -90,19 +98,20 @@ class DataKematianLansiaController extends Controller
 
                 $data = DataKematianLansia::all()
                     ->whereBetween('tgl_meninggal', [$startDate, $endDate]);
-             
-                return view('pages.admin.lansia.datakematian.laporankematian', compact( 'data', 'startDate', 'endDate'));
+
+                return view('pages.admin.lansia.datakematian.laporankematian', compact('data', 'startDate', 'endDate'));
                 break;
         }
     }
-    public function cetakLaporanKematian($start, $end){
+    public function cetakLaporanKematian($start, $end)
+    {
 
         $startDate = $start;
-        $endDate =$end;
+        $endDate = $end;
         $data = DataKematianLansia::get()
             ->whereBetween('tgl_meninggal', [$startDate, $endDate]);
 
-        $pdf = PDF::loadview('pages.admin.lansia.datakematian.cetaklaporankematian',['data' =>$data]);
+        $pdf = PDF::loadview('pages.admin.lansia.datakematian.cetaklaporankematian', ['data' => $data]);
         return $pdf->download('Laporan Kematian Lansia.pdf');
     }
 }

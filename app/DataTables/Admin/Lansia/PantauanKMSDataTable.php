@@ -26,8 +26,8 @@ class PantauanKMSDataTable extends DataTable
             })
             ->addColumn('more', '<i class="fa fa-plus"> </i>')
             ->rawColumns(['more', 'action'])
-            ->addColumn('show', function(PantauanKMS $data){
-                return view('pages.admin.lansia.pantauan-kms.show',compact('data'));
+            ->addColumn('show', function (PantauanKMS $data) {
+                return view('pages.admin.lansia.pantauan-kms.show', compact('data'));
             })
             // ->addColumn('show','Detail dari {{$namalansia1}}')
             ->addColumn('action', function ($row) {
@@ -102,8 +102,7 @@ class PantauanKMSDataTable extends DataTable
                 Button::make('create'),
                 Button::make('export'),
                 Button::make('print'),
-                Button::make('reset'),
-                Button::make('reload')
+
             );
     }
 

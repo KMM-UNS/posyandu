@@ -16,9 +16,10 @@ class CreateDataLansia extends Migration
         Schema::create('data_lansia', function (Blueprint $table) {
             $table->id();
             $table->string('nama_lansia');
+            $table->string('foto_lansia')->nullable();
             $table->string('email');
             $table->string('no_hp');
-            $table->string('no_KMS');
+            $table->string('no_kms');
             $table->string('NIK');
             $table->string('jenis_kelamin');
             $table->string('ttl');
@@ -29,7 +30,7 @@ class CreateDataLansia extends Migration
             $table->string('pendidikan_terakhir');
             $table->string('golongan_darah');
             $table->string('jaminan_kesehatan');
-            
+
             $table->bigInteger('createable_id')->nullable();
             $table->text('createable_type')->nullable();
             $table->timestamps();

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\Transaksi\RujukanLansiaController;
+use App\Http\Controllers\ForumLansiaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,11 +22,22 @@ Route::get('/token', function () {
 });
 Route::get('posyandu', 'HomeController@index');
 
-Route::group(['middleware' => 'auth:web', 'as' => 'user.'], function () {
-    Route::view('/', 'home')->name('home');
+Route::get('/', function () {
+    return redirect('/admin');
+})->middleware('auth');
 
+// Route::get('/token', function () {
+//     return csrf_token();
+// });
+
+Route::get('/edit-profile', 'ProfileController@edit')->name('edit-profile');
+
+Route::group(['middleware' => 'auth:web', 'prefix' => 'user','as' => 'user.'], function () {
+    Route::get('/', [ForumLansiaController::class,'index']);
+    Route::post('/tambahkomentar', [ForumLansiaController::class,'store']);
+    
     Route::group(['namespace' => 'User'], function () {
-
+        
         Route::group(['prefix' => '/userlansia', 'as' => 'userlansia.', 'namespace' => 'UserLansia'], function () {
             Route::resource('biodatalansia', 'BiodataLansiaController');
             Route::resource('kmslansia', 'KMSLansiaController');
@@ -33,11 +45,24 @@ Route::group(['middleware' => 'auth:web', 'as' => 'user.'], function () {
         });
         
     });
-});
+    });
 // //export pdf
 // Route::get('/exportpdf',[RujukanLansiaController::class, 'exportpdf'])->name('exportpdf');
 
 
 
+
+// Route::get('/', function () {
+//     return redirect('/admin');
+// })->middleware('auth');
+
+// Route::get('/token', function () {
+//     return csrf_token();
+// });
+
+// Route::get('/edit-profile', 'ProfileController@edit')->name('edit-profile');
+
+// Route::group(['middleware' => 'auth:web', 'as' => 'user.'], function () {
+// });
 
 require __DIR__ . '/demo.php';

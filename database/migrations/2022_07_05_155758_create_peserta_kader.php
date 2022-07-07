@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateKadersTable extends Migration
+class CreatePesertaKader extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,11 @@ class CreateKadersTable extends Migration
      */
     public function up()
     {
-        Schema::create('kaders', function (Blueprint $table) {
+        Schema::create('peserta_kader', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
-            $table->string('jabatan');
-            $table->string('jenis_kelamin');
-            $table->string('TTL');
-            $table->string('pendidikan');
-            $table->string('status_absen');
+            $table->bigInteger('kegiatan_lansia1');
+            $table->string('kader_id')->nullable();
+            $table->string('status')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });
@@ -33,6 +30,6 @@ class CreateKadersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kaders');
+        Schema::dropIfExists('peserta_kader');
     }
 }
