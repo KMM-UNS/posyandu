@@ -60,10 +60,10 @@ class LaporanDataTable extends DataTable
     }
 
 
-    public function query(KegiatanLansia $model)
-    {
-        return $model->select('kegiatan_lansia.*');
-    }
+    // public function query(KegiatanLansia $model)
+    // {
+    //     return $model->select('kegiatan_lansia.*');
+    // }
 
     /**
      * Optional method if you want to use html builder.

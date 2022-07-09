@@ -1,0 +1,169 @@
+.table .dropdown {
+  display: inline-block;
+}
+.table td,
+.table th {
+  vertical-align: middle;
+  margin-bottom: 1px;
+  border: none;
+  padding: 0.5rem 0.4rem !important;
+}
+.table thead tr,
+.table thead th {
+  border: none;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: transparent;
+}
+
+.table td:first-child {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.table td:last-child {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+table.dataTable.dtr-inline.collapsed
+  > tbody
+  > tr[role="row"]
+  > td:first-child:before,
+table.dataTable.dtr-inline.collapsed
+  > tbody
+  > tr[role="row"]
+  > th:first-child:before {
+  top: 28px;
+  left: 14px;
+  border: none;
+  box-shadow: none;
+}
+table.dataTable.dtr-inline.collapsed > tbody > tr[role="row"] > td:first-child,
+table.dataTable.dtr-inline.collapsed > tbody > tr[role="row"] > th:first-child {
+  padding-left: 48px;
+}
+table.dataTable > tbody > tr.child ul.dtr-details {
+  width: 100%;
+}
+table.dataTable > tbody > tr.child span.dtr-title {
+  /* min-width: 50%; */
+}
+table.dataTable.dtr-inline.collapsed > tbody > tr > td.child,
+table.dataTable.dtr-inline.collapsed > tbody > tr > th.child,
+table.dataTable.dtr-inline.collapsed > tbody > tr > td.dataTables_empty {
+  padding: 0.75rem 1rem 0.125rem;
+}
+div.dataTables_wrapper div.dataTables_length label,
+div.dataTables_wrapper div.dataTables_filter label {
+  margin-bottom: 0;
+}
+@media (max-width: 767px) {
+  div.dataTables_wrapper div.dataTables_paginate ul.pagination {
+    -ms-flex-pack: center !important;
+    justify-content: center !important;
+    margin-top: 1rem;
+  }
+}
+
+.table a {
+  color: #212529;
+  text-decoration: none;
+}
+
+.icon > .bx {
+  display: block;
+  min-width: 1.5em;
+  min-height: 1.5em;
+  text-align: center;
+  font-size: 1.0625rem;
+}
+.avatar {
+  width: 2.75rem;
+  height: 2.75rem;
+  line-height: 3rem;
+  border-radius: 50%;
+  display: inline-block;
+  background: transparent;
+  position: relative;
+  text-align: center;
+  color: #868e96;
+  font-weight: 700;
+  vertical-align: bottom;
+  font-size: 1rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.avatar-sm {
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: 0.83333rem;
+  line-height: 1.5;
+}
+.avatar-img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+} 
+.avatar-blue {
+  background-color: #c8d9f1;
+  color: #467fcf;
+}
+.avatar-primary {
+  background-color: #cacbf1;
+  color: #4b49ac;
+}
+.avatar-gray {
+  background-color: #e7e7e7;
+  color: #727272;
+}
+.avatar-red {
+  background-color: #fcd3d3;
+  color: #ff4747;
+}
+.avatar-green {
+  background-color: #d3fcd6;
+  color: #30c02b;
+}
+.avatar-yellow {
+  background-color: #fbfcd3;
+  color: #f6986d;
+}
+.avatar-purple {
+  background-color: #e9d3fc;
+  color: #cd52f3;
+}
+
+.form-group {
+  margin-bottom: 0.5rem !important;
+}
+
+.modal .modal-dialog {
+  margin-top: 30px !important;
+}
+
+.error {
+  border-color: red;
+}
+
+.error-message {
+  color: red;
+  font-style: italic;
+  margin-bottom: 1em;
+}
+.dropdown-divider{
+  margin: 0.4rem 0 !important;
+}
+
+.dataTables_wrapper .dataTable .btn, .dataTables_wrapper .dataTable .fc button, .fc .dataTables_wrapper .dataTable button, .dataTables_wrapper .dataTable .ajax-upload-dragdrop .ajax-file-upload, .ajax-upload-dragdrop .dataTables_wrapper .dataTable .ajax-file-upload, .dataTables_wrapper .dataTable .swal2-modal .swal2-buttonswrapper .swal2-styled, .swal2-modal .swal2-buttonswrapper .dataTables_wrapper .dataTable .swal2-styled, .dataTables_wrapper .dataTable .wizard > .actions a, .wizard > .actions .dataTables_wrapper .dataTable a {
+  padding: 0.6rem .6rem !important;
+  vertical-align: top;
+}
+.btn.btn-icon, .fc button.btn-icon, .ajax-upload-dragdrop .btn-icon.ajax-file-upload, .swal2-modal .swal2-buttonswrapper .btn-icon.swal2-styled, .wizard > .actions a.btn-icon {
+  width: 36px !important;
+  height: 36px !important;
+  padding: 0.6rem .2rem !important; 
+}

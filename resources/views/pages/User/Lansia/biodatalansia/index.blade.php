@@ -98,7 +98,7 @@
                                                 </div>
                                                 <div>
                                                     <label>Pendidikan Terakhir</label>
-                                                    <p class="font-weight-bold">{{ $data->pendidikan_terakhir }}
+                                                    <p class="font-weight-bold">{{ $data->pendidikan->nama }}
                                                     </p>
                                                 </div>
                                                 <div>

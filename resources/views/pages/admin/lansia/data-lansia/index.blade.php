@@ -45,6 +45,7 @@
         <!-- end panel-body -->
     </div>
     <!-- end panel -->
+
 @endsection
 
 @push('scripts')

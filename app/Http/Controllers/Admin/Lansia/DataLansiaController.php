@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 use App\Models\JaminanKesehatan;
 use App\DataTables\Admin\Lansia\DetailDataLansiaDataTable;
 use App\Models\Admin;
+use App\Models\Pendidikan;
 use App\Models\Role;
 
 class DataLansiaController extends Controller
@@ -46,7 +47,9 @@ class DataLansiaController extends Controller
         $goldas = GolonganDarah::pluck('nama', 'id');
         $statuskawins = StatusKawin::pluck('nama', 'id');
         $jaminankesehatans = JaminanKesehatan::pluck('jaminan_kesehatan_id', 'id');
-        return view('pages.admin.lansia.data-lansia.add-edit', ['agamas' =>  $agamas, 'goldas' => $goldas, 'statuskawins' => $statuskawins, 'jaminankesehatans' => $jaminankesehatans]);
+        $pendidikans = Pendidikan::pluck('nama', 'id');
+
+        return view('pages.admin.lansia.data-lansia.add-edit', ['agamas' =>  $agamas, 'goldas' => $goldas, 'statuskawins' => $statuskawins, 'jaminankesehatans' => $jaminankesehatans, 'pendidikans' => $pendidikans]);
     }
 
     /**
@@ -111,9 +114,10 @@ class DataLansiaController extends Controller
         $goldas = GolonganDarah::pluck('nama', 'id');
         $statuskawins = StatusKawin::pluck('nama', 'id');
         $jaminankesehatans = JaminanKesehatan::pluck('jaminan_kesehatan_id', 'id');
+        $pendidikans = Pendidikan::pluck('nama', 'id');
 
         return $dataTable->render('pages.admin.lansia.data-lansia.show', [
-            'data' => $data, 'agamas' =>  $agamas, 'goldas' => $goldas, 'statuskawins' => $statuskawins, 'jaminankesehatans' => $jaminankesehatans
+            'data' => $data, 'agamas' =>  $agamas, 'goldas' => $goldas, 'statuskawins' => $statuskawins, 'jaminankesehatans' => $jaminankesehatans, 'pendidikans' => $pendidikans,
             // 'status_tinggal' => $status_tinggal
         ]);
     }
@@ -131,8 +135,9 @@ class DataLansiaController extends Controller
         $goldas = GolonganDarah::pluck('nama', 'id');
         $statuskawins = StatusKawin::pluck('nama', 'id');
         $jaminankesehatans = JaminanKesehatan::pluck('jaminan_kesehatan_id', 'id');
+        $pendidikans = Pendidikan::pluck('nama', 'id');
 
-        return view('pages.admin.lansia.data-lansia.add-edit', ['data' => $data, 'agamas' =>  $agamas, 'goldas' => $goldas, 'statuskawins' => $statuskawins, 'jaminankesehatans' => $jaminankesehatans]);
+        return view('pages.admin.lansia.data-lansia.add-edit', ['data' => $data, 'agamas' =>  $agamas, 'goldas' => $goldas, 'statuskawins' => $statuskawins, 'jaminankesehatans' => $jaminankesehatans, 'pendidikans' => $pendidikans]);
     }
 
     /**

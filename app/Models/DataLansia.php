@@ -11,6 +11,7 @@ use App\Models\StatusKawin;
 use App\Models\Agama;
 use App\Models\GolonganDarah;
 use App\Models\JaminanKesehatan;
+use App\Models\Pendidikan;
 use App\Models\PesertaKegiatan;
 
 
@@ -70,6 +71,10 @@ class DataLansia extends Model
     public function jaminankesehatan()
     {
         return $this->belongsTo(JaminanKesehatan::class, 'jaminan_kesehatan');
+    }
+    public function pendidikan()
+    {
+        return $this->belongsTo(Pendidikan::class, 'pendidikan_terakhir');
     }
 
     public function createable()

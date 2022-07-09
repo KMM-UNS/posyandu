@@ -134,11 +134,13 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             //laporan kegiatan
             Route::get('laporankegiatanlansia', 'KegiatanLansiaController@laporankegiatan');
             Route::post('/laporankegiatanlansia', 'KegiatanLansiaController@riwayatkegiatan');
+            Route::post('/pengajuan', 'KegiatanLansiaController@pengajuan')->name('pengajuan');
 
             //pengajuan punya ketua
-            Route::resource('pengajuan', 'PengajuanController');
+            Route::resource('pengajuan_ketua', 'PengajuanController');
             Route::get('/status_pengajuan/{id}', 'KegiatanLansiaController@status_pengajuan');
             Route::get('/statusakhir_pengajuan/{id}', 'KegiatanLansiaController@statusakhir_pengajuan');
+            Route::post('/create_bukti/{id}', 'KegiatanLansiaController@create_bukti')->name('create_bukti');
         });
     });
 });

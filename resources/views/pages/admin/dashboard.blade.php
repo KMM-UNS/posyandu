@@ -8,6 +8,12 @@
     <link href="/assets/plugins/bootstrap-calendar/css/bootstrap_calendar.css" rel="stylesheet" />
     <link href="/assets/plugins/gritter/css/jquery.gritter.css" rel="stylesheet" />
     <link href="/assets/plugins/nvd3/build/nv.d3.css" rel="stylesheet" />
+    <style>
+        .chats {
+
+            overflow: scroll;
+        }
+    </style>
 @endpush
 
 
@@ -24,65 +30,97 @@
     <!-- end page-header -->
     <div class="row">
         <!-- begin col-3 -->
-        <div class="col-xl-3 col-md-6">
+        <div class="col-xl-6 col-md-6">
             <div class="widget widget-stats bg-teal">
-                <div class="stats-icon stats-icon-lg"><i class="fa fa-globe fa-fw"></i></div>
+                <div class="stats-icon stats-icon-lg"><i class="fa fa-wheelchair"></i></div>
                 <div class="stats-content">
-                    <div class="stats-title">TODAY'S VISITS</div>
-                    <div class="stats-number">7,842,900</div>
-                    <div class="stats-progress progress">
-                        <div class="progress-bar" style="width: 70.1%;"></div>
-                    </div>
-                    <div class="stats-desc">Better than last week (70.1%)</div>
+                    <div class="stats-title">Data Lansia</div>
+                    <div class="stats-number">{{ $jumlahlansia }}</div>
+                </div>
+                <div class="stats-link">
+                    <a href="admin/data-lansia/datalansia">View Detail </a>
                 </div>
             </div>
         </div>
         <!-- end col-3 -->
         <!-- begin col-3 -->
-        <div class="col-xl-3 col-md-6">
+        <div class="col-xl-6 col-md-6">
             <div class="widget widget-stats bg-blue">
-                <div class="stats-icon stats-icon-lg"><i class="fa fa-dollar-sign fa-fw"></i></div>
+                <div class="stats-icon stats-icon-lg"><i class="fas fa-file-alt"></i></div>
                 <div class="stats-content">
-                    <div class="stats-title">TODAY'S PROFIT</div>
-                    <div class="stats-number">180,200</div>
-                    <div class="stats-progress progress">
-                        <div class="progress-bar" style="width: 40.5%;"></div>
+                    <div class="stats-title">Data Kegiatan</div>
+                    <div class="stats-number">{{ $jumlahkegiatan }}</div>
+                    <div class="stats-link">
+                        <a href="admin/data-kegiatan/datakegiatanlansia">View Detail </a>
                     </div>
-                    <div class="stats-desc">Better than last week (40.5%)</div>
                 </div>
             </div>
         </div>
         <!-- end col-3 -->
-        <!-- begin col-3 -->
-        <div class="col-xl-3 col-md-6">
-            <div class="widget widget-stats bg-indigo">
-                <div class="stats-icon stats-icon-lg"><i class="fa fa-archive fa-fw"></i></div>
-                <div class="stats-content">
-                    <div class="stats-title">NEW ORDERS</div>
-                    <div class="stats-number">38,900</div>
-                    <div class="stats-progress progress">
-                        <div class="progress-bar" style="width: 76.3%;"></div>
-                    </div>
-                    <div class="stats-desc">Better than last week (76.3%)</div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-xl-6 col-md-6">
+            <div class="panel panel-inverse">
+                <div class="panel heading">
+                    <br>
+                    <h4>
+                        <center>Penduduk Lansia menurut Jenis Kelamin</center>
+                    </h4>
+
+                    <body class="h-screen bg-gray-100">
+                        <div class="container px-4 mx-auto">
+                            <div class="p-6 m-20 bg-white rounded shadow">
+                                {!! $jkChart->container() !!}
+                            </div>
+                        </div>
+
+                    </body>
                 </div>
             </div>
         </div>
-        <!-- end col-3 -->
-        <!-- begin col-3 -->
-        <div class="col-xl-3 col-md-6">
-            <div class="widget widget-stats bg-dark">
-                <div class="stats-icon stats-icon-lg"><i class="fa fa-comment-alt fa-fw"></i></div>
-                <div class="stats-content">
-                    <div class="stats-title">NEW COMMENTS</div>
-                    <div class="stats-number">3,988</div>
-                    <div class="stats-progress progress">
-                        <div class="progress-bar" style="width: 54.9%;"></div>
-                    </div>
-                    <div class="stats-desc">Better than last week (54.9%)</div>
+        <div class="col-xl-6 col-md-6">
+            <div class="panel panel-inverse">
+                <div class="panel heading">
+                    <br>
+                    <h4>
+                        <center>Penduduk Lansia menurut Kelompok Umur</center>
+                    </h4>
+
+                    <body class="h-screen bg-gray-100">
+                        <div class="container px-4 mx-auto">
+                            <div class="p-6 m-20 bg-white rounded shadow">
+                                {!! $umurChart->container() !!}
+                            </div>
+                        </div>
+
+                    </body>
                 </div>
             </div>
         </div>
-        <!-- end col-3 -->
+    </div>
+
+    <div class="row>">
+        <div class="col-xl-6 col-md-6">
+            <div class="panel panel-inverse">
+                <div class="panel heading">
+                    <br>
+                    <h4>
+                        <center>Penduduk Lansia menurut Status Perkawinan</center>
+                    </h4>
+
+                    <body class="h-screen bg-gray-100">
+                        <div class="container px-4 mx-auto">
+                            <div class="p-6 m-20 bg-white rounded shadow">
+                                {!! $statusChart->container() !!}
+                            </div>
+                        </div>
+
+                    </body>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- begin row -->
@@ -129,18 +167,19 @@
                         </div>
                     </div>
                 @endforeach
-            </div>
-            <div class="panel-footer">
-                <form name="send_message_form" data-id="message-form" action="/user/tambahkomentar" method="POST">
-                    @csrf
-                    <div class="input-group">
-                        <textarea class="form-control" id="komentar" name="komentar" class="form-control" autofocus
-                            data-parsley-required="true" placeholder="Enter your message here."></textarea>
-                        <span class="input-group-append">
-                            <button class="btn btn-primary" type="submit">Kirim</i></button>
-                        </span>
-                    </div>
-                </form>
+
+                <div class="panel-footer">
+                    <form name="send_message_form" data-id="message-form" action="/user/tambahkomentar" method="POST">
+                        @csrf
+                        <div class="input-group">
+                            <textarea class="form-control" id="komentar" name="komentar" class="form-control" autofocus
+                                data-parsley-required="true" placeholder="Enter your message here."></textarea>
+                            <span class="input-group-append">
+                                <button class="btn btn-primary" type="submit">Kirim</i></button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
         <!-- end panel -->
@@ -148,7 +187,7 @@
         <!-- end col-4 -->
     </div>
     <!-- end row -->
-    </div>
+
 
 
 
@@ -215,6 +254,15 @@
 
 
 @push('scripts')
+    <!-- Gender -->
+    <script src="{{ $jkChart->cdn() }}"></script>
+    {{ $jkChart->script() }}
+    <!-- Umur -->
+    <script src="{{ $umurChart->cdn() }}"></script>
+    {{ $umurChart->script() }}
+    <!-- Status -->
+    <script src="{{ $statusChart->cdn() }}"></script>
+    {{ $statusChart->script() }}
     <script src="/assets/plugins/raphael/raphael.min.js"></script>
     <script src="/assets/plugins/morris.js/morris.min.js"></script>
     <script src="/assets/js/demo/chart-morris.demo.js"></script>

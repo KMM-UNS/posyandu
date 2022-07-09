@@ -92,7 +92,7 @@
                                                 </div>
                                                 <div>
                                                     <label>Pendidikan Terakhir</label>
-                                                    <p class="font-weight-bold">{{ $data['pendidikan_terakhir'] }}</p>
+                                                    <p class="font-weight-bold">{{ $data->pendidikan->nama }}</p>
                                                 </div>
                                                 <div>
                                                     <label>Golongan Darah</label>

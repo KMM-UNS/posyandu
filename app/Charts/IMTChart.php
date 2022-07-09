@@ -19,21 +19,19 @@ class IMTChart
     {
         $data_lansia = DataLansia::where('createable_id', auth()->user()->id)->where('createable_type', 'App\Models\User')->first()->id;
         // dd($data_anak);
-        $pantauan_kmss = PantauanKMS::where('nama_lansia1',$data_lansia)->get()->toArray();
+        $pantauan_kmss = PantauanKMS::where('nama_lansia1', $data_lansia)->get()->toArray();
         // dd($imunisasis);
         // membuat array baru []
-      
+
         $tanggal = array();
         $imt = array();
-       
-        foreach($pantauan_kmss as $pantauan_kms)
-        {
+
+        foreach ($pantauan_kmss as $pantauan_kms) {
             $x = $pantauan_kms['tanggal_pemeriksaan'];
             $y = $pantauan_kms['hasil'];
             // dd($x);
             array_push($tanggal, $x);
             array_push($imt, $y);
-            
         }
         // [0 => '6', 1 => 6 ]
 
@@ -43,8 +41,8 @@ class IMTChart
             ->setSubtitle('Indeks Massa Tubuh')
             ->setTitle('Grafik Indeks Massa Tubuh')
             // ->addData('Berat Badan', $berat)
-            ->addData('IMT (kg/cm^2)',$imt)
-            ->setXAxis( $tanggal);
-            dd($tanggal);
+            ->addData('IMT (kg/cm^2)', $imt)
+            ->setXAxis($tanggal);
+        dd($tanggal);
     }
 }

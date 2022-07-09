@@ -25,4 +25,8 @@ class Pendidikan extends Model
     {
         return $this->hasMany(Pendaftar::class);
     }
+    public function pendidikan()
+    {
+        return $this->hasMany(DataLansia::class);
+    }
 }

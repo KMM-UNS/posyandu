@@ -19,6 +19,7 @@
                                     <th>Rencana </th>
                                     <th>Status</th>
                                     <th>Bukti</th>
+                                    <th>Bukti Angka</th>
                                     <th>Kembali</th>
                                     <th>Status Akhir</th>
                                 </tr>
@@ -43,8 +44,18 @@
                                                     diverifikasi</a>
                                             @endif
                                         </td>
-                                        <td> A </td>
-                                        <td> A </td>
+                                        <td> <a href="{{ asset('buktipengajuan') }}/{{ $dp->bukti }}"
+                                                class="btn btn-outline-primary btn-sm"><i
+                                                    class="fa fa-download"></i>Download</a>
+                                            {{-- <img alt="image" class="mr-3 rounded-circle" width="50"
+                                                src="{{ asset('buktipengajuan') }}/{{ $dp->bukti }}"> --}}
+                                            {{-- <a href="buktipengajuan/{{ $dp->bukti }}"
+                                                class="btn btn-outline-primary btn-sm"><i
+                                                    class="fa fa-download"></i>Download</a> --}}
+
+                                        </td>
+                                        <td> {{ $dp->bukti_angka }} </td>
+                                        <td> {{ $dp->kembali }} </td>
                                         <td>
                                             @if ($dp->statusakhir == '0')
                                                 <a type="button"

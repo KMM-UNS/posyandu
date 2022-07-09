@@ -427,7 +427,7 @@ return [
             'caret' => true,
             'sub_menu' => [
                 [
-                    'url' => '/admin/data-kegiatan/pengajuan',
+                    'url' => '/admin/data-kegiatan/pengajuan_ketua',
                     'title' => '</i>&nbsp;Laporan Keuangan'
 
                 ],

@@ -146,8 +146,12 @@ class KegiatanLansiaController extends Controller
         $total1 = KegiatanLansia::where('status', '1')->sum('jumlah_iuran');
         $data = KegiatanLansia::where('status', '1')->get();
         $dataa = Pengajuan::all();
+        $menunggu = Pengajuan::where('status', 0)->sum('jumlah_ajuan');
+        $danakeluar = Pengajuan::where('status', 1)->sum('bukti_angka');
+        $totaldana = $danakeluar + $total1;
 
-        return view('pages.admin.lansia.kegiatanlansia.laporankegiatan', ['total' => $total, 'total1' => $total1, 'data' => $data, 'dataa' => $dataa]);
+
+        return view('pages.admin.lansia.kegiatanlansia.laporankegiatan', ['total' => $total, 'total1' => $total1, 'data' => $data, 'dataa' => $dataa, 'menunggu' => $menunggu, "danakeluar" => $danakeluar, "totaldana" => $totaldana]);
     }
 
     public function pengajuan(Request $request)
@@ -167,6 +171,34 @@ class KegiatanLansiaController extends Controller
         $statusajuan = Pengajuan::find($id);
         $statusajuan->statusakhir = !$statusajuan->statusakhir;
         $statusajuan->save();
+        return redirect()->back();
+    }
+    public function create_bukti(Request $request, $id)
+    {
+        // dd($request->all());
+        $pengajuan = Pengajuan::where('id', $id)->first();
+        $pengajuan->bukti_angka = $request->bukti_angka;
+        $pengajuan->kembali = $pengajuan->jumlah_ajuan - $pengajuan->bukti_angka;
+
+        // $pengajuan->bukti = $request->bukti;
+        // $pengajuan->save();
+        // $data = $request->all();
+        // $pengajuan->updated($data);
+        // dd($pengajuan);
+        // $pengajuan->update([
+        //     "bukti_angka" => $request->bukti_angka,
+        // ]);
+        // $pengajuan->bukti = $request->bukti;
+
+        // $pengajuan->bukti_angka = $request->bukti_angka;
+        // $pengajuan->save();
+        if ($request->hasFile('bukti')) {
+            $request->file('bukti')->move('buktipengajuan/', $request->file('bukti')->getClientOriginalName());
+            $pengajuan->bukti = $request->file('bukti')->getClientOriginalName();
+            // $pengajuan->save();
+        }
+        $pengajuan->save();
+
         return redirect()->back();
     }
 }

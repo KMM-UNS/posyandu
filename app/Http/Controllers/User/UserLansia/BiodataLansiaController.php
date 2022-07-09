@@ -12,6 +12,8 @@ use App\Models\GolonganDarah;
 use App\Models\StatusKawin;
 use Illuminate\Http\Request;
 use App\Models\JaminanKesehatan;
+use App\Models\Pendidikan;
+
 use Illuminate\Support\Facades\DB;
 
 class BiodataLansiaController extends Controller
@@ -40,9 +42,10 @@ class BiodataLansiaController extends Controller
         $goldas = GolonganDarah::pluck('nama', 'id');
         $statuskawins = StatusKawin::pluck('nama', 'id');
         $jaminankesehatans = JaminanKesehatan::pluck('jaminan_kesehatan_id', 'id');
+        $pendidikans = Pendidikan::pluck('nama', 'id');
 
 
-        return view('pages.user.lansia.biodatalansia.add-edit', ['agamas' =>  $agamas, 'goldas' => $goldas, 'statuskawins' => $statuskawins, 'jaminankesehatans' => $jaminankesehatans]);
+        return view('pages.user.lansia.biodatalansia.add-edit', ['agamas' =>  $agamas, 'goldas' => $goldas, 'statuskawins' => $statuskawins, 'jaminankesehatans' => $jaminankesehatans, 'pendidikans' => $pendidikans]);
     }
 
     /**
@@ -117,6 +120,7 @@ class BiodataLansiaController extends Controller
         $goldas = GolonganDarah::pluck('nama', 'id');
         $statuskawins = StatusKawin::pluck('nama', 'id');
         $jaminankesehatans = JaminanKesehatan::pluck('jaminan_kesehatan_id', 'id');
+        $pendidikans = Pendidikan::pluck('nama', 'id');
         return view('pages.user.lansia.biodatalansia.add-edit', ['agamas' =>  $agamas, 'goldas' => $goldas, 'statuskawins' => $statuskawins, 'jaminankesehatans' => $jaminankesehatans]);
     }
 

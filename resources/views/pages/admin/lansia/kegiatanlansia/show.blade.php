@@ -151,10 +151,10 @@
     <!-- begin tabs -->
     <ul class="nav nav-tabs nav-tabs-inverse nav-justified nav-justified-mobile" data-sortable-id="index-2">
         <li class="nav-item"><a href="#latest-post" data-toggle="tab" class="nav-link active"><i
-                    class="fa fa-wheelchair fa-lg m-r-5"></i> <span class="d-none d-md-inline"> Data Peserta
+                    class="fa fa-wheelchair fa-lg m-r-5"></i> <span class="d-none d-md-inline">Peserta
                     Lansia</span></a></li>
         <li class="nav-item"><a href="#purchase" data-toggle="tab" class="nav-link"><i
-                    class="fas fa-users fa-lg m-r-5"></i> <span class="d-none d-md-inline">Data Peserta Kader</span></a>
+                    class="fas fa-users fa-lg m-r-5"></i> <span class="d-none d-md-inline">Peserta Kader</span></a>
         </li>
     </ul>
     <div class="tab-content" data-sortable-id="index-3">

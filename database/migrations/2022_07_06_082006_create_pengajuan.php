@@ -21,6 +21,7 @@ class CreatePengajuan extends Migration
             $table->string('rencana_ajuan');
             $table->string('status')->default(0);
             $table->string('bukti')->nullable();
+            $table->string('bukti_angka')->nullable();
             $table->string('kembali')->nullable();
             $table->string('statusakhir')->default(0);
             $table->timestamps();

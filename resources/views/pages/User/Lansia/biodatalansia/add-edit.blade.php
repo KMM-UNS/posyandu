@@ -157,9 +157,9 @@
                             <label for="name">Pendidikan Terakhir</label>
                         </div>
                         <div class="col-md-3">
-                            <input type="text" id="pendidikan_terakhir" name="pendidikan_terakhir"
-                                class="form-control" autofocus data-parsley-required="true"
-                                value="{{ $data->pendidikan_terakhir ?? old('pendidikan_terakhir') }}">
+                            <x-form.Dropdown name="pendidikan_terakhir" :options="$pendidikans"
+                                selected="{{ old('pendidikan_terakhir') ?? ($data['pendidikan_terakhir'] ?? null) }}"
+                                required />
                         </div>
                         <div class="col-md-1">
                             <label for="name">Golongan Darah</label>
