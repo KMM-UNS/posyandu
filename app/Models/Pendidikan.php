@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
+use App\Models\Kader;
 
 class Pendidikan extends Model
 {
@@ -24,5 +25,10 @@ class Pendidikan extends Model
     public function pendaftar()
     {
         return $this->hasMany(Pendaftar::class);
+    }
+
+    public function kader()
+    {
+        return $this->hasMany(Kader::class);
     }
 }

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Kader;
 use App\Datatables\Admin\Master\KaderDataTable;
+use App\Models\Pendidikan;
 
 class KaderController extends Controller
 {
@@ -26,7 +27,8 @@ class KaderController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.master.datakader.add-edit');
+        $pendidikan=Pendidikan::pluck('nama','id');
+        return view('pages.admin.master.datakader.add-edit',['pendidikan'=>$pendidikan]);
     }
 
     /**
@@ -74,8 +76,9 @@ class KaderController extends Controller
      */
     public function edit($id)
     {
+        $pendidikan=Pendidikan::pluck('nama','id');
         $data = Kader::findOrFail($id);
-        return view('pages.admin.master.datakader.add-edit', ['data' => $data]);
+        return view('pages.admin.master.datakader.add-edit', ['data' => $data, 'pendidikan'=>$pendidikan]);
     }
 
     /**

@@ -107,15 +107,15 @@ function Example() {
         {
             usia: "4 Bulan",
             tanggal: `${new Date(
-                date.getTime() + 2592000000 * 3 + 1728000000
+                date.getTime() + 2592000000 * 4
             ).getDate()} ${
                 month[
                     new Date(
-                        date.getTime() + 2592000000 * 3 + 1728000000
+                        date.getTime() + 2592000000 * 4
                     ).getMonth()
                 ]
             } ${new Date(
-                date.getTime() + 2592000000 * 3 + 1728000000
+                date.getTime() + 2592000000 * 4
             ).getFullYear()} `,
             immunization: [
                 {
@@ -138,18 +138,17 @@ function Example() {
         {
             usia: "9 Bulan",
             tanggal: `${new Date(
-                date.getTime() + 2592000000 * 3 + 1728000000 + 13824000000
+                date.getTime() + 2592000000 * 4 + 13824000000
             ).getDate()} ${
                 month[
                     new Date(
                         date.getTime() +
-                            2592000000 * 3 +
-                            1728000000 +
+                            2592000000 * 4 +
                             13824000000
                     ).getMonth()
                 ]
             } ${new Date(
-                date.getTime() + 2592000000 * 3 + 1728000000 + 13824000000
+                date.getTime() + 2592000000 * 4 + 13824000000
             ).getFullYear()} `,
             immunization: [
                 {
@@ -160,19 +159,18 @@ function Example() {
         {
             usia: "12 Bulan",
             tanggal: `${new Date(
-                date.getTime() + 2592000000 * 3 + 1728000000 + 13824000000 + 7776000000
+                date.getTime() + 2592000000 * 4 + 13824000000 + 7776000000
             ).getDate()} ${
                 month[
                     new Date(
                         date.getTime() +
-                            2592000000 * 3 +
-                            1728000000 +
+                            2592000000 * 4 +
                             13824000000 +
                             7776000000
                     ).getMonth()
                 ]
             } ${new Date(
-                date.getTime() + 2592000000 * 3 + 1728000000 + 13824000000 + 7776000000
+                date.getTime() + 2592000000 * 4 + 13824000000 + 7776000000
             ).getFullYear()} `,
             immunization: [
                 {
@@ -183,21 +181,20 @@ function Example() {
     ];
 
     return (
-        <div className="container ">
-            <h2 className="text-center mt-5">Imunisasi</h2>
-            <div className="card shadow-sm mt-3 mb-5 bg-white rounded">
-                <div className="card-header font-weight-bold">
-                    <h3>Jadwal Imunisasi</h3>
-                </div>
-                <div className="card-body">
-                    <div className="row">
-                        <div className="col-sm">
-                            <div className="row">
-                                <div className="col-sm">
-                                    <label>Jenis Kelamin</label>
-                                </div>
-                            </div>
-                            <div className="row">
+        <div className="container">
+            <h2 className="text-center mt-5">Jadwal Imunisasi</h2>
+            <div className="card shadow-sm mt-3 mb-5 rounded">
+                <table class="table">
+                <thead>
+                    <tr>
+                    <th scope="col">Jenis Kelamin</th>
+                    <th scope="col">Tanggal Lahir</th>
+                    <th scope="col"></th>
+                    </tr>
+                </thead>
+                    <tbody>
+                        <tr>
+                            <td>
                                 <div className="col-sm">
                                     <select
                                         defaultValue={"default"}
@@ -205,7 +202,7 @@ function Example() {
                                             setGender(e.target.value);
                                         }}
                                         className="w-100"
-                                        style={{ height: "29px" }}
+                                        style={{ height: "29px", width: "100%" }}
                                     >
                                         <option value={"default"} disabled>
                                             Pilih
@@ -218,39 +215,34 @@ function Example() {
                                         </option>
                                     </select>
                                 </div>
-                            </div>
-                        </div>
-                        <div className="col-sm">
-                            <div className="row">
-                                <div className="col-sm">
-                                    <label>Tanggal Lahir</label>
-                                </div>
-                            </div>
-                            <div className="row">
-                                <div className="col-sm">
+                            </td>
+                            <td>
+                                <div className="col-sm" style={{ width: "100%" }}>
                                     <DatePicker
                                         onChange={setDate}
                                         value={date}
                                         clearIcon={null}
                                         format="dd-MM-y"
                                         maxDate={new Date()}
-                                        className="w-100 text-center"
+
                                     />
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="mt-3 w-100">
-                        <button
-                            onClick={clickHandler}
-                            className="btn btn-primary w-100"
-                            data-toggle="modal"
-                            data-target="#exampleModal"
-                        >
-                            Lihat Jadwal Imunisasi
-                        </button>
-                    </div>
-                </div>
+                            </td>
+                            <td>
+                                <div
+                                    onClick={clickHandler}
+                                    className="bg-primary p-2 text-center"
+                                    data-toggle="modal"
+                                    data-target="#exampleModal"
+                                    style={{ cursor: "pointer" }}
+                                    >
+                                    Lihat Jadwal Imunisasi
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
             </div>
             <Modal submit={submit} gender={gender} BabyIcon={BabyIcon} timeTable={timeTable} InjectIcon={InjectIcon} CalendarIcon={CalendarIcon} />
         </div>

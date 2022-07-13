@@ -1,4 +1,5 @@
-@extends('layouts.default')
+{{-- @extends('layouts.default') --}}
+@extends('layouts.default', ['topMenu' => true, 'sidebarHide' => true])
 
 @section('title', 'Dashboard V2')
 
@@ -19,6 +20,7 @@
 <h1 class="page-header">Dashboard Admin <small></small></h1>
 <!-- end page-header -->
 
+
 <!-- begin row -->
 <div class="row">
   <div class="col-xl-3 col-md-6">
@@ -26,7 +28,7 @@
       <div class="stats-icon"><i class="fa fa-users"></i></div>
       <div class="stats-info">
         <h4>JUMLAH ANAK</h4>
-        <p>{{ $anak }}</p>
+        {{-- <p>{{ $anak }}</p> --}}
       </div>
       <div class="stats-link">
         <a href=/admin/anak-data/dataanak>View Detail <i class="fa fa-arrow-alt-circle-right"></i></a>

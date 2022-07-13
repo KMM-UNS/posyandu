@@ -43,7 +43,7 @@
     <br>
 
     <div class="panel-body">
-      <center><h4> Laporan Imunisasi</h4></center>
+      <center><h4> Laporan Kegiatan</h4></center>
       <a href="/admin/anak-data/cetaklaporankegiatan/{{ $startDate }}/{{ $endDate }}" class="btn btn-secondary btn-sm float-right mr-4"><i class="fa fa-print fa-fw"></i> Cetak Laporan </a>
       <br>
 

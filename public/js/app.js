@@ -5834,7 +5834,7 @@ function Example() {
     }]
   }, {
     usia: "4 Bulan",
-    tanggal: "".concat(new Date(date.getTime() + 2592000000 * 3 + 1728000000).getDate(), " ").concat(month[new Date(date.getTime() + 2592000000 * 3 + 1728000000).getMonth()], " ").concat(new Date(date.getTime() + 2592000000 * 3 + 1728000000).getFullYear(), " "),
+    tanggal: "".concat(new Date(date.getTime() + 2592000000 * 4).getDate(), " ").concat(month[new Date(date.getTime() + 2592000000 * 4).getMonth()], " ").concat(new Date(date.getTime() + 2592000000 * 4).getFullYear(), " "),
     immunization: [{
       name: "DPT 3"
     }, {
@@ -5848,45 +5848,41 @@ function Example() {
     }]
   }, {
     usia: "9 Bulan",
-    tanggal: "".concat(new Date(date.getTime() + 2592000000 * 3 + 1728000000 + 13824000000).getDate(), " ").concat(month[new Date(date.getTime() + 2592000000 * 3 + 1728000000 + 13824000000).getMonth()], " ").concat(new Date(date.getTime() + 2592000000 * 3 + 1728000000 + 13824000000).getFullYear(), " "),
+    tanggal: "".concat(new Date(date.getTime() + 2592000000 * 4 + 13824000000).getDate(), " ").concat(month[new Date(date.getTime() + 2592000000 * 4 + 13824000000).getMonth()], " ").concat(new Date(date.getTime() + 2592000000 * 4 + 13824000000).getFullYear(), " "),
     immunization: [{
       name: "Campak 1"
     }]
   }, {
     usia: "12 Bulan",
-    tanggal: "".concat(new Date(date.getTime() + 2592000000 * 3 + 1728000000 + 13824000000 + 7776000000).getDate(), " ").concat(month[new Date(date.getTime() + 2592000000 * 3 + 1728000000 + 13824000000 + 7776000000).getMonth()], " ").concat(new Date(date.getTime() + 2592000000 * 3 + 1728000000 + 13824000000 + 7776000000).getFullYear(), " "),
+    tanggal: "".concat(new Date(date.getTime() + 2592000000 * 4 + 13824000000 + 7776000000).getDate(), " ").concat(month[new Date(date.getTime() + 2592000000 * 4 + 13824000000 + 7776000000).getMonth()], " ").concat(new Date(date.getTime() + 2592000000 * 4 + 13824000000 + 7776000000).getFullYear(), " "),
     immunization: [{
       name: "PVC"
     }]
   }];
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-    className: "container ",
+    className: "container",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h2", {
       className: "text-center mt-5",
-      children: "Imunisasi"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-      className: "card shadow-sm mt-3 mb-5 bg-white rounded",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
-        className: "card-header font-weight-bold",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h3", {
-          children: "Jadwal Imunisasi"
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-        className: "card-body",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-          className: "row",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-            className: "col-sm",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
-              className: "row",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
-                className: "col-sm",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("label", {
-                  children: "Jenis Kelamin"
-                })
-              })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
-              className: "row",
+      children: "Jadwal Imunisasi"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+      className: "card shadow-sm mt-3 mb-5 rounded",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("table", {
+        "class": "table",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("thead", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("tr", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("th", {
+              scope: "col",
+              children: "Jenis Kelamin"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("th", {
+              scope: "col",
+              children: "Tanggal Lahir"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("th", {
+              scope: "col"
+            })]
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("tbody", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("tr", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("td", {
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
                 className: "col-sm",
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("select", {
@@ -5896,7 +5892,8 @@ function Example() {
                   },
                   className: "w-100",
                   style: {
-                    height: "29px"
+                    height: "29px",
+                    width: "100%"
                   },
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("option", {
                     value: "default",
@@ -5911,43 +5908,35 @@ function Example() {
                   })]
                 })
               })
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-            className: "col-sm",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
-              className: "row",
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("td", {
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
                 className: "col-sm",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("label", {
-                  children: "Tanggal Lahir"
-                })
-              })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
-              className: "row",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
-                className: "col-sm",
+                style: {
+                  width: "100%"
+                },
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_date_picker__WEBPACK_IMPORTED_MODULE_2__["default"], {
                   onChange: setDate,
                   value: date,
                   clearIcon: null,
                   format: "dd-MM-y",
-                  maxDate: new Date(),
-                  className: "w-100 text-center"
+                  maxDate: new Date()
                 })
               })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("td", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+                onClick: clickHandler,
+                className: "bg-primary p-2 text-center",
+                "data-toggle": "modal",
+                "data-target": "#exampleModal",
+                style: {
+                  cursor: "pointer"
+                },
+                children: "Lihat Jadwal Imunisasi"
+              })
             })]
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
-          className: "mt-3 w-100",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
-            onClick: clickHandler,
-            className: "btn btn-primary w-100",
-            "data-toggle": "modal",
-            "data-target": "#exampleModal",
-            children: "Lihat Jadwal Imunisasi"
           })
         })]
-      })]
+      })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Modal__WEBPACK_IMPORTED_MODULE_6__["default"], {
       submit: submit,
       gender: gender,

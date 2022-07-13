@@ -18,6 +18,8 @@
 	<link href="{{asset('assets')}}/css/one-page-parallax/style.min.css" rel="stylesheet" />
 	<link href="{{asset('assets')}}/css/one-page-parallax/style-responsive.min.css" rel="stylesheet" />
 	<link href="{{asset('assets')}}/css/one-page-parallax/theme/default.css" id="theme" rel="stylesheet" />
+    {{-- <link href="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous"> --}}
+
 	<!-- ================== END BASE CSS STYLE ================== -->
 
 	<!-- ================== BEGIN BASE JS ================== -->
@@ -62,7 +64,7 @@
                         {{-- <li><a href="#about" data-click="scroll-to-target">Tentang</a></li> --}}
                         {{-- <li><a href="#team" data-click="scroll-to-target">TEAM</a></li> --}}
                         <li><a href="#service" data-click="scroll-to-target">Layanan</a></li>
-                        {{-- <li><a href="#work" data-click="scroll-to-target">Galeri</a></li> --}}
+                        <li><a href="#work" data-click="scroll-to-target">Jadwal</a></li>
                         {{-- <li><a href="#client" data-click="scroll-to-target">CLIENT</a></li> --}}
                         {{-- <li><a href="#pricing" data-click="scroll-to-target">PRICING</a></li> --}}
                         <li><a href="#contact" data-click="scroll-to-target">Kontak</a></li>
@@ -472,11 +474,31 @@
         <!-- end #action-box -->
 
         <!-- begin #work -->
-        {{-- <div id="work" class="content" data-scrollview="true">
+         <div id="work" class="content" data-scrollview="true">
             <!-- begin container -->
             <div class="container" data-animation="true" data-animation-type="fadeInDown">
-                <h2 class="content-title">Galeri</h2>
-                <p class="content-desc">
+                <h2 class="content-title">Jadwal</h2>
+                {{-- <!DOCTYPE html> --}}
+                    <html lang="en">
+                    <head>
+                        {{-- <meta charset="UTF-8"> --}}
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+                        <title>Jadwal</title>
+                        <link href="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+                    </head>
+                    <body>
+                        <div id="example"></div>
+                    </body>
+                    <script type="text/javascript" src="js/app.js"></script>
+                    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+                    </html>
+
+
+
+
+                {{-- <p class="content-desc">
                     Beberapa Kegiatan yang dilakukan Posyandu.
                 </p>
                 <!-- begin row -->
@@ -605,11 +627,11 @@
                         <!-- end work -->
                     </div>
                     <!-- end col-3 -->
-                </div>
+                </div> --}}
                 <!-- end row -->
             </div>
             <!-- end container -->
-        </div> --}}
+        </div>
         <!-- end #work -->
 
         <!-- begin #client -->

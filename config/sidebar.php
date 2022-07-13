@@ -102,18 +102,18 @@ return [
             'url' => 'javascript:;',
             'caret' => true,
             'sub_menu' => [
-                [
-                    'url' => '/admin/setting',
-                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;App'
-                ],
-                [
-                    'url' => '/admin/master-data/golda',
-                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Golongan Darah'
-                ],
                 // [
-                //     'url' => '/admin/master-data/vitamin',
-                //     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Vitamin'
+                //     'url' => '/admin/setting',
+                //     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;App'
                 // ],
+                // [
+                //     'url' => '/admin/master-data/status-kawin',
+                //     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Status Kawin'
+                // ],
+                [
+                    'url' => '/admin/master-data/pendidikan',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Pendidikan'
+                ],
                 [
 
                     'url' => '/admin/master-data/jenisvaksin',
@@ -160,7 +160,7 @@ return [
         [
             'icon' => 'fa fa-th-large',
             'title' => 'Dashboard',
-            'url' => '/',
+            'url' => '/beranda',
             'caret' => false,
         ],
         [
@@ -171,28 +171,29 @@ return [
             'sub_menu' => [[
                 'icon' => 'fa fa-th-large',
                 'title' => 'Biodata',
-                'url' => '/biodata',
+                'url' => '/user/biodata',
                 'caret' => false
             ],
+            // [
+            //     'icon' => 'fa fa-th-large',
+            //     'title' => 'Jadwal Imunisasi',
+            //     'url' => 'user/jadwal',
+            //     'caret' => false
+            // ],
             [
                 'icon' => 'fa fa-th-large',
-                'title' => 'Jadwal Imunisasi',
-                'url' => '/jadwal',
-                'caret' => false
-            ],[
-                'icon' => 'fa fa-th-large',
                 'title' => 'Kegiatan Posyandu',
-                'url' => '/kegiatan',
+                'url' => '/user/kegiatan',
                 'caret' => false
             ],[
                 'icon' => 'fa fa-th-large',
                 'title' => 'Riwayat Imunisasi',
-                'url' => '/grafik',
+                'url' => '/user/grafik',
                 'caret' => false
             ],[
                 'icon' => 'fa fa-th-large',
                 'title' => 'Rujukan',
-                'url' => '/rujuk',
+                'url' => '/user/rujuk',
                 'caret' => false
             ],
             ]
@@ -218,22 +219,22 @@ return [
             'caret' => false
         ],
 
-        [
-            'icon' => 'fa fa-wheelchair',
-            'title' => 'Anak',
-            'url' => 'javascript:;',
-            'caret' => true,
-            'sub_menu' => [
-                [
-                    'url' => ' /admin/anak-data/dataanak',
-                    'title' => '</i>&nbsp;Data Anak'
-                ],
-                [
-                    'url' => ' /admin/anak-data/imunisasi',
-                    'title' => '</i>&nbsp;Imunisasi'
-                ],
-            ]
-        ],
+        // [
+        //     'icon' => 'fa fa-wheelchair',
+        //     'title' => 'Anak',
+        //     'url' => 'javascript:;',
+        //     'caret' => true,
+        //     'sub_menu' => [
+        //         [
+        //             'url' => ' /admin/anak-data/dataanak',
+        //             'title' => '</i>&nbsp;Data Anak'
+        //         ],
+        //         [
+        //             'url' => ' /admin/anak-data/imunisasi',
+        //             'title' => '</i>&nbsp;Imunisasi'
+        //         ],
+        //     ]
+        // ],
         [
             'icon' => '	fas fa-file-alt',
             'title' => 'Laporan',

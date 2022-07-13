@@ -43,7 +43,8 @@ class KaderDataTable extends DataTable
      */
     public function query(Kader $model)
     {
-        return $model->newQuery();
+        // return $model->newQuery();
+        return $model->select('kaders.*')->with(['pendidikan']);
     }
 
     /**
@@ -82,8 +83,8 @@ class KaderDataTable extends DataTable
             Column::make('jabatan'),
             Column::make('jenis_kelamin'),
             Column::make('TTL'),
-            Column::make('pendidikan'),
-            Column::make('status_absen'),
+            Column::make('pendidikan')->data('pendidikan.nama'),
+            // Column::make('status_absen'),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)

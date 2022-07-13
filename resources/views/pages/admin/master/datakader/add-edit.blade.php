@@ -49,8 +49,9 @@
         <label for="name">TTL</label>
         <input type="date" id="TTL" name="TTL" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->TTL ?? old('TTL') }}}">
         <label for="name">Pendidikan</label>
-        <input type="text" id="pendidikan" name="pendidikan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->pendidikan ?? old('pendidikan') }}}">
-        <label for="name">Status Absen</label>
+        <x-form.Dropdown name="pendidikan" :options="$pendidikan" selected="{{{ old('pendidikan') ?? ($data['pendidikan'] ?? null) }}}" required />
+        {{-- <input type="text" id="pendidikan" name="pendidikan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->pendidikan ?? old('pendidikan') }}}"> --}}
+        <label for="name">Status Kader</label>
         <input type="text" id="status_absen" name="status_absen" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->status_absen ?? old('status_absen') }}}">
       </div>
     </div>

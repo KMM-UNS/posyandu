@@ -22,7 +22,7 @@
     </div>
     @else --}}
     <div align="center">
-	<h1 class="page-header"><strong> Kartu Menuju Sehat (KMS) </strong></h1>
+	<h1 class="page-header"><strong> Riwayat Imunisasi </strong></h1>
     </div>
 	<!-- end page-header -->
 	<!-- begin row -->

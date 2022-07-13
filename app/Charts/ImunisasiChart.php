@@ -30,7 +30,7 @@ class ImunisasiChart
             $x = $imunisasi['berat_badan'];
             $y = $imunisasi['tinggi_badan'];
             $z = $imunisasi['umur'];
-            // dd($x);
+            // dd($x); array push agar datanya ter pisah pisah tidak tercampur
             array_push($berat, $x);
             array_push($tinggi, $y);
             array_push($umur, $z);

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Imunisasi;
 use App\Models\JadwalImunisasi;
+use App\Models\Pendidikan;
 
 
 class Kader extends Model
@@ -32,4 +33,10 @@ class Kader extends Model
     {
         return $this->hasMany(JadwalImunisasi::class);
     }
+
+    public function pendidikan()
+    {
+         return $this->belongsTo(Pendidikan::class,'pendidikan');
+    }
+
 }

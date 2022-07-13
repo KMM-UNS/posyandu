@@ -56,6 +56,8 @@
         <th>Tanggal Imunisasi</th>
         <th>Berat Badan</th>
         <th>Tinggi Badan</th>
+        <th>Total IMT</th>
+        <th>Ketegori IMT</th>
         <th>Umur</th>
         <th>Jenis Vaksin</th>
         <th>Vitamin Anak</th>
@@ -71,6 +73,8 @@
         <td> {{ $cetak->tanggal_imunisasi }}</td>
         <td> {{ $cetak->berat_badan}}</td>
         <td> {{ $cetak->tinggi_badan}}</td>
+        <td> {{ $cetak->total_imt}}</td>
+        <td> {{ $cetak->ket_imt}}</td>
         <td> {{ $cetak->umur}}</td>
         <td> {{ $cetak->jenisvaksin->vaksin}}</td>
         <td> {{ $cetak->vitamin_anak->nama_vitamin}}</td>
