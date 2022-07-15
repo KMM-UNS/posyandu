@@ -44,7 +44,7 @@ class KeluhanTindakanDataTable extends DataTable
      */
     public function query(KeluhanTindakan $model)
     {
-        return $model->select('keluhan_tindakan.*')->with(['lansia', 'kader']);
+        return $model->with(['lansia', 'kader'])->select('keluhan_tindakan.*')->newQuery();
     }
 
     /**
@@ -78,11 +78,11 @@ class KeluhanTindakanDataTable extends DataTable
         return [
             //Column::make('id'),
             //Column::make('no'),
-            Column::make('nama_lansia')->data('lansia.nama_lansia'),
-            Column::make('nama_pemeriksa')->data('kader.nama'),
-            Column::make('tanggal_pemeriksaan'),
-            Column::make('keluhan'),
-            Column::make('tindakan'),
+            Column::make('lansia.nama_lansia', 'lansia.nama_lansia')->title('Nama Lansia'),
+            Column::make('kader.nama', 'kader.nama')->title('Nama Pemeriksa'),
+            Column::make('tanggal_pemeriksaan', 'keluhan_tindakan.tanggal_pemeriksaan')->title('Tanggal Pemeriksaan'),
+            Column::make('keluhan', 'keluhan_tindakan.keluhan')->title('Keluhan'),
+            Column::make('tindakan', 'keluhan_tindakan.tindakan')->title('Tindakan'),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)

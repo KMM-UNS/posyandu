@@ -66,7 +66,8 @@ class RujukanLansiaDataTable extends DataTable
      */
     public function query(RujukanLansia $model)
     {
-        return $model->select('rujukan_lansia.*')->with(['rujukan']);
+        // return $model->select('rujukan_lansia.*')->with(['rujukan']);
+        return $model->with(['rujukan'])->select('rujukan_lansia.*')->newQuery();
     }
 
     /**
@@ -100,14 +101,14 @@ class RujukanLansiaDataTable extends DataTable
         return [
 
             // Column::make('id'),
-            Column::make('no_surat'),
-            Column::make('kepada'),
-            Column::make('tanggal_surat'),
-            Column::make('namalansia')->data('rujukan.nama_lansia'),
-            Column::make('umur'),
-            Column::make('jeniskelamin'),
-            Column::make('alamat'),
-            Column::make('keluhan'),
+            Column::make('no_surat', 'rujukan_lansia.no_surat'),
+            Column::make('kepada', 'rujukan_lansia.kepada'),
+            Column::make('tanggal_surat', 'rujukan_lansia.tanggal_surat')->title('Tanggal Surat'),
+            Column::make('rujukan.nama_lansia', 'rujukan.nama_lansia')->title('Nama Lansia'),
+            Column::make('umur', 'rujukan_lansia.umur'),
+            Column::make('jeniskelamin', 'rujukan_lansia.jeniskelamin')->title('Jenis Kelamin'),
+            Column::make('alamat', 'rujukan_lansia.alamat'),
+            Column::make('keluhan', 'rujukan_lansia.keluhan'),
             // Column::make('Status'),
             Column::computed('status')
                 ->exportable(false)

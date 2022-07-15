@@ -22,17 +22,13 @@ class DataKematianLansia extends Model
     protected $fillable = [
         'nama_jenazah',
         'jenis_kelamin',
-        'tgl_lahir', 
-        'tgl_meninggal', 
-      
+        'tgl_lahir',
+        'tgl_meninggal',
+
     ];
-    
+
     public function kematian()
     {
-        return $this->belongsTo(DataLansia::class,'nama_jenazah');
+        return $this->belongsTo(DataLansia::class, 'nama_jenazah');
     }
-
-    
-
-
 }

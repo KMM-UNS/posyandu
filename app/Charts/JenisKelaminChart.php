@@ -17,6 +17,9 @@ class JenisKelaminChart
     public function build(): \ArielMejiaDev\LarapexCharts\PieChart
     {
         return $this->chart->pieChart()
+            ->setTitle('Penduduk Lansia menurut Jenis Kelamin')
+            // ->setTitle('Penduduk Lansia Berdasarkan Jaminan Kesehatan')
+            ->setSubtitle('Tahun 2022.')
             ->addData([
 
                 DataLansia::where('jenis_kelamin', 'laki-laki')->count(),

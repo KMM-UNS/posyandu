@@ -157,6 +157,7 @@ class KegiatanLansiaController extends Controller
     public function pengajuan(Request $request)
     {
         Pengajuan::create($request->all());
+        // return view('pages.admin.lansia.kegiatanlansia.laporankegiatan');
         return redirect()->back();
     }
     public function status_pengajuan($id)

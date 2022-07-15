@@ -7,27 +7,36 @@ use App\Models\DataLansia;
 use App\Charts\JenisKelaminChart;
 use App\Charts\UmurChart;
 use App\Charts\StatusKawinChart;
+use App\Charts\JamkesChart;
 use App\Models\KegiatanLansia;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
 class DashboardController extends Controller
 {
-    public function index(JenisKelaminChart  $jkChart, UmurChart $umurChart, StatusKawinChart $statusChart)
+    public function index(JenisKelaminChart  $jkChart, UmurChart $umurChart, StatusKawinChart $statusChart, JamkesChart $jamkesChart)
     {
-        $data = ForumLansia::get();
-        $jumlahlansia = DataLansia::count();
-        $jumlahkegiatan = KegiatanLansia::count();
-        return view('pages.admin.dashboard', [
-            'data' => $data,
-            'jumlahlansia' => $jumlahlansia,
-            'jumlahkegiatan' => $jumlahkegiatan,
-            'jkChart' => $jkChart->build(),
-            'umurChart' => $umurChart->build(),
-            'statusChart' => $statusChart->build(),
-        ]);
-
-        // return view('pages.admin.dashboard', ['JenisKelaminChart' => $genderChart->build()], compact('data', 'jumlahlansia', 'jumlahkegiatan', 'chart'));
+        // dd(auth()->user()->hasRole('regular_user'));
+        if (auth()->user()->hasRole('regular_user')) {
+            $data = ForumLansia::get();
+            $kegiatanlansia = KegiatanLansia::where('status', '0')->get();
+            return view('home', compact('data', 'kegiatanlansia'));
+        } else {
+            $data = ForumLansia::get();
+            $jumlahlansia = DataLansia::count();
+            $jumlahkegiatan = KegiatanLansia::count();
+            $kegiatanlansia = KegiatanLansia::where('status', '0')->get();
+            return view('pages.admin.dashboard', [
+                'data' => $data,
+                'jumlahlansia' => $jumlahlansia,
+                'jumlahkegiatan' => $jumlahkegiatan,
+                'jkChart' => $jkChart->build(),
+                'umurChart' => $umurChart->build(),
+                'statusChart' => $statusChart->build(),
+                'jamkesChart' => $jamkesChart->build(),
+                'kegiatanlansia' => $kegiatanlansia,
+            ]);
+        }
     }
 
     public function create()

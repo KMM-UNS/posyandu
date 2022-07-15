@@ -137,7 +137,7 @@ class DataLansiaController extends Controller
         $jaminankesehatans = JaminanKesehatan::pluck('jaminan_kesehatan_id', 'id');
         $pendidikans = Pendidikan::pluck('nama', 'id');
 
-        return view('pages.admin.lansia.data-lansia.add-edit', ['data' => $data, 'agamas' =>  $agamas, 'goldas' => $goldas, 'statuskawins' => $statuskawins, 'jaminankesehatans' => $jaminankesehatans, 'pendidikans' => $pendidikans]);
+        return view('pages.admin.lansia.data-lansia.edit', ['data' => $data, 'agamas' =>  $agamas, 'goldas' => $goldas, 'statuskawins' => $statuskawins, 'jaminankesehatans' => $jaminankesehatans, 'pendidikans' => $pendidikans]);
     }
 
     /**

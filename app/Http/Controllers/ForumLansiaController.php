@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ForumLansia;
+use App\Models\KegiatanLansia;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
@@ -11,7 +12,8 @@ class ForumLansiaController extends Controller
     public function index()
     {
         $data = ForumLansia::get();
-        return view('home', compact('data'));
+        $kegiatanlansia = KegiatanLansia::where('status', '0')->get();
+        return view('home', compact('data', 'kegiatanlansia'));
     }
 
     public function create()

@@ -13,6 +13,7 @@ use App\Models\GolonganDarah;
 use App\Models\JaminanKesehatan;
 use App\Models\Pendidikan;
 use App\Models\PesertaKegiatan;
+// use App\Models\DataKematianLansia;
 
 
 
@@ -26,7 +27,7 @@ class DataLansia extends Model
     protected $table = 'data_lansia';
     protected $fillable = [
         'nama_lansia',
-        'no_kms',
+        // 'no_kms',
         'email',
         'no_hp',
         'NIK',

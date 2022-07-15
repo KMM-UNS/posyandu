@@ -58,7 +58,7 @@ class PantauanKMSDataTable extends DataTable
      */
     public function query(PantauanKMS $model)
     {
-        return $model->select('pantauan_kms.*')->with(['lansia']);
+        return $model->with(['lansia'])->select('pantauan_kms.*')->newQuery();
     }
 
     /**
@@ -116,12 +116,12 @@ class PantauanKMSDataTable extends DataTable
         return [
             //Column::make('id'),
             //Column::make('no'),
-            Column::make('tanggal_pemeriksaan'),
-            Column::make('nama_lansia1')->data('lansia.nama_lansia'),
+            Column::make('tanggal_pemeriksaan', 'pantauan_kms.tanggal_pemeriksaan')->title(' Tanggal Pemeriksaan'),
+            Column::make('lansia.nama_lansia', 'lansia.nama_lansia')->title('Nama Lansia'),
             // Column::make('kegiatan_harian'),
             // Column::make('status_mental'),
-            Column::make('indeks_massa_tubuh'),
-            Column::make('tekanan_darah'),
+            Column::make('indeks_massa_tubuh', 'pantauan_kms.indeks_massa_tubuh')->title('Indeks Massa Tubuh'),
+            Column::make('tekanan_darah', 'pantauan_kms.tekanan_darah')->title(' Tekanan Darah'),
             // Column::make('hemoglobin'),
             // Column::make('reduksi_urine'),
             // Column::make('protein_urine'),

@@ -8,6 +8,18 @@
     <link href="{{ asset('/assets/plugins/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css') }}"
         rel="stylesheet" />
     <!-- end datatables -->
+    <!-- datatables 2 -->
+    {{-- <link rel="stylesheet" href="{{ asset('dashboard2') }}/vendors/feather/feather.css"> --}}
+    {{-- <link rel="stylesheet" href="{{ asset('dashboard2') }}/vendors/ti-icons/css/themify-icons.css"> --}}
+    {{-- <link rel="stylesheet" href="{{ asset('dashboard2') }}/vendors/css/vendor.bundle.base.css"> --}}
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="{{ asset('dashboard2') }}/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    {{-- <link rel="stylesheet" href="{{ asset('dashboard2') }}/css/vertical-layout-light/style.css"> --}}
+    <!-- endinject -->
+    {{-- <link rel="shortcut icon" href="{{ asset('dashboard2') }}/images/favicon.png" /> --}}
 @endpush
 
 @section('content')
@@ -63,7 +75,7 @@
         <!-- begin panel-body -->
         <div class="panel-body">
             <div class="form-group">
-                <table class="table table-bordered my-3" align="center" border="1px"
+                <table id="order-listing" class="table table-bordered my-3" align="center" border="1px"
                     style="width: 95%; margin-top: 1 rem; margin-bottom: 1 rem;">
                     <thead>
                         <tr>
@@ -112,7 +124,7 @@
                         {!! $chart->container() !!}
                     </div>
                 </div>
- <script src="{{ $chart->cdn() }}"></script>
+                <script src="{{ $chart->cdn() }}"></script>
                 {{ $chart->script() }}
             </body>
         </div>
@@ -123,7 +135,7 @@
     <!-- datatables -->
     <script src="{{ asset('assets/js/custom/datatable-assets.js') }}"></script>
     {{ $dataTable->scripts() }}
-	<!-- end datatables -->
+    <!-- end datatables -->
 
     <script src="{{ asset('assets/js/custom/delete-with-confirmation.js') }}"></script>
     <script>
@@ -131,4 +143,17 @@
             $('.buttons-reload').trigger('click')
         })
     </script>
+
+    <script src="{{ asset('dashboard2') }}/vendors/datatables.net/jquery.dataTables.js"></script>
+    <script src="{{ asset('dashboard2') }}/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+    <!-- End plugin js for this page-->
+    <!-- inject:js -->
+    {{-- <script src="{{ asset('dashboard2') }}/js/off-canvas.js"></script>
+    <script src="{{ asset('dashboard2') }}/js/hoverable-collapse.js"></script>
+    <script src="{{ asset('dashboard2') }}/js/template.js"></script>
+    <script src="{{ asset('dashboard2') }}/js/settings.js"></script>
+    <script src="{{ asset('dashboard2') }}/js/todolist.js"></script> --}}
+    <!-- endinject -->
+    <!-- Custom js for this page-->
+    <script src="{{ asset('dashboard2') }}/js/data-table.js"></script>
 @endpush

@@ -11,23 +11,22 @@ $sidebarClass = !empty($sidebarTransparent) ? 'sidebar-transparent' : '';
                 <li class="nav-profile">
                     <a href="javascript:;" data-toggle="nav-profile">
                         <div class="cover with-shadow"></div>
-                        <div class="image">
+                        {{-- <div class="image">
                             <img src="/assets/img/user/user-13.jpg" alt="" />
-                        </div>
+                        </div> --}}
                         <div class="info">
-                            <b class="caret pull-right"></b>
-                            Sean Ngu
-                            <small>Front end developer</small>
+                            {{ Auth::user()->name }}
+                            {{-- <small>Front end developer</small> --}}
                         </div>
                     </a>
                 </li>
-                <li>
+                {{-- <li>
                     <ul class="nav nav-profile">
                         <li><a href="javascript:;"><i class="fa fa-cog"></i> Settings</a></li>
                         <li><a href="javascript:;"><i class="fa fa-pencil-alt"></i> Send Feedback</a></li>
                         <li><a href="javascript:;"><i class="fa fa-question-circle"></i> Helps</a></li>
                     </ul>
-                </li>
+                </li> --}}
             </ul>
             <!-- end sidebar user -->
         @endif
@@ -39,7 +38,7 @@ $sidebarClass = !empty($sidebarTransparent) ? 'sidebar-transparent' : '';
                         data-sidebar-search="true" />
                 </li>
             @endif
-            <li class="nav-header">Navigation</li>
+            <li class="nav-header">Menu</li>
             @php
                 $currentUrl = Request::path() != '/' ? '/' . Request::path() : '/';
                 

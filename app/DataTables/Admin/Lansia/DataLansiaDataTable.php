@@ -48,7 +48,8 @@ class DataLansiaDataTable extends DataTable
      */
     public function query(DataLansia $model)
     {
-        return $model->select('data_lansia.*')->with(['golongandarah', 'agama', 'statuskawin', 'jaminankesehatan']);
+        // return $model->select('data_lansia.*')->with(['golongandarah', 'agama', 'statuskawin', 'jaminankesehatan']);
+        return $model->with(['golongandarah', 'statuskawin', 'jaminankesehatan', 'pendidikan'])->select('data_lansia.*')->newQuery();
     }
 
     /**
@@ -83,20 +84,20 @@ class DataLansiaDataTable extends DataTable
         return [
             // Column::make('id'),
             //Column::make('no'),
-            Column::make('nama_lansia'),
+            Column::make('nama_lansia', 'data_lansia.nama_lansia'),
             // Column::make('email'),
             // Column::make('no_hp'),
-            Column::make('NIK'),
-            Column::make('no_kms'),
-            Column::make('jenis_kelamin'),
+            Column::make('NIK', 'data_lansia.NIK')->title('NIK'),
+            Column::make('no_kms', 'data_lansia.no_kms')->title('No KMS'),
+            Column::make('jenis_kelamin', 'data_lansia.jenis_kelamin')->title('Jenis Kelamin'),
             // Column::make('ttl'),
             // Column::make('umur'),
-            // Column::make('status_perkawinan')->data('statuskawin.nama'),
+            // Column::make('statuskawin.nama','statuskawin.nama),
             // Column::make('alamat'),
             // Column::make('agama')->data('agama.nama'),
             // Column::make('pendidikan_terakhir'),
             // Column::make('golongan_darah')->data('golongandarah.nama'),
-            Column::make('jaminan_kesehatan')->data('jaminankesehatan.jaminan_kesehatan_id'),
+            Column::make('jaminankesehatan.jaminan_kesehatan_id', 'jaminankesehatan.jaminan_kesehatan_id')->title('Jaminan Kesehatan'),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)

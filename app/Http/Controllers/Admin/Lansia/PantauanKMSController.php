@@ -6,7 +6,9 @@ use App\Datatables\Admin\Lansia\PantauanKMSDataTable;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\PantauanKMS;
+use App\Models\KeluhanTindakan;
 use App\Models\DataLansia;
+use App\Models\RujukanLansia;
 use Illuminate\Support\Str;
 use Barryvdh\DomPDF\Facade\Pdf;
 
@@ -30,8 +32,8 @@ class PantauanKMSController extends Controller
      */
     public function create()
     {
-        $nama_lansia=DataLansia::pluck('nama_lansia','id');
-        return view('pages.admin.lansia.pantauan-kms.add-edit',['nama_lansia' =>  $nama_lansia]);
+        $nama_lansia = DataLansia::pluck('nama_lansia', 'id');
+        return view('pages.admin.lansia.pantauan-kms.add-edit', ['nama_lansia' =>  $nama_lansia]);
     }
 
     /**
@@ -80,7 +82,7 @@ class PantauanKMSController extends Controller
     public function edit($id, Request $request)
     {
         $data = PantauanKMS::findOrFail($id);
-        $nama_lansia=DataLansia::pluck('nama_lansia','id');
+        $nama_lansia = DataLansia::pluck('nama_lansia', 'id');
 
         return view('pages.admin.lansia.pantauan-kms.add-edit', ['data' => $data, 'nama_lansia' => $nama_lansia]);
     }
@@ -128,12 +130,14 @@ class PantauanKMSController extends Controller
     }
 
     //cetak pertanggal
-    public function laporanKMS(){
+    public function laporanKMS()
+    {
         return view('pages.admin.lansia.pantauan-kms.laporanKMS');
     }
 
-    public function sortir(Request $request){
-    
+    public function sortir(Request $request)
+    {
+
         $startDate = Str::before($request->tglawal, ' -');
         $endDate = Str::after($request->tglakhir, '- ');
         switch ($request->submit) {
@@ -141,40 +145,62 @@ class PantauanKMSController extends Controller
 
                 $data = PantauanKMS::all()
                     ->whereBetween('tanggal_pemeriksaan', [$startDate, $endDate]);
-             
-                return view('pages.admin.lansia.pantauan-kms.laporanKMS', compact( 'data', 'startDate', 'endDate'));
+
+                return view('pages.admin.lansia.pantauan-kms.laporanKMS', compact('data', 'startDate', 'endDate'));
                 break;
         }
     }
 
-    public function cetakLaporanKMS($start, $end){
+    public function cetakLaporanKMS($start, $end)
+    {
         $startDate = $start;
-        $endDate =$end;
+        $endDate = $end;
         $data = PantauanKMS::get()
             ->whereBetween('tanggal_pemeriksaan', [$startDate, $endDate]);
 
-        $pdf = PDF::loadview('pages.admin.lansia.pantauan-kms.cetaklaporankms',['data' =>$data]);
-        return $pdf->download('Laporan KMS Lansia.pdf'); 
+        $pdf = PDF::loadview('pages.admin.lansia.pantauan-kms.cetaklaporankms', ['data' => $data]);
+        return $pdf->download('Laporan KMS Lansia.pdf');
     }
 
     //cetak pernama
-    public function laporanDataKMS(){
-        $nama_lansia=DataLansia::pluck('nama_lansia','id');
+    // public function laporanDataKMS(){
+    //     $nama_lansia=DataLansia::pluck('nama_lansia','id');
+    //     //$nama_lansia=PantauanKMS::with('lansia')->get()->pluck('lansia.nama_lansia','id');
+    //     return view('pages.admin.lansia.pantauan-kms.laporandataKMS', ['nama_lansia'=> $nama_lansia]);
+    // }
+
+    // public function sortirriwayat(Request $request){
+    //     $data = PantauanKMS::where('nama_lansia1', $request->nama_lansia1)->get();
+    //     // dd($data);
+    //     return redirect()->route('admin.data-lansia.laporandatakmslansia')->with(['data' => $data]);
+    // }
+    // public function cetakLaporandataKMS($id){
+
+    //     $data = PantauanKMS::where('nama_lansia1', $id)->get();
+    //     $pdf = PDF::loadview('pages.admin.lansia.pantauan-kms.cetaklaporankms',['data' =>$data]);
+    //     return $pdf->download('Laporan KMS Lansia.pdf'); 
+
+    // }
+    //dicoba
+    public function laporanDataKMS()
+    {
+        $nama_lansia = DataLansia::pluck('nama_lansia', 'id');
         //$nama_lansia=PantauanKMS::with('lansia')->get()->pluck('lansia.nama_lansia','id');
-        return view('pages.admin.lansia.pantauan-kms.laporandataKMS', ['nama_lansia'=> $nama_lansia]);
+        return view('pages.admin.lansia.pantauan-kms.laporandataKMS', ['nama_lansia' => $nama_lansia]);
     }
 
-    public function sortirriwayat(Request $request){
-        $data = PantauanKMS::where('nama_lansia1', $request->nama_lansia1)->get();
+    public function sortirriwayat(Request $request)
+    {
+        $kms = PantauanKMS::where('nama_lansia1', $request->nama_lansia1)->get();
+        // $keluhantindakan = KeluhanTindakan::where('nama_lansia_id', $request->nama_lansia_id)->get();
         // dd($data);
-        return redirect()->route('admin.data-lansia.laporandatakmslansia')->with(['data' => $data]);
+        return redirect()->route('admin.data-lansia.laporandatakmslansia')->with(['kms' => $kms]);
     }
-    public function cetakLaporandataKMS($id){
+    public function cetakLaporandataKMS($id)
+    {
 
         $data = PantauanKMS::where('nama_lansia1', $id)->get();
-        $pdf = PDF::loadview('pages.admin.lansia.pantauan-kms.cetaklaporankms',['data' =>$data]);
-        return $pdf->download('Laporan KMS Lansia.pdf'); 
-        
+        $pdf = PDF::loadview('pages.admin.lansia.pantauan-kms.cetaklaporankms', ['data' => $data]);
+        return $pdf->download('Laporan KMS Lansia.pdf');
     }
-
 }

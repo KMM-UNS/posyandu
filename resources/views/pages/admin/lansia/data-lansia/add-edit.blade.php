@@ -4,18 +4,18 @@
 
 @push('css')
     <link href="{{ asset('/assets/plugins/smartwizard/dist/css/smart_wizard.css') }}" rel="stylesheet" />
+    <link href="/assets/plugins/@danielfarrell/bootstrap-combobox/css/bootstrap-combobox.css" rel="stylesheet" />
 @endpush
 
 @section('content')
     <!-- begin breadcrumb -->
     <ol class="breadcrumb float-xl-right">
-        <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
-        <li class="breadcrumb-item"><a href="javascript:;">Lansia</a></li>
+        <li class="breadcrumb-item"><a href="/admin/data-lansia/datalansia">Data Lansia</a></li>
         <li class="breadcrumb-item active">@yield('title')</li>
     </ol>
     <!-- end breadcrumb -->
     <!-- begin page-header -->
-    <h1 class="page-header">Lansia<small> @yield('title')</small></h1>
+    <h1 class="page-header">Data Lansia</h1>
     <!-- end page-header -->
 
 
@@ -93,6 +93,16 @@
                     <input type="text" id="alamat" name="alamat" class="form-control" autofocus
                         data-parsley-required="true" value="{{ $data->alamat ?? old('alamat') }}">
                     <label for="name">Agama</label>
+                    {{-- <div class="col-lg-8">
+                        <select class="combobox">
+                            <option value="{{ $data->agama ?? old('agama') }}">Islam</option>
+                            <option value="{{ $data->agama ?? old('agama') }}">Kristen</option>
+                            <option value="{{ $data->agama ?? old('agama') }}">Hindu</option>
+                            <option value="{{ $data->agama ?? old('agama') }}">Budha</option>
+                            <option value="{{ $data->agama ?? old('agama') }}">Katolik</option>
+
+                        </select>
+                    </div> --}}
                     <input type="text" id="agama" name="agama" class="form-control" autofocus
                         data-parsley-required="true" value="{{ $data->agama ?? old('agama') }}">
                     <label for="name">Pendidikan Terakhir</label>
@@ -125,4 +135,5 @@
 
 @push('scripts')
     <script src="{{ asset('/assets/plugins/parsleyjs/dist/parsley.js') }}"></script>
+    <script src="/assets/plugins/@danielfarrell/bootstrap-combobox/js/bootstrap-combobox.js"></script>
 @endpush

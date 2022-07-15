@@ -12,15 +12,15 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         // Route::get('/', function () {
         //     return redirect(route('admin.dashboard'));
         // });
-        Route::get('/', [DashboardController::class, 'index']);
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
         Route::post('/tambahkomentar', [DashboardController::class, 'store']);
 
-        Route::view('/dashboard', 'pages.admin.dashboard')->name('dashboard');
+        // Route::view('/dashboard', 'pages.admin.dashboard')->name('dashboard');
 
         Route::resource('/users', 'UserController');
         // Route::resource('/settings', 'SettingController');
 
-        Route::resource('/coba', 'CobaController');
+
 
         Route::resource('/admin', 'AdminController');
         Route::resource('/user', 'UserController');
@@ -73,7 +73,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             //datalansia
             Route::resource('datalansia', 'DataLansiaController');
             Route::resource('coba', 'CobaController');
-            //data kematian
             Route::resource('datakematianlansia', 'DataKematianLansiaController');
             //cetak kematian pertgl
             Route::get('/laporankematian', 'DataKematianLansiaController@laporankematian')->name('laporankematian');

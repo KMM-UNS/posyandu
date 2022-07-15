@@ -16,7 +16,7 @@ return [
         [
             'icon' => 'fa fa-th-large',
             'title' => 'Dashboard',
-            'url' => '/admin',
+            'url' => '/admin/dashboard',
             'caret' => false
         ],
 
@@ -243,12 +243,12 @@ return [
         [
             'icon' => 'fa fa-th-large',
             'title' => 'Dashboard',
-            'url' => '/',
+            'url' => '/user',
             'caret' => false
         ], [
             'icon' => 'fa fa-wheelchair',
             'title' => 'Biodata Lansia',
-            'url' => 'user/userlansia/biodatalansia',
+            'url' => '/user/userlansia/biodatalansia',
             'caret' => false,
         ],
         [
@@ -260,12 +260,6 @@ return [
         [
             'icon' => 'fas fa-briefcase-medical',
             'title' => 'Rujukan',
-            'url' => '/user/userlansia/riwayatrujukan',
-            'caret' => false
-        ],
-        [
-            'icon' => 'far fa-calendar-check',
-            'title' => 'Jadwal Kegiatan',
             'url' => '/user/userlansia/riwayatrujukan',
             'caret' => false
         ],

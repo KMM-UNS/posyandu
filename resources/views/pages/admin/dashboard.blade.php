@@ -9,9 +9,8 @@
     <link href="/assets/plugins/gritter/css/jquery.gritter.css" rel="stylesheet" />
     <link href="/assets/plugins/nvd3/build/nv.d3.css" rel="stylesheet" />
     <style>
-        .chats {
-
-            overflow: scroll;
+        .chats-scrollbar {
+            height: 200px;
         }
     </style>
 @endpush
@@ -20,9 +19,7 @@
 @section('content')
     <!-- begin breadcrumb -->
     <ol class="breadcrumb float-xl-right">
-        <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
-        <li class="breadcrumb-item"><a href="javascript:;">Chart</a></li>
-        <li class="breadcrumb-item active">Morris Chart</li>
+        <li class="breadcrumb-item"><a href="/admin/dashboard">Dashboard</a></li>
     </ol>
     <!-- end breadcrumb -->
     <!-- begin page-header -->
@@ -63,62 +60,81 @@
     <div class="row">
         <div class="col-xl-6 col-md-6">
             <div class="panel panel-inverse">
-                <div class="panel heading">
+                {{-- <div class="panel heading">
                     <br>
                     <h4>
                         <center>Penduduk Lansia menurut Jenis Kelamin</center>
                     </h4>
+                </div> --}}
 
-                    <body class="h-screen bg-gray-100">
-                        <div class="container px-4 mx-auto">
-                            <div class="p-6 m-20 bg-white rounded shadow">
-                                {!! $jkChart->container() !!}
-                            </div>
+                <body class="h-screen bg-gray-100">
+                    <div class="container px-4 mx-auto">
+                        <div class="p-6 m-20 bg-white rounded shadow">
+                            {!! $jkChart->container() !!}
                         </div>
+                    </div>
 
-                    </body>
-                </div>
+                </body>
+
             </div>
-        </div>
-        <div class="col-xl-6 col-md-6">
+            {{-- </div>
+        <div class="col-xl-6 col-md-6"> --}}
             <div class="panel panel-inverse">
-                <div class="panel heading">
+                {{-- <div class="panel heading">
                     <br>
                     <h4>
                         <center>Penduduk Lansia menurut Kelompok Umur</center>
                     </h4>
+                </div> --}}
 
-                    <body class="h-screen bg-gray-100">
-                        <div class="container px-4 mx-auto">
-                            <div class="p-6 m-20 bg-white rounded shadow">
-                                {!! $umurChart->container() !!}
-                            </div>
+                <body class="h-screen bg-gray-100">
+                    <div class="container px-4 mx-auto">
+                        <div class="p-6 m-20 bg-white rounded shadow">
+                            {!! $umurChart->container() !!}
                         </div>
+                    </div>
 
-                    </body>
-                </div>
+                </body>
+
             </div>
         </div>
-    </div>
-
-    <div class="row>">
         <div class="col-xl-6 col-md-6">
             <div class="panel panel-inverse">
-                <div class="panel heading">
+                {{-- <div class="panel heading">
                     <br>
                     <h4>
                         <center>Penduduk Lansia menurut Status Perkawinan</center>
                     </h4>
+                </div> --}}
 
-                    <body class="h-screen bg-gray-100">
-                        <div class="container px-4 mx-auto">
-                            <div class="p-6 m-20 bg-white rounded shadow">
-                                {!! $statusChart->container() !!}
-                            </div>
+                <body class="h-screen bg-gray-100">
+                    <div class="container px-4 mx-auto">
+                        <div class="p-6 m-20 bg-white rounded shadow">
+                            {!! $statusChart->container() !!}
                         </div>
+                    </div>
+                </body>
 
-                    </body>
-                </div>
+            </div>
+            {{-- </div>
+        <div class="col-xl-6 col-md-6"> --}}
+
+            <div class="panel panel-inverse">
+                {{-- <div class="panel heading">
+                    <br>
+                    <h4>
+                        <center>Penduduk Lansia menurut Jaminan Kesehatan</center>
+                    </h4>
+                </div> --}}
+
+                <body class="h-screen bg-gray-100">
+                    <div class="container px-4 mx-auto">
+                        <div class="p-6 m-20 bg-white rounded shadow">
+                            {!! $jamkesChart->container() !!}
+                        </div>
+                    </div>
+                </body>
+
             </div>
         </div>
     </div>
@@ -126,49 +142,48 @@
     <!-- begin row -->
     <div class="row">
         <!-- begin col-4 -->
-        <div class="col-xl-6 col-md-6">
+        <div class="col-7">
             <!-- begin panel -->
-            <div class="panel panel-inverse" data-sortable-id="index-2">
-                <div class="panel-heading">
-                    <h4 class="panel-title">Chat dengan Pengguna</h4>
+            <div class="card ">
+                <div class="card-heading bg-dark ">
+                    <h6 class="card-title text-white my-2 ml-3">Forum Diskusi</h6>
                 </div>
                 @php
                     if (auth() != null) {
                         $h = auth()->user();
                     }
                 @endphp
-                @foreach ($data as $r)
-                    <div class="panel-body bg-light">
-                        <div class="chats" data-scrollbar="true" data-height="225px">
-                            @if ($h != null)
-                                @if ($r->user->name == $h['name'])
-                                    <div class="right">
-                                        <span class="date-time">{{ $r->jam }}</span>
-                                        <a href="javascript:;" class="name"><span
-                                                class="label label-primary">{{ $r->user->name }}</span> Me</a>
-                                        <a href="javascript:;" class="image"><img alt=""
-                                                src="/assets/img/user/user-13.jpg" /></a>
-                                        <div class="message">
-                                            {{ $r->komentar }}
+                <div class="card-body bg-light" style="overflow:auto; height:350px;">
+                    @foreach ($data as $r)
+                        @if ($h != null)
+                            <div class="card-body bg-light">
+                                <div class="chats">
+                                    @if ($r->user->name == $h['name'])
+                                        <div class="right">
+                                            <span class="date-time">{{ $r->jam }}</span>
+                                            <a href="javascript:;" class="name"><span
+                                                    class="label label-primary">{{ $r->user->name }}</span> Me</a>
+                                            <div class="message">
+                                                {{ $r->komentar }}
+                                            </div>
                                         </div>
-                                    </div>
-                                @else
-                                    <div class="left">
-                                        <span class="date-time">{{ $r->jam }}</span>
-                                        <a href="javascript:;" class="name">{{ $r->user->name }}</a>
-                                        <a href="javascript:;" class="image"><img alt=""
-                                                src="/assets/img/user/user-12.jpg" /></a>
-                                        <div class="message">
-                                            {{ $r->komentar }}
+                                    @else
+                                        <div class="left">
+                                            <span class="date-time">{{ $r->jam }}</span>
+                                            <a href="javascript:;" class="name">{{ $r->user->name }}</a>
+                                            <a href="javascript:;" class="image"><img alt=""
+                                                    src="/assets/img/user/user-12.jpg" /></a>
+                                            <div class="message">
+                                                {{ $r->komentar }}
+                                            </div>
                                         </div>
-                                    </div>
-                                @endif
-                            @endif
-                        </div>
-                    </div>
-                @endforeach
-
-                <div class="panel-footer">
+                                    @endif
+                                </div>
+                            </div>
+                        @endif
+                    @endforeach
+                </div>
+                <div class="card-footer">
                     <form name="send_message_form" data-id="message-form" action="/user/tambahkomentar" method="POST">
                         @csrf
                         <div class="input-group">
@@ -180,78 +195,37 @@
                         </div>
                     </form>
                 </div>
+                <!-- end panel -->
             </div>
+            <!-- end col-4 -->
         </div>
-        <!-- end panel -->
 
-        <!-- end col-4 -->
+
+        <div class="col-5">
+            <!-- begin panel -->
+            <div class="card " data-sortable-id="index-3">
+                <div class="card-heading bg-black">
+                    <h6 class="card-title text-white my-2 ml-3">Jadwal Kegiatan</h6>
+                </div>
+                @foreach ($kegiatanlansia as $k)
+                    <div id="schedule-calendar" class="bootstrap-calendar"></div>
+                    <div class="list-group">
+                        <a href="javascript:;"
+                            class="list-group-item list-group-item-action d-flex justify-content-between align-items-center text-ellipsis">
+                            {{ $k->nama }}<br>
+                            Lokasi: {{ $k->lokasi }}
+                            <span class="badge bg-teal f-s-10"> ({{ $k->waktu_mulai }}-{{ $k->waktu_selesai }}) -
+                                {{ $k->tanggal_kegiatan }} </span>
+                        </a>
+                    </div>
+                @endforeach
+            </div>
+            <!-- end panel -->
+        </div>
     </div>
-    <!-- end row -->
-
-
 
 
 @endsection
-
-
-
-{{-- <div class="row">
-		<!-- begin col-4 -->
-		<div class="col-6 col-md-6">
-			<!-- begin panel -->
-			<div class="panel panel-inverse" data-sortable-id="index-2">
-				<div class="panel-heading">
-					<h4 class="panel-title">Forum Diskusi</h4>
-					<span class="label label-teal"></span>
-				</div>
-				@php
-					if(auth() != null){
-						$h = auth()->user();
-					}
-				@endphp
-				@foreach ($data as $r)
-				<div class="panel-body bg-light">
-					<div class="chats" data-scrollbar="true" data-height="225px">
-						@if ($h != null)
-						@if ($r->user->name == $h['name'])
-						<div class="right">
-							<span class="date-time">{{ $r->jam }}</span>
-							<a href="javascript:;" class="name"><span class="label label-primary">{{ $r->user->name }}</span> Me</a>
-							<a href="javascript:;" class="image"><img alt="" src="/assets/img/user/user-13.jpg" /></a>
-							<div class="message">
-								{{ $r->komentar }}
-							</div>
-						</div>
-						@else
-						<div class="left">
-							<span class="date-time">{{ $r->jam }}</span>
-							<a href="javascript:;" class="name">{{ $r->user->name }}</a>
-							<a href="javascript:;" class="image"><img alt="" src="/assets/img/user/user-12.jpg" /></a>
-							<div class="message">
-								{{ $r->komentar }}
-							</div>
-						</div>
-						@endif
-						@endif
-					</div>
-				</div>
-				@endforeach
-				<div class="panel-footer">
-					<form name="send_message_form" data-id="message-form" action="/user/tambahkomentar"  method="POST"> @csrf
-						<div class="input-group">
-							<textarea class="form-control" id="komentar" name="komentar" class="form-control" autofocus data-parsley-required="true" placeholder="Enter your message here."></textarea>
-							<span class="input-group-append">
-								<button class="btn btn-primary" type="submit">Kirim</i></button>
-							</span>
-						</div>
-					</form>
-				</div>
-			</div>
-			<!-- end panel -->
-		</div>
-		<!-- end col-4 -->
-</div> --}}
-
 
 @push('scripts')
     <!-- Gender -->
@@ -263,9 +237,10 @@
     <!-- Status -->
     <script src="{{ $statusChart->cdn() }}"></script>
     {{ $statusChart->script() }}
-    <script src="/assets/plugins/raphael/raphael.min.js"></script>
-    <script src="/assets/plugins/morris.js/morris.min.js"></script>
-    <script src="/assets/js/demo/chart-morris.demo.js"></script>
+    <!-- Jamkes -->
+    <script src="{{ $jamkesChart->cdn() }}"></script>
+    {{ $jamkesChart->script() }}
+
     <script src="/assets/plugins/d3/d3.min.js"></script>
     <script src="/assets/plugins/nvd3/build/nv.d3.js"></script>
     <script src="/assets/plugins/jvectormap-next/jquery-jvectormap.min.js"></script>

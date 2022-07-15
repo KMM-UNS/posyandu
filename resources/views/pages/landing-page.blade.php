@@ -70,7 +70,7 @@
                         {{-- <li><a href="#client" data-click="scroll-to-target">CLIENT</a></li> --}}
                         {{-- <li><a href="#pricing" data-click="scroll-to-target">PRICING</a></li> --}}
                         <li><a href="#contact" data-click="scroll-to-target">Kontak</a></li>
-                        <li><a href="/login">Masuk</a></li>
+                        <li><a href="{{ route('login') }}">Masuk</a></li>
                     </ul>
                 </div>
                 <!-- end navbar-collapse -->

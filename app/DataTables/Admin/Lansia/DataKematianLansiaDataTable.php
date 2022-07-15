@@ -47,7 +47,8 @@ class DataKematianLansiaDataTable extends DataTable
      */
     public function query(DataKematianLansia $model)
     {
-        return $model->select('data_kematian_lansia.*')->with(['kematian']);
+        // return $model->select('data_kematian_lansia.*')->with(['kematian']);
+        return $model->with(['kematian'])->select('data_kematian_lansia.*')->newQuery();
     }
 
     /**
@@ -80,22 +81,11 @@ class DataKematianLansiaDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            // Column::make('id'),
-            //Column::make('no'),
-            Column::make('nama_jenazah')->data('kematian.nama_lansia'),
-            // Column::make('email'),
-            // Column::make('no_hp'),
-            Column::make('jenis_kelamin'),
-            Column::make('tgl_lahir'),
-            Column::make('tgl_meninggal'),
-
-            // Column::make('ttl'),
-            // Column::make('umur'),
-            // Column::make('status_perkawinan')->data('statuskawin.nama'),
-            // Column::make('alamat'),
-            // Column::make('agama')->data('agama.nama'),
-            // Column::make('pendidikan_terakhir'),
-            // Column::make('golongan_darah')->data('golongandarah.nama'),
+            // Column::make('nama_jenazah')->data('kematian.nama_lansia'),
+            Column::make('kematian.nama_lansia', 'kematian.nama_lansia')->title('Nama Jenazah'),
+            Column::make('jenis_kelamin', 'data_kematian_lansia.jenis_kelamin'),
+            Column::make('tgl_lahir', 'data_kematian_lansia.tgl_lahir'),
+            Column::make('tgl_meninggal', 'data_kematian_lansia.tgl_meninggal'),
 
             Column::computed('action')
                 ->exportable(false)

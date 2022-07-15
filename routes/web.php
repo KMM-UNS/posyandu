@@ -26,26 +26,28 @@ Route::get('/', function () {
     return redirect('/admin');
 })->middleware('auth');
 
-// Route::get('/token', function () {
-//     return csrf_token();
-// });
+Route::get('/', function () {
+    return redirect('posyandu');
+});
+Route::resource('/dashboard', 'DashboardController');
+
+
 
 Route::get('/edit-profile', 'ProfileController@edit')->name('edit-profile');
 
-Route::group(['middleware' => 'auth:web', 'prefix' => 'user','as' => 'user.'], function () {
-    Route::get('/', [ForumLansiaController::class,'index']);
-    Route::post('/tambahkomentar', [ForumLansiaController::class,'store']);
-    
+Route::group(['middleware' => 'auth:web', 'prefix' => 'user', 'as' => 'user.'], function () {
+    Route::get('/', [ForumLansiaController::class, 'index'])->name('dashboard');
+    Route::post('/tambahkomentar', [ForumLansiaController::class, 'store']);
+
     Route::group(['namespace' => 'User'], function () {
-        
+
         Route::group(['prefix' => '/userlansia', 'as' => 'userlansia.', 'namespace' => 'UserLansia'], function () {
             Route::resource('biodatalansia', 'BiodataLansiaController');
             Route::resource('kmslansia', 'KMSLansiaController');
-            Route::resource('riwayatrujukan', 'RiwayatRujukanController'); 
+            Route::resource('riwayatrujukan', 'RiwayatRujukanController');
         });
-        
     });
-    });
+});
 // //export pdf
 // Route::get('/exportpdf',[RujukanLansiaController::class, 'exportpdf'])->name('exportpdf');
 

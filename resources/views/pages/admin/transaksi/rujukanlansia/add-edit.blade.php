@@ -9,13 +9,12 @@
 @section('content')
     <!-- begin breadcrumb -->
     <ol class="breadcrumb float-xl-right">
-        <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
-        <li class="breadcrumb-item"><a href="javascript:;">Master Data</a></li>
+        <li class="breadcrumb-item"><a href="/admin/data-transaksi/rujukanlansia">Rujukan Lansia</a></li>
         <li class="breadcrumb-item active">@yield('title')</li>
     </ol>
     <!-- end breadcrumb -->
     <!-- begin page-header -->
-    <h1 class="page-header">Master Data<small> @yield('title')</small></h1>
+    <h1 class="page-header">Rujukan Lansia</h1>
     <!-- end page-header -->
 
 
@@ -59,12 +58,12 @@
                     }
                     ?>
 
-                    <label for="name">No KMS</label>
+                    <label for="name">No Surat</label>
                     <input type="text" name="no_surat" class="form-control" value="<?php echo $no_surat; ?>" readonly
                         class="form-control" name="no_surat" required="">
-                    <label for="name">No Surat</label>
-                    <input type="text" id="no_surat" name="no_surat" class="form-control" autofocus
-                        data-parsley-required="true" value="{{ $data->no_surat ?? old('no_surat') }}">
+                    <label for="name">No KMS</label>
+                    <input type="text" id="no_kms" name="no_kms" class="form-control" autofocus
+                        data-parsley-required="true" value="{{ $data->no_kms ?? old('no_kms') }}">
                     <label for="name">Kepada</label>
                     <input type="text" id="kepada" name="kepada" class="form-control" autofocus
                         data-parsley-required="true" value="{{ $data->kepada ?? old('kepada') }}">

@@ -43,7 +43,7 @@ class RujukanDataTable extends DataTable
      */
     public function query(Rujukan $model)
     {
-        return $model->newQuery();
+        return $model->with('rujukan')newQuery();
     }
 
     /**
