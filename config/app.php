@@ -177,7 +177,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\FortifyServiceProvider::class,
-        App\Providers\HelpersProvider::class
+        App\Providers\HelpersProvider::class,
+        Alfa6661\AutoNumber\AutoNumberServiceProvider::class,
 
     ],
 

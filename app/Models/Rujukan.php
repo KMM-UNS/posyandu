@@ -7,10 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\DataAnak;
 use App\Models\Instansi;
+// use AutoNumberTrait;
+use Alfa6661\AutoNumber\AutoNumberTrait;
 
 class Rujukan extends Model
 {
     use HasFactory;
+    use AutoNumberTrait;
     use SoftDeletes;
 
     public const ACTIVE = "aktif";
@@ -30,5 +33,19 @@ class Rujukan extends Model
     public function instansi()
     {
         return $this->belongsTo(Instansi::class,'kepada');
+    }
+
+    public function getAutoNumberOptions()
+    {
+        return [
+            'kode_surat' => [
+                'format' => function () {
+                    return date('Y.m.d') . '/SR/?';
+                },
+                'length' => 5
+                // 'format' => 'SO.?', // Format kode yang akan digunakan.
+                // 'length' => 5 // Jumlah digit yang akan digunakan sebagai nomor urut
+            ]
+        ];
     }
 }

@@ -16,7 +16,7 @@ return [
         [
             'icon' => 'fa fa-th-large',
             'title' => 'Dashboard',
-            'url' => '/admin/dashboard',
+            'url' => '/beranda',
             'caret' => false
         ],
         [
@@ -25,12 +25,12 @@ return [
             'url' => '/admin/users',
             'caret' => false,
         ],
-        [
-            'icon' => 'fa fa-users',
-            'title' => 'Admin',
-            'url' => '/admin/admin',
-            'caret' => false,
-        ],
+        // [
+        //     'icon' => 'fa fa-users',
+        //     'title' => 'Admin',
+        //     'url' => '/admin/admin',
+        //     'caret' => false,
+        // ],
 
 
         [

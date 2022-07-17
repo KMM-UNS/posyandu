@@ -15,8 +15,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             return redirect(route('admin.dashboard'));
         });
 
-        Route::view('/dashboard', 'pages.admin.dashboard', [
-            'anak' => DataAnak::count() ])->name('dashboard');
+        Route::view('/dashboard', 'pages.admin.dashboard',
+        ['anak' => DataAnak::count() ])->name('dashboard');
             //menghitung jumlah data anak di dashboard
 
 

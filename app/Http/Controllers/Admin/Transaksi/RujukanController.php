@@ -10,6 +10,7 @@ use App\Models\Instansi;
 use App\Datatables\Admin\Transaksi\RujukanDataTable;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Str;
+// use AutoNumberTrait;
 
 class RujukanController extends Controller
 {
@@ -30,6 +31,21 @@ class RujukanController extends Controller
      */
     public function create()
     {
+    //     $kode_surat = Rujukan::create([
+    //         'kode_surat' => '',
+    //         'tanggal_surat' => '',
+    //         'kepada' => '',
+    //         'nama' => '',
+    //         'umur' => '',
+    //         'alamat' => '',
+    //         'bb_turun' => '',
+    //         'bb_naik' => '',
+    //         'keluhan' => '',
+    //         'keterangan_rujukan' => '',
+    //         'status' => '',
+    //             ]);
+    // echo $kode_surat->kode_surat;
+
         // $imunisasi=Imunisasi::pluck('nama_anak_id','id');
         $dataanak=DataAnak::pluck('nama_anak','id');
         $instansi=Instansi::pluck('nama_instansi','id');
@@ -46,7 +62,7 @@ class RujukanController extends Controller
     {
         try {
             $request->validate([
-                'kode_surat' => 'required|min:1'
+                'nama' => 'required|min:1'
             ]);
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError($th->validator->messages()->all()[0]);
@@ -117,7 +133,7 @@ class RujukanController extends Controller
     {
         try {
             $request->validate([
-                'kode_surat' => 'required|min:1'
+                'nama' => 'required|min:1'
             ]);
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError($th->validator->messages()->all()[0]);

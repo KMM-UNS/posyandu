@@ -81,7 +81,7 @@
         <div id="home" class="content has-bg home">
             <!-- begin content-bg -->
             <div class="content-bg">
-                <img src="{{asset('assets')}}/img/bg/bg-home.jpg" alt="Home" />
+                <img src="{{asset('assets')}}/img/bg/posyandu.jpg" alt="Home" />
             </div>
             <!-- end content-bg -->
             <!-- begin container -->

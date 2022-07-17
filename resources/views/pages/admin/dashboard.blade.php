@@ -28,7 +28,10 @@
       <div class="stats-icon"><i class="fa fa-users"></i></div>
       <div class="stats-info">
         <h4>JUMLAH ANAK</h4>
-        {{-- <p>{{ $anak }}</p> --}}
+        {{-- <div class="number" style="color:black;"  data-animation-type="number" data-final-number="{{ isset($anak) ? $anak : 0 }}">{{ isset($anak) ? $anak : 0 }}</div> --}}
+        {{-- <div class="number" style="color:rgb(248, 245, 245);"  data-animation-type="number" data-final-number="{{ isset($anak) ? $anak : 0 }}"></div> --}}
+        <p>{{ $anak }}</p>
+        {{-- <h3>{{ isset($anak) }}</h3> --}}
       </div>
       <div class="stats-link">
         <a href=/admin/anak-data/dataanak>View Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
@@ -36,18 +39,20 @@
     </div>
   </div>
 
-  {{-- <div class="col-xl-3 col-md-6">
+
+  <div class="col-xl-3 col-md-6">
     <div class="widget widget-stats bg-red">
       <div class="stats-icon"><i class="fa fa-users"></i></div>
       <div class="stats-info">
-        <h4>JUMLAH LANSIA</h4>
-        <p>1,291,922</p>
+        <h4>JUMLAH KADER</h4>
+         <p>{{ $kader }}</p>
+        {{-- <h3 >{{ isset($kader) }}</h3> --}}
       </div>
       <div class="stats-link">
-        <a href="javascript:;">View Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
+        <a href=/admin/master-data/kader>View Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
       </div>
     </div>
-  </div> --}}
+  </div>
   <!-- end col-3 -->
   <!-- begin col-3 -->
   {{-- <div class="col-xl-3 col-md-6">

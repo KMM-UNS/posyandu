@@ -15,6 +15,20 @@
                     @endif
 
                     {{ __('You are logged in!') }}
+
+                    <body class="h-screen bg-gray-100">
+
+                        <div class="container px-4 mx-auto">
+
+                            <div class="p-6 m-20 bg-white rounded shadow">
+                                {!! $chart->container() !!}
+                            </div>
+
+                        </div>
+
+                        <script src="{{ $chart->cdn() }}"></script>
+
+                        {{ $chart->script() }}
                 </div>
                 <div class="card-body">
                 <div align="center" class="text"><strong>Jenis Imunisasi Anak</strong></div>

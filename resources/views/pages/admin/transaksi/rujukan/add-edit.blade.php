@@ -42,10 +42,10 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-md-4 my-auto">
-                                <label for="name">Kode Surat</label>
+                                {{-- <label for="name">Kode Surat</label> --}}
                             </div>
                             <div class="col-md-8">
-                                <input type="text" id="kode_surat" name="kode_surat" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->kode_surat ?? old('kode_surat') }}}">
+                                <input type="hidden" id="kode_surat" name="kode_surat" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->kode_surat ?? old('kode_surat') }}}">
                             </div>
                         </div>
                     </div>

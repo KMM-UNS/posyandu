@@ -39,9 +39,9 @@ class ImunisasiChart
 
 
         return $this->chart->lineChart()
-            ->setTitle('Grafik Tumbuh Kembah Anak.')
+            ->setTitle('Grafik Tumbuh Kembang Anak.')
             ->setSubtitle('Pencapaian Tumbuh Kembang Anak.')
-            ->setTitle('Grafik Tumbuh kembang Anak')
+            ->setTitle('Grafik Tumbuh Kembang Anak')
             ->addData('Berat Badan', $berat)
             ->addData('Tinggi Badan', $tinggi)
             ->setXAxis( $umur );
