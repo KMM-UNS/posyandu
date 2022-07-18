@@ -14,25 +14,22 @@ class RiwayatRujukanController extends Controller
 {
     public function index(RiwayatRujukanDataTable $dataTable)
     {
-        // $data = DataLansia::select('id')->where('createable_id', auth()->user()->id)->first()->id;
-        // $data =RujukanLansia::where('createable_id', auth()->user()->id)->first();
         $data = DataLansia::select('id')->where('createable_id', auth()->user()->id)->first()->id;
-        return $dataTable->render('pages.user.lansia.riwayatrujukan.index',['data'=>$data]);
-        
-
+        return $dataTable->render('pages.user.lansia.riwayatrujukan.index', ['data' => $data]);
     }
 
-    public function create(){
-        
+    public function create()
+    {
+
         // $data = DataLansia::select('id')->where('createable_id', auth()->user()->id)->first()->id;
         // $nama_lansia=DataLansia::pluck('nama_lansia','id');
         // $data = DataLansia::select('id')->where('createable_id', auth()->user()->id)->first()->id;
         $nama_lansia = DataLansia::where('createable_id', auth()->user()->id)->first()->id;
         //     $nama_lansia=DataLansia::pluck('nama_lansia');
-    //    $nama_lansia=[
-    //     'data'=>$data
-    //    ];
-        return view('pages.user.lansia.riwayatrujukan.add-edit',['nama_lansia'=> $nama_lansia] );
+        //    $nama_lansia=[
+        //     'data'=>$data
+        //    ];
+        return view('pages.user.lansia.riwayatrujukan.add-edit', ['nama_lansia' => $nama_lansia]);
     }
 
     public function store(Request $request)
@@ -42,7 +39,7 @@ class RiwayatRujukanController extends Controller
                 // dd($request->user());
                 $nama_lansia = DataLansia::where('createable_id', auth()->user()->id)->first()->id;
                 // dd($nama_lansia);
-                $data =RujukanLansia::create($request->all());
+                $data = RujukanLansia::create($request->all());
                 $data->createable()->associate($request->user());
                 $data->save();
                 // dd($data);
@@ -58,7 +55,7 @@ class RiwayatRujukanController extends Controller
     }
     public function edit($id)
     {
-        
+
         return view('pages.user.lansia.riwayatlansia.add-edit');
     }
     public function update(Request $request, $id)
@@ -80,6 +77,4 @@ class RiwayatRujukanController extends Controller
 
         return redirect(route('user.userlansia.riwayatlansia.index'))->withToastSuccess('Data tersimpan');
     }
-
-
 }

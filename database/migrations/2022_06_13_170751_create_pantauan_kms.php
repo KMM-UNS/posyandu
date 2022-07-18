@@ -14,7 +14,7 @@ class CreatePantauanKms extends Migration
     public function up()
     {
         Schema::create('pantauan_kms', function (Blueprint $table) {
-             $table->id();
+            $table->id();
             $table->string('tanggal_pemeriksaan');
             $table->string('nama_lansia1');
             $table->string('kegiatan_harian');
@@ -24,17 +24,11 @@ class CreatePantauanKms extends Migration
             $table->string('hemoglobin');
             $table->string('reduksi_urine');
             $table->string('protein_urine');
-            // $table->string('umur');
-            // $table->string('jk');
             $table->integer('tb');
             $table->string('bb');
             $table->string('hasil');
-            $table->integer('sistol');
-            $table->integer('diastol');
-            $table->string('hasiltekanan');
-
-
-            
+            $table->string('keluhan');
+            $table->string('tindakan');
             $table->timestamps();
             $table->softDeletes();
         });

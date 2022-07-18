@@ -63,13 +63,13 @@
                             </ul>
                         </li> --}}
                         <li><a href="#home" data-click="scroll-to-target">Beranda</a></li>
-                        <li><a href="#about" data-click="scroll-to-target">Tentang</a></li>
+                        {{-- <li><a href="#about" data-click="scroll-to-target">Tentang</a></li> --}}
                         {{-- <li><a href="#team" data-click="scroll-to-target">TEAM</a></li> --}}
                         <li><a href="#service" data-click="scroll-to-target">Layanan</a></li>
-                        <li><a href="#work" data-click="scroll-to-target">Galeri</a></li>
+                        {{-- <li><a href="#work" data-click="scroll-to-target">Galeri</a></li> --}}
                         {{-- <li><a href="#client" data-click="scroll-to-target">CLIENT</a></li> --}}
                         {{-- <li><a href="#pricing" data-click="scroll-to-target">PRICING</a></li> --}}
-                        <li><a href="#contact" data-click="scroll-to-target">Kontak</a></li>
+                        {{-- <li><a href="#contact" data-click="scroll-to-target">Kontak</a></li> --}}
                         <li><a href="{{ route('login') }}">Masuk</a></li>
                     </ul>
                 </div>
@@ -83,7 +83,7 @@
         <div id="home" class="content has-bg home">
             <!-- begin content-bg -->
             <div class="content-bg">
-                <img src="{{ asset('template') }}/img/posyandu/bg-home.jpg" alt="Home" />
+                <img src="{{ asset('template') }}/img/posyandu/bg.jpg" alt="Home" />
             </div>
             <!-- end content-bg -->
             <!-- begin container -->
@@ -101,7 +101,7 @@
         <!-- end #home -->
 
         <!-- begin #about -->
-        <div id="about" class="content" data-scrollview="true">
+        {{-- <div id="about" class="content" data-scrollview="true">
             <!-- begin container -->
             <div class="container" data-animation="true" data-animation-type="fadeInDown">
                 <h2 class="content-title">About Us</h2>
@@ -192,11 +192,11 @@
                 <!-- end row -->
             </div>
             <!-- end container -->
-        </div>
+        </div> --}}
         <!-- end #about -->
 
         <!-- begin #milestone -->
-        <div id="milestone" class="content bg-none has-bg" data-scrollview="true">
+        {{-- <div id="milestone" class="content bg-none has-bg" data-scrollview="true">
             <!-- begin content-bg -->
             <div class="content-bg">
                 <img src="{{ asset('template') }}/img/bg/bg-milestone.jpg" alt="Milestone" />
@@ -246,7 +246,7 @@
                 <!-- end row -->
             </div>
             <!-- end container -->
-        </div>
+        </div> --}}
         <!-- end #milestone -->
 
         {{-- <!-- begin #team -->
@@ -331,7 +331,7 @@
         <!-- end #team --> --}}
 
         <!-- begin #quote -->
-        <div id="quote" class="content bg-black-darker has-bg" data-scrollview="true">
+        {{-- <div id="quote" class="content bg-black-darker has-bg" data-scrollview="true">
             <!-- begin content-bg -->
             <div class="content-bg">
                 <img src="{{ asset('template') }}/img/bg/bg-quote.jpg" alt="Quote" />
@@ -353,7 +353,7 @@
                 <!-- end row -->
             </div>
             <!-- end container -->
-        </div>
+        </div> --}}
         <!-- end #quote -->
 
         <!-- beign #service -->
@@ -451,7 +451,7 @@
         <!-- end #about -->
 
         <!-- beign #action-box -->
-        <div id="action-box" class="content has-bg" data-scrollview="true">
+        {{-- <div id="action-box" class="content has-bg" data-scrollview="true">
             <!-- begin content-bg -->
             <div class="content-bg">
                 <img src="{{ asset('template') }}/img/bg/bg-action.jpg" alt="Action" />
@@ -481,11 +481,11 @@
                 <!-- end row -->
             </div>
             <!-- end container -->
-        </div>
+        </div> --}}
         <!-- end #action-box -->
 
         <!-- begin #work -->
-        <div id="work" class="content" data-scrollview="true">
+        {{-- <div id="work" class="content" data-scrollview="true">
             <!-- begin container -->
             <div class="container" data-animation="true" data-animation-type="fadeInDown">
                 <h2 class="content-title">Galeri</h2>
@@ -630,7 +630,7 @@
                 <!-- end row -->
             </div>
             <!-- end container -->
-        </div>
+        </div> --}}
         <!-- end #work -->
 
         <!-- begin #client -->
@@ -800,7 +800,7 @@
         <!-- end #pricing -->
 
         <!-- begin #contact -->
-        <div id="contact" class="content bg-silver-lighter" data-scrollview="true">
+        {{-- <div id="contact" class="content bg-silver-lighter" data-scrollview="true">
             <!-- begin container -->
             <div class="container">
                 <h2 class="content-title">Contact Us</h2>
@@ -864,7 +864,7 @@
                 <!-- end row -->
             </div>
             <!-- end container -->
-        </div>
+        </div> --}}
         <!-- end #contact -->
 
         <!-- begin #footer -->

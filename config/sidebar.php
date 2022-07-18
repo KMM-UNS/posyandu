@@ -53,53 +53,56 @@ return [
                     'url' => ' /admin/data-lansia/datalansia',
                     'title' => '</i>&nbsp;Data Lansia'
                 ],
-                [
-                    'url' => ' /admin/data-lansia/datakematianlansia',
-                    'title' => '</i>&nbsp;Data Kematian'
-                ],
+                // [
+                //     'url' => ' /admin/data-lansia/datakematianlansia',
+                //     'title' => '</i>&nbsp;Data Kematian'
+                // ],
                 [
                     'url' => ' /admin/data-lansia/pantauankms',
-                    'title' => '</i>&nbsp;Catatan Pemantauan KMS'
+                    'title' => '</i>&nbsp;KMS Lansia'
                 ],
-                [
-                    'url' => ' /admin/data-lansia/keluhantindakan',
-                    'title' => '</i>&nbsp;Catatan Keluhan dan Tindakan'
-                ]
+                // [
+                //     'url' => ' /admin/data-lansia/keluhantindakan',
+                //     'title' => '</i>&nbsp;Catatan Keluhan dan Tindakan'
+                // ]
             ]
         ],
 
         [
             'icon' => 'fas fa-hospital',
             'title' => 'Rujukan',
-            'url' => 'javascript:;',
-            'caret' => true,
-            'sub_menu' =>
-            [
-                [
-                    'url' => ' /admin/data-transaksi/rujukanlansia',
-                    'title' => '</i>&nbsp;Rujukan Lansia'
+            'url' => '/admin/data-transaksi/rujukanlansia',
+            'caret' => false,
 
-                ]
-            ]
         ],
+        // [
+        //     'icon' => 'fas fa-hospital',
+        //     'title' => 'Rujukan',
+        //     'url' => 'javascript:;',
+        //     'caret' => true,
+        //     'sub_menu' =>
+        //     [
+        //         [
+        //             'url' => ' /admin/data-transaksi/rujukanlansia',
+        //             'title' => '</i>&nbsp;Rujukan Lansia'
+
+        //         ]
+        //     ]
+        // ],
         [
             'icon' => '	far fa-calendar-check',
-            'title' => 'Kegiatan',
-            'url' => 'javascript:;',
-            'caret' => true,
-            'sub_menu' =>
-            [
-                [
-                    'url' => '/admin/data-kegiatan/datakegiatanlansia',
-                    'title' => '</i>&nbsp;Data Kegiatan'
+            'title' => 'Jadwal Kegiatan',
+            'url' => '/admin/data-kegiatan/datakegiatanlansia',
+            'caret' => false,
+            // 'sub_menu' =>
+            // [
+            //     [
+            //         'url' => '/admin/data-kegiatan/datakegiatanlansia',
+            //         'title' => '</i>&nbsp;Data Kegiatan'
 
-                ],
-                [
-                    'url' => '/admin/data-kegiatan/laporankegiatanlansia',
-                    'title' => '</i>&nbsp;Laporan Keuangan'
+            //     ],
 
-                ],
-            ]
+            // ]
         ],
         [
             'icon' => '	fas fa-file-alt',
@@ -108,20 +111,26 @@ return [
             'caret' => true,
             'sub_menu' => [
                 [
-                    'title' => 'Laporan Bulanan Lansia',
+                    'url' => '/admin/data-kegiatan/laporankegiatanlansia',
+                    'title' => '</i>&nbsp;Laporan Dana Kegiatan'
+
+                ],
+                [
+                    'title' => 'Laporan Data Lansia',
                     'url' => 'javascript:;',
                     'sub_menu' => [
+                        // [
+                        //     'url' => ' /admin/data-lansia/laporankematian',
+                        //     'title' => '</i>&nbsp;Laporan Kematian Lansia'
+                        // ], 
                         [
-                            'url' => ' /admin/data-lansia/laporankematian',
-                            'title' => '</i>&nbsp;Laporan Kematian Lansia'
-                        ], [
                             'url' => ' /admin/data-lansia/laporankmslansia',
                             'title' => '</i>&nbsp;Laporan KMS Lansia'
                         ],
-                        [
-                            'url' => ' /admin/data-lansia/laporankeluhantindakan',
-                            'title' => '</i>&nbsp;Laporan Keluhan dan Tindakan'
-                        ],
+                        // [
+                        //     'url' => ' /admin/data-lansia/laporankeluhantindakan',
+                        //     'title' => '</i>&nbsp;Laporan Keluhan dan Tindakan'
+                        // ],
                         [
                             'url' => ' /admin/data-transaksi/laporanrujukanlansia',
                             'title' => '</i>&nbsp;Laporan Rujukan Lansia'

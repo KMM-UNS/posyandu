@@ -142,14 +142,12 @@ class KegiatanLansiaController extends Controller
     {
         $max = KegiatanLansia::where('status', '1')->max('waktu');
         $total = KegiatanLansia::where('waktu', $max)->first();
-
         $total1 = KegiatanLansia::where('status', '1')->sum('jumlah_iuran');
         $data = KegiatanLansia::where('status', '1')->get();
         $dataa = Pengajuan::all();
         $menunggu = Pengajuan::where('status', 0)->sum('jumlah_ajuan');
         $danakeluar = Pengajuan::where('status', 1)->sum('bukti_angka');
-        $totaldana = $danakeluar + $total1;
-
+        $totaldana = $total1 - $danakeluar;
 
         return view('pages.admin.lansia.kegiatanlansia.laporankegiatan', ['total' => $total, 'total1' => $total1, 'data' => $data, 'dataa' => $dataa, 'menunggu' => $menunggu, "danakeluar" => $danakeluar, "totaldana" => $totaldana]);
     }
@@ -157,9 +155,14 @@ class KegiatanLansiaController extends Controller
     public function pengajuan(Request $request)
     {
         Pengajuan::create($request->all());
-        // return view('pages.admin.lansia.kegiatanlansia.laporankegiatan');
         return redirect()->back();
     }
+    public function hapuspengajuan($id)
+    {
+        Pengajuan::where('id', $id)->delete();
+        return redirect()->back();
+    }
+
     public function status_pengajuan($id)
     {
         $statusajuan = Pengajuan::find($id);
@@ -176,27 +179,13 @@ class KegiatanLansiaController extends Controller
     }
     public function create_bukti(Request $request, $id)
     {
-        // dd($request->all());
         $pengajuan = Pengajuan::where('id', $id)->first();
         $pengajuan->bukti_angka = $request->bukti_angka;
         $pengajuan->kembali = $pengajuan->jumlah_ajuan - $pengajuan->bukti_angka;
 
-        // $pengajuan->bukti = $request->bukti;
-        // $pengajuan->save();
-        // $data = $request->all();
-        // $pengajuan->updated($data);
-        // dd($pengajuan);
-        // $pengajuan->update([
-        //     "bukti_angka" => $request->bukti_angka,
-        // ]);
-        // $pengajuan->bukti = $request->bukti;
-
-        // $pengajuan->bukti_angka = $request->bukti_angka;
-        // $pengajuan->save();
         if ($request->hasFile('bukti')) {
             $request->file('bukti')->move('buktipengajuan/', $request->file('bukti')->getClientOriginalName());
             $pengajuan->bukti = $request->file('bukti')->getClientOriginalName();
-            // $pengajuan->save();
         }
         $pengajuan->save();
 

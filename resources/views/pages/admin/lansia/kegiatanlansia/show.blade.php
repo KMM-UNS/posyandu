@@ -131,7 +131,7 @@
                                                     {{ $dl->nama_lansia }}</option>
                                             @endforeach
                                         </select><br>
-                                        <label for="name">Iuran Wajib</label> <br>
+                                        <label for="name">Iuran</label> <br>
                                         {{-- <input type="text"> --}}
                                         <input type="text" id="iuran_wajib" name="iuran_wajib" class="form-control"
                                             autofocus data-parsley-required="true"
@@ -171,7 +171,7 @@
                         <th>No. </th>
                         <th>Nama Lansia</th>
                         <th>Status</th>
-                        <th>Iuran Wajib</th>
+                        <th>Iuran</th>
                     </tr>
                     @foreach ($data_peserta as $dp)
                         @php

@@ -93,7 +93,7 @@
                         <div class="col-md-3">
                             <input type="text" id="no_kms" name="no_kms" class="form-control" autofocus
                                 data-parsley-required="true" value="{{ $data->no_kms ?? old('no_kms') }}">
-                        </div> --}}
+                </div> --}}
                         <div class="col-md-1">
                             <label for="name">NIK</label>
                         </div>
@@ -187,14 +187,14 @@
           <div class="row">
             <div class="col-md-3">
                 <input type="text" id="golongan_darah" name="golongan_darah" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->golongan_darah ?? old('golongan_darah') }}}">
-            </div>
-            <div class="col-md-1">
-                <label for="name">Jaminan Kesehatan</label>
-            </div>
-            <div class="col-md-3">
-                <input type="text" id="jaminan_kesehatan" name="jaminan_kesehatan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->jaminan_kesehatan ?? old('jaminan_kesehatan') }}}">
-            </div>
-     </div>
+    </div>
+    <div class="col-md-1">
+        <label for="name">Jaminan Kesehatan</label>
+    </div>
+    <div class="col-md-3">
+        <input type="text" id="jaminan_kesehatan" name="jaminan_kesehatan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->jaminan_kesehatan ?? old('jaminan_kesehatan') }}}">
+    </div>
+    </div>
     </div> --}}
                 <!-- end panel-body -->
                 <!-- begin panel-footer -->

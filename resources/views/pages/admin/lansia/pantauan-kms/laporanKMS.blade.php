@@ -2,6 +2,7 @@
 
 
 @push('css')
+    <link href="{{ asset('/assets/plugins/smartwizard/dist/css/smart_wizard.css') }}" rel="stylesheet" />
     {{-- <link rel="stylesheet" href="{{ asset('dashboard2') }}/vendors/feather/feather.css"> --}}
     {{-- <link rel="stylesheet" href="{{ asset('dashboard2') }}/vendors/ti-icons/css/themify-icons.css"> --}}
     {{-- <link rel="stylesheet" href="{{ asset('dashboard2') }}/vendors/css/vendor.bundle.base.css"> --}}
@@ -22,8 +23,8 @@
                 <div class="panel-heading">
                     <h4 class="panel-title">Laporan Pantauan KMS</h4>
                     <div class="panel-heading-btn">
-                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i
-                                class="fa fa-expand"></i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default"
+                            data-click="panel-expand"><i class="fa fa-expand"></i></a>
                         <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success"
                             data-click="panel-reload"><i class="fa fa-redo"></i></a>
                         <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning"
@@ -74,38 +75,49 @@
                         class="btn btn-secondary btn-sm float-right mr-4"><i class="fa fa-print fa-fw"></i> Cetak Laporan </a> --}}
                 <br>
 
-                <div class="form-group my-5">
+                <div class="table-responsive">
 
                     <table id="order-listing" class="table">
                         <thead>
                             <tr>
-                                <th>No. </th>
-                                <th>Tanggal Pemeriksaan </th>
-                                <th>Nama Lansia</th>
+                                <th>No. Urut</th>
+                                <th>No. KMS</th>
+                                <th>Nama</th>
+                                <th>Tanggal Pemeriksaan</th>
+                                <th>Kemandirian</th>
+                                <th>Emosional Mental</th>
+                                <th>IMT</th>
                                 <th>Tekanan Darah</th>
-                                <th>Tinggi Badan</th>
-                                <th>Berat Badan</th>
-                                <th>Indeks Massa Tubuh</th>
+                                <th>Hemoglobin</th>
+                                <th>Reduksi Urine</th>
+                                <th>Protein Urine</th>
+                                <th>Keluhan</th>
+                                <th>Penanganan</th>
                             </tr>
                         </thead>
-                        @foreach ($data as $cetakkms)
-                            <tbody>
+                        <tbody>
+                            @foreach ($data as $cetakkms)
                                 <tr>
                                     <td> {{ $loop->iteration }}</td>
-                                    <td> {{ $cetakkms->tanggal_pemeriksaan }}</td>
+                                    <td> no kms</td>
                                     <td> {{ $cetakkms->lansia->nama_lansia }}</td>
-                                    <td> {{ $cetakkms->tekanan_darah }}</td>
-                                    <td> {{ $cetakkms->tb }}</td>
-                                    <td> {{ $cetakkms->bb }}</td>
+                                    <td> {{ $cetakkms->tanggal_pemeriksaan }}</td>
+                                    <td> {{ $cetakkms->kegiatan_harian }}</td>
+                                    <td> {{ $cetakkms->status_mental }}</td>
                                     <td> {{ $cetakkms->indeks_massa_tubuh }}</td>
+                                    <td> {{ $cetakkms->tekanan_darah }}</td>
+                                    <td> {{ $cetakkms->hemoglobin }}</td>
+                                    <td> {{ $cetakkms->reduksi_urine }}</td>
+                                    <td> {{ $cetakkms->protein_urine }}</td>
+                                    <td> {{ $cetakkms->keluhan }}</td>
+                                    <td> {{ $cetakkms->tindakan }}</td>
                                 </tr>
-                            </tbody>
-                        @endforeach
+                            @endforeach
+                        </tbody>
+                    </table>
+
                 </div>
-
             </div>
-
-
         </div>
     @endisset
 @endsection
@@ -126,15 +138,4 @@
     <!-- endinject -->
     <!-- Custom js for this page-->
     <script src="{{ asset('dashboard2') }}/js/data-table.js"></script>
-    {{-- <script>
-            $(document).ready(function() {
-                var table = $('#rekaps').DataTable({
-                    pageLength: 10,
-                    processing: true,
-                    serverSide: false,
-                    dom: 'Blfrtip',
-                });
-
-            });
-        </script> --}}
 @endpush

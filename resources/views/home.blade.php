@@ -15,12 +15,24 @@
     </ol>
     <!-- end breadcrumb -->
     <!-- begin page-header -->
-    <h1 class="page-header">Hai {{ Auth::user()->name }}!!</h1>
+    {{-- <div class="container">
+
+        <h1 class="page-header">Hai {{ Auth::user()->name }}!!</h1>
+
+    </div> --}}
     <!-- end page-header -->
     <!-- begin row -->
-    <div class="row">
+    <div class="row justify-content-center">
+        <div class="col-md-9">
+            <div class="card">
+
+                <h1 class="page-header">
+                    <center>Hai {{ Auth::user()->name }}!!</center>
+                </h1>
+            </div>
+        </div>
         <!-- begin col-3 -->
-        <div class="col-xl-4 col-md-6">
+        {{-- <div class="col-xl-4 col-md-6">
             <div class="card text-white border-0 bg-teal text-center m-b-10">
                 <div class="card-body">
                     <blockquote class="blockquote mb-0">
@@ -42,7 +54,7 @@
                     </blockquote>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <!-- end col-3 -->
         <!-- begin col-3 -->
 
@@ -50,7 +62,7 @@
 
     </div>
     <!-- end row -->
-
+    <br>
 
     <!-- begin row -->
     <div class="row">

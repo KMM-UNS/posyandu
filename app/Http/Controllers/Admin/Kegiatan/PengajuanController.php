@@ -13,7 +13,6 @@ class PengajuanController extends Controller
     public function index()
     {
         $data = Pengajuan::get();
-        // mengirim data pegawai ke view index
         return view('pages.admin.lansia.kegiatanlansia.pengajuan', compact(
             'data'
         ));

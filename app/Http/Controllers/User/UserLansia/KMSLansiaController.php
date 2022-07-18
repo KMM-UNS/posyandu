@@ -28,9 +28,7 @@ class KMSLansiaController extends Controller
         $data = [
             'keluhan_tindakans' => $keluhan_tindakans
         ];
-        // return DataTables::of($kmslansia)->view('pages.user.lansia.kmslansia.index');
-        return $dataTable->render('pages.user.lansia.kmslansia.index', $data , ['chart' => $chart->build()]);
-
+        return $dataTable->render('pages.user.lansia.kmslansia.index', $data, ['chart' => $chart->build()]);
     }
 
 

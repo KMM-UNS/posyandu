@@ -35,6 +35,12 @@
             <div class="panel-body">
                 <h1 class="text-center">Anda Belum Mengisi Biodata !</h1>
             </div>
+            <div class="panel-footer">
+                <a href="{{ route('user.userlansia.biodatalansia.create') }}"><button type="submit"
+                        class="btn btn-primary">Isi
+                        Biodata</button></a>
+                <button type="reset" class="btn btn-default">Reset</button>
+            </div>
         @else
             <div class="container">
                 <div class="row">
@@ -125,13 +131,13 @@
                         </div>
                     </div>
                 </div>
+                <div class="panel-footer">
+                    <a href="{{ route('user.userlansia.biodatalansia.create') }}"><button type="submit"
+                            class="btn btn-primary">Edit</button></a>
+                </div>
         @endif
         {{-- @endforeach --}}
         <br>
-        <div class="panel-footer">
-            <a href="{{ route('user.userlansia.biodatalansia.create') }}"><button type="submit"
-                    class="btn btn-primary">Isi
-                    Biodata</button></a>
-            <button type="reset" class="btn btn-default">Reset</button>
-        </div>
+
+
     @endsection

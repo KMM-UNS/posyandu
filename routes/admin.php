@@ -134,6 +134,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::get('laporankegiatanlansia', 'KegiatanLansiaController@laporankegiatan');
             Route::post('/laporankegiatanlansia', 'KegiatanLansiaController@riwayatkegiatan');
             Route::post('/pengajuan', 'KegiatanLansiaController@pengajuan')->name('pengajuan');
+            Route::get('/hapus/{id}', 'KegiatanLansiaController@hapuspengajuan')->name('hapus');
+
 
             //pengajuan punya ketua
             Route::resource('pengajuan_ketua', 'PengajuanController');

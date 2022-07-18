@@ -222,7 +222,7 @@
                         </div>
                     </div>
                     <div class="panel-heading">
-                        <h4 class="panel-title">Tekanan Darah</h4>
+                        <h4 class="panel-title">Keluhan Tindakan</h4>
                         <div class="panel-heading-btn">
                             <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default"
                                 data-click="panel-expand"><i class="fa fa-expand"></i></a>
@@ -233,18 +233,12 @@
                     <div class="panel-body">
                         <div class="form-group">
 
-                            <label for="name">Sistol</label>
-                            <input type="number" id="sistol" onkeyup="tekanan();" name="sistol"
-                                class="form-control" autofocus data-parsley-required="true"
-                                value="{{ $data->sistol ?? old('sistol') }}">
-                            <label for="name">Diastol</label>
-                            <input type="number" id="diastol" onkeyup="tekanan();" name="diastol"
-                                class="form-control" autofocus data-parsley-required="true"
-                                value="{{ $data->diastol ?? old('diastol') }}">
-                            <label for="name">Hasil</label>
-                            <input type="text" id="hasiltekanan" name="hasiltekanan" onkeyup="tekanan();"
-                                class="form-control" autofocus data-parsley-required="true"
-                                value="{{ $data->hasiltekanan ?? old('hasiltekanan') }}">
+                            <label for="name">Keluhan</label>
+                            <input type="text" id="keluhan" name="keluhan" class="form-control" autofocus
+                                data-parsley-required="true" value="{{ $data->keluhan ?? old('keluhan') }}">
+                            <label for="name">Tindakan</label>
+                            <input type="text" id="tindakan" name="tindakan" class="form-control" autofocus
+                                data-parsley-required="true" value="{{ $data->tindakan ?? old('tindakan') }}">
 
                         </div>
 
@@ -307,23 +301,6 @@
             document.getElementById('hasil').value = result;
             document.getElementById('indeks_massa_tubuh').value = ab;
 
-        }
-
-        function tekanan() {
-            var txtFirstNumberValue = document.getElementById('sistol').value;
-            var txtSecondNumberValue = document.getElementById('diastol').value;
-            // var txtThirdNumberValue = document.getElementById('tb' * 'tb').value;
-            var result = ((2 * (txtSecondNumberValue)) + parseInt(txtFirstNumberValue)) / 3;
-            if (result < 60)
-                ab = "Hipotensi";
-            else if (result >= 60 && result < 100) {
-                ab = "Normal";
-            } else {
-                ab = "Hipertensi"
-            }
-
-            document.getElementById('hasiltekanan').value = ab;
-            // document.getElementById('tekanan_darah').value=ab;
         }
     </script>
 @endpush

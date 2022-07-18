@@ -6,8 +6,6 @@ use App\Datatables\Admin\Lansia\DataLansiaDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\DataLansia;
 use Illuminate\Support\Str;
-
-//use App\Models\GolonganDarah;
 use App\Models\Agama;
 use App\Models\GolonganDarah;
 use App\Models\StatusKawin;
@@ -20,12 +18,7 @@ use App\Models\Role;
 
 class DataLansiaController extends Controller
 {
-    // function __construct()
-    // {
-    //     $this->middleware('admin');
-    //     //$this->middleware('petugas_kesehatan');
-    //     // $this->middleware('role:kepala_kader');
-    // }
+
     /**
      * Display a listing of the resource.
      *
@@ -181,12 +174,4 @@ class DataLansiaController extends Controller
             return response(['error' => 'Something went wrong']);
         }
     }
-
-    // public function status($id)
-    // {
-    //     $datakematian = DataLansia::find($id);
-    //     $datakematian->status = !$datakematian->status;
-    //     $datakematian->save();
-    //     return redirect()->back();    
-    // }
 }

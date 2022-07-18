@@ -60,7 +60,7 @@
     <!-- end page-header -->
 
 
-    <!-- begin panel -->
+    {{-- <!-- begin panel -->
     <div class="panel panel-inverse">
         <!-- begin panel-heading -->
         <div class="panel-heading">
@@ -101,7 +101,7 @@
             </div>
         </div>
     </div>
-    <!-- end panel-body -->
+    <!-- end panel-body --> --}}
 
     <h1 class="page-header">Grafik Indeks Massa Tubuh<small> @yield('title') </small></h1>
 

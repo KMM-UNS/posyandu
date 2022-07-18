@@ -26,7 +26,6 @@ class BiodataLansiaController extends Controller
     public function index()
     {
         $data = DataLansia::where('createable_id', auth()->user()->id)->first();
-        //$data = DataLansia::all();
         return view('pages.user.lansia.biodatalansia.index', ['data' => $data]);
     }
 
@@ -43,8 +42,6 @@ class BiodataLansiaController extends Controller
         $statuskawins = StatusKawin::pluck('nama', 'id');
         $jaminankesehatans = JaminanKesehatan::pluck('jaminan_kesehatan_id', 'id');
         $pendidikans = Pendidikan::pluck('nama', 'id');
-
-
         return view('pages.user.lansia.biodatalansia.add-edit', ['agamas' =>  $agamas, 'goldas' => $goldas, 'statuskawins' => $statuskawins, 'jaminankesehatans' => $jaminankesehatans, 'pendidikans' => $pendidikans]);
     }
 
@@ -116,12 +113,13 @@ class BiodataLansiaController extends Controller
     public function edit($id)
     {
 
+        $data = DataLansia::findOrFail($id);
         $agamas = Agama::pluck('nama', 'id');
         $goldas = GolonganDarah::pluck('nama', 'id');
         $statuskawins = StatusKawin::pluck('nama', 'id');
         $jaminankesehatans = JaminanKesehatan::pluck('jaminan_kesehatan_id', 'id');
         $pendidikans = Pendidikan::pluck('nama', 'id');
-        return view('pages.user.lansia.biodatalansia.add-edit', ['agamas' =>  $agamas, 'goldas' => $goldas, 'statuskawins' => $statuskawins, 'jaminankesehatans' => $jaminankesehatans]);
+        return view('pages.user.lansia.biodatalansia.edit', ['data' => $data, 'agamas' =>  $agamas, 'goldas' => $goldas, 'statuskawins' => $statuskawins, 'jaminankesehatans' => $jaminankesehatans, 'pendidikans' => $pendidikans]);
     }
 
     /**

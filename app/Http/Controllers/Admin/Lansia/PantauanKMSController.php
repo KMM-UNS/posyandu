@@ -158,7 +158,7 @@ class PantauanKMSController extends Controller
         $data = PantauanKMS::get()
             ->whereBetween('tanggal_pemeriksaan', [$startDate, $endDate]);
 
-        $pdf = PDF::loadview('pages.admin.lansia.pantauan-kms.cetaklaporankms', ['data' => $data]);
+        $pdf = PDF::loadview('pages.admin.lansia.pantauan-kms.cetaklaporankms', ['data' => $data])->setPaper('legal', 'landscape');;
         return $pdf->download('Laporan KMS Lansia.pdf');
     }
 

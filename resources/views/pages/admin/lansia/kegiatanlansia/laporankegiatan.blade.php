@@ -99,6 +99,7 @@
 
                         <div class="form-group">
                             <div class="row">
+
                                 <div class="col-md-1">
                                     <label for="name">Nama Kader</label>
                                 </div>
@@ -140,10 +141,16 @@
     <!-- History Pengajuan -->
     <div class="col-xl-6 col-md-6">
         <div class="panel panel-inverse">
-            @isset($data)
-                <div class="panel-body">
-                    <h4> History Pemasukan</h4><br>
+            <div class="panel-heading">
+                <h4 class="panel-title">Riwayat Pemasukkan Kegiatan</h4>
+            </div>
+            {{-- <a href="" class="btn btn-sm btn-white m-b-10 float-right mr-4"><i
+                    class="fa fa-file-pdf t-plus-1 text-danger fa-fw fa-lg"></i> Export
+                as PDF</a> --}}
+            <div class="panel-body">
 
+
+                @isset($data)
                     <!-- isi -->
                     <div class="scrollpengajuan">
                         <table class="table table-sm">
@@ -168,10 +175,22 @@
 
     {{-- end row --}}
     </div>
+
+
+
     @isset($dataa)
         <div class="row">
             <div class="col-xl-12 col-md-6">
                 <div class="panel panel-inverse ">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">Riwayat Pengajuan</h4>
+                        <div class="panel-heading-btn">
+                            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default"
+                                data-click="panel-expand"><i class="fa fa-expand"></i></a>
+                            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning"
+                                data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+                        </div>
+                    </div>
                     <div class="panel-body">
                         <div class="container">
                             <br>
@@ -191,6 +210,7 @@
                                             <th>Bukti Angka</th>
                                             <th>Sisa</th>
                                             <th>Status Akhir</th>
+                                            <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -259,6 +279,11 @@
                                                     @elseif ($dp->statusakhir == '1')
                                                         <a type="button" class="btn btn-success btn-xs me-1 mb-1">Selesai</a>
                                                     @endif
+                                                </td>
+                                                <td>
+                                                    <a href="/admin/data-kegiatan/hapus/{{ $dp->id }}"
+                                                        onclick="return confirm('Apakah Anda Yakin Menghapus Data?');"
+                                                        class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
                                                 </td>
                                             </tr>
                                         @endforeach

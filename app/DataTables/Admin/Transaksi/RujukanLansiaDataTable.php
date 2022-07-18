@@ -36,8 +36,8 @@ class RujukanLansiaDataTable extends DataTable
                 //     $btn = $btn . '<a href="'  . route('admin.data-transaksi.rujukanlansia.show', $row->id) . '" class="btn btn-info buttons-show"><i class="fa fa-print fa-fw"></i></a>';
                 // }
 
-                $btn = $btn . '<a href="' . route('admin.data-transaksi.rujukanlansia.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
-                $btn = $btn . '<a href="' . route('admin.data-transaksi.rujukanlansia.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
+                $btn = $btn . '<a href="' . route('admin.data-transaksi.rujukanlansia.edit', $row->id) . '" class="btn btn-dark buttons-edit btn-xs"><i class="fas fa-edit"></i></a>';
+                $btn = $btn . '<a href="' . route('admin.data-transaksi.rujukanlansia.destroy', $row->id) . '" class="btn btn-danger buttons-delete btn-xs"><i class="fas fa-trash fa-fw"></i></a>';
                 // $btn = $btn . '<a href="'  . route('admin.data-transaksi.rujukanlansia.show', $row->id) . '" class="btn btn-info buttons-show"><i class="fa fa-print fa-fw"></i></a>';
                 $btn = $btn . '</div>';
 
