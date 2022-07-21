@@ -53,13 +53,13 @@
                             <th> Tanggal Imunisasi </th>
                             <th> Berat Badan (kg) </th>
                             <th> Tinggi Badan (Cm) </th>
-                            {{-- <th> Total IMT </th> --}}
+                            <th> Total IMT </th>
                             <th> Keterangan IMT </th>
                             <th> Umur </th>
                             <th> Vaksin </th>
                             <th> Vitamin Anak </th>
-                            {{-- <th scope="col"><strong> Keluhan </strong></th> --}}
-                            {{-- <th scope="col"><strong> Tindakan </strong></th> --}}
+                            <th scope="col"><strong> Keluhan </strong></th>
+                            <th scope="col"><strong> Tindakan </strong></th>
                             <th> Status Gizi </th>
                             <th> Nama Kader </th>
                         </tr>
@@ -71,13 +71,13 @@
                             <td>{{ $imunisasi->tanggal_imunisasi }}</td>
                             <td>{{ $imunisasi->berat_badan}}</td>
                             <td>{{ $imunisasi->tinggi_badan}}</td>
-                            {{-- <td>{{ $imunisasi->total_imt }}</td> --}}
+                            <td>{{ $imunisasi->total_imt }}</td>
                             <td>{{ $imunisasi->ket_imt}}</td>
                             <td>{{ $imunisasi->umur ?? old('umur') }}</td>
                             <td>{{ $imunisasi->jenisvaksin->vaksin}}</td>
                             <td>{{ $imunisasi->vitamin_anak->nama_vitamin }}</td>
-                            {{-- <td>{{ $imunisasi->keluhan }}</td> --}}
-                            {{-- <td>{{ $imunisasi->tindakan }}</td> --}}
+                            <td>{{ $imunisasi->keluhan }}</td>
+                            <td>{{ $imunisasi->tindakan }}</td>
                             <td>{{ $imunisasi->status_gizi}}</td>
                             <td>{{ $imunisasi->kader->nama }}</td>
                         </tr>
@@ -86,7 +86,7 @@
                 </table>
         </div>
     </div>
-<body class="h-screen bg-gray-100">
+{{-- <body class="h-screen bg-gray-100">
 
 <div class="container px-4 mx-auto">
 
@@ -98,7 +98,7 @@
 
 <script src="{{ $chart->cdn() }}"></script>
 
-{{ $chart->script() }}
+{{ $chart->script() }} --}}
 {{-- @endif --}}
 {{-- <div class="panel-footer">
      <a class="btn btn-info buttons-show"><i class="fas fa-download"> Download</i></a>

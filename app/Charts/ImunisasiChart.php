@@ -14,12 +14,18 @@ class ImunisasiChart
     {
         $this->chart = $chart;
     }
-
     public function build(): \ArielMejiaDev\LarapexCharts\LineChart
     {
-        $data_anak = DataAnak::where('createable_id', auth()->user()->id)->where('createable_type', 'App\Models\User')->first()->id;
+        // karena ada kemungkinan kosong, panggil data anak sesuai yang login
+        $data_anak = DataAnak::where('createable_id', auth()->user()->id)->where('createable_type', 'App\Models\User')->first();
         // dd($data_anak);
-        $imunisasis = Imunisasi::where('nama_anak_id',$data_anak)->get()->toArray();
+        // cek apakah sudah mengisi data anak yang ditunjukkan dengan data anak tidak null
+        if($data_anak != null) {
+            $imunisasis = Imunisasi::where('nama_anak_id',$data_anak->id)->get()->toArray();
+        } else {
+            $imunisasis = Imunisasi::where('nama_anak_id',$data_anak)->get()->toArray();
+        }
+
         // dd($imunisasis);
         // membuat array baru []
         $berat = array();

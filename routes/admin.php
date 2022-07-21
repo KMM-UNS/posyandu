@@ -32,6 +32,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::resource('status-kawin', 'StatusKawinController');
             Route::resource('pendidikan', 'PendidikanController');
             Route::resource('jenisvaksin', 'JenisVaksinController');
+            Route::resource('vitaminanak', 'VitaminAnakController');
             Route::resource('golda', 'GolonganDarahController');
             Route::resource('instansi', 'InstansiController');
             Route::resource('kader', 'KaderController');
@@ -49,7 +50,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
                 Route::get('/laporankegiatan', 'JadwalImunisasiController@laporan')->name('laporankegiatan');
                 Route::post('/laporankegiatan','JadwalImunisasiController@sortir');
                 Route::get('/cetaklaporankegiatan/{start}/{end}', 'JadwalImunisasiController@cetak')->name('cetaklaporankegiatan');
-                Route::resource('vitaminanak', 'VitaminAnakController');
+                // Route::resource('vitaminanak', 'VitaminAnakController');
         });
 
         // route data ibu

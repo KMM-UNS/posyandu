@@ -17,9 +17,12 @@ class RujukController extends Controller
      */
     public function index()
     {
-        // $dataanak = DataAnak::findOrFail($id);
-        $dataanak = DataAnak::select('id')->where('createable_id', auth()->user()->id)->first()->id;
-        $rujukans = Rujukan::where('nama', $dataanak)->get();
+        $dataanak = DataAnak::select('id')->where('createable_id', auth()->user()->id)->first();
+        if($dataanak != null){
+            $rujukans = Rujukan::where('nama', $dataanak->id, auth()->user()->id)->get();
+        } else {
+            $rujukans = Rujukan::where('nama', $dataanak, auth()->user()->id)->get();
+        }
         // dd($dataanak);
         return view('pages.user.anak.rujuk.index', ['rujukans' => $rujukans]);
     }

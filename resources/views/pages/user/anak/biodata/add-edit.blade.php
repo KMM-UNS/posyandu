@@ -50,7 +50,7 @@
                 <label for="name">NIK</label>
             </div>
             <div class="col-md-3">
-                <input type="text" id="NIK" name="NIK" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->NIK ?? old('NIK') }}}">
+                <input type="text" id="NIK" name="NIK" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nik ?? old('NIK') ?? auth()->user()->profile->nik_ektp }}}">
             </div>
             <div class="col-md-1">
                 <label for="name">Tempat Lahir</label>

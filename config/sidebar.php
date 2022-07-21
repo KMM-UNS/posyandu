@@ -50,10 +50,11 @@ return [
         ],[
             'url' => '/admin/anak-data/jadwalkegiatan',
             'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Jadwal Kegiatan'
-        ],[
-            'url' => '/admin/anak-data/vitaminanak',
-            'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Vitamin Anak'
         ],
+        // [
+        //     'url' => '/admin/anak-data/vitaminanak',
+        //     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Vitamin Anak'
+        // ],
 
         ]
     ],
@@ -85,14 +86,35 @@ return [
 
         [
             'icon' => 'fa fa-cogs',
-            'title' => 'Transaksi',
+            'title' => 'Rujukan',
+            'url' => ' /admin/data-transaksi/rujukan',
+            'caret' => false,
+            // 'sub_menu' =>
+            // [
+            //     [
+            //         'url' => ' /admin/data-transaksi/rujukan',
+            //         'title' => '</i class="fa fa-ellipsis-h"></i>&nbsp;Rujukan'
+            //     ]
+            // ]
+        ],
+        [
+            'icon' => 'fa fa-cogs',
+            'title' => 'Laporan',
             'url' => 'javascript:;',
             'caret' => true,
             'sub_menu' =>
             [
                 [
-                    'url' => ' /admin/data-transaksi/rujukan',
-                    'title' => '</i class="fa fa-ellipsis-h"></i>&nbsp;Rujukan'
+                    'url' => ' /admin/anak-data/laporanimunisasi',
+                    'title' => '</i class="fa fa-ellipsis-h"></i>&nbsp;Laporan Imunisasi'
+                ],
+                [
+                    'url' => ' /admin/anak-data/laporankegiatan',
+                    'title' => '</i class="fa fa-ellipsis-h"></i>&nbsp;Laporan Kegiatan'
+                ],
+                [
+                    'url' => ' /admin/data-transaksi/laporanrujukananak',
+                    'title' => '</i class="fa fa-ellipsis-h"></i>&nbsp;Laporan Rujukan Anak'
                 ]
             ]
         ],
@@ -120,6 +142,10 @@ return [
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Jenis Vaksin'
                 ],
                 [
+                    'url' => '/admin/master-data/vitaminanak',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Vitamin Anak'
+                ],
+                [
                     'url' => ' /admin/master-data/instansi',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Instansi'
 
@@ -130,27 +156,27 @@ return [
                 ],
             ]
         ],
-        [
-            'icon' => 'fa fa-cogs',
-            'title' => 'Laporan',
-            'url' => 'javascript:;',
-            'caret' => true,
-            'sub_menu' =>
-            [
-                [
-                    'url' => ' /admin/anak-data/laporanimunisasi',
-                    'title' => '</i class="fa fa-ellipsis-h"></i>&nbsp;Laporan Imunisasi'
-                ],
-                [
-                    'url' => ' /admin/anak-data/laporankegiatan',
-                    'title' => '</i class="fa fa-ellipsis-h"></i>&nbsp;Laporan Kegiatan'
-                ],
-                [
-                    'url' => ' /admin/data-transaksi/laporanrujukananak',
-                    'title' => '</i class="fa fa-ellipsis-h"></i>&nbsp;Laporan Rujukan Anak'
-                ]
-            ]
-        ],
+        // [
+        //     'icon' => 'fa fa-cogs',
+        //     'title' => 'Laporan',
+        //     'url' => 'javascript:;',
+        //     'caret' => true,
+        //     'sub_menu' =>
+        //     [
+        //         [
+        //             'url' => ' /admin/anak-data/laporanimunisasi',
+        //             'title' => '</i class="fa fa-ellipsis-h"></i>&nbsp;Laporan Imunisasi'
+        //         ],
+        //         [
+        //             'url' => ' /admin/anak-data/laporankegiatan',
+        //             'title' => '</i class="fa fa-ellipsis-h"></i>&nbsp;Laporan Kegiatan'
+        //         ],
+        //         [
+        //             'url' => ' /admin/data-transaksi/laporanrujukananak',
+        //             'title' => '</i class="fa fa-ellipsis-h"></i>&nbsp;Laporan Rujukan Anak'
+        //         ]
+        //     ]
+        // ],
     ],
 
     // ini buat naro url user bagian anak
@@ -215,7 +241,7 @@ return [
         [
             'icon' => 'fa fa-th-large',
             'title' => 'Dashboard',
-            'url' => '/admin',
+            'url' => '/beranda',
             'caret' => false
         ],
 
@@ -253,7 +279,7 @@ return [
                             'title' => '</i>&nbsp;Laporan Kegiatan'
                         ],
                         [
-                            'url' => ' /admin/anak-data/laporanrujukananak',
+                            'url' => ' /admin/data-transaksi/laporanrujukananak',
                             'title' => '</i>&nbsp;Laporan Rujukan Anak'
                         ],
                     ]

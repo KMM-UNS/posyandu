@@ -11,6 +11,7 @@ use App\Models\DataAnak;
 use App\Models\VitaminAnak;
 use App\Models\Kader;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Dompdf\Dompdf;
 use Illuminate\Support\Str;
 
 class ImunisasiController extends Controller
@@ -162,13 +163,16 @@ class ImunisasiController extends Controller
     }
 
     public function cetak($start, $end){
-
         $startDate = $start;
         $endDate =$end;
         $data = Imunisasi::get()
             ->whereBetween('tanggal_imunisasi', [$startDate, $endDate]);
-
+            // ->set_paper('letter', 'landscape');
+        // $dompdf = new DOMPDF();
+        // $dompdf->set_paper('letter', 'landscape');
+        // $pdf->setPaper('A4', 'landscape');
         $pdf = PDF::loadview('pages.admin.anak.imunisasi.cetaklaporanimunisasi',['data' =>$data]);
+        $pdf->setpaper('letter', 'landscape');
         return $pdf->download('Laporan Imunisasi.pdf');
     }
 }

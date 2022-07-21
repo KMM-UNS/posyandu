@@ -1,23 +1,23 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Dataibu;
+namespace App\Http\Controllers\Admin\Master;
 
-use App\Datatables\Admin\Dataibu\DataIbuDataTable;
+use App\Datatables\Admin\Master\VitaminAnakDataTable;
 use App\Http\Controllers\Controller;
-use App\Models\DataIbu;
-use App\Models\GolonganDarah;
 use Illuminate\Http\Request;
+use App\Models\VitaminAnak;
 
-class DataIbuController extends Controller
+class VitaminAnakController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(DataIbuDataTable $dataTable)
+    public function index(VitaminAnakDataTable $dataTable)
     {
-        return $dataTable->render('pages.admin.ibu.dataibu.index');
+        return $dataTable->render('pages.admin.master.vitaminanak.index');
+
     }
 
     /**
@@ -27,8 +27,7 @@ class DataIbuController extends Controller
      */
     public function create()
     {
-        $golda = GolonganDarah::pluck('nama');
-        return view('pages.admin.ibu.dataibu.add-edit', ['golda' => $golda]);
+        return view('pages.admin.master.vitaminanak.add-edit');
     }
 
     /**
@@ -41,20 +40,21 @@ class DataIbuController extends Controller
     {
         try {
             $request->validate([
-                'nama' => 'required|min:3'
+                'nama_vitamin' => 'required|min:3'
             ]);
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError($th->validator->messages()->all()[0]);
         }
 
         try {
-            DataIbu::create($request->all());
+            VitaminAnak::create($request->all());
         } catch (\Throwable $th) {
-
             return back()->withInput()->withToastError('Something went wrong');
         }
 
-        return redirect(route('admin.data-ibu.dataibu.index'))->withToastSuccess('Data tersimpan');
+        return redirect(route('admin.master-data.vitaminanak.index'))->withToastSuccess('Data tersimpan');
+
+
     }
 
     /**
@@ -76,9 +76,8 @@ class DataIbuController extends Controller
      */
     public function edit($id)
     {
-        $data = DataIbu::findOrFail($id);
-        $golda = GolonganDarah::pluck('nama');
-        return view('pages.admin.ibu.dataibu.add-edit', ['data' => $data, 'golda' => $golda]);
+        $data = VitaminAnak::findOrFail($id);
+        return view('pages.admin.master.vitaminanak.add-edit', ['data' => $data]);
     }
 
     /**
@@ -92,20 +91,20 @@ class DataIbuController extends Controller
     {
         try {
             $request->validate([
-                'nama' => 'required|min:3'
+                'nama_vitamin' => 'required|min:3'
             ]);
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError($th->validator->messages()->all()[0]);
         }
 
         try {
-            $data = DataIbu::findOrFail($id);
+            $data = VitaminAnak::findOrFail($id);
             $data->update($request->all());
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Something went wrong');
         }
 
-        return redirect(route('admin.data-ibu.dataibu.index'))->withToastSuccess('Data tersimpan');
+        return redirect(route('admin.master-data.vitaminanak.index'))->withToastSuccess('Data tersimpan');
     }
 
     /**
@@ -117,7 +116,7 @@ class DataIbuController extends Controller
     public function destroy($id)
     {
         try {
-            DataIbu::find($id)->delete();
+            VitaminAnak::find($id)->delete();
         } catch (\Throwable $th) {
             return response(['error' => 'Something went wrong']);
         }

@@ -100,7 +100,8 @@
 
 var txtFirstNumberValue = document.getElementById('tinggi_badan').value/100;
 var txtSecondNumberValue = document.getElementById('berat_badan').value;
-var result = parseInt(txtSecondNumberValue) / ((txtFirstNumberValue)* (txtFirstNumberValue));
+var result = Math.ceil((txtSecondNumberValue) / ((txtFirstNumberValue) * (txtFirstNumberValue)));
+// var result = parseInt(txtSecondNumberValue) / ((txtFirstNumberValue)* (txtFirstNumberValue));
 if (result<18.4) {
         ab = "Berat Badan Kurang";
       } else if (result >=18.5 && result <24.9) {

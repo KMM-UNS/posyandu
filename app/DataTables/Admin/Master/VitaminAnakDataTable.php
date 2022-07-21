@@ -1,6 +1,6 @@
 <?php
 
-namespace App\DataTables\admin\anak;
+namespace App\DataTables\Admin\master;
 
 use App\Models\VitaminAnak;
 use Yajra\DataTables\Html\Button;
@@ -27,8 +27,8 @@ class VitaminAnakDataTable extends DataTable
             })
             ->addColumn('action', function ($row) {
                 $btn = '<div class="btn-group">';
-                $btn = $btn . '<a href="' . route('admin.anak-data.vitaminanak.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
-                $btn = $btn . '<a href="' . route('admin.anak-data.vitaminanak.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
+                $btn = $btn . '<a href="' . route('admin.master-data.vitaminanak.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
+                $btn = $btn . '<a href="' . route('admin.master-data.vitaminanak.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
                 $btn = $btn . '</div>';
 
                 return $btn;
@@ -98,6 +98,6 @@ class VitaminAnakDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'admin\anak\VitaminAnak_' . date('YmdHis');
+        return 'admin\Master\VitaminAnak_' . date('YmdHis');
     }
 }

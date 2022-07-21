@@ -141,23 +141,29 @@
 
      </div>
     </div>
-    <table class="table table-primary table-striped">
+    {{-- <table class="table table-primary table-striped">
+        <thead>
+            <tr> --}}
+    <div class="panel-body">
+                    <!-- begin table-responsive -->
+    <div class="table-responsive">
+    <table class="table m-b-0">
         <thead>
             <tr>
-                <th scope="col"><strong> No </strong></th>
-                {{-- <th scope="col"><strong> Nama Anak </strong></th> --}}
-                <th scope="col"><strong> Tanggal Imunisasi </strong></th>
-                <th scope="col"><strong> Berat Badan (kg) </strong></th>
-                <th scope="col"><strong> Tinggi Badan (Cm) </strong></th>
-                <th scope="col"><strong> Total IMT </strong></th>
-                <th scope="col"><strong> Kategori IMT </strong></th>
-                <th scope="col"><strong> Umur </strong></th>
-                <th scope="col"><strong> Vaksin </strong></th>
-                <th scope="col"><strong> Vitamin Anak </strong></th>
-                <th scope="col"><strong> Keluhan </strong></th>
-                <th scope="col"><strong> Tindakan </strong></th>
-                <th scope="col"><strong> Status Gizi </strong></th>
-                <th scope="col"><strong> Nama Kader </strong></th>
+                <th> No</th>
+                {{-- <th> Nama Anak</th> --}}
+                <th> Tanggal Imunisasi</th>
+                <th> Berat Badan (kg)</th>
+                <th> Tinggi Badan (Cm)</th>
+                <th> Total IMT</th>
+                <th> Kategori IMT</th>
+                <th> Umur</th>
+                <th> Vaksin</th>
+                <th> Vitamin Anak</th>
+                <th> Keluhan</th>
+                <th> Tindakan</th>
+                <th> Status Gizi</th>
+                <th> Nama Kader</th>
             </tr>
         </thead>
         <tbody>
@@ -183,43 +189,10 @@
     </table>
             </div>
         </div>
-          {{-- <input type="text" id="nama_anak" name="nama_anak" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama_anak ?? old('nama_anak') }}}"> --}}
-          {{-- <label for="name">Jenis Kelamin</label> --}}
-          {{-- <input type="text" id="jenis_kelamin" name="jenis_kelamin" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->jenis_kelamin ?? old('jenis_kelamin') }}}"> --}}
-          {{-- <x-form.genderRadio name="jenis_kelamin" selected="{{{ old('jenis_kelamin') ?? ($data['jenis_kelamin'] ?? null) }}}"/> --}}
-          {{-- <label for="name">Berat Badan (Kg)</label>
-          {{ $imunisasi->berat_badan}}
-          <label for="name">Tinggi Badan (Cm)</label>
-          {{ $imunisasi->tinggi_badan}}
-          <label for="name">Umur</label>
-          {{ $imunisasi->umur ?? old('umur') }}
-          <label for="name">Jenis Vaksin</label>
-          {{-- <input type="text" id="jenis_vaksin" name="jenis_vaksin" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->jenis_vaksin ?? old('jenis_vaksin') }}}"> --}}
-          {{-- {{ $imunisasi->jenisvaksin->vaksin}}
-          <label for="name">Vitamin Anak</label>
-          {{ $imunisasi->vitamin_anak->nama_vitamin }}
-          {{-- <input type="text" id="vitamin" name="vitamin" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->vitamin ?? old('vitamin') }}}"> --}}
-          {{-- <label for="name">Keluhan</label>
-          {{ $imunisasi->keluhan }}
-          <label for="name">Tindakan</label>
-          {{ $imunisasi->tindakan }}
-          <label for="name">Status Gizi</label>
-          {{$imunisasi->status_gizi}}
-          {{-- <input type="text" id="status_gizi" name="status_gizi" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->status_gizi ?? old('status_gizi') }}}"> --}}
-          {{-- <label for="name">Nama Kader</label>
-          {{ $imunisasi->nama_kader }} --}}
-         {{-- </div>
-      </div>
-    @endforeach --}}
-    <!-- end panel-body -->
-    <!-- begin panel-footer -->
-    {{-- <div class="panel-footer">
-      <button type="submit" class="btn btn-primary">Simpan</button>
-      <button type="reset" class="btn btn-default">Reset</button>
-    </div> --}}
     <!-- end panel-footer -->
     </div>
   <!-- end panel -->
+
 </form>
 <a href="javascript:history.back(-1);" class="btn btn-success">
   <i class="fa fa-arrow-circle-left"></i> Kembali

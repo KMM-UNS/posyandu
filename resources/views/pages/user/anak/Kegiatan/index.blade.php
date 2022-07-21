@@ -32,14 +32,10 @@
         <!-- begin timeline-body -->
         <div class="timeline-body">
             <div class="timeline-header">
-                {{-- <span class="userimage"><img src="/assets/img/user/user-1.jpg" alt="" /> <a href="javascript:;">Penanggung Jawab : {{ $jadwalimunisasi->kader->nama }}</a></span> --}}
                 <span class="username"><a href="javascript:;">Keterangan :  {{$jadwalimunisasi->keterangan}}</a> <small></small></span>
-                {{-- <span class="username"><a href="javascript:;">Penanggung Jawab : </a> <small></small></span> --}}
             </div>
             <div class="timeline-header">
                     <span class="username"><a href="javascript:;">Penanggung Jawab : {{$jadwalimunisasi->kader->nama}}</a> <small></small></span>
-                    {{-- {{$jadwalimunisasi->keterangan}} --}}
-                    {{-- {{$jadwalimunisasi->kader->nama}} --}}
             </div>
         </div>
         <!-- end timeline-body -->

@@ -87,7 +87,7 @@ class ImunisasiDataTable extends DataTable
             Column::make('tanggal_imunisasi'),
             Column::make('berat_badan'),
             Column::make('tinggi_badan'),
-            // Column::make('umur'),
+            Column::make('umur'),
             Column::make('jenis_vaksin')->data('jenisvaksin.vaksin'), //jenisvaksin nama fungsi relasi
             Column::make('vitamin')->data('vitamin_anak.nama_vitamin'),
             // Column::make('keluhan'),

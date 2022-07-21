@@ -93,7 +93,7 @@ class DataAnakDataTable extends DataTable
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
-                  ->width(60)
+                //   ->width(60)
                   ->addClass('text-center'),
         ];
     }
