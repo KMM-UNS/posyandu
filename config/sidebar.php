@@ -224,17 +224,18 @@ return [
             ],
             ]
         ],
-        [
-            'icon' => 'fa fa-cogs',
-            'title' => 'Ganti Password',
-            'url' => '#',
-            'caret' => false
-        ], [
-            'icon' => 'fa fa-sign-out-alt',
-            'title' => 'Logout',
-            'url' => '#',
-            'caret' => false
-        ]
+        // [
+        //     'icon' => 'fa fa-cogs',
+        //     'title' => 'Ganti Password',
+        //     'url' => '#',
+        //     'caret' => false
+        // ],
+        // [
+        //     'icon' => 'fa fa-sign-out-alt',
+        //     'title' => 'Logout',
+        //     'url' => '#',
+        //     'caret' => false
+        // ]
     ],
 
     'menu_petugas_kesehatan' => [
@@ -267,14 +268,11 @@ return [
             'url' => 'javascript:;',
             'caret' => true,
             'sub_menu' => [
-                [
-                    'title' => 'Laporan Posyandu Anak',
-                    'url' => 'javascript:;',
-                    'sub_menu' => [
                         [
                             'url' => ' /admin/anak-data/laporanimunisasi',
                             'title' => '</i>&nbsp;Laporan Imunisasi'
-                        ], [
+                        ],
+                        [
                             'url' => ' /admin/anak-data/laporankegiatan',
                             'title' => '</i>&nbsp;Laporan Kegiatan'
                         ],
@@ -282,9 +280,7 @@ return [
                             'url' => ' /admin/data-transaksi/laporanrujukananak',
                             'title' => '</i>&nbsp;Laporan Rujukan Anak'
                         ],
-                    ]
                 ],
-            ]
         ],
 
     ],

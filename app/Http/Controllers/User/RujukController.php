@@ -23,7 +23,6 @@ class RujukController extends Controller
         } else {
             $rujukans = Rujukan::where('nama', $dataanak, auth()->user()->id)->get();
         }
-        // dd($dataanak);
         return view('pages.user.anak.rujuk.index', ['rujukans' => $rujukans]);
     }
 
@@ -57,24 +56,5 @@ class RujukController extends Controller
 
         ]);
         return $pdf->download('cetak.pdf');
-        // $data = Rujukan::findOrFail($id);
-        // $dataanak = DataAnak::select('id')->where('createable_id', auth()->user()->id)->first()->id;
-        // $rujukans = Rujukan::where('nama', $dataanak, auth()->user()->id)->get();
-        // $rujukan = Rujukan::where('createable_id', auth()->user()->id)->where('createable_type', 'App\Models\User')->findOrFail($id);
-        // $pdf = PDF::loadview('pages.user.anak.rujuk.cetak', [
-        //     'kode_surat'=>$rujukans->kode_surat,
-        //     'tanggal_surat'=>$rujukans->tanggal_surat,
-        //     'kepada'=>$rujukans->kepada,
-        //     'nama'=>$rujukans->data_anak->nama_anak,
-        //     'umur'=>$rujukans->umur,
-        //     'alamat'=>$rujukans->alamat,
-        //     'bb_turun'=>$rujukans->bb_turun,
-        //     'bb_naik'=>$rujukans->bb_naik,
-        //     'keluhan'=>$rujukans->keluhan,
-        //     'keterangan_rujukan'=>$rujukans->keterangan_rujukan,
-
-
-        // ]);
-        // return $pdf->download('cetak.pdf');
     }
 }

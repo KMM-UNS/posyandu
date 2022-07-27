@@ -14,8 +14,8 @@
 @section('content')
 <!-- begin breadcrumb -->
 <ol class="breadcrumb float-xl-right">
-    <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
-    <li class="breadcrumb-item"><a href="javascript:;">Master Data</a></li>
+    <li class="breadcrumb-item"><a href="/beranda">Beranda</a></li>
+    {{-- <li class="breadcrumb-item"><a href="javascript:;">Master Data</a></li> --}}
     <li class="breadcrumb-item active">@yield('title')</li>
 </ol>
 <!-- end breadcrumb -->
@@ -38,7 +38,12 @@
     <!-- begin panel-body -->
     @if(empty($dataanak) || $dataanak->count()==0)
     <div class="panel-body">
-        <h1 class="text-center">Anda Belum Mengisi Biodata !</h1>
+        <h1 class="text-center">Anda Belum Melengkapi Biodata Anak !</h1>
+    </div>
+    <br>
+    <div class="panel-footer">
+        <a href="{{route('user.biodata.create')}}"><button type="submit" class="btn btn-primary">Lengkapi Biodata</button></a>
+        <button type="reset" class="btn btn-default">Reset</button>
     </div>
     @else
     <!-- nanti isi table disini  -->
@@ -53,7 +58,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="foto">
-                        <img src="foto/bayuafrizatulrizki.jpg" class="img-thumbnail" alt="" width="150" height="auto">
+                        {{-- <img src="foto/bayuafrizatulrizki.jpg" class="img-thumbnail" alt="" width="150" height="auto"> --}}
                     </div>
                 </div>
                 <div class="col-md-8 kertas-biodata">
@@ -65,64 +70,64 @@
                                         <table border="0" width="100%" style="padding-left: 2px; padding-right: 13px;">
                                             <tbody>
                                                 <tr>
-                                                    <td width="25%" valign="top" class="textt">Nama Anak</td>
+                                                    <td width="25%" valign="top" class="textt"><b>Nama Anak</b></td>
                                                     <td width="2%">:</td>
-                                                    <td style="color: #e9a7f9; font-weight:bold">{{$dataanak->nama_anak}}</td>
+                                                    <td style="color: #158beb; font-weight:bold">{{$dataanak->nama_anak}}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="textt">NIK</td>
-                                                    <td>:</td>
-                                                    <td>{{$dataanak->NIK}}</td>
+                                                    <td class="textt"><b>NIK</b></td>
+                                                    <td width="2%">:</td>
+                                                    <td style="color: #158beb; font-weight:bold">{{$dataanak->NIK}}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="textt">Alamat</td>
-                                                    <td>:</td>
-                                                    <td>{{$dataanak->alamat}}</td>
+                                                    <td class="textt"><b>Alamat</b></td>
+                                                    <td width="2%">:</td>
+                                                    <td style="color: #158beb; font-weight:bold">{{$dataanak->alamat}}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="textt">Tempat Lahir</td>
-                                                    <td>:</td>
-                                                    <td>{{$dataanak->tempat_lahir}}</td>
+                                                    <td class="textt"><b>Tempat Lahir</b></td>
+                                                    <td width="2%">:</td>
+                                                    <td style="color: #158beb; font-weight:bold">{{$dataanak->tempat_lahir}}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="textt">Tanggal Lahir</td>
-                                                    <td>:</td>
-                                                    <td>{{$dataanak->tanggal_lahir}}</td>
+                                                    <td class="textt"><b>Tanggal Lahir</b></td>
+                                                    <td width="2%">:</td>
+                                                    <td style="color: #158beb; font-weight:bold">{{$dataanak->tanggal_lahir}}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="textt">Berat Badan</td>
-                                                    <td>:</td>
-                                                    <td>{{$dataanak->berat_badan_lahir}}</td>
+                                                    <td class="textt"><b>Berat Badan Lahir</b></td>
+                                                    <td width="2%">:</td>
+                                                    <td style="color: #158beb; font-weight:bold">{{$dataanak->berat_badan_lahir}} Kg</td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="textt">Tinggi Badan</td>
-                                                    <td>:</td>
-                                                    <td>{{$dataanak->tinggi_badan_lahir}}</td>
+                                                    <td class="textt"><b>Tinggi Badan Lahir</b></td>
+                                                    <td width="2%">:</td>
+                                                    <td style="color: #158beb; font-weight:bold">{{$dataanak->tinggi_badan_lahir}} Cm</td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="textt">Umur</td>
-                                                    <td>:</td>
-                                                    <td>{{$dataanak->umur}}</td>
+                                                    <td class="textt"><b>Umur</b></td>
+                                                    <td width="2%">:</td>
+                                                    <td style="color: #158beb; font-weight:bold">{{$dataanak->umur}}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="textt">Jenis Kelamin</td>
-                                                    <td>:</td>
-                                                    <td>{{$dataanak->jenis_kelamin}}</td>
+                                                    <td class="textt"><b>Jenis Kelamin</b></td>
+                                                    <td width="2%">:</td>
+                                                    <td style="color: #158beb; font-weight:bold">{{$dataanak->jenis_kelamin}}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="textt">Anak Ke</td>
-                                                    <td>:</td>
-                                                    <td>{{$dataanak->anak_ke}}</td>
+                                                    <td class="textt"><b>Anak Ke</b></td>
+                                                    <td width="2%">:</td>
+                                                    <td style="color: #158beb; font-weight:bold">{{$dataanak->anak_ke}}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="textt">Nama Orangtua</td>
-                                                    <td>:</td>
-                                                    <td>{{$dataanak->nama_orangtua}}</td>
+                                                    <td class="textt"><b>Nama Orangtua</b></td>
+                                                    <td width="2%">:</td>
+                                                    <td style="color: #158beb; font-weight:bold">{{$dataanak->nama_orangtua}}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="textt">No Handphone Orangtua</td>
-                                                    <td>:</td>
-                                                    <td>{{$dataanak->no_hp_orangtua}}</td>
+                                                    <td class="textt"><b>No Handphone Orangtua</b></td>
+                                                    <td width="2%">:</td>
+                                                    <td style="color: #158beb; font-weight:bold">{{$dataanak->no_hp_orangtua}}</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -130,6 +135,10 @@
                                 </tr>
                             </tbody>
                         </table>
+                        <div class="panel-footer">
+                            <a href="{{route('user.biodata.edit', $dataanak->id)}}"><button type="submit" class="btn btn-primary">Edit Biodata</button></a>
+                            {{-- <button type="reset" class="btn btn-default">Reset</button> --}}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -139,10 +148,10 @@
     @endif
     <!-- end panel-body -->
     <br>
-    <div class="panel-footer">
-        <a href="{{route('user.biodata.create')}}"><button type="submit" class="btn btn-primary">Isi Biodata</button></a>
+    {{-- <div class="panel-footer">
+        <a href="{{route('user.biodata.create')}}"><button type="submit" class="btn btn-primary">Lengkapi Biodata</button></a>
         <button type="reset" class="btn btn-default">Reset</button>
-    </div>
+    </div> --}}
 
 </div>
 </div>

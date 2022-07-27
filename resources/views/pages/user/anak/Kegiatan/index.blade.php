@@ -5,8 +5,8 @@
 @section('content')
 <!-- begin breadcrumb -->
 <ol class="breadcrumb float-xl-right">
-    <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
-    <li class="breadcrumb-item"><a href="javascript:;">Extra</a></li>
+    <li class="breadcrumb-item"><a href="/beranda">Beranda</a></li>
+    {{-- <li class="breadcrumb-item"><a href="javascript:;">Extra</a></li> --}}
     <li class="breadcrumb-item active">Timeline</li>
 </ol>
 <!-- end breadcrumb -->

@@ -15,7 +15,7 @@ class JenisVaksin extends Model
     public const ACTIVE = "aktif";
 
     protected $table = 'jenis_vaksins';
-    protected $fillable = ['vaksin','umur'];
+    protected $fillable = ['vaksin','stok'];
     public $timestamps = false;
 
     public function imunisasi()

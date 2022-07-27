@@ -27,7 +27,7 @@ class KaderController extends Controller
      */
     public function create()
     {
-        $pendidikan=Pendidikan::pluck('nama','id');
+        $pendidikan=Pendidikan::pluck('nama','id'); // pluck mengambil 2 data
         return view('pages.admin.master.datakader.add-edit',['pendidikan'=>$pendidikan]);
     }
 

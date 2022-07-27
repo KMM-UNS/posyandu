@@ -15,7 +15,8 @@ use App\Models\Imunisasi;
 
 class HomeController extends Controller
 {
-    public function index(ImunisasiChart  $imunisasiChart, DataanakChart $dataanakChart, UmurChart $umurChart, PeriksaChart $periksaChart, RujukanChart $rujukanChart ){
+    public function index(ImunisasiChart  $imunisasiChart, DataanakChart $dataanakChart, UmurChart $umurChart,
+    PeriksaChart $periksaChart, RujukanChart $rujukanChart ){
         // return view('pages.landing-page');
         $anak = DataAnak::count();
         $kader = Kader::count();

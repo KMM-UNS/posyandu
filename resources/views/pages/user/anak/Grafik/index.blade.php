@@ -16,6 +16,11 @@
 @endpush
 
 @section('content')
+<ol class="breadcrumb float-xl-right">
+    <li class="breadcrumb-item"><a href="/beranda">Beranda</a></li>
+    {{-- <li class="breadcrumb-item"><a href="javascript:;">Master Data</a></li> --}}
+    <li class="breadcrumb-item active">@yield('title')</li>
+</ol>
 {{-- @foreach ($dataanaks as $dataanak )
  @if(empty($dataanak) || $dataanak->count()==0)
     <div class="panel-body">
@@ -93,11 +98,18 @@
 
 {{ $chart->script() }} --}}
 {{-- @endif --}}
+{{-- @foreach ($imunisasis as $imunisasi ) --}}
 <div class="panel-footer">
-    <a href=" {{ route('user.grafik.cetak', $imunisasi->id) }}" class="btn btn-info buttons-show"><i class="fas fa-print"> Cetak </i></a>
+    <a href=" {{ route('user.grafik.cetak', auth()->user()->id) }}" class="btn btn-info buttons-show"><i class="fas fa-print"> Cetak </i></a>
     {{-- <a href="{{route('user.rujuk.show', $rujukan->id)}}" class="btn btn-sm btn-primary width-60 m-r-2">Deta</a> --}}
     {{-- <a href="{{route('user.grafik.show')}}"class="btn btn-info buttons-show"><i class="fas fa-download"> Cetak</i></a> --}}
 </div>
+{{-- @endforeach --}}
+{{-- <div class="panel-footer">
+    <a href=" {{ route('user.grafik.cetak', $imunisasi->id) }}" class="btn btn-info buttons-show"><i class="fas fa-print"> Cetak </i></a>
+    {{-- <a href="{{route('user.rujuk.show', $rujukan->id)}}" class="btn btn-sm btn-primary width-60 m-r-2">Deta</a> --}}
+    {{-- <a href="{{route('user.grafik.show')}}"class="btn btn-info buttons-show"><i class="fas fa-download"> Cetak</i></a> --}}
+
 @endsection
 </body>
 </html>

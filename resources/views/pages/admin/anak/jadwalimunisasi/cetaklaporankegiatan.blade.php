@@ -24,7 +24,7 @@
 
 <body>
     <h1 style="font-size: 16px; text-align: center;">
-        POSYANDU SEBELAS MARET
+        POSYANDU ANAK
     </h1>
     <h1 style="font-size: 16px; text-align: center;">
         KELURAHAN JEBRES KECAMATAN JEBRES
@@ -33,10 +33,10 @@
         KOTA SURAKARTA
     </h1>
     <h4 style="text-align: center; font-weight: normal; margin-bottom: 0;">
-        JALAN SEBELAS MARET, JEBRES, Kec. JEBRES, Kota SURAKARTA, JAWA TENGAH
+        JALAN KABUT, JEBRES, Kec. JEBRES, Kota SURAKARTA, JAWA TENGAH
     </h4>
     <h4 style="text-align: center; font-weight: normal; margin: 0;">
-        Telepon: 08988777788 Surel : uns@mail.com Kode Pos : 5612
+        Telepon: 08988777788 Surel : posyandu@mail.com Kode Pos : 5612
     </h4>
     <hr style="border: 3px solid; margin-bottom: 1px;">
     <hr style="margin-top: 0;">

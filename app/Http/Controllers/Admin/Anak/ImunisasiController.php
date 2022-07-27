@@ -11,6 +11,7 @@ use App\Models\DataAnak;
 use App\Models\VitaminAnak;
 use App\Models\Kader;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\DB;
 use Dompdf\Dompdf;
 use Illuminate\Support\Str;
 
@@ -57,13 +58,29 @@ class ImunisasiController extends Controller
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError($th->validator->messages()->all()[0]);
         }
+        DB::transaction(function () use ($request) {
 
         try {
-            Imunisasi::create($request->all());
+            // dd($request->all());
+            $imunisasi=Imunisasi::create($request->all());
+            $imunisasi->save();
+        // if ($imunisasi->jenis_vaksin !=null){ // -> karena jenis vaksin di imunisasi di isi kosong
+            $jenisvaksin = JenisVaksin::where('id', $imunisasi->jenis_vaksin)->first();
+            if($jenisvaksin->stok > 0){
+                // $jenisvaksin->stok >= $imunisasi->jenis_vaksin;
+                $jenisvaksin->stok = $jenisvaksin->stok - 1;
+                $jenisvaksin->save();
+            } else {
+                DB::rollBack();
+                return back()->withInput()->withToastError('Stok Habis');
+            }
+        // }
         } catch (\Throwable $th) {
-            dd($th);
+            // dd($th);
+            DB::rollBack();
             return back()->withInput()->withToastError('Something went wrong');
         }
+    });
 
         return redirect(route('admin.anak-data.imunisasi.index'))->withToastSuccess('Data tersimpan');
     }
@@ -81,7 +98,8 @@ class ImunisasiController extends Controller
         $vitaminanak=VitaminAnak::pluck('nama_vitamin','id');
         $kader= Kader::pluck('nama','id');
         $data = Imunisasi::findOrFail($id);
-        return view('pages.admin.anak.imunisasi.show', ['data' => $data,'jenisvaksin'=>$jenisvaksin, 'dataanak'=>$dataanak, 'vitaminanak'=>$vitaminanak,'kader'=>$kader]);
+        return view('pages.admin.anak.imunisasi.show', ['data' => $data,'jenisvaksin'=>$jenisvaksin,
+        'dataanak'=>$dataanak, 'vitaminanak'=>$vitaminanak,'kader'=>$kader]);
     }
 
     /**
@@ -97,7 +115,8 @@ class ImunisasiController extends Controller
         $vitaminanak=VitaminAnak::pluck('nama_vitamin','id');
         $kader=Kader::pluck('nama','id');
         $data = Imunisasi::findOrFail($id);
-        return view('pages.admin.anak.imunisasi.add-edit', ['data' => $data,'jenisvaksin'=>$jenisvaksin, 'dataanak'=>$dataanak, 'vitaminanak'=>$vitaminanak,'kader'=>$kader]);
+        return view('pages.admin.anak.imunisasi.add-edit', ['data' => $data,'jenisvaksin'=>$jenisvaksin,
+        'dataanak'=>$dataanak, 'vitaminanak'=>$vitaminanak,'kader'=>$kader]);
     }
 
     /**
@@ -167,10 +186,6 @@ class ImunisasiController extends Controller
         $endDate =$end;
         $data = Imunisasi::get()
             ->whereBetween('tanggal_imunisasi', [$startDate, $endDate]);
-            // ->set_paper('letter', 'landscape');
-        // $dompdf = new DOMPDF();
-        // $dompdf->set_paper('letter', 'landscape');
-        // $pdf->setPaper('A4', 'landscape');
         $pdf = PDF::loadview('pages.admin.anak.imunisasi.cetaklaporanimunisasi',['data' =>$data]);
         $pdf->setpaper('letter', 'landscape');
         return $pdf->download('Laporan Imunisasi.pdf');

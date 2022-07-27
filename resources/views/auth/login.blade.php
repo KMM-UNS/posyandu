@@ -9,7 +9,7 @@
 	<div class="news-feed">
 		<div class="news-image" style="background-image: url(/assets/img/login-bg/front.png)"></div>
 		<div class="news-caption">
-			<h4 class="caption-title"><b>e</b>Layanan</h4>
+			<h4 class="caption-title"><b>e</b>Posyandu</h4>
 			<p>
 				Sistem Informasi Posyandu
 			</p>
@@ -51,21 +51,21 @@
 					@enderror
 				</div>
 
-				<div class="checkbox checkbox-css m-b-30">
+				{{-- <div class="checkbox checkbox-css m-b-30">
 					<input type="checkbox" id="remember_me_checkbox" value="" />
 					<label for="remember_me_checkbox">
 						Remember Me
 					</label>
-				</div>
+				</div> --}}
 				<div class="login-buttons">
 					<button type="submit" class="btn btn-success btn-block btn-lg">Login</button>
 				</div>
 				@if(!request()->routeIs('admin*'))
 				<p>
 					<br />
-					Belum punya akun? <a href="{{ route('register') }}">Mendaftar</a>
+					{{-- Belum punya akun? <a href="{{ route('register') }}">Mendaftar</a> --}}
 					<br />
-					Lupa kata sandi? <a href="{{ route('password.request') }}">Dapatkan kembali</a>
+					{{-- Lupa kata sandi? <a href="{{ route('password.request') }}">Dapatkan kembali</a> --}}
 				</p>
 				@endif
 				<hr />

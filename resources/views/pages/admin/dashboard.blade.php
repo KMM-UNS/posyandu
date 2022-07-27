@@ -1,7 +1,7 @@
 {{-- @extends('layouts.default') --}}
 @extends('layouts.default', ['topMenu' => true, 'sidebarHide' => true])
 
-@section('title', 'Dashboard V2')
+@section('title', 'Dashboard Admin')
 
 @push('css')
 <link href="/assets/plugins/jvectormap-next/jquery-jvectormap.css" rel="stylesheet" />
@@ -31,7 +31,7 @@
         <p>{{ $anak }}</p>
       </div>
       <div class="stats-link">
-        <a href=/admin/anak-data/dataanak>View Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
+        <a>Jumlah Anak di Posyandu<i class=""></i></a>
       </div>
     </div>
   </div>
@@ -45,7 +45,7 @@
          <p>{{ $kader }}</p>
       </div>
       <div class="stats-link">
-        <a href=/admin/master-data/kader>View Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
+        <a>Jumlah Kader di Posyandu<i class=""></i></a>
       </div>
     </div>
   </div>
@@ -59,7 +59,7 @@
          <p>{{ $rujukan }}</p>
       </div>
       <div class="stats-link">
-        <a href=/admin/data-transaksi/rujukan>View Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
+        <a>Jumlah Rujukan Anak dari Posyandu<i class=""></i></a>
       </div>
     </div>
   </div>
@@ -72,7 +72,7 @@
          <p>{{ $imunisasi }}</p>
       </div>
       <div class="stats-link">
-        <a href=/admin/data-transaksi/rujukan>View Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
+        <a>Jumlah Pemeriksaan Imunisasi Anak di Posyandu<i class=""></i></a>
       </div>
     </div>
   </div>

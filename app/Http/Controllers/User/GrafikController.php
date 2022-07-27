@@ -30,8 +30,10 @@ class GrafikController extends Controller
 
 public function cetak($id)
     {
-        $data = Imunisasi::findOrFail($id);
-         $dataanak = DataAnak::select('id')->where('createable_id', auth()->user()->id)->first();
+
+        // $imunisasis = Imunisasi::findOrFail($id);
+        $dataanak = DataAnak::select('id')->where('createable_id', auth()->user()->id)->first();
+        // dd($dataanak);
         if($dataanak != null) {
         $imunisasis = Imunisasi::where('nama_anak_id', $dataanak->id, auth()->user()->id)->get();
         } else {
@@ -69,10 +71,6 @@ public function cetak($id)
         // 'nama_kader'=>$data->kader->nama,
 
         ])->setOptions(['defaultFont' => 'sans-serif']);;
-        // return $pdf->download('rujukan.pdf');
-        // $imunisasi = Imunisasi::findOrFail($id);
-        // $rujukan = Rujukan::where('createable_id', auth()->user()->id)->where('createable_type', 'App\Models\User')->findOrFail($id);
-        // $pdf = PDF::loadview('pages.user.anak.grafik.index', ['imunisasi' => $imunisasi]);
         $pdf->setpaper('letter', 'landscape');
         return $pdf->download('cetakkms.pdf');
     }

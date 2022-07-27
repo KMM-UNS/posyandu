@@ -47,7 +47,7 @@
                     <th><b>Tanggal Surat</b></th>
                     <th><b>Nama</b></th>
                     <th><b>Keterangan Rujukan</b></th>
-                    {{-- <th>Action</th> --}}
+                    <th><b> Status</b></th>
                     <th width="1%"></th>
                 </tr>
             </thead>
@@ -59,14 +59,14 @@
                     <td >{{ $rujukan->tanggal_surat }}</td>
                     <td>{{ $rujukan->data_anak->nama_anak }}</td>
                     <td>{{ $rujukan->keterangan_rujukan }}</td>
-                    <td class="with-btn" nowrap>
+                    <td>
                         {{-- <a href="{{ route('user.rujuk.cetak', $rujukan->id) }}" class="btn btn-sm btn-primary width-60 m-r-2">Detail</a> --}}
                         {{-- <a href="{{ route('user.rujuk.cetak', $rujukan->id) }}" class="btn btn-sm btn-white width-60">Unduh</a> --}}
                         {{-- <a href class="btn btn-sm btn-white width-60">Konfirmasi</a> --}}
                         @if($rujukan->status == '0')
-                        <a href="{{ route('user.rujuk.index', $rujukan->id) }}" class="btn btn-secondary buttons-edit">Belum dikonfirmasi</a>
+                        <a href="{{ route('user.rujuk.index', $rujukan->id) }}" class="btn btn-secondary buttons-edit">Belum Disetujui</a>
                         @else
-                        <a href="{{ route('user.rujuk.index', $rujukan->id) }}" class="btn btn-info buttons-edit">Sudah dikonfirmasi</a>
+                        <a href="{{ route('user.rujuk.index', $rujukan->id) }}" class="btn btn-info buttons-edit">Disetujui</a>
                         <a href=" {{ route('user.rujuk.cetak', $rujukan->id) }}" class="btn btn-info buttons-show"><i class="fa fa-print fa-fw"></i></a>
 
                         @endif

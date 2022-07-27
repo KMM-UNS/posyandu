@@ -1,6 +1,6 @@
 @extends('layouts.user')
 
-@section('title', isset($data) ? 'Edit Data Anak' : 'Create Data Anak' )
+@section('title', isset($data) ? 'Edit Data Anak' : 'Lengkapi Data Anak' )
 
 @push('css')
 <link href="{{ asset('/assets/plugins/smartwizard/dist/css/smart_wizard.css') }}" rel="stylesheet" />
@@ -9,13 +9,13 @@
 @section('content')
 <!-- begin breadcrumb -->
 <ol class="breadcrumb float-xl-right">
-  <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
-  <li class="breadcrumb-item"><a href="javascript:;">Master Data</a></li>
+  <li class="breadcrumb-item"><a href="/user/biodata">Biodata</a></li>
+  {{-- <li class="breadcrumb-item"><a href="javascript:;">Master Data</a></li> --}}
   <li class="breadcrumb-item active">@yield('title')</li>
 </ol>
 <!-- end breadcrumb -->
 <!-- begin page-header -->
-<h1 class="page-header">Master Data<small> @yield('title')</small></h1>
+<h1 class="page-header"><small> @yield('title')</small></h1>
 <!-- end page-header -->
 
 
@@ -44,7 +44,7 @@
                 <label for="name">Nama Anak</label>
             </div>
             <div class="col-md-3">
-                <input type="text" id="nama_anak" name="nama_anak" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama_anak ?? old('nama_anak') }}}">
+                <input type="text" id="nama_anak" name="nama_anak" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama_anak ?? old('nama_anak') ?? auth()->user()->name}}}">
             </div>
             <div class="col-md-1">
                 <label for="name">NIK</label>
@@ -56,7 +56,7 @@
                 <label for="name">Tempat Lahir</label>
             </div>
             <div class="col-md-3">
-                <input type="text" id="tempat_lahir" name="tempat_lahir" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tempat_lahir ?? old('tempat_lahir') }}}">
+                <input type="text" id="tempat_lahir" name="tempat_lahir" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tempat_lahir ?? old('tempat_lahir') ?? auth()->user()->profile->tempat_lahir }}}">
             </div>
         </div>
       </div>
@@ -70,16 +70,18 @@
                 <input type="date" id="tanggal_lahir" name="tanggal_lahir" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tanggal_lahir ?? old('tanggal_lahir') }}}">
             </div>
             <div class="col-md-1">
-                <label for="name">Berat Badan Lahir</label>
+                <label for="name">Jenis Kemlamin</label>
             </div>
             <div class="col-md-3">
-                <input type="text" id="berat_badan_lahir" name="berat_badan_lahir" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->berat_badan_lahir ?? old('berat_badan_lahir') }}}">
+                <x-form.genderRadio name="jenis_kelamin" selected="{{{ old('jenis_kelamin') ?? ($data['jenis_kelamin'] ?? null) ?? auth()->user()->profile->gender}}}"/>
+                {{-- <input type="text" id="berat_badan_lahir" name="berat_badan_lahir" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->berat_badan_lahir ?? old('berat_badan_lahir') }}}"> --}}
             </div>
             <div class="col-md-1">
-                <label for="name">Tinggi Badan Lahir</label>
+                <label for="name">Anak Ke</label>
             </div>
             <div class="col-md-3">
-                <input type="text" id="tinggi_badan_lahir" name="tinggi_badan_lahir" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tinggi_badan_lahir ?? old('tinggi_badan_lahir') }}}">
+                <input type="text" id="anak_ke" name="anak_ke" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->anak_ke ?? old('anak_ke') }}}">
+                {{-- <input type="text" id="tinggi_badan_lahir" name="tinggi_badan_lahir" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tinggi_badan_lahir ?? old('tinggi_badan_lahir') }}}"> --}}
     </div>
     </div>
 
@@ -92,17 +94,19 @@
                   <input type="text" id="umur" name="umur" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->umur ?? old('umur') }}}">
               </div>
               <div class="col-md-1">
-                  <label for="name">Jenis Kelamin</label>
+                  <label for="name">Berat Badan Lahir</label>
               </div>
               <div class="col-md-3">
-                  <x-form.genderRadio name="jenis_kelamin" selected="{{{ old('jenis_kelamin') ?? ($data['jenis_kelamin'] ?? null) }}}"/>
+                 <input type="text" id="berat_badan_lahir" name="berat_badan_lahir" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->berat_badan_lahir ?? old('berat_badan_lahir') }}}">
+                  {{-- <x-form.genderRadio name="jenis_kelamin" selected="{{{ old('jenis_kelamin') ?? ($data['jenis_kelamin'] ?? null) ?? auth()->user()->profile->gender}}}"/> --}}
                   {{-- <input type="text" id="jenis_kelamin" name="jenis_kelamin" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->jenis_kelamin ?? old('jenis_kelamin') }}}"> --}}
               </div>
               <div class="col-md-1">
-                  <label for="name">Anak Ke</label>
+                  <label for="name">Tinggi Badan Lahir</label>
               </div>
               <div class="col-md-3">
-                  <input type="text" id="anak_ke" name="anak_ke" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->anak_ke ?? old('anak_ke') }}}">
+                <input type="text" id="tinggi_badan_lahir" name="tinggi_badan_lahir" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tinggi_badan_lahir ?? old('tinggi_badan_lahir') }}}">
+                  {{-- <input type="text" id="anak_ke" name="anak_ke" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->anak_ke ?? old('anak_ke') }}}"> --}}
               </div>
         </div>
         </div>
@@ -118,13 +122,13 @@
                   <label for="name">No Handphone Orangtua</label>
               </div>
               <div class="col-md-3">
-                  <input type="text" id="no_hp_orangtua" name="no_hp_orangtua" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->no_hp_orangtua ?? old('no_hp_orangtua') }}}">
+                  <input type="text" id="no_hp_orangtua" name="no_hp_orangtua" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->no_hp_orangtua ?? old('no_hp_orangtua') ?? auth()->user()->profile->no_telp}}}">
               </div>
               <div class="col-md-1">
                 <label for="name">Alamat</label>
             </div>
             <div class="col-md-3">
-                <input type="text" id="alamat" name="alamat" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->alamat ?? old('alamat') }}}">
+                <input type="text" id="alamat" name="alamat" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->alamat ?? old('alamat') ?? auth()->user()->profile->alamat}}}">
             </div>
      </div>
     </div>

@@ -82,8 +82,8 @@ class BiodataController extends Controller
      */
     public function edit($id)
     {
-        // $data = DataAnak::findOrFail($id);
-        // return view('pages.user.anak.biodata.add-edit', ['data' => $data]);
+        $data = DataAnak::findOrFail($id);
+        return view('pages.user.anak.biodata.add-edit', ['data' => $data]);
     }
 
     /**
@@ -104,13 +104,13 @@ class BiodataController extends Controller
         }
 
         try {
-            // $data = DataAnak::findOrFail($id);
-            // $data->update($request->all());
+            $data = DataAnak::findOrFail($id);
+            $data->update($request->all());
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Something went wrong');
         }
 
-        return redirect(route('user.anak.biodata.index'))->withToastSuccess('Data tersimpan');
+        return redirect(route('user.biodata.index'))->withToastSuccess('Data tersimpan');
     }
 
 

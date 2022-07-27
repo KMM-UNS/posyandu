@@ -19,7 +19,7 @@ class PeriksaChart
 
         $tanggal = array();
         for($j = 1; $j <= 12; $j++){
-            // $x = DB::table('imunisasis')->whereMonth('tanggal_imunisasi', $j)->count();
+            // pake dlt at agar data yang sudah terhapus tidak ikut tercount
             $x = DB::table('imunisasis')->whereMonth('tanggal_imunisasi', $j)->where('deleted_at', null)->count();
             {array_push($tanggal, $x);
             }
@@ -28,9 +28,7 @@ class PeriksaChart
             ->setTitle('Jumlah Pemeriksaan Imunisasi Per Bulan')
             ->setSubtitle('Tahun 2022.')
             ->addData('Jumlah Pemeriksaan', $tanggal)
-            // ->addData('Boston', [7, 3, 8, 2, 6, 4, 5, 6, 7, 8, 9, 9])
             ->setXAxis(['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember']);
-            // dd($tanggal);
 
         }
 }

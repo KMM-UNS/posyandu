@@ -42,8 +42,8 @@
         <label for="name">Vaksin</label>
         <input type="text" id="vaksin" name="vaksin" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->vaksin ?? old('vaksin') }}}">
       </div>
-        <label for="name">Umur</label>
-        <input type="text" id="umur" name="umur" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->umur ?? old('umur') }}}">
+        <label for="name">Stok</label>
+        <input type="text" id="stok" name="stok" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->stok ?? old('stok') }}}">
       </div>
     </div>
     <!-- end panel-body -->
