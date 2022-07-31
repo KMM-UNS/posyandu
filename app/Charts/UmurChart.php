@@ -17,16 +17,16 @@ class UmurChart
     public function build(): \ArielMejiaDev\LarapexCharts\PieChart
     {
         return $this->chart->pieChart()
-            ->setTitle('Data Anak Berdasarkan Kelompok Usia')
+            ->setTitle('Data Pemeriksaan Imunisasi Anak Berdasarkan Kelompok Usia')
             // ->setSubtitle('Tahun 2022')
             ->addData([
                 // Imunisasi::where('umur', '>=', '0')->where('umur', '<=', '24')->count(),
-                Imunisasi::where('umur', '>=', 0)->where('umur', '<=', 24)->count(),
+                Imunisasi::where('umur', '>=', 0)->where('umur', '<=', 12)->count(),
                 // Imunisasi::where('umur', '>=', 25)->where('umur', '<=', 60)->count(),
-                Imunisasi::where('umur', '>=', 25)->count(),
+                Imunisasi::where('umur', '>=', 13)->count(),
             ])
             ->setFontFamily('Open Sans')
-            ->setLabels(['Balita(1 Bulan-24 Bulan)','Anak - Anak(25 Bulan +)']);
+            ->setLabels(['Bayi(0 Bulan-12 Bulan)','Anak - Anak(13 Bulan +)']);
             // ->setLabels(['Player 7', 'Player 10', 'Player 9']);
     }
 }

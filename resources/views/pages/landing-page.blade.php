@@ -39,7 +39,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a href="index.html" class="navbar-brand">
+                    <a href="" class="navbar-brand">
                         <img src="{{ asset('assets') }}/img/bg/logoposyandu.png" />
                         {{-- <span class="brand-logo"></span>
                         <span class="brand-text">
@@ -53,7 +53,7 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="#home" data-click="scroll-to-target">Beranda</a></li>
                         <li><a href="#service" data-click="scroll-to-target">Layanan</a></li>
-                        <li><a href="#work" data-click="scroll-to-target">Jadwal</a></li>
+                        {{-- <li><a href="#work" data-click="scroll-to-target">Jadwal</a></li> --}}
                         <li><a href="#contact" data-click="scroll-to-target">Kontak</a></li>
                         <li><a href="/login">Masuk</a></li>
                     </ul>
@@ -133,10 +133,10 @@
                     <!-- begin col-4 -->
                     <div class="col-md-4 col-sm-4">
                         <div class="service">
-                            <div class="icon bg-theme" data-animation="true" data-animation-type="bounceIn"><i class="fa fa-paint-brush"></i></div>
+                            <div class="icon bg-theme" data-animation="true" data-animation-type="bounceIn"><i class="fa fa-cog"></i></div>
                             <div class="info">
-                                <h4 class="title">Imunisasi</h4>
-                                <p class="desc">Memberikan informasi jadwal imunisasi.</p>
+                                <h4 class="title">Pemeriksaan Imunisasi</h4>
+                                <p class="desc">Memberikan layanan pemeriksaan kepada balita.</p>
                             </div>
                         </div>
                     </div>
@@ -144,10 +144,10 @@
                     <!-- begin col-4 -->
                     <div class="col-md-4 col-sm-4">
                         <div class="service">
-                            <div class="icon bg-theme" data-animation="true" data-animation-type="bounceIn"><i class="fa fa-file"></i></div>
+                            <div class="icon bg-theme" data-animation="true" data-animation-type="bounceIn"><i class="fa fa-cog"></i></div>
                             <div class="info">
-                                <h4 class="title">Grafik KMS</h4>
-                                <p class="desc">Hasil KMS ditampilkan dalam bentuk grafik agar mudah dipahami seperti KMS pada umumnya.</p>
+                                <h4 class="title">Grafik Pemeriksaan Imunisasi</h4>
+                                <p class="desc">Hasil pemeriksaan imunisasi yang ditampilkan dalam bentuk grafik agar mudah dipahami seperti KMS pada umumnya.</p>
                             </div>
                         </div>
                     </div>
@@ -159,10 +159,10 @@
                     <!-- begin col-4 -->
                     <div class="col-md-4 col-sm-4">
                         <div class="service">
-                            <div class="icon bg-theme" data-animation="true" data-animation-type="bounceIn"><i class="fa fa-code"></i></div>
+                            <div class="icon bg-theme" data-animation="true" data-animation-type="bounceIn"><i class="fa fa-cog"></i></div>
                             <div class="info">
                                 <h4 class="title">Rujukan</h4>
-                                <p class="desc">Keterangan lanjutan tentang satu hal yang berdasarkan data yang ada di Laporan KMS.</p>
+                                <p class="desc">Keterangan lanjutan tentang satu hal untuk ditidaklanjuti.</p>
                             </div>
                         </div>
                     </div>
@@ -175,15 +175,15 @@
         <!-- end #about -->
 
         <!-- begin #work -->
-         <div id="work" class="content" data-scrollview="true">
+         {{-- <div id="work" class="content" data-scrollview="true">
             <!-- begin container -->
             <div class="container" data-animation="true" data-animation-type="fadeInDown">
                 <h2 class="content-title">Jadwal</h2>
                 {{-- <!DOCTYPE html> --}}
-                    <html lang="en">
-                    <head>
+                    {{-- <html lang="en">
+                    <head> --}}
                         {{-- <meta charset="UTF-8"> --}}
-                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                        {{-- <meta name="viewport" content="width=device-width, initial-scale=1.0">
                         <meta http-equiv="X-UA-Compatible" content="ie=edge">
                         <title>Jadwal</title>
                         <link href="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
@@ -194,11 +194,11 @@
                     <script type="text/javascript" src="js/app.js"></script>
                     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
                     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
-                    </html>
+                    </html> --}}
                 <!-- end row -->
-            </div>
+            {{-- </div> --}}
             <!-- end container -->
-        </div>
+        {{-- </div>  --}}
         <!-- end #work -->
         <!-- begin #contact -->
         <div id="contact" class="content bg-silver-lighter" data-scrollview="true">
@@ -239,8 +239,8 @@
         <div id="footer" class="footer">
             <div class="container">
                 <div class="footer-brand">
-                    <div class="footer-brand-logo"></div>
-                    Color Admin
+                    <div> </div>
+                    Posyandu
                 </div>
                 <p>
                     &copy; Copyright Color Admin 2017 <br />

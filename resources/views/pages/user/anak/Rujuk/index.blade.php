@@ -14,8 +14,8 @@
 @section('content')
 <!-- begin breadcrumb -->
 <ol class="breadcrumb float-xl-right">
-    <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
-    <li class="breadcrumb-item"><a href="javascript:;">Master Data</a></li>
+    <li class="breadcrumb-item"><a href="javascript:;">Beranda</a></li>
+    {{-- <li class="breadcrumb-item"><a href="javascript:;">Rujukan</a></li> --}}
     <li class="breadcrumb-item active">@yield('title')</li>
 </ol>
 <!-- end breadcrumb -->
@@ -28,12 +28,12 @@
         <!-- begin panel-heading -->
         <div class="panel-heading">
             <div class="panel-heading-btn">
-                <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+                {{-- <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
                 <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-redo"></i></a>
                 <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
-                <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+                <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a> --}}
             </div>
-            <h4  style="text-align: right;" class="panel-title">Data Surat Rujukan</h4>
+            <h4  style="text-align: left;" class="panel-title">Data Surat Rujukan</h4>
         </div>
         <!-- end panel-heading -->
         <!-- begin panel-body -->
@@ -47,7 +47,7 @@
                     <th><b>Tanggal Surat</b></th>
                     <th><b>Nama</b></th>
                     <th><b>Keterangan Rujukan</b></th>
-                    <th><b> Status</b></th>
+                    <th><b> Cetak</b></th>
                     <th width="1%"></th>
                 </tr>
             </thead>
@@ -63,13 +63,12 @@
                         {{-- <a href="{{ route('user.rujuk.cetak', $rujukan->id) }}" class="btn btn-sm btn-primary width-60 m-r-2">Detail</a> --}}
                         {{-- <a href="{{ route('user.rujuk.cetak', $rujukan->id) }}" class="btn btn-sm btn-white width-60">Unduh</a> --}}
                         {{-- <a href class="btn btn-sm btn-white width-60">Konfirmasi</a> --}}
-                        @if($rujukan->status == '0')
-                        <a href="{{ route('user.rujuk.index', $rujukan->id) }}" class="btn btn-secondary buttons-edit">Belum Disetujui</a>
-                        @else
-                        <a href="{{ route('user.rujuk.index', $rujukan->id) }}" class="btn btn-info buttons-edit">Disetujui</a>
+                        {{-- @if($rujukan->status == '0') --}}
+
+                        {{-- <a href="{{ route('user.rujuk.index', $rujukan->id) }}" class="btn btn-info buttons-edit">Disetujui</a> --}}
                         <a href=" {{ route('user.rujuk.cetak', $rujukan->id) }}" class="btn btn-info buttons-show"><i class="fa fa-print fa-fw"></i></a>
 
-                        @endif
+                        {{-- @endif --}}
                         {{-- @return $btn;
                            $btn = $btn . '</div>';
 

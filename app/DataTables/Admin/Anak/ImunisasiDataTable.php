@@ -33,7 +33,15 @@ class ImunisasiDataTable extends DataTable
                 $btn = $btn . '</div>';
 
                 return $btn;
-            });
+            })
+            ->editColumn('jenisvaksin.vaksin', function($row){
+                if($row->jenis_vaksin == 0){
+                    $kosong = "Tidak Vaksin";
+                    return $kosong;
+                }
+                return $row->jenisvaksin->vaksin;
+            })
+            ;
     }
 
     /**

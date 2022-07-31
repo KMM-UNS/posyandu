@@ -6,6 +6,7 @@ use App\Models\DataAnak;
 use App\Models\Imunisasi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Barryvdh\DomPDF\Facade\Pdf as PDF;
 use App\Http\Controllers\Controller;
 use App\Datatables\Admin\Anak\DataAnakDataTable;
 
@@ -145,4 +146,18 @@ class DataAnakController extends Controller
             return response(['error' => 'Something went wrong']);
         }
     }
+
+    // public function cetak($id)
+    // {
+
+    // $data = DataAnak::findOrFail($id);
+    // $imunisasis = Imunisasi::where('nama_anak_id',$id)->get();
+    // $pdf = PDF::loadview('pages.admin.anak.dataanak.cetak',
+    // [
+    //     'data' => $data,
+    //     'imunisasis' => $imunisasis,
+    // ])->setOptions(['defaultFont' => 'sans-serif']);;
+    // $pdf->setpaper('letter', 'landscape');
+    // return $pdf->download('cetakkms.pdf');
+    // }
 }

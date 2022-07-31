@@ -46,7 +46,7 @@ return [
             'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Data Anak'
         ], [
             'url' => '/admin/anak-data/imunisasi',
-            'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Imunisasi'
+            'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Pemeriksaan Imunisasi'
         ],[
             'url' => '/admin/anak-data/jadwalkegiatan',
             'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Jadwal Kegiatan'

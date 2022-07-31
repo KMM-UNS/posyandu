@@ -20,7 +20,94 @@
 <h1 class="page-header">Dashboard Admin <small></small></h1>
 <!-- end page-header -->
 
+@if (auth()->user()->hasRole('petugas_kesehatan'))
+<div class="row">
+    <div class="col-xl-3 col-md-6">
+      <div class="widget widget-stats bg-orange">
+        <div class="stats-icon"><i class="fa fa-users"></i></div>
+        <div class="stats-info">
+          <h4>JUMLAH ANAK</h4>
+          <p>{{ $anak }}</p>
+        </div>
+        <div class="stats-link">
+          {{-- <a>Jumlah Anak di Posyandu<i class=""></i></a> --}}
+          <a href="admin/anak-data/dataanak">View Detail </a>
+        </div>
+      </div>
+    </div>
+</div>
 
+  <div class="row">
+  <div class="col-md-6">
+  <body class="h-screen bg-gray-100">
+
+      <div class="container px-4 mx-auto">
+
+          <div class="p-6 m-20 bg-white rounded shadow">
+              {!! $dataanakChart->container() !!}
+          </div>
+
+      </div>
+
+      <script src="{{ $dataanakChart->cdn() }}"></script>
+
+      {{ $dataanakChart->script() }}
+      </body>
+  </div>
+
+  <div class="col-md-6">
+      <body class="h-screen bg-gray-100">
+
+          <div class="container px-4 mx-auto">
+
+              <div class="p-6 m-20 bg-white rounded shadow">
+                  {!! $umurChart->container() !!}
+              </div>
+
+          </div>
+
+          <script src="{{ $umurChart->cdn() }}"></script>
+
+          {{ $umurChart->script() }}
+          </body>
+  </div>
+  </div>
+  <div class="row">
+      <div class="col-md-6">
+      <body class="h-screen bg-gray-100">
+
+          <div class="container px-4 mx-auto">
+
+              <div class="p-6 m-20 bg-white rounded shadow">
+                  {!! $periksaChart->container() !!}
+              </div>
+
+          </div>
+
+          <script src="{{ $periksaChart->cdn() }}"></script>
+
+          {{ $periksaChart->script() }}
+          </body>
+      </div>
+
+      <div class="col-md-6">
+          <body class="h-screen bg-gray-100">
+
+              <div class="container px-4 mx-auto">
+
+                  <div class="p-6 m-20 bg-white rounded shadow">
+                      {!! $rujukanChart->container() !!}
+                  </div>
+
+              </div>
+
+              <script src="{{ $rujukanChart->cdn() }}"></script>
+
+              {{ $rujukanChart->script() }}
+              </body>
+          </div>
+
+@elseif (auth()->user()->hasRole('admin'))
 <!-- begin row -->
 <div class="row">
   <div class="col-xl-3 col-md-6">
@@ -31,7 +118,8 @@
         <p>{{ $anak }}</p>
       </div>
       <div class="stats-link">
-        <a>Jumlah Anak di Posyandu<i class=""></i></a>
+        {{-- <a>Jumlah Anak di Posyandu<i class=""></i></a> --}}
+        <a href="admin/anak-data/dataanak">View Detail </a>
       </div>
     </div>
   </div>
@@ -45,7 +133,8 @@
          <p>{{ $kader }}</p>
       </div>
       <div class="stats-link">
-        <a>Jumlah Kader di Posyandu<i class=""></i></a>
+        {{-- <a>Jumlah Kader di Posyandu<i class=""></i></a> --}}
+        <a href="admin/master-data/kader">View Detail </a>
       </div>
     </div>
   </div>
@@ -59,8 +148,9 @@
          <p>{{ $rujukan }}</p>
       </div>
       <div class="stats-link">
-        <a>Jumlah Rujukan Anak dari Posyandu<i class=""></i></a>
-      </div>
+        {{-- <a>Jumlah Rujukan Anak dari Posyandu<i class=""></i></a> --}}
+        <a href="admin/data-transaksi/rujukan">View Detail </a>
+    </div>
     </div>
   </div>
 
@@ -72,7 +162,8 @@
          <p>{{ $imunisasi }}</p>
       </div>
       <div class="stats-link">
-        <a>Jumlah Pemeriksaan Imunisasi Anak di Posyandu<i class=""></i></a>
+        {{-- <a>Jumlah Pemeriksaan Imunisasi Anak di Posyandu<i class=""></i></a> --}}
+        <a href="admin/anak-data/imunisasi">View Detail </a>
       </div>
     </div>
   </div>
@@ -149,6 +240,7 @@
             </body>
         </div>
 
+        @endif
 @endsection
 
 @push('scripts')

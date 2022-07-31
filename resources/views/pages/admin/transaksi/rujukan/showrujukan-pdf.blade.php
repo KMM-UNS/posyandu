@@ -68,6 +68,10 @@
 <p style='margin-top:0cm;margin-right:0cm;margin-bottom:10.0pt;margin-left:0cm;line-height:115%;font-size:15px;font-family:"Calibri","sans-serif";'><span style='font-size:16px;line-height:115%;font-family:"Times New Roman","serif";'>&nbsp;</span></p>
 {{-- <p> Demikian surat rujukan ini kami kirim. Atas perhatian Bapak/Ibu kami ucapkan terima kasih.</p> --}}
 <div style="text-align: center;">Demikian surat rujukan ini kami kirim. Atas perhatian Bapak/Ibu kami ucapkan terima kasih</div>
+<p>&nbsp;</p>
+<p style="text-align: right;">Surakarta, {{ $tanggal_surat }}&nbsp;</p>
+<p>&nbsp;</p>
+<p style="text-align: right;">Kader Posyandu</p>
 </div>
 </body>
 </html>

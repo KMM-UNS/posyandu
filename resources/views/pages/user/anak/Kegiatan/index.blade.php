@@ -32,10 +32,10 @@
         <!-- begin timeline-body -->
         <div class="timeline-body">
             <div class="timeline-header">
-                <span class="username"><a href="javascript:;">Keterangan :  {{$jadwalimunisasi->keterangan}}</a> <small></small></span>
+                <span class="username"><a>Keterangan :  {{$jadwalimunisasi->keterangan}}</a> <small></small></span>
             </div>
             <div class="timeline-header">
-                    <span class="username"><a href="javascript:;">Penanggung Jawab : {{$jadwalimunisasi->kader->nama}}</a> <small></small></span>
+                    <span class="username"><a>Penanggung Jawab : {{$jadwalimunisasi->kader->nama}}</a> <small></small></span>
             </div>
         </div>
         <!-- end timeline-body -->

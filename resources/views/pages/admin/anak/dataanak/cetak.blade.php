@@ -1,40 +1,46 @@
-@extends('layouts.default', ['topMenu' => true, 'sidebarHide' => true])
+<!DOCTYPE html>
+<html lang="en">
 
-@section('title', 'Detail Data Anak' )
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
 
-@push('css')
-<link href="{{ asset('/assets/plugins/smartwizard/dist/css/smart_wizard.css') }}" rel="stylesheet" />
-@endpush
+        th,
+        td {
+            padding: 5px;
+            text-align: left;
+        }
+    </style>
+</head>
 
-@section('content')
-<!-- begin breadcrumb -->
-<ol class="breadcrumb float-xl-right">
-  <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
-  <li class="breadcrumb-item"><a href="javascript:;">Master Data</a></li>
-  <li class="breadcrumb-item active">@yield('title')</li>
-</ol>
-<!-- end breadcrumb -->
-<!-- begin page-header -->
-<h1 class="page-header">Master Data<small> @yield('title')</small></h1>
-<!-- end page-header -->
-
-
-<!-- begin panel -->
-<form action="{{ isset($data) ? route('admin.anak-data.dataanak.update', $data->id) : route('admin.anak-data.dataanak.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
-  @csrf
-  @if(isset($data))
-  {{ method_field('PUT') }}
-  @endif
-
-  <div class="panel panel-inverse">
-    <!-- begin panel-heading -->
-    <div class="panel-heading">
-      <h4 class="panel-title">Form @yield('title')</h4>
-      <div class="panel-heading-btn">
-        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
-        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
-      </div>
-    </div>
+<body>
+    <h1 style="font-size: 16px; text-align: center;">
+        POSYANDU ANAK
+    </h1>
+    <h1 style="font-size: 16px; text-align: center;">
+        KELURAHAN JEBRES KECAMATAN JEBRES
+    </h1>
+    <h1 style="font-size: 16px; text-align: center;">
+        KOTA SURAKARTA
+    </h1>
+    <h4 style="text-align: center; font-weight: normal; margin-bottom: 0;">
+        JALAN KABUT, JEBRES, Kec. JEBRES, Kota SURAKARTA, JAWA TENGAH
+    </h4>
+    <h4 style="text-align: center; font-weight: normal; margin: 0;">
+        Telepon: 08988777788 Surel : posyandu@mail.com Kode Pos : 5612
+    </h4>
+    <hr style="border: 3px solid; margin-bottom: 1px;">
+    <hr style="margin-top: 0;">
+<p style='margin-top:0cm;margin-right:0cm;margin-bottom:10.0pt;margin-left:0cm;line-height:115%;font-size:15px;font-family:"Calibri","sans-serif";text-align:center;'><strong><span style='font-size:16px;line-height:115%;font-family:"Times New Roman","serif";'>Riwayat Imunisasi</span></strong></p>
     <!-- end panel-heading -->
     <!-- begin panel-body -->
     <div class="panel-body">
@@ -192,17 +198,9 @@
     <!-- end panel-footer -->
     </div>
   <!-- end panel -->
-  {{-- <div class="panel-footer">
-    <a href=" {{ route('admin.anak-data.dataanak.cetak') }}"class="fas fa-print"> Cetak</a>
-    </div> --}}
 
-</form>
-<a href="javascript:history.back(-1);" class="btn btn-success">
-  <i class="fa fa-arrow-circle-left"></i> Kembali
-</a>
 
-@endsection
+    </div>
+</body>
+</html>
 
-@push('scripts')
-<script src="{{ asset('/assets/plugins/parsleyjs/dist/parsley.js') }}"></script>
-@endpush

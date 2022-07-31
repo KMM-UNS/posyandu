@@ -29,24 +29,24 @@ class RujukanDataTable extends DataTable
                 $btn = '<div class="btn-group">';
                 $btn = $btn . '<a href="' . route('admin.data-transaksi.rujukan.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
                 $btn = $btn . '<a href="' . route('admin.data-transaksi.rujukan.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
-
+                $btn = $btn . '<a href="'  . route('admin.data-transaksi.rujukan.show', $row->id) . '" class="btn btn-info btn-xs"><i class="fa fa-print fa-fw"></i></a>';
                 $btn = $btn . '</div>';
 
                 return $btn;
             })
-            ->addColumn('status', function ($row) {
-                $btn = '<div class="btn-group">';
+            // ->addColumn('status', function ($row) {
+            //     $btn = '<div class="btn-group">';
 
-                if ($row->status == '0') {
-                    $btn = $btn . '<a href="' . route('admin.data-transaksi.rujukan.status', $row->id) . '" class="btn btn-secondary btn-xs">Belum Disetujui</a>';
-                } else {
-                    $btn = $btn . '<a href="' . route('admin.data-transaksi.rujukan.status', $row->id) . '" class="btn btn-info btn-xs">Disetujui</a>';
-                    $btn = $btn . '<a href="'  . route('admin.data-transaksi.rujukan.show', $row->id) . '" class="btn btn-info btn-xs"><i class="fa fa-print fa-fw"></i></a>';
-                }
-                $btn = $btn . '</div>';
-                return $btn;
-            })
-            ->rawColumns(['status', 'action']);
+            //     if ($row->status == '0') {
+            //         $btn = $btn . '<a href="' . route('admin.data-transaksi.rujukan.status', $row->id) . '" class="btn btn-secondary btn-xs">Belum Disetujui</a>';
+            //     } else {
+            //         $btn = $btn . '<a href="' . route('admin.data-transaksi.rujukan.status', $row->id) . '" class="btn btn-info btn-xs">Disetujui</a>';
+            //         $btn = $btn . '<a href="'  . route('admin.data-transaksi.rujukan.show', $row->id) . '" class="btn btn-info btn-xs"><i class="fa fa-print fa-fw"></i></a>';
+            //     }
+            //     $btn = $btn . '</div>';
+            //     return $btn;
+            // })
+            ->rawColumns([ 'action']);
     }
 
 
@@ -114,11 +114,11 @@ class RujukanDataTable extends DataTable
             // Column::make('bb_naik'),
             Column::make('keluhan','rujukans.keluhan')->title('Keluhan'),
             Column::make('keterangan_rujukan','rujukans.keterangan_rujukan')->title('Keterangan Rujukan'),
-            Column::computed('status')
-                ->exportable(false)
-                ->printable(false)
-                // ->width(60)
-                ->addClass('text-center'),
+            // Column::computed('status')
+            //     ->exportable(false)
+            //     ->printable(false)
+            //     // ->width(60)
+            //     ->addClass('text-center'),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)

@@ -47,20 +47,20 @@
         {{-- <x-form.genderRadio name="jenis_kelamin" selected="{{{ old('jenis_kelamin') ?? ($data['jenis_kelamin'] ?? null) }}}"/> --}}
         <label for="name">Tanggal Imunisasi</label>
         <input type="date" id="tanggal_imunisasi" name="tanggal_imunisasi" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tanggal_imunisasi ?? old('tanggal_imunisasi') }}}">
-        <label for="name">Berat Badan (Kg)</label>
+        <label for="name">Berat Badan (Kg) <i>(Gunakan titik untuk mengganti koma. Contoh : 6.5)</i></label>
         <input type="text" id="berat_badan" name="berat_badan" onkeyup="hitung();" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->berat_badan ?? old('berat_badan') }}}">
-        <label for="name">Tinggi Badan (Cm)</label>
+        <label for="name">Tinggi Badan (Cm) <i>(Gunakan titik untuk mengganti koma. Contoh : 60.5)</i></label>
         <input type="text" id="tinggi_badan" onkeyup="hitung();" name="tinggi_badan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tinggi_badan ?? old('tinggi_badan') }}}">
-        <label for="name">Total Imt </label>
+        <label for="name">Total Imt <i>( BB / TB(m).TB(m) )</i> </label>
         <input type="text" id="total_imt" name="total_imt" onkeyup="hitung();"class="form-control" autofocus data-parsley-required="true" value="{{{ $data->total_imt ?? old('total_imt') }}}">
         <label for="name">Keterangan Berat Masa Ideal </label>
         <input type="text" id="ket_imt" name="ket_imt" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->ket_imt ?? old('ket_imt') }}}">
 
-        <label for="name">Umur</label>
+        <label for="name">Umur <i>(Umur dalam bentuk bulan)</i></label>
         <input type="text" id="umur" name="umur" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->umur ?? old('umur') }}}">
         <label for="name">Jenis Vaksin</label>
         {{-- <input type="text" id="jenis_vaksin" name="jenis_vaksin" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->jenis_vaksin ?? old('jenis_vaksin') }}}"> --}}
-        <x-form.Dropdown name="jenis_vaksin" :options="$jenisvaksin" selected="{{{ old('jenis_vaksin') ?? ($data['jenis_vaksin'] ?? null) }}}" required />
+        <x-form.Dropdown name="jenis_vaksin" :options="$jenisvaksin" selected="{{{ old('jenis_vaksin') ?? ($data['jenis_vaksin'] ?? null) }}}" />
         <label for="name">Vitamin Anak</label>
         <x-form.Dropdown name="vitamin" :options="$vitaminanak" selected="{{{ old('vitamin') ?? ($data['vitamin'] ?? null) }}}" required />
         {{-- <input type="text" id="vitamin" name="vitamin" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->vitamin ?? old('vitamin') }}}"> --}}

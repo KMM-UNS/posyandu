@@ -61,23 +61,37 @@ class ImunisasiController extends Controller
         DB::transaction(function () use ($request) {
 
         try {
-            // dd($request->all());
+
+
             $imunisasi=Imunisasi::create($request->all());
-            $imunisasi->save();
-        // if ($imunisasi->jenis_vaksin !=null){ // -> karena jenis vaksin di imunisasi di isi kosong
+            if($request->jenis_vaksin == null){
+                $imunisasi->jenis_vaksin = 0;
+            } else {
+                $imunisasi->jenis_vaksin = $request->jenis_vaksin;
+            }
+            // $imunisasi->save();
+        if ($imunisasi->jenis_vaksin !=0){ // -> karena jenis vaksin di imunisasi di isi kosong
             $jenisvaksin = JenisVaksin::where('id', $imunisasi->jenis_vaksin)->first();
+            // dd($jenisvaksin);
             if($jenisvaksin->stok > 0){
                 // $jenisvaksin->stok >= $imunisasi->jenis_vaksin;
                 $jenisvaksin->stok = $jenisvaksin->stok - 1;
                 $jenisvaksin->save();
-            } else {
-                DB::rollBack();
-                return back()->withInput()->withToastError('Stok Habis');
             }
-        // }
+            else {
+            //     // DB::rollBack();
+
+            //     $jenisvaksin->save();
+            //     return back()->withInput()->withToastError('Stok Habis');
+            // }
+            $imunisasi->jenis_vaksin = 0;
+            $imunisasi->save();
+            }
+        }
         } catch (\Throwable $th) {
             // dd($th);
             DB::rollBack();
+            // dd($th);
             return back()->withInput()->withToastError('Something went wrong');
         }
     });
@@ -155,11 +169,13 @@ class ImunisasiController extends Controller
      */
     public function destroy($id)
     {
+
         try {
             Imunisasi::find($id)->delete();
         } catch (\Throwable $th) {
             return response(['error' => 'Something went wrong']);
         }
+        // dd($id);
     }
 
     public function laporan(){

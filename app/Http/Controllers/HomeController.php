@@ -25,6 +25,15 @@ class HomeController extends Controller
         if(auth()->user()->hasRole('regular_user')){
             return view('home', ['imunisasiChart' => $imunisasiChart->build()]);
         }
+         else if (auth()->user()->hasRole('petugas_kesehatan')){
+            return view('pages.admin.dashboard',  [
+                'anak' => $anak,
+                'dataanakChart' => $dataanakChart->build(),
+                'umurChart' => $umurChart->build(),
+                'periksaChart' => $periksaChart->build(),
+                'rujukanChart' => $rujukanChart->build(),
+            ]);
+        }
         else {
             return view('pages.admin.dashboard',  [
                 'anak' => $anak, 'kader' => $kader,

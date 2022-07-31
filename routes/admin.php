@@ -41,6 +41,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         // route data anak
         Route::group(['prefix' => '/anak-data', 'as' => 'anak-data.', 'namespace' => 'Anak'], function () {
+                // Route::get('dataanak/{id}', 'DataAnakController@cetak')->name('riwayatimunisasi.cetak');
                 Route::resource('dataanak', 'DataAnakController');
                 Route::resource('imunisasi', 'ImunisasiController');
                 Route::get('/laporanimunisasi', 'ImunisasiController@laporan')->name('laporanimunisasi');

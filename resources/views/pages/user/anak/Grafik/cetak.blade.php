@@ -40,7 +40,7 @@
     </h4>
     <hr style="border: 3px solid; margin-bottom: 1px;">
     <hr style="margin-top: 0;">
-<p style='margin-top:0cm;margin-right:0cm;margin-bottom:10.0pt;margin-left:0cm;line-height:115%;font-size:15px;font-family:"Calibri","sans-serif";text-align:center;'><strong><span style='font-size:16px;line-height:115%;font-family:"Times New Roman","serif";'>Riwayat KMS</span></strong></p>
+<p style='margin-top:0cm;margin-right:0cm;margin-bottom:10.0pt;margin-left:0cm;line-height:115%;font-size:15px;font-family:"Calibri","sans-serif";text-align:center;'><strong><span style='font-size:16px;line-height:115%;font-family:"Times New Roman","serif";'>Riwayat Imunisasi</span></strong></p>
 	<!-- end page-header -->
 	<!-- begin row -->
 
