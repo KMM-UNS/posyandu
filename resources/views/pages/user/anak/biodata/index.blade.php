@@ -36,7 +36,7 @@
     </div>
     <!-- end panel-heading -->
     <!-- begin panel-body -->
-    @if(empty($dataanak) || $dataanak->count()==0)
+    @if(empty($data) || $data->count()==0)
     <div class="panel-body">
         <h1 class="text-center">Anda Belum Melengkapi Biodata Anak !</h1>
     </div>
@@ -47,6 +47,8 @@
     </div>
     @else
     <!-- nanti isi table disini  -->
+    @foreach ($data as $dataanak )
+
     <div class="container">
         <div class="row">
             <h2>Biodata Diri</h2>
@@ -129,6 +131,21 @@
                                                     <td width="2%">:</td>
                                                     <td style="color: #158beb; font-weight:bold">{{$dataanak->no_hp_orangtua}}</td>
                                                 </tr>
+                                                <tr>
+                                                    <td class="textt"><b>Golongan Darah</b></td>
+                                                    <td width="2%">:</td>
+                                                    <td style="color: #158beb; font-weight:bold">{{$dataanak->golongan_darah}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="textt"><b>Tinggi Badan Ibu</b></td>
+                                                    <td width="2%">:</td>
+                                                    <td style="color: #158beb; font-weight:bold">{{$dataanak->tinggi_ibu}} Cm</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="textt"><b>Tinggi Badan Bapak</b></td>
+                                                    <td width="2%">:</td>
+                                                    <td style="color: #158beb; font-weight:bold">{{$dataanak->tinggi_bapak}} Cm</td>
+                                                </tr>
                                             </tbody>
                                         </table>
                                     </td>
@@ -136,14 +153,19 @@
                             </tbody>
                         </table>
                         <div class="panel-footer">
+                        {{-- <a href="{{route('user.biodata.create')}}"><button type="submit" class="btn btn-primary">Tambah Anak</button></a> --}}
                             <a href="{{route('user.biodata.edit', $dataanak->id)}}"><button type="submit" class="btn btn-primary">Edit Biodata</button></a>
+                            <a href="{{route('user.biodata.show', $dataanak->id)}}"><button type="submit" class="btn btn-primary mb1 bg-green">Riwayat Imunisasi</button></a>
+                            <a href="{{route('user.biodata.rujukan', $dataanak->id)}}"><button type="submit" class="btn btn-primary mb1 bg-orange">Riwayat Rujukan</button></a>
+                            <a href="{{route('user.biodata.kms', $dataanak->id)}}"><button type="submit" class="btn btn-primary mb1 bg-red">Grafik Pertumbuhan</button></a>
                             {{-- <button type="reset" class="btn btn-default">Reset</button> --}}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
+        @endforeach
+        <a href="{{route('user.biodata.create')}}"><button type="submit" class="btn btn-primary">+ Tambah Anak</button></a>
     </div>
     @endif
     <!-- end panel-body -->

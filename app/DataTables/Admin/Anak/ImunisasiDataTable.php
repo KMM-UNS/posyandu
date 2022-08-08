@@ -100,6 +100,7 @@ class ImunisasiDataTable extends DataTable
             // Column::make('nama_anak_id')->data('data_anak.nama_anak'),
             Column::make('data_anak.nama_anak','data_anak.nama_anak')->title('Nama Anak'),
             Column::make('tanggal_imunisasi','imunisasis.tanggal_imunisasi')->title('Tanggal Imunisasi'),
+            Column::make('lingkar_kepala','imunisasis.lingkar_kepala')->title('Lingkar Kepala'),
             Column::make('berat_badan','imunisasis.berat_badan')->title('Berat Badan'),
             Column::make('tinggi_badan','imunisasis.tinggi_badan')->title('Tinggi Badan'),
             Column::make('umur','imunisasis.umur')->title('Umur'),
@@ -108,7 +109,7 @@ class ImunisasiDataTable extends DataTable
             Column::make('vitamin_anak.nama_vitamin','vitamin_anak.nama_vitamin')->title('Vitamin Anak'),
             // Column::make('keluhan'),
             // Column::make('tindakan'),
-            Column::make('status_gizi','imunisasis.status_gizi')->title('Status Gizi'),
+            Column::make('status_gizi','imunisasis.status_gizi')->title('Gizi Tambahan'),
             Column::make('kader.nama','kader.nama')->title('Nama Kader'),
             Column::computed('action')
                   ->exportable(false)

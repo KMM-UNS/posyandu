@@ -16,6 +16,7 @@ class CreateJenisVaksinsTable extends Migration
         Schema::create('jenis_vaksins', function (Blueprint $table) {
             $table->id();
             $table->string('vaksin');
+            $table->string('umur');
             $table->string('stok');
             $table->softDeletes();
         });

@@ -49,19 +49,11 @@
                         <table class="table m-b-0">
                             <thead>
                                 <tr>
-                                    <th>No</th>
-                                    <th>Jenis Vaksin</th>
-                                    <th>Umur</th>
-                                    <th>Tanggal</th>
-                                    <th>Status</th>
-                                    {{-- <th>Keterangan IMT</th>
-                                    <th>Umur</th>
-                                    <th>Vaksin</th>
-                                    <th>Vitamin Anak</th>
-                                    <th>Keluhan</th>
-                                    <th>Tindakan</th>
-                                    <th>Status Gizi</th>
-                                    <th>Nama Kader</th> --}}
+                                    <th><b>No</b></th>
+                                    <th><b>Jenis Vaksin</b></th>
+                                    <th><b>Umur</b></th>
+                                    <th><b>Tanggal</b></th>
+                                    <th><b>Status</b></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -69,17 +61,17 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $jenisvaksin->vaksin }}</td>
-                                    <td>{{ $jenisvaksin->umur}}</td>
-                                    {{-- <td>{{ $jenisvaksin->tinggi_badan}}</td>
-                                    <td>{{ $jenisvaksin->total_imt }}</td>
-                                    <td>{{ $jenisvaksin->ket_imt}}</td>
-                                    <td>{{ $jenisvaksin->umur ?? old('umur') }}</td>
-                                    <td>{{ $jenisvaksin->jenisvaksin->vaksin}}</td>
-                                    <td>{{ $jenisvaksin->vitamin_anak->nama_vitamin }}</td>
-                                    <td>{{ $jenisvaksin->keluhan }}</td>
-                                    <td>{{ $jenisvaksin->tindakan }}</td>
-                                    <td>{{ $imunisasi->status_gizi}}</td>
-                                    <td>{{ $imunisasi->kader->nama }}</td> --}}
+                                    <td>{{ $jenisvaksin->umur}} Bulan</td>
+                                    @php
+                                        $imunisasi = $imunisasis->where('jenis_vaksin', $jenisvaksin->id)->first();
+                                    @endphp
+                                    @if ($imunisasi)
+                                    <td>{{ $imunisasi->tanggal_imunisasi }}</td>
+                                    <td class="btn btn-info btn-xs"> Sudah Vaksin</td>
+                                    @else
+                                    <td> -</td>
+                                    <td class="btn btn-secondary btn-xs">Belum Vaksin</td>
+                                    @endif
                                 </tr>
                                 @endforeach
                                 {{-- <a href=" {{ route('user.grafik.cetak', $imunisasi->id) }}" class="btn btn-info buttons-show"><i class="fa fa-print fa-fw"></i></a> --}}
@@ -90,6 +82,13 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <a href="javascript:history.back(-1);" class="btn btn-success">
+        <i class="fa fa-arrow-circle-left"></i> Kembali
+      </a>
+
+        <!-- end table-responsive -->
     </div>
 @endsection
 </body>

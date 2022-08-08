@@ -6,6 +6,7 @@ use App\Datatables\Admin\Anak\JadwalImunisasiDataTable;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\JadwalImunisasi;
+use App\Models\Imunisasi;
 use App\Models\Kader;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Str;
@@ -67,7 +68,10 @@ class JadwalImunisasiController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = JadwalImunisasi::findOrFail($id);
+        $kader=Kader::pluck('nama','id');
+        $imunisasis = Imunisasi::where('tanggal_imunisasi',$data->tanggal)->get();
+        return view('pages.admin.anak.jadwalimunisasi.show', ['data' => $data,'kader'=>$kader, 'imunisasis' => $imunisasis]);
     }
 
     /**
@@ -155,4 +159,15 @@ class JadwalImunisasiController extends Controller
         $pdf = PDF::loadview('pages.admin.anak.jadwalimunisasi.cetaklaporankegiatan',['data' =>$data]);
         return $pdf->download('Laporan Kegiatan.pdf');
     }
+
+    public function report($id){
+        // $data = JadwalImunisasi::first($id);
+        $data = JadwalImunisasi::findOrFail($id);
+        $kader=Kader::pluck('nama','id');
+        $imunisasis = Imunisasi::where('tanggal_imunisasi',$data->tanggal)->get();
+        $pdf = PDF::loadview('pages.admin.anak.jadwalimunisasi.report',['data' =>$data,'$kader' =>$kader,'imunisasis' =>$imunisasis]);
+        $pdf->setpaper('letter', 'landscape');
+        return $pdf->download('Laporan Kegiatan.pdf');
+    }
+
 }

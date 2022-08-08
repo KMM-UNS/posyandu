@@ -20,6 +20,7 @@ class Imunisasi extends Model
     protected $fillable = [
         'nama_anak_id',
         'tanggal_imunisasi',
+        'lingkar_kepala',
         'berat_badan',
         'tinggi_badan',
         'total_imt',

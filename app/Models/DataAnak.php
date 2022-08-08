@@ -30,7 +30,10 @@ class DataAnak extends Model
         'jenis_kelamin',
         'anak_ke',
         'nama_orangtua',
-        'no_hp_orangtua'];
+        'no_hp_orangtua',
+        'golongan_darah',
+        'tinggi_ibu',
+        'tinggi_bapak'];
     public $timestamps = false;
 
     public function imunisasi()

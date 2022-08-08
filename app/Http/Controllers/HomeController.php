@@ -8,6 +8,7 @@ use App\Charts\UmurChart;
 use App\Charts\DataanakChart;
 use App\Charts\PeriksaChart;
 use App\Charts\RujukanChart;
+use App\Charts\TanggalChart;
 use App\Models\DataAnak;
 use App\Models\Kader;
 use App\Models\Rujukan;
@@ -15,15 +16,15 @@ use App\Models\Imunisasi;
 
 class HomeController extends Controller
 {
-    public function index(ImunisasiChart  $imunisasiChart, DataanakChart $dataanakChart, UmurChart $umurChart,
-    PeriksaChart $periksaChart, RujukanChart $rujukanChart ){
+    public function index(DataanakChart $dataanakChart, UmurChart $umurChart,
+    PeriksaChart $periksaChart, RujukanChart $rujukanChart, TanggalChart $tanggalChart ){
         // return view('pages.landing-page');
         $anak = DataAnak::count();
         $kader = Kader::count();
         $rujukan = Rujukan::count();
         $imunisasi = Imunisasi::count();
         if(auth()->user()->hasRole('regular_user')){
-            return view('home', ['imunisasiChart' => $imunisasiChart->build()]);
+            return view('home');
         }
          else if (auth()->user()->hasRole('petugas_kesehatan')){
             return view('pages.admin.dashboard',  [
@@ -43,6 +44,7 @@ class HomeController extends Controller
                 'umurChart' => $umurChart->build(),
                 'periksaChart' => $periksaChart->build(),
                 'rujukanChart' => $rujukanChart->build(),
+                'tanggalChart' => $tanggalChart->build(),
             ]);
         }
     }

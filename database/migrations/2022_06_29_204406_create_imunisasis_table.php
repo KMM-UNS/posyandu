@@ -17,6 +17,7 @@ class CreateImunisasisTable extends Migration
             $table->id();
             $table->string('nama_anak_id');
             $table->string('tanggal_imunisasi');
+            $table->string('lingkar_kepala');
             $table->string('berat_badan');
             $table->string('tinggi_badan');
             $table->string('total_imt');

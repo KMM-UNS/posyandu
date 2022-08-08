@@ -3,6 +3,11 @@
 namespace App\Http\Controllers\user;
 
 use App\Models\DataAnak;
+use App\Models\Rujukan;
+use App\Models\Imunisasi;
+use App\Charts\ImunisasiChart;
+use App\Charts\LingkarKepalaChart;
+use App\Models\JenisVaksin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -16,8 +21,8 @@ class BiodataController extends Controller
 
     public function index()
     {
-        $dataanak = DataAnak::where('createable_id', auth()->user()->id)->first();
-        return view('pages.user.anak.biodata.index', ['dataanak' => $dataanak]);
+        $data = DataAnak::where('createable_id', auth()->user()->id)->get();
+        return view('pages.user.anak.biodata.index', ['data' => $data]);
     }
 
     public function create()
@@ -30,9 +35,9 @@ class BiodataController extends Controller
         DB::transaction(function () use ($request) {
             try {
                 // dd($request->all());
-                $dataanak = DataAnak::create($request->all());
-                $dataanak->createable()->associate($request->user());
-                $dataanak->save();
+                $data = DataAnak::create($request->all());
+                $data->createable()->associate($request->user());
+                $data->save();
 
                 // dd($dataanak);
             } catch (\Throwable $th) {
@@ -68,9 +73,11 @@ class BiodataController extends Controller
      */
     public function show($id)
     {
-        // $data = DataAnak::findOrFail($id);
-        // $imunisasis = Imunisasi::where('nama_anak_id',$id)->get();
-        // return view('pages.user.anak.biodata.show', ['data' => $data, 'imunisasis' => $imunisasis]);
+        $data = DataAnak::findOrFail($id);
+        $imunisasis = Imunisasi::where('nama_anak_id',$id)->get();
+        $rujukans = Rujukan::where('nama',$id)->get();
+        $jenisvaksins = JenisVaksin::where('id','!=',0)->get();
+        return view('pages.user.anak.biodata.show', ['data' => $data, 'imunisasis' => $imunisasis,'rujukans' => $rujukans,'jenisvaksins'=> $jenisvaksins]);
 
     }
 
@@ -113,5 +120,23 @@ class BiodataController extends Controller
         return redirect(route('user.biodata.index'))->withToastSuccess('Data tersimpan');
     }
 
+    public function rujukan($id)
+    {
+        $data = DataAnak::findOrFail($id);
+        // $imunisasis = Imunisasi::where('nama_anak_id',$id)->get();
+        $rujukans = Rujukan::where('nama',$id)->get();
+        // $jenisvaksins = JenisVaksin::where('id','!=',0)->get();
+        return view('pages.user.anak.biodata.rujukan', ['data' => $data,'rujukans' => $rujukans]);
 
+    }
+
+    public function kms($id, ImunisasiChart  $imunisasiChart, LingkarKepalaChart $lingkarkepalaChart)
+    {
+        // $data = DataAnak::findOrFail($id);
+        // $imunisasis = Imunisasi::where('nama_anak_id',$id)->get();
+        // $rujukans = Rujukan::where('nama',$id)->get();
+        // $jenisvaksins = JenisVaksin::where('id','!=',0)->get();
+        return view('pages.user.anak.biodata.grafik', ['imunisasiChart' => $imunisasiChart->build($id), 'lingkarkepalaChart'=>$lingkarkepalaChart->build($id)]);
+
+    }
 }

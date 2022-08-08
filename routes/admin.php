@@ -50,6 +50,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
                 Route::resource('jadwalkegiatan', 'JadwalImunisasiController');
                 Route::get('/laporankegiatan', 'JadwalImunisasiController@laporan')->name('laporankegiatan');
                 Route::post('/laporankegiatan','JadwalImunisasiController@sortir');
+                Route::get('/report/{id}', 'JadwalImunisasiController@report')->name('jadwalimunisasi.report');
                 Route::get('/cetaklaporankegiatan/{start}/{end}', 'JadwalImunisasiController@cetak')->name('cetaklaporankegiatan');
                 // Route::resource('vitaminanak', 'VitaminAnakController');
         });

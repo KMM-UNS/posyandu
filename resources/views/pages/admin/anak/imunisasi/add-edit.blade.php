@@ -47,6 +47,8 @@
         {{-- <x-form.genderRadio name="jenis_kelamin" selected="{{{ old('jenis_kelamin') ?? ($data['jenis_kelamin'] ?? null) }}}"/> --}}
         <label for="name">Tanggal Imunisasi</label>
         <input type="date" id="tanggal_imunisasi" name="tanggal_imunisasi" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tanggal_imunisasi ?? old('tanggal_imunisasi') }}}">
+        <label for="name">Lingkar Kepala</label>
+        <input type="text" id="lingkar_kepala" name="lingkar_kepala" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->lingkar_kepala ?? old('lingkar_kepala') }}}">
         <label for="name">Berat Badan (Kg) <i>(Gunakan titik untuk mengganti koma. Contoh : 6.5)</i></label>
         <input type="text" id="berat_badan" name="berat_badan" onkeyup="hitung();" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->berat_badan ?? old('berat_badan') }}}">
         <label for="name">Tinggi Badan (Cm) <i>(Gunakan titik untuk mengganti koma. Contoh : 60.5)</i></label>
@@ -68,9 +70,9 @@
         <input type="text" id="keluhan" name="keluhan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->keluhan ?? old('keluhan') }}}">
         <label for="name">Tindakan</label>
         <input type="text" id="tindakan" name="tindakan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tindakan ?? old('tindakan') }}}">
-        <label for="name">Status Gizi</label>
-        <x-form.statusRadio name="status_gizi" selected="{{{ old('status_gizi') ?? ($data['status_gizi'] ?? null) }}}"/>
-        {{-- <input type="text" id="status_gizi" name="status_gizi" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->status_gizi ?? old('status_gizi') }}}"> --}}
+        <label for="name">Gizi Tambahan</label>
+        {{-- <x-form.statusRadio name="status_gizi" selected="{{{ old('status_gizi') ?? ($data['status_gizi'] ?? null) }}}"/> --}}
+        <input type="text" id="status_gizi" name="status_gizi" class="form-control" autofocus data-parsley-required="false" value="{{{ $data->status_gizi ?? old('status_gizi') }}}">
         <label for="name">Nama Kader</label>
         <x-form.Dropdown name="nama_kader" :options="$kader" selected="{{{ old('nama_kader') ?? ($data['nama_kader'] ?? null) }}}" required />
         {{-- <input type="text" id="nama_kader" name="nama_kader" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama_kader ?? old('nama_kader') }}}"> --}}

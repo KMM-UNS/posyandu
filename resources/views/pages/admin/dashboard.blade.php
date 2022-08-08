@@ -239,6 +239,26 @@
             {{ $rujukanChart->script() }}
             </body>
         </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+        <body class="h-screen bg-gray-100">
+
+            <div class="container px-4 mx-auto">
+
+                <div class="p-6 m-20 bg-white rounded shadow">
+                    {!! $tanggalChart->container() !!}
+                </div>
+
+            </div>
+
+            <script src="{{ $tanggalChart->cdn() }}"></script>
+
+            {{ $tanggalChart->script() }}
+            </body>
+        </div>
+
 
         @endif
 @endsection

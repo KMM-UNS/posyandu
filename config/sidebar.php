@@ -203,7 +203,7 @@ return [
             // [
             //     'icon' => 'fa fa-th-large',
             //     'title' => 'Jadwal Imunisasi',
-            //     'url' => 'user/jadwal',
+            //     'url' => '/user/jadwal',
             //     'caret' => false
             // ],
             [
@@ -211,17 +211,19 @@ return [
                 'title' => 'Kegiatan Posyandu',
                 'url' => '/user/kegiatan',
                 'caret' => false
-            ],[
-                'icon' => 'fa fa-th-large',
-                'title' => 'Riwayat Imunisasi',
-                'url' => '/user/grafik',
-                'caret' => false
-            ],[
-                'icon' => 'fa fa-th-large',
-                'title' => 'Rujukan',
-                'url' => '/user/rujuk',
-                'caret' => false
             ],
+            // [
+            //     'icon' => 'fa fa-th-large',
+            //     'title' => 'Riwayat Imunisasi',
+            //     'url' => '/user/grafik',
+            //     'caret' => false
+            // ],
+            // [
+            //     'icon' => 'fa fa-th-large',
+            //     'title' => 'Rujukan',
+            //     'url' => '/user/rujuk',
+            //     'caret' => false
+            // ],
             ]
         ],
         // [

@@ -5,8 +5,9 @@ namespace App\Http\Controllers\User;
 use App\DataTables\admin\anak\JadwalImunisasiDataTable;
 use App\DataTables\user\anak\JadwalDataTable;
 use App\Http\Controllers\Controller;
+use App\Models\Imunisasi;
 use Illuminate\Http\Request;
-use App\Models\JadwalImunisasi;
+use App\Models\JenisVaksin;
 
 class JadwalController extends Controller
 {
@@ -17,8 +18,9 @@ class JadwalController extends Controller
      */
     public function index()
     {
-        $jadwalimunisasis = JadwalImunisasi::get();
-        return view('pages.user.anak.jadwal.index',['jadwalimunisasis'=> $jadwalimunisasis]);
+        $jenisvaksins = JenisVaksin::where('id','!=',0)->get();
+        // $imunisasi = Imunisasi::where
+        return view('pages.user.anak.jadwal.index',['jenisvaksins'=> $jenisvaksins]);
         // ,['jadwalimunisasi' => $jadwalimunisasi]);
     }
 

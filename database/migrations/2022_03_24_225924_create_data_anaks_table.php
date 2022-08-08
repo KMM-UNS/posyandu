@@ -27,6 +27,9 @@ class CreateDataAnaksTable extends Migration
             $table->string('anak_ke');
             $table->string('nama_orangtua');
             $table->string('no_hp_orangtua');
+            $table->string('golongan_darah');
+            $table->string('tinggi_ibu');
+            $table->string('tinggi_bapak');
             $table->bigInteger('createable_id')->nullable();
             $table->text('createable_type')->nullable();
             $table->softDeletes();

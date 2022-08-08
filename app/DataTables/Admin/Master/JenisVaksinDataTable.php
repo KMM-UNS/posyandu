@@ -83,6 +83,7 @@ class JenisVaksinDataTable extends DataTable
             Column::make('DT_RowIndex')->title('No')->orderable(false)->searchable(false)->addClass('text-center'),
             // Column::make('id'),
             Column::make('vaksin'),
+            Column::make('umur'),
             Column::make('stok'),
             Column::computed('action')
                   ->exportable(false)

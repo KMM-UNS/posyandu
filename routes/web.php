@@ -46,6 +46,8 @@ Route::resource('/beranda', 'HomeController');
         Route::group(['namespace' => 'User', 'middleware' => 'role:regular_user'], function () {
             Route::resource('jadwal', 'JadwalController');
             Route::resource('kegiatan', 'KegiatanController');
+            Route::get('kms/{id}', 'BiodataController@kms')->name('biodata.kms');
+            Route::get('rujukan/{id}', 'BiodataController@rujukan')->name('biodata.rujukan');
             Route::resource('biodata', 'BiodataController');
             Route::get('rujuk/{id}', 'RujukController@cetak')->name('rujuk.cetak');
             Route::resource('rujuk', 'RujukController');
