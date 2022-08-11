@@ -112,7 +112,6 @@ class BiodataLansiaController extends Controller
      */
     public function edit($id)
     {
-
         $data = DataLansia::findOrFail($id);
         $agamas = Agama::pluck('nama', 'id');
         $goldas = GolonganDarah::pluck('nama', 'id');
@@ -140,8 +139,8 @@ class BiodataLansiaController extends Controller
         }
 
         try {
-            // $data = DataLansia::findOrFail($id);
-            // $data->update($request->all());
+            $data = DataLansia::findOrFail($id);
+            $data->update($request->all());
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Something went wrong');
         }

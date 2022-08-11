@@ -61,12 +61,12 @@
                     <label for="name">No Surat</label>
                     <input type="text" name="no_surat" class="form-control" value="<?php echo $no_surat; ?>" readonly
                         class="form-control" name="no_surat" required="">
-                    <label for="name">No KMS</label>
+                    {{-- <label for="name">No KMS</label>
                     <input type="text" id="no_kms" name="no_kms" class="form-control" autofocus
-                        data-parsley-required="true" value="{{ $data->no_kms ?? old('no_kms') }}">
+                        data-parsley-required="true" value="{{ $data->no_kms ?? old('no_kms') }}"> --}}
                     <label for="name">Kepada</label>
-                    <input type="text" id="kepada" name="kepada" class="form-control" autofocus
-                        data-parsley-required="true" value="{{ $data->kepada ?? old('kepada') }}">
+                    <x-form.Dropdown name="kepada" :options="$instansi"
+                        selected="{{ old('kepada') ?? ($data['kepada'] ?? null) }}" required />
                     <label for="name">Tanggal Surat</label>
                     <input type="date" id="tanggal_surat" name="tanggal_surat" class="form-control" autofocus
                         data-parsley-required="true" value="{{ $data->tanggal_surat ?? old('tanggal_surat') }}">
@@ -77,8 +77,10 @@
                     <input type="text" id="umur" name="umur" class="form-control" autofocus
                         data-parsley-required="true" value="{{ $data->umur ?? old('umur') }}">
                     <label for="name">Jenis Kelamin</label>
-                    <input type="text" id="jeniskelamin" name="jeniskelamin" class="form-control" autofocus
-                        data-parsley-required="true" value="{{ $data->jeniskelamin ?? old('jeniskelamin') }}">
+                    <div class="col-md-3">
+                        <x-form.genderRadio name="jeniskelamin"
+                            selected="{{ old('jeniskelamin') ?? ($data['jeniskelamin'] ?? null) }}" />
+                    </div>
                     <label for="name">Alamat</label>
                     <input type="text" id="alamat" name="alamat" class="form-control" autofocus
                         data-parsley-required="true" value="{{ $data->alamat ?? old('alamat') }}">

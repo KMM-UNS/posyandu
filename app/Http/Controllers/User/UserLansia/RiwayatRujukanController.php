@@ -9,6 +9,8 @@ use App\Datatables\User\Lansia\RiwayatRujukanDataTable;
 // use App\DataTables\User\Lansia\RiwayatRujukanDataTable;
 use App\Models\RujukanLansia;
 use App\Models\DataLansia;
+use App\Models\Puskesmas;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class RiwayatRujukanController extends Controller
 {
@@ -25,11 +27,12 @@ class RiwayatRujukanController extends Controller
         // $nama_lansia=DataLansia::pluck('nama_lansia','id');
         // $data = DataLansia::select('id')->where('createable_id', auth()->user()->id)->first()->id;
         $nama_lansia = DataLansia::where('createable_id', auth()->user()->id)->first()->id;
+        $instansi = Puskesmas::pluck('nama', 'id');
         //     $nama_lansia=DataLansia::pluck('nama_lansia');
         //    $nama_lansia=[
         //     'data'=>$data
         //    ];
-        return view('pages.user.lansia.riwayatrujukan.add-edit', ['nama_lansia' => $nama_lansia]);
+        return view('pages.user.lansia.riwayatrujukan.add-edit', ['nama_lansia' => $nama_lansia, 'instansi' => $instansi]);
     }
 
     public function store(Request $request)
@@ -55,8 +58,10 @@ class RiwayatRujukanController extends Controller
     }
     public function edit($id)
     {
-
-        return view('pages.user.lansia.riwayatlansia.add-edit');
+        $data = RujukanLansia::findOrFail($id);
+        $nama_lansia = DataLansia::pluck('nama_lansia', 'id');
+        $instansi = Puskesmas::pluck('nama', 'id');
+        return view('pages.user.lansia.riwayatrujukan.edit', ['data' => $data, 'nama_lansia' => $nama_lansia, 'instansi' => $instansi]);
     }
     public function update(Request $request, $id)
     {
@@ -69,12 +74,34 @@ class RiwayatRujukanController extends Controller
         }
 
         try {
-            // $data = DataLansia::findOrFail($id);
-            // $data->update($request->all());
+            $data = RujukanLansia::findOrFail($id);
+            $data->update($request->all());
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Something went wrong');
         }
 
         return redirect(route('user.userlansia.riwayatlansia.index'))->withToastSuccess('Data tersimpan');
+    }
+
+    public function show($id)
+    {
+        $data = RujukanLansia::findOrFail($id);
+        $nama_lansia = DataLansia::pluck('nama_lansia', 'id');
+
+        // return view('pages.admin.transaksi.rujukanlansia.showrujukanlansia-pdf', ['data' => $data]);
+        $pdf = PDF::loadview(
+            'pages.user.lansia.riwayatrujukan.showrujukanlansia-pdf',
+            [
+                'no_surat' => $data->no_surat,
+                'kepada' => $data->instansi->nama,
+                'tanggal_surat' => $data->tanggal_surat,
+                'namalansia' => $data->rujukan->nama_lansia,
+                'umur' => $data->umur,
+                'jeniskelamin' => $data->jeniskelamin,
+                'alamat' => $data->alamat,
+                'keluhan' => $data->keluhan,
+            ]
+        );
+        return $pdf->download('Rujukan.pdf');
     }
 }

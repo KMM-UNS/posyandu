@@ -2,6 +2,18 @@
 
 
 @push('css')
+    <link href="{{ asset('/assets/plugins/smartwizard/dist/css/smart_wizard.css') }}" rel="stylesheet" />
+    {{-- <link rel="stylesheet" href="{{ asset('dashboard2') }}/vendors/feather/feather.css"> --}}
+    {{-- <link rel="stylesheet" href="{{ asset('dashboard2') }}/vendors/ti-icons/css/themify-icons.css"> --}}
+    {{-- <link rel="stylesheet" href="{{ asset('dashboard2') }}/vendors/css/vendor.bundle.base.css"> --}}
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="{{ asset('dashboard2') }}/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    {{-- <link rel="stylesheet" href="{{ asset('dashboard2') }}/css/vertical-layout-light/style.css"> --}}
+    <!-- endinject -->
+    {{-- <link rel="shortcut icon" href="{{ asset('dashboard2') }}/images/favicon.png" /> --}}
 @endpush
 
 @section('content')
@@ -12,8 +24,8 @@
                 <div class="panel-heading">
                     <h4 class="panel-title">Laporan Rujukan Lansia</h4>
                     <div class="panel-heading-btn">
-                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i
-                                class="fa fa-expand"></i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default"
+                            data-click="panel-expand"><i class="fa fa-expand"></i></a>
                         <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success"
                             data-click="panel-reload"><i class="fa fa-redo"></i></a>
                         <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning"
@@ -58,34 +70,39 @@
                     <h4> Laporan Rujukan Lansia</h4>
                 </center>
                 <a href="/admin/data-transaksi/cetaklaporanrujukanlansia/{{ $startDate }}/{{ $endDate }}"
-                    class="btn btn-secondary btn-sm float-right mr-4"><i class="fa fa-print fa-fw"></i> Cetak Laporan </a>
+                    class="btn btn-sm btn-white m-b-10 float-right mr-4"><i
+                        class="fa fa-file-pdf t-plus-1 text-danger fa-fw fa-lg"></i> Export
+                    as PDF</a>
                 <br>
 
-                <div class="form-group my-5">
+                <div class="table-responsive">
 
-                    <table id="rekaps" class="table table-bordered my-5" align="center" rules="all" border="1px"
-                        style="width: 95%; margin-top: 1 rem;
-    margin-bottom: 1 rem;">
-                        <tr>
-                            <th>No. </th>
-                            <th>Nama Lansia</th>
-                            <th>Tanggal Pemeriksaan</th>
-                            <th>Umur</th>
-                            <th>Jenis Kelamin</th>
-                            <th>Alamat</th>
-                            <th>Keluhan</th>
-                        </tr>
-                        @foreach ($data as $cetakrl)
+                    <table id="order-listing" class="table">
+                        <thead>
                             <tr>
-                                <td> {{ $loop->iteration }}</td>
-                                <td> {{ $cetakrl->rujukan->nama_lansia }}</td>
-                                <td> {{ $cetakrl->tanggal_surat }}</td>
-                                <td> {{ $cetakrl->umur }}</td>
-                                <td> {{ $cetakrl->jeniskelamin }}</td>
-                                <td> {{ $cetakrl->alamat }}</td>
-                                <td> {{ $cetakrl->keluhan }}</td>
+                                <th>No. </th>
+                                <th>Nama Lansia</th>
+                                <th>Tanggal Pemeriksaan</th>
+                                <th>Umur</th>
+                                <th>Jenis Kelamin</th>
+                                <th>Alamat</th>
+                                <th>Keluhan</th>
                             </tr>
-                        @endforeach
+                        </thead>
+                        <tbody>
+                            @foreach ($data as $cetakrl)
+                                <tr>
+                                    <td> {{ $loop->iteration }}</td>
+                                    <td> {{ $cetakrl->rujukan->nama_lansia }}</td>
+                                    <td> {{ $cetakrl->tanggal_surat }}</td>
+                                    <td> {{ $cetakrl->umur }}</td>
+                                    <td> {{ $cetakrl->jeniskelamin }}</td>
+                                    <td> {{ $cetakrl->alamat }}</td>
+                                    <td> {{ $cetakrl->keluhan }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
 
             </div>
@@ -96,15 +113,19 @@
 @endsection
 
 @push('scripts')
-    <script>
-        $(document).ready(function() {
-            var table = $('#rekaps').DataTable({
-                pageLength: 10,
-                processing: true,
-                serverSide: false,
-                dom: 'Blfrtip',
-            });
-
-        });
-    </script>
+    {{-- <script src="{{ asset('dashboard2') }}/vendors/js/vendor.bundle.base.js"></script> --}}
+    <!-- endinject -->
+    <!-- Plugin js for this page-->
+    <script src="{{ asset('dashboard2') }}/vendors/datatables.net/jquery.dataTables.js"></script>
+    <script src="{{ asset('dashboard2') }}/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+    <!-- End plugin js for this page-->
+    <!-- inject:js -->
+    <script src="{{ asset('dashboard2') }}/js/off-canvas.js"></script>
+    <script src="{{ asset('dashboard2') }}/js/hoverable-collapse.js"></script>
+    <script src="{{ asset('dashboard2') }}/js/template.js"></script>
+    <script src="{{ asset('dashboard2') }}/js/settings.js"></script>
+    <script src="{{ asset('dashboard2') }}/js/todolist.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page-->
+    <script src="{{ asset('dashboard2') }}/js/data-table.js"></script>
 @endpush

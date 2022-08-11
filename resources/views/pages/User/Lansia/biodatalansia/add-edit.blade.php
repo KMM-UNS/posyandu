@@ -62,7 +62,8 @@
                         </div>
                         <div class="col-md-3">
                             <input type="text" id="no_hp" name="no_hp" class="form-control" autofocus
-                                data-parsley-required="true" value="{{ $data->no_hp ?? old('no_hp') }}">
+                                data-parsley-required="true"
+                                value="{{ $data->no_hp ?? (old('no_hp') ?? auth()->user()->profile->no_telp) }}">
                         </div>
                         <div class="col-md-1">
                             <label for="name">Foto</label>
@@ -99,7 +100,8 @@
                         </div>
                         <div class="col-md-3">
                             <input type="text" id="NIK" name="NIK" class="form-control" autofocus
-                                data-parsley-required="true" value="{{ $data->NIK ?? old('NIK') }}">
+                                data-parsley-required="true"
+                                value="{{ $data->NIK ?? (old('NIK') ?? auth()->user()->profile->nik_ektp) }}">
                         </div>
                         <div class="col-md-1">
                             <label for="name">Jenis Kelamin</label>
@@ -148,7 +150,8 @@
                         </div>
                         <div class="col-md-3">
                             <input type="text" id="alamat" name="alamat" class="form-control" autofocus
-                                data-parsley-required="true" value="{{ $data->alamat ?? old('alamat') }}">
+                                data-parsley-required="true"
+                                value="{{ $data->alamat ?? (old('alamat') ?? auth()->user()->profile->alamat) }}">
                         </div>
                         <div class="col-md-1">
                             <label for="name">Agama</label>

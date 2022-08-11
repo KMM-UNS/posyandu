@@ -27,7 +27,7 @@ class DataLansia extends Model
     protected $table = 'data_lansia';
     protected $fillable = [
         'nama_lansia',
-        // 'no_kms',
+        'no_kms',
         'email',
         'no_hp',
         'NIK',
@@ -58,6 +58,7 @@ class DataLansia extends Model
     {
         return $this->belongsTo(StatusKawin::class, 'status_perkawinan');
     }
+
 
     public function agama()
     {

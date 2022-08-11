@@ -34,16 +34,17 @@ class KegiatanLansiaDataTable extends DataTable
                 //     $btn = $btn . '<a href="' . route('admin.data-kegiatan.datakegiatanlansia.status', $row->id) . '" class="btn btn-info buttons-edit">Sudah dilaksanakan</a>';
                 // }
 
-                $btn = $btn . '<a href="' . route('admin.data-kegiatan.datakegiatanlansia.show', $row->id) . '" class="btn btn-warning buttons-detail btn-xs"><i class="fa fa-eye"></i></a>';
+                // $btn = $btn . '<a href="' . route('admin.data-kegiatan.datakegiatanlansia.show', $row->id) . '" class="btn btn-warning buttons-detail btn-xs"><i class="fa fa-eye"></i></a>';
                 $btn = $btn . '<a href="' . route('admin.data-kegiatan.datakegiatanlansia.edit', $row->id) . '" class="btn btn-dark buttons-edit btn-xs"><i class="fas fa-edit"></i></a>';
                 $btn = $btn . '<a href="' . route('admin.data-kegiatan.datakegiatanlansia.destroy', $row->id) . '" class="btn btn-danger buttons-delete btn-xs"><i class="fas fa-trash fa-fw"></i></a>';
+                // $btn = $btn . '<a href="' . route('admin.data-kegiatan.datakegiatanlansia.detail', $row->id) . '" class="btn btn-danger buttons-detail btn-xs"><i class="fas fa-eye fa-fw"></i></a>';
                 $btn = $btn . '</div>';
 
                 return $btn;
             })
-            ->addColumn('presensi', function ($row) {
+            ->addColumn('rekap_KMS', function ($row) {
                 $btn = '<div class="btn-group">';
-                $btn = $btn . '<a href="' . route('admin.data-kegiatan.datakegiatanlansia.show', $row->id) . '" class="btn btn-warning buttons-detail btn-xs"></i>Presensi Peserta</a>';
+                $btn = $btn . '<a href="' . route('admin.data-kegiatan.datakegiatanlansia.show', $row->id) . '" class="btn btn-warning buttons-detail">KMS Lansia</a>';
 
                 $btn = $btn . '</div>';
                 return $btn;
@@ -55,15 +56,16 @@ class KegiatanLansiaDataTable extends DataTable
                     $btn = $btn . '<a href="' . route('admin.data-kegiatan.datakegiatanlansia.status', $row->id) . '" class="btn btn-secondary bts-xs ">Belum Dilaksanakan</a>';
                 } else {
                     $btn = $btn . '<a href="' . route('admin.data-kegiatan.datakegiatanlansia.status', $row->id) . '" class="btn btn-info btn-xs">Sudah dilaksanakan</a>';
+                    // $btn = $btn . '<a href="'  . route('admin.data-kegiatan.cetakpresensi', $row->id) . '" class="btn btn-info btn-xs"><i class="fa fa-print fa-fw"></i></a>';
                 }
 
                 $btn = $btn . '</div>';
                 return $btn;
             })
-            ->rawColumns(['presensi', 'status', 'action'])
-            ->editColumn('jumlah_iuran', function ($row) {
-                return ('Rp ' . number_format($row->jumlah_iuran, 2, ',', '.'));
-            });
+            ->rawColumns(['rekap_KMS', 'status', 'action']);
+        // ->editColumn('jumlah_iuran', function ($row) {
+        //     return ('Rp ' . number_format($row->jumlah_iuran, 2, ',', '.'));
+        // });
     }
 
 
@@ -109,13 +111,18 @@ class KegiatanLansiaDataTable extends DataTable
             Column::make('tanggal_kegiatan'),
             Column::make('waktu_mulai'),
             Column::make('waktu_selesai'),
-            Column::make('jumlah_iuran'),
-            Column::computed('presensi')
+            // Column::make('jumlah_iuran'),
+            // Column::computed('presensi')
+            //     ->exportable(false)
+            //     ->printable(false)
+            //     ->width(60)
+            //     ->addClass('text-center'),
+            Column::computed('status')
                 ->exportable(false)
                 ->printable(false)
                 ->width(60)
                 ->addClass('text-center'),
-            Column::computed('status')
+            Column::computed('rekap_KMS')
                 ->exportable(false)
                 ->printable(false)
                 ->width(60)

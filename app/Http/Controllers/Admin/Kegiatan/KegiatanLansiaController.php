@@ -7,11 +7,15 @@ use App\Http\Controllers\Controller;
 use App\Models\KegiatanLansia;
 use App\Models\DataLansia;
 use App\Models\Kader;
+use App\Models\PantauanKMS;
+use App\Models\Pemasukan;
 use App\Models\Pengajuan;
 use App\Models\PesertaKegiatan;
 use App\Models\PesertaKader;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
+
 
 
 class KegiatanLansiaController extends Controller
@@ -47,14 +51,17 @@ class KegiatanLansiaController extends Controller
     }
     public function show($id)
     {
-        $data = KegiatanLansia::findorFail($id);
-        $data_lansia = DataLansia::get();
-        $data_peserta = PesertaKegiatan::where('kegiatan_lansia_id', $id)->get();
-        //coba
-        $data_kader = Kader::get();
-        $data_peserta_kader = PesertaKader::where('kegiatan_lansia1', $id)->get();
+        $data = KegiatanLansia::find($id);
+        $datakms = PantauanKMS::where('tanggal_pemeriksaan', $data->tanggal_kegiatan)->get();
+        return view('pages.admin.lansia.kegiatanlansia.rekapkegiatan', compact('datakms', 'data'));
+        // $data = KegiatanLansia::findorFail($id);
+        // $data_lansia = DataLansia::get();
+        // $data_peserta = PesertaKegiatan::where('kegiatan_lansia_id', $id)->get();
+        // //coba
+        // $data_kader = Kader::get();
+        // $data_peserta_kader = PesertaKader::where('kegiatan_lansia1', $id)->get();
 
-        return view('pages.admin.lansia.kegiatanlansia.show', ['data' => $data, 'data_lansia' => $data_lansia, 'data_peserta' => $data_peserta, 'data_kader' => $data_kader, 'data_peserta_kader' => $data_peserta_kader]);
+        // return view('pages.admin.lansia.kegiatanlansia.show', ['data' => $data, 'data_lansia' => $data_lansia, 'data_peserta' => $data_peserta, 'data_kader' => $data_kader, 'data_peserta_kader' => $data_peserta_kader]);
     }
     public function edit($id)
     {
@@ -112,6 +119,12 @@ class KegiatanLansiaController extends Controller
         return redirect()->back();
     }
 
+    public function hapuslansia($id)
+    {
+        PesertaKegiatan::where('id', $id)->delete();
+        return redirect()->back();
+    }
+
     public function status_peserta($id)
     {
         $datapeserta = PesertaKegiatan::find($id);
@@ -130,12 +143,26 @@ class KegiatanLansiaController extends Controller
 
         return redirect()->back();
     }
+    public function hapuskader($id)
+    {
+        PesertaKader::where('id', $id)->delete();
+        return redirect()->back();
+    }
     public function status_kader($id)
     {
         $datakader = PesertaKader::find($id);
         $datakader->status = !$datakader->status;
         $datakader->save();
         return redirect()->back();
+    }
+    public function cetakpresensi($id)
+    {
+        $data =
+            KegiatanLansia::where('id', $id)->first();
+        $lansia = PesertaKegiatan::where('kegiatan_lansia_id', $id)->get();
+        $kader = PesertaKader::where('kegiatan_lansia1', $id)->get();
+        $pdf = PDF::loadview('pages.admin.lansia.kegiatanlansia.cetakpresensi', ['data' => $data, 'lansia' => $lansia, 'kader' => $kader]);
+        return $pdf->download('Presensi Kegiatan.pdf');
     }
 
     public function laporankegiatan()
@@ -147,14 +174,19 @@ class KegiatanLansiaController extends Controller
         $dataa = Pengajuan::all();
         $menunggu = Pengajuan::where('status', 0)->sum('jumlah_ajuan');
         $danakeluar = Pengajuan::where('status', 1)->sum('bukti_angka');
-        $totaldana = $total1 - $danakeluar;
-
-        return view('pages.admin.lansia.kegiatanlansia.laporankegiatan', ['total' => $total, 'total1' => $total1, 'data' => $data, 'dataa' => $dataa, 'menunggu' => $menunggu, "danakeluar" => $danakeluar, "totaldana" => $totaldana]);
+        //pemasukan
+        $pemasukan = Pemasukan::sum('jumlah');
+        //total dana
+        $totaldana = $total1 + $pemasukan - $danakeluar;
+        $data_kader = Kader::get();
+        return view('pages.admin.lansia.kegiatanlansia.laporankegiatan', ['total' => $total, 'total1' => $total1, 'data' => $data, 'dataa' => $dataa, 'menunggu' => $menunggu, "danakeluar" => $danakeluar, "totaldana" => $totaldana, "data_kader" => $data_kader, 'pemasukan' => $pemasukan]);
     }
 
     public function pengajuan(Request $request)
     {
+
         Pengajuan::create($request->all());
+
         return redirect()->back();
     }
     public function hapuspengajuan($id)
@@ -190,5 +222,46 @@ class KegiatanLansiaController extends Controller
         $pengajuan->save();
 
         return redirect()->back();
+    }
+    public function detail(Request $request, $id)
+    {
+        $data = KegiatanLansia::find($id);
+        $datakms = PantauanKMS::where('tanggal_pemeriksaan', $data->tanggal_kegiatan)->get();
+        return view('pages . admin . lansia . kegiatanlansia . rekapkegiatan', compact('datakms', 'data'));
+    }
+    public function rekaplansia($id)
+    {
+        $data = KegiatanLansia::find($id);
+        $datakms = PantauanKMS::where('tanggal_pemeriksaan', $data->tanggal_kegiatan)->get();
+        $pdf = PDF::loadview('pages.admin.lansia.kegiatanlansia.cetakrekaplansia', ['data' => $data, 'datakms' => $datakms])->setPaper('legal', 'landscape');
+        return $pdf->download('Rekap Posyandu Lansia.pdf');
+    }
+
+    public function rekapitulasi($id)
+    {
+        $data = KegiatanLansia::find($id);
+        $datakms = PantauanKMS::where('tanggal_pemeriksaan', $data->tanggal_kegiatan)->count();
+        $lansia = DataLansia::count();
+        $mandiriA = PantauanKMS::where('tanggal_pemeriksaan', $data->tanggal_kegiatan)->where('kegiatan_harian', 'Kategori A')->count();
+        $mandiriB = PantauanKMS::where('tanggal_pemeriksaan', $data->tanggal_kegiatan)->where('kegiatan_harian', 'Kategori B')->count();
+        $mandiriC = PantauanKMS::where('tanggal_pemeriksaan', $data->tanggal_kegiatan)->where('kegiatan_harian', 'Kategori C')->count();
+        $mentalada = PantauanKMS::where('tanggal_pemeriksaan', $data->tanggal_kegiatan)->where('status_mental', 'Ada')->count();
+        $mentaltidakada = PantauanKMS::where('tanggal_pemeriksaan', $data->tanggal_kegiatan)->where('status_mental', 'Tidak Ada')->count();
+        $imtlebih = PantauanKMS::where('tanggal_pemeriksaan', $data->tanggal_kegiatan)->where('indeks_massa_tubuh', 'Berat Lebih')->count();
+        $imtnormal = PantauanKMS::where('tanggal_pemeriksaan', $data->tanggal_kegiatan)->where('indeks_massa_tubuh', 'Normal')->count();
+        $imtkurang = PantauanKMS::where('tanggal_pemeriksaan', $data->tanggal_kegiatan)->where('indeks_massa_tubuh', 'Berat Kurang')->count();
+        $tekanantinggi = PantauanKMS::where('tekanan_darah', 'Tinggi')->count();
+        $tekanannormal = PantauanKMS::where('tanggal_pemeriksaan', $data->tanggal_kegiatan)->where('tekanan_darah', 'Normal')->count();
+        $tekananrendah = PantauanKMS::where('tanggal_pemeriksaan', $data->tanggal_kegiatan)->where('tekanan_darah', 'Rendah')->count();
+        $hbkurang = PantauanKMS::where('tanggal_pemeriksaan', $data->tanggal_kegiatan)->where('hemoglobin', 'Kurang')->count();
+        $hbnormal = PantauanKMS::where('tanggal_pemeriksaan', $data->tanggal_kegiatan)->where('hemoglobin', 'Normal')->count();
+        $rpositif = PantauanKMS::where('tanggal_pemeriksaan', $data->tanggal_kegiatan)->where('reduksi_urine', 'Positif')->count();
+        $rnormal = PantauanKMS::where('tanggal_pemeriksaan', $data->tanggal_kegiatan)->where('reduksi_urine', 'Normal')->count();
+        $ppositif = PantauanKMS::where('tanggal_pemeriksaan', $data->tanggal_kegiatan)->where('protein_urine', 'Positif')->count();
+        $pnormal = PantauanKMS::where('tanggal_pemeriksaan', $data->tanggal_kegiatan)->where('protein_urine', 'Normal')->count();
+        $tindakan = PantauanKMS::where('tanggal_pemeriksaan', $data->tanggal_kegiatan)->where('tindakan', 'Dirujuk')->count();
+        $pdf = PDF::loadview('pages.admin.lansia.kegiatanlansia.rekapitulasi', ['data' => $data, 'datakms' => $datakms, 'lansia' => $lansia, 'mandiriA' => $mandiriA, 'mandiriB' => $mandiriB, 'mandiriC' => $mandiriC, 'mentalada' => $mentalada, 'mentaltidakada' => $mentaltidakada, 'imtlebih' => $imtlebih, 'imtnormal' => $imtnormal, 'imtkurang' => $imtkurang, 'tekanantinggi' => $tekanantinggi, 'tekanannormal' => $tekanannormal, 'tekananrendah' => $tekananrendah, 'hbkurang' => $hbkurang, 'hbnormal' => $hbnormal, 'rpositif' => $rpositif, 'rnormal' => $rnormal, 'ppositif' => $ppositif, 'pnormal' => $pnormal, 'tindakan' => $tindakan])->setPaper('Legal');
+        // $pdf = PDF::loadview('pages.admin.lansia.kegiatanlansia.rekapitulasi', ['lansia' => $lansia]);
+        return $pdf->download('Rekapitulasi Hasil Kegiatan Posyandu Lansia.pdf');
     }
 }

@@ -99,7 +99,7 @@
                             @foreach ($data as $cetakkms)
                                 <tr>
                                     <td> {{ $loop->iteration }}</td>
-                                    <td> no kms</td>
+                                    <td> {{ $cetakkms->lansia->no_kms }}</td>
                                     <td> {{ $cetakkms->lansia->nama_lansia }}</td>
                                     <td> {{ $cetakkms->tanggal_pemeriksaan }}</td>
                                     <td> {{ $cetakkms->kegiatan_harian }}</td>

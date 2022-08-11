@@ -74,7 +74,7 @@
                     </div>
                 </div>
                 {{-- coba --}}
-                <button class="btn btn-secondary float-right mr-4" data-toggle="modal"
+                {{-- <button class="btn btn-secondary float-right mr-4" data-toggle="modal"
                     data-target="#tambah1{{ $data->id }}"> Absensi Kader</button>
                 <div class="modal fade" id="tambah1{{ $data->id }}" role="dialog" arialabelledby="modalLabel"
                     aria-hidden="true">
@@ -92,7 +92,7 @@
                                     <input type="hidden" name="kegiatan_lansia1" value="{{ $data->id }}">
                                     <div class="form-group">
                                         <label for="name">Nama</label><br>
-                                        <select name="kader_id" class="selectpicker form-select" required
+                                        <select name="kader_id" class="selectpicker form-select form-control" required
                                             aria-label=".form-select-sm example" data-live-search="true">
                                             @foreach ($data_kader as $kd)
                                                 <option value="{{ $kd->id }}">
@@ -105,8 +105,8 @@
                             </form>
                         </div>
                     </div>
-                </div>
-                <button class="btn btn-secondary float-right mr-4" data-toggle="modal"
+                </div> --}}
+                {{-- <button class="btn btn-secondary float-right mr-4" data-toggle="modal"
                     data-target="#tambah{{ $data->id }}"> Absensi Lansia</button>
                 <div class="modal fade" id="tambah{{ $data->id }}" role="dialog" arialabelledby="modalLabel"
                     aria-hidden="true">
@@ -124,7 +124,7 @@
                                     <input type="hidden" name="kegiatan_lansia_id" value="{{ $data->id }}">
                                     <div class="form-group">
                                         <label for="name">Nama</label><br>
-                                        <select name="lansia_id" class="selectpicker form-select" required
+                                        <select name="lansia_id" class="selectpicker form-select form-control" required
                                             aria-label=".form-select-sm example" data-live-search="true">
                                             @foreach ($data_lansia as $dl)
                                                 <option value="{{ $dl->id }}">
@@ -132,18 +132,16 @@
                                             @endforeach
                                         </select><br>
                                         <label for="name">Iuran</label> <br>
-                                        {{-- <input type="text"> --}}
                                         <input type="text" id="iuran_wajib" name="iuran_wajib" class="form-control"
                                             autofocus data-parsley-required="true"
                                             value="{{ $data->iuran_wajib ?? old('iuran_wajib') }}">
                                     </div>
                                 </div>
-                                <button type="submit"
-                                    class="btn btn-secondary float-right me-1 mb-1 mr-4">Tambah</button>
+                                <button type="submit" class="btn btn-secondary float-right me-1 mb-1 mr-4">Tambah</button>
                             </form>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
             </div>
         </div>
@@ -153,17 +151,53 @@
         <li class="nav-item"><a href="#latest-post" data-toggle="tab" class="nav-link active"><i
                     class="fa fa-wheelchair fa-lg m-r-5"></i> <span class="d-none d-md-inline">Peserta
                     Lansia</span></a></li>
-        <li class="nav-item"><a href="#purchase" data-toggle="tab" class="nav-link"><i
-                    class="fas fa-users fa-lg m-r-5"></i> <span class="d-none d-md-inline">Peserta Kader</span></a>
+        <li class="nav-item"><a href="#purchase" data-toggle="tab" class="nav-link"><i class="fas fa-users fa-lg m-r-5"></i>
+                <span class="d-none d-md-inline">Peserta Kader</span></a>
         </li>
     </ul>
     <div class="tab-content" data-sortable-id="index-3">
         <div class="tab-pane fade active show" id="latest-post">
             <div class="height-sm" data-scrollbar="true">
                 <div>
-                    <h5> Absensi Lansia </h5>
+                    <h5> Presensi Lansia </h5>
                     <h6> {{ $data['nama'] }}, {{ $data['lokasi'] }}</h6>
                     <h7> {{ $data['tanggal_kegiatan'] }}</h7>
+                </div>
+                <button class="btn btn-secondary float-right mr-4" data-toggle="modal"
+                    data-target="#tambah{{ $data->id }}"> Presensi Lansia</button>
+                <div class="modal fade" id="tambah{{ $data->id }}" role="dialog" arialabelledby="modalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Tambah Data Peserta</h5>
+                                <button type="button" class="close" data-dismiss="modal" arial-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <form action="/admin/data-kegiatan/create_peserta/{{ $data->id }}" method="post">
+                                @csrf
+                                <div class="modal-body">
+                                    <input type="hidden" name="kegiatan_lansia_id" value="{{ $data->id }}">
+                                    <div class="form-group">
+                                        <label for="name">Nama</label><br>
+                                        <select name="lansia_id" class="selectpicker form-select form-control" required
+                                            aria-label=".form-select-sm example" data-live-search="true">
+                                            @foreach ($data_lansia as $dl)
+                                                <option value="{{ $dl->id }}">
+                                                    {{ $dl->nama_lansia }}</option>
+                                            @endforeach
+                                        </select><br>
+                                        {{-- <label for="name">Iuran</label> <br>
+                                        <input type="text" id="iuran_wajib" name="iuran_wajib" class="form-control"
+                                            autofocus data-parsley-required="true"
+                                            value="{{ $data->iuran_wajib ?? old('iuran_wajib') }}"> --}}
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-secondary float-right me-1 mb-1 mr-4">Tambah</button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
                 <table class="table table-bordered my-5" align="center" rules="all" border="1px"
                     style="width: 95%; margin-top: 1 rem; margin-bottom: 1 rem;">
@@ -171,7 +205,8 @@
                         <th>No. </th>
                         <th>Nama Lansia</th>
                         <th>Status</th>
-                        <th>Iuran</th>
+                        {{-- <th>Iuran</th> --}}
+                        <th>Aksi</th>
                     </tr>
                     @foreach ($data_peserta as $dp)
                         @php
@@ -189,7 +224,10 @@
                                         class="btn btn-danger btn-xs me-1 mb-1">Tidak Hadir</a>
                                 @endif
                             </td>
-                            <td> {{ $dp->iuran_wajib }} </td>
+                            {{-- <td> {{ $dp->iuran_wajib }} </td> --}}
+                            <td><a href="/admin/data-kegiatan/hapuslansia/{{ $dp->id }}"
+                                    onclick="return confirm('Apakah Anda Yakin Menghapus Data?');"
+                                    class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a></td>
                         </tr>
 
                         {{-- <label>Nama Peserta</label>
@@ -201,16 +239,49 @@
         <div class="tab-pane fade" id="purchase">
             <div class="height-sm" data-scrollbar="true">
 
-                <h5> Absensi Kader </h5>
+                <h5> Presensi Kader </h5>
                 <h6> {{ $data['nama'] }}, {{ $data['lokasi'] }}</h6>
                 <h7> {{ $data['tanggal_kegiatan'] }}</h7>
+                <button class="btn btn-secondary float-right mr-4" data-toggle="modal"
+                    data-target="#tambah1{{ $data->id }}"> Presensi Kader</button>
+                <div class="modal fade" id="tambah1{{ $data->id }}" role="dialog" arialabelledby="modalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Tambah Data Peserta</h5>
+                                <button type="button" class="close" data-dismiss="modal" arial-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <form action="/admin/data-kegiatan/create_kader/{{ $data->id }}" method="post">
+                                @csrf
+                                <div class="modal-body">
+                                    <input type="hidden" name="kegiatan_lansia1" value="{{ $data->id }}">
+                                    <div class="form-group">
+                                        <label for="name">Nama</label><br>
+                                        <select name="kader_id" class="selectpicker form-select form-control" required
+                                            aria-label=".form-select-sm example" data-live-search="true">
+                                            @foreach ($data_kader as $kd)
+                                                <option value="{{ $kd->id }}">
+                                                    {{ $kd->nama }}</option>
+                                            @endforeach
+                                        </select><br>
+                                    </div>
+                                </div>
+                                <button type="submit"
+                                    class="btn btn-secondary float-right me-1 mb-1 mr-4">Tambah</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
                 <table class="table table-bordered my-5" align="center" rules="all" border="1px"
                     style="width: 95%; margin-top: 1 rem; margin-bottom: 1 rem;">
                     <tr>
                         <th>No. </th>
                         <th>Nama Kader</th>
                         <th>Status</th>
-
+                        <th>Aksi</th>
                     </tr>
                     @foreach ($data_peserta_kader as $dpk)
                         @php
@@ -228,6 +299,9 @@
                                         class="btn btn-danger btn-xs me-1 mb-1">Tidak Hadir</a>
                                 @endif
                             </td>
+                            <td><a href="/admin/data-kegiatan/hapuskader/{{ $dpk->id }}"
+                                    onclick="return confirm('Apakah Anda Yakin Menghapus Data?');"
+                                    class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a></td>
                         </tr>
 
 

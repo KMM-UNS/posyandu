@@ -67,7 +67,7 @@ class RujukanLansiaDataTable extends DataTable
     public function query(RujukanLansia $model)
     {
         // return $model->select('rujukan_lansia.*')->with(['rujukan']);
-        return $model->with(['rujukan'])->select('rujukan_lansia.*')->newQuery();
+        return $model->with(['rujukan', 'instansi'])->select('rujukan_lansia.*')->newQuery();
     }
 
     /**
@@ -102,7 +102,7 @@ class RujukanLansiaDataTable extends DataTable
 
             // Column::make('id'),
             Column::make('no_surat', 'rujukan_lansia.no_surat'),
-            Column::make('kepada', 'rujukan_lansia.kepada'),
+            Column::make('instansi.nama', 'instansi.nama')->title('Kepada'),
             Column::make('tanggal_surat', 'rujukan_lansia.tanggal_surat')->title('Tanggal Surat'),
             Column::make('rujukan.nama_lansia', 'rujukan.nama_lansia')->title('Nama Lansia'),
             Column::make('umur', 'rujukan_lansia.umur'),
@@ -131,6 +131,6 @@ class RujukanLansiaDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'Admin\Transaksi\RujukanLansia_' . date('YmdHis');
+        return 'RujukanLansia_' . date('YmdHis');
     }
 }

@@ -45,6 +45,8 @@ Route::group(['middleware' => 'auth:web', 'prefix' => 'user', 'as' => 'user.'], 
             Route::resource('biodatalansia', 'BiodataLansiaController');
             Route::resource('kmslansia', 'KMSLansiaController');
             Route::resource('riwayatrujukan', 'RiwayatRujukanController');
+            Route::get('/cetakriwayatrujukan/{id}', 'RiwayatRujukanController@show')->name('cetak');
+            // Route::resource('riwayatrujukan', 'RujukanLansiaController');
         });
     });
 });

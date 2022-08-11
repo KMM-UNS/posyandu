@@ -132,7 +132,7 @@
                     </div>
                 </div>
                 <div class="panel-footer">
-                    <a href="{{ route('user.userlansia.biodatalansia.create') }}"><button type="submit"
+                    <a href="{{ route('user.userlansia.biodatalansia.edit', $data->id) }}"><button type="submit"
                             class="btn btn-primary">Edit</button></a>
                 </div>
         @endif

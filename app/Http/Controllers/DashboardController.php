@@ -9,6 +9,8 @@ use App\Charts\UmurChart;
 use App\Charts\StatusKawinChart;
 use App\Charts\JamkesChart;
 use App\Models\KegiatanLansia;
+use App\Models\PantauanKMS;
+use App\Models\RujukanLansia;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
@@ -20,7 +22,24 @@ class DashboardController extends Controller
         if (auth()->user()->hasRole('regular_user')) {
             $data = ForumLansia::get();
             $kegiatanlansia = KegiatanLansia::where('status', '0')->get();
+            $lansia = DataLansia::select('id')->where('createable_id', auth()->user()->id)->first();
+            if (isset($lansia)) {
+                $lansia = DataLansia::select('id')->where('createable_id', auth()->user()->id)->first()->id;
+                $riwayatkms = PantauanKMS::where('nama_lansia1', $lansia)->count();
+
+                if (isset($lansia)) {
+                    $lansia = DataLansia::select('id')->where('createable_id', auth()->user()->id)->first()->id;
+                    $rujukan = RujukanLansia::where('namalansia', $lansia)->where('status', '1')->count();
+                    return view('home', compact('data', 'kegiatanlansia', 'lansia', 'riwayatkms', 'rujukan'));
+                }
+            }
             return view('home', compact('data', 'kegiatanlansia'));
+            // $data = ForumLansia::get();
+            // $kegiatanlansia = KegiatanLansia::where('status', '0')->get();
+            // $lansia = DataLansia::select('id')->where('createable_id', auth()->user()->id)->first()->id;
+            // $riwayatkms = PantauanKMS::where('nama_lansia1', $lansia)->count();
+            // $rujukan = RujukanLansia::where('namalansia', $lansia)->where('status', '1')->count();
+            // return view('home', compact('data', 'kegiatanlansia', 'lansia', 'riwayatkms', 'rujukan'));
         } else {
             $data = ForumLansia::get();
             $jumlahlansia = DataLansia::count();

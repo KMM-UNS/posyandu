@@ -27,17 +27,17 @@ class RiwayatRujukanDataTable extends DataTable
             })
             ->addColumn('action', function ($row) {
                 $btn = '<div class="btn-group">';
-                if($row->status == '0'){
-                    $btn = $btn . '<a class="btn btn-secondary">Belum dikonfirmasi</a>';
-                }else{
-                    $btn = $btn . '<a class="btn btn-info">Sudah dikonfirmasi</a>';
-                    $btn = $btn . '<a href="'  . route('admin.data-transaksi.rujukanlansia.show', $row->id) . '" class="btn btn-info buttons-show"><i class="fa fa-print fa-fw"></i></a>';
-
+                // $btn = $btn . '<a href="' . route('user.userlansia.riwayatrujukan.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
+                if ($row->status == '0') {
+                    $btn = $btn . '<a class="btn btn-warning btn-xs">Belum dikonfirmasi</a>';
+                } else {
+                    // $btn = $btn . '<a class="btn btn-info">Sudah dikonfirmasi</a>';
+                    $btn = $btn . '<a href="'  . route('user.userlansia.riwayatrujukan.show', $row->id) . '" class="btn btn-info buttons-show"><i class="fa fa-print fa-fw"></i>Cetak Surat</a>';
                 }
                 return $btn;
             });
     }
-    
+
 
     /**
      * Get query source of dataTable.
@@ -47,11 +47,11 @@ class RiwayatRujukanDataTable extends DataTable
      */
     public function query(RujukanLansia $model)
     {
-        
+
         // return $model->select('pantauan_kms.*')->with(['lansia']->where('createable_id', auth()->user()->id))->where('createable_type', 'App\Models\User');
         $data = DataLansia::select('id')->where('createable_id', auth()->user()->id)->first()->id;
         // $data = RujukanLansia::select('id')->where('createable_id', auth()->user()->id)->first()->id;
-        return $model->select('rujukan_lansia.*')->with(['rujukan'])->where('namalansia', $data);
+        return $model->select('rujukan_lansia.*')->with(['rujukan', 'instansi'])->where('namalansia', $data);
         // return $model->select('pantauan_kms.*')->with(['lansia']);
     }
 
@@ -72,7 +72,7 @@ class RiwayatRujukanDataTable extends DataTable
                 Button::make('create'),
                 Button::make('export'),
                 Button::make('print'),
-                
+
                 // Button::make('reset'),
                 // Button::make('reload')
             );
@@ -87,7 +87,7 @@ class RiwayatRujukanDataTable extends DataTable
     {
         return [
             Column::make('no_surat'),
-            Column::make('kepada'),
+            Column::make('kepada')->data('instansi.nama'),
             Column::make('tanggal_surat'),
             // Column::make('namalansia')->data('rujukan.nama_lansia'),
             Column::make('umur'),
@@ -102,7 +102,6 @@ class RiwayatRujukanDataTable extends DataTable
                 ->addClass('text-center'),
 
         ];
-        
     }
 
     /**

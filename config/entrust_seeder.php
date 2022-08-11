@@ -6,11 +6,7 @@ return [
             'users' => 'c,r,u,d',
             'profile' => 'c,r,u,d'
         ],
-        'petugas_kesehatan' => [
-            'users' => 'c,r,u',
-            'profile' => 'r,u'
-        ],
-        'ketua_kader' => [
+        'kader' => [
             'users' => 'c,r,u',
             'profile' => 'r,u'
         ],

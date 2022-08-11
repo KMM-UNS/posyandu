@@ -112,7 +112,7 @@
                             <label for="name">No KMS</label>
                         </div>
                         <div class="col-md-3">
-                            <input type="text" name="no_kms" class="form-control" value="<?php echo $no_kms; ?>" readonly
+                            <input type="text" name="no_kms" class="form-control" value="{{ $data->no_kms }}" readonly
                                 class="form-control" name="no_kms" required="">
                         </div>
                         <div class="col-md-1">

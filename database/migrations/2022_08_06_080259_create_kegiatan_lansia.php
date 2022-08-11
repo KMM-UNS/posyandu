@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateKegiatanLansiaTable extends Migration
+class CreateKegiatanLansia extends Migration
 {
     /**
      * Run the migrations.
@@ -21,11 +21,7 @@ class CreateKegiatanLansiaTable extends Migration
             $table->date('tanggal_kegiatan');
             $table->string('waktu_mulai');
             $table->string('waktu_selesai');
-            $table->integer('jumlah_iuran')->nullable();
             $table->string('status')->default(0);
-            $table->string('waktu')->nullable();
-
-
             $table->timestamps();
             $table->softDeletes();
         });

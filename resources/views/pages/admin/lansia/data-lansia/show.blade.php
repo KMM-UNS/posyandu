@@ -36,7 +36,7 @@
                         <div class="panel-body" style="font-size: 14px">
                             <div class="row mx-auto">
                                 <div class="col-md-6">
-                                    {{-- <div>
+                                    <div>
                                         <label>Foto</label>
                                         <p class="font-weight-bold">
                                             <td>
@@ -44,7 +44,7 @@
                                                     style="width: 150px;" alt="...">
                                             </td>
                                         </p>
-                                    </div> --}}
+                                    </div>
                                     <div>
                                         <label>Nama</label>
                                         <p class="font-weight-bold">{{ $data['nama_lansia'] }}</p>

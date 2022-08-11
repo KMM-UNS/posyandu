@@ -15,49 +15,50 @@
     </ol>
     <!-- end breadcrumb -->
     <!-- begin page-header -->
-    {{-- <div class="container">
+    <div class="container">
 
         <h1 class="page-header">Hai {{ Auth::user()->name }}!!</h1>
 
-    </div> --}}
+    </div>
     <!-- end page-header -->
     <!-- begin row -->
-    <div class="row justify-content-center">
-        <div class="col-md-9">
-            <div class="card">
-
-                <h1 class="page-header">
-                    <center>Hai {{ Auth::user()->name }}!!</center>
-                </h1>
-            </div>
-        </div>
+    <div class="row">
         <!-- begin col-3 -->
-        {{-- <div class="col-xl-4 col-md-6">
-            <div class="card text-white border-0 bg-teal text-center m-b-10">
-                <div class="card-body">
-                    <blockquote class="blockquote mb-0">
-                        <p class="mb-2">Make it so that <br />everything becomes your<br /> spiritual advisor</p>
-                        <footer class="blockquote-footer text-white-transparent-8">Someone famous in <cite
-                                title="Source Title">Source Title</cite></footer>
-                    </blockquote>
+        <div class="col-xl-6 col-md-6">
+            <div class="widget widget-stats bg-teal">
+                <div class="stats-icon stats-icon-lg"><i class="fa fa-wheelchair"></i></div>
+                <div class="stats-content">
+                    <div class="stats-title">Riwayat Rekam Medik</div>
+                    @isset($lansia)
+                        <div class="stats-number">{{ $riwayatkms }}</div>
+                    @endisset
+                    {{-- <div class="stats-number"></div> --}}
+
+                </div>
+                <div class="stats-link">
+                    <a href="/user/userlansia/kmslansia">View Detail </a>
                 </div>
             </div>
         </div>
         <!-- end col-3 -->
         <!-- begin col-3 -->
-        <div class="col-xl-4 col-md-6">
-            <div class="card text-white border-0 bg-teal text-center m-b-10">
-                <div class="card-body">
-                    <blockquote class="blockquote mb-0">
-                        <p class="mb-2"></p>
-                        <footer class="blockquote-footer text-white-transparent-8">KMS LANSIA</footer>
-                    </blockquote>
+        <div class="col-xl-6 col-md-6">
+            <div class="widget widget-stats bg-blue">
+                <div class="stats-icon stats-icon-lg"><i class="fas fa-file-alt"></i></div>
+                <div class="stats-content">
+                    <div class="stats-title">Riwayat Rujukan</div>
+                    @isset($lansia)
+                        <div class="stats-number">{{ $rujukan }}</div>
+                    @endisset
+
+                    {{-- <div class="stats-number">#</div> --}}
+
+                    <div class="stats-link">
+                        <a href="/user/userlansia/riwayatrujukan">View Detail </a>
+                    </div>
                 </div>
             </div>
-        </div> --}}
-        <!-- end col-3 -->
-        <!-- begin col-3 -->
-
+        </div>
         <!-- end col-3 -->
 
     </div>
@@ -66,8 +67,7 @@
 
     <!-- begin row -->
     <div class="row">
-        <!-- begin col-4 -->
-        <div class="col-7">
+        {{-- <div class="col-7">
             <!-- begin panel -->
             <div class="card ">
                 <div class="card-heading bg-dark ">
@@ -83,9 +83,10 @@
                         @if ($h != null)
                             <div class="card-body bg-light">
                                 <div class="chats">
+
                                     @if ($r->user->name == $h['name'])
                                         <div class="right">
-                                            <span class="date-time">{{ $r->jam }}</span>
+                                            <span class="date-time">{{ $r->jam }} / {{ $r->tanggal }}</span>
                                             <a href="javascript:;" class="name"><span
                                                     class="label label-primary">{{ $r->user->name }}</span> Me</a>
                                             <div class="message">
@@ -94,7 +95,7 @@
                                         </div>
                                     @else
                                         <div class="left">
-                                            <span class="date-time">{{ $r->jam }}</span>
+                                            <span class="date-time">{{ $r->jam }} / {{ $r->tanggal }}</span>
                                             <a href="javascript:;" class="name">{{ $r->user->name }}</a>
                                             <a href="javascript:;" class="image"><img alt=""
                                                     src="/assets/img/user/user-12.jpg" /></a>
@@ -123,7 +124,7 @@
                 <!-- end panel -->
             </div>
             <!-- end col-4 -->
-        </div>
+        </div> --}}
 
 
         <div class="col-5">

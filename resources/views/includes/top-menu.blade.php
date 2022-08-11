@@ -61,15 +61,9 @@
             } elseif (
                 auth()
                     ->user()
-                    ->hasRole('petugas_kesehatan')
+                    ->hasRole('kader')
             ) {
-                $menuh = config('sidebar.menu_petugas_kesehatan');
-            } elseif (
-                auth()
-                    ->user()
-                    ->hasRole('ketua_kader')
-            ) {
-                $menuh = config('sidebar.menu_ketua_kader');
+                $menuh = config('sidebar.menu_kader');
             }
             foreach ($menuh as $key => $menu) {
                 $GLOBALS['parent_active'] = '';

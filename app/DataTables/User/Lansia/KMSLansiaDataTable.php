@@ -25,14 +25,14 @@ class KMSLansiaDataTable extends DataTable
             ->setRowId(function ($row) {
                 return $row->id;
             });
-            // ->addColumn('action', function ($row) {
-            //     $btn = '<div class="btn-group">';
-            //     $btn = $btn . '<a href="' . route('userlansia.biodatalansia.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
-            //     $btn = $btn . '<a href="' . route('userlansia.biodatalansia.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
-            //     $btn = $btn . '</div>';
+        // ->addColumn('action', function ($row) {
+        //     $btn = '<div class="btn-group">';
+        //     $btn = $btn . '<a href="' . route('userlansia.biodatalansia.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
+        //     $btn = $btn . '<a href="' . route('userlansia.biodatalansia.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
+        //     $btn = $btn . '</div>';
 
-            //     return $btn;
-            // });
+        //     return $btn;
+        // });
     }
 
     /**
@@ -43,7 +43,7 @@ class KMSLansiaDataTable extends DataTable
      */
     public function query(PantauanKMS $model)
     {
-        
+
         // return $model->select('pantauan_kms.*')->with(['lansia']->where('createable_id', auth()->user()->id))->where('createable_type', 'App\Models\User');
         $data = DataLansia::select('id')->where('createable_id', auth()->user()->id)->first()->id;
         return $model->select('pantauan_kms.*')->with(['lansia'])->where('nama_lansia1', $data);
@@ -59,16 +59,15 @@ class KMSLansiaDataTable extends DataTable
     {
         return $this->builder()
             ->setTableId('pantauan_kms-table')
-            ->columns($this->getColumns())
+            ->columns($this->getColumns('nama_lansia1'))
             ->minifiedAjax()
             ->dom('<"dataTables_wrapper dt-bootstrap"B<"row"<"col-xl-7 d-block d-sm-flex d-xl-block justify-content-center"<"d-block d-lg-inline-flex"l>><"col-xl-5 d-flex d-xl-block justify-content-center"fr>>t<"row"<"col-sm-5"i><"col-sm-7"p>>>')
             ->orderBy(1)
             ->buttons(
                 // Button::make('create'),
                 Button::make('export'),
-                Button::make('print')
-                // Button::make('reset'),
-                // Button::make('reload')
+                Button::make('print'),
+
             );
     }
 
@@ -83,26 +82,26 @@ class KMSLansiaDataTable extends DataTable
             //Column::make('id'),
             //Column::make('no'),
             Column::make('tanggal_pemeriksaan'),
-            // Column::make('nama_lansia1')->data('lansia.nama_lansia'),
+            Column::make('nama_lansia1')->data('lansia.nama_lansia')->title('Nama Lansia'),
             Column::make('kegiatan_harian'),
             Column::make('status_mental'),
-            Column::make('tb'),
-            Column::make('bb'),
+            // Column::make('tb'),
+            // Column::make('bb'),
             Column::make('indeks_massa_tubuh'),
             Column::make('tekanan_darah'),
             Column::make('hemoglobin'),
             Column::make('reduksi_urine'),
             Column::make('protein_urine'),
-            // Column::make('hasil'),
+            Column::make('keluhan'),
+            Column::make('tindakan')
             // Column::computed('action')
             //     ->exportable(false)
             //     ->printable(false)
             //     ->width(60)
             //     ->addClass('text-center'),
-                
+
 
         ];
-        
     }
 
     /**

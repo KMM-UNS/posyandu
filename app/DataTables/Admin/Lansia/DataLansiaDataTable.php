@@ -32,9 +32,9 @@ class DataLansiaDataTable extends DataTable
                 //     $btn = $btn . '<a href="' . route('admin.data-lansia.datakematian.status', $row->id) . '" class="btn btn-secondary buttons-edit">Tidak Aktif</a>';
                 // }
                 $btn = $btn . '<a href="' . route('admin.data-lansia.datalansia.show', $row->id) . '" class="btn btn-warning buttons-detail"><i class="fa fa-eye"></i></a>';
-                $btn = $btn . '<a href="' . route('admin.data-lansia.datalansia.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
-                $btn = $btn . '<a href="' . route('admin.data-lansia.datalansia.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
-                $btn = $btn . '</div>';
+                // $btn = $btn . '<a href="' . route('admin.data-lansia.datalansia.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
+                // $btn = $btn . '<a href="' . route('admin.data-lansia.datalansia.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
+                // $btn = $btn . '</div>';
 
                 return $btn;
             });
@@ -66,7 +66,7 @@ class DataLansiaDataTable extends DataTable
             ->dom('<"dataTables_wrapper dt-bootstrap"B<"row"<"col-xl-7 d-block d-sm-flex d-xl-block justify-content-center"<"d-block d-lg-inline-flex"l>><"col-xl-5 d-flex d-xl-block justify-content-center"fr>>t<"row"<"col-sm-5"i><"col-sm-7"p>>>')
             ->orderBy(1)
             ->buttons(
-                Button::make('create'),
+                // Button::make('create'),
                 Button::make('export'),
                 Button::make('print'),
                 // Button::make('reset'),

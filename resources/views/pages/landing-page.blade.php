@@ -83,16 +83,15 @@
         <div id="home" class="content has-bg home">
             <!-- begin content-bg -->
             <div class="content-bg">
-                <img src="{{ asset('template') }}/img/posyandu/bg.jpg" alt="Home" />
+                <img src="{{ asset('template') }}/img/posyandu/landingnew.jpg" alt="Home" />
             </div>
             <!-- end content-bg -->
             <!-- begin container -->
             <div class="container home-content">
-                <h1>Selamat Datang di Posyandu UNS</h1>
-                <h3>Pos Pelayanan Kesehatan Terpadu</h3>
+                <h1>Selamat Datang di Posyandu Lansia</h1>
+                <h3>Posyandu Sahabat Masyarakat</h3>
                 <p>
-                    Posyandu adalah singkatan dari Pos Pelayanan Kesehatan Terpadu. <br />
-                    Use our <a href="#">theme panel</a> to select your favorite theme color.
+                    Tua Berguna dan Berkualitas
                 </p>
 
             </div>
@@ -385,8 +384,9 @@
                             <div class="icon bg-theme" data-animation="true" data-animation-type="bounceIn"><i
                                     class="fa fa-paint-brush"></i></div>
                             <div class="info">
-                                <h4 class="title">Imunisasi</h4>
-                                <p class="desc">Memberikan informasi jadwal imunisasi.</p>
+                                <h4 class="title">Rujukan</h4>
+                                <p class="desc">Keterangan lanjutan tentang satu hal yang berdasarkan data yang ada
+                                    di Laporan KMS.</p>
                             </div>
                         </div>
                     </div>
@@ -414,23 +414,24 @@
                             <div class="icon bg-theme" data-animation="true" data-animation-type="bounceIn"><i
                                     class="fa fa-code"></i></div>
                             <div class="info">
-                                <h4 class="title">Rujukan</h4>
-                                <p class="desc">Keterangan lanjutan tentang satu hal yang berdasarkan data yang ada
-                                    di Laporan KMS.</p>
+                                <h4 class="title">Jadwal Kegiatan</h4>
+                                <p class="desc">Jadwal kegiatan yang akan dilakukan seperti senam, pertemuan wajib,
+                                    ataupun lainya.</p>
                             </div>
                         </div>
                     </div>
                     <!-- end col-4 -->
                     <!-- begin col-4 -->
-                    {{-- <div class="col-md-4 col-sm-4">
+                    <div class="col-md-4 col-sm-4">
                         <div class="service">
-                            <div class="icon bg-theme" data-animation="true" data-animation-type="bounceIn"><i class="fa fa-shopping-cart"></i></div>
+                            <div class="icon bg-theme" data-animation="true" data-animation-type="bounceIn"><i
+                                    class="fa fa-shopping-cart"></i></div>
                             <div class="info">
-                                <h4 class="title">Riwayat Pelaksanaan Kegiatan</h4>
-                                <p class="desc">Memberikan I</p>
+                                <h4 class="title">Pencatatan Laporan</h4>
+                                <p class="desc">Laporan dapat dilihat dengan mudah dan cepat.</p>
                             </div>
                         </div>
-                    </div> --}}
+                    </div>
                     <!-- end col-4 -->
                     <!-- begin col-4 -->
                     {{-- <div class="col-md-4 col-sm-4">

@@ -21,16 +21,8 @@ class Kader extends Model
     ];
     public $timestamps = false;
 
-    public function periksaibunifas()
+    public function kmslansia()
     {
-        return $this->hasMany(PeriksaIbuNifas::class);
-    }
-    public function periksaibuhamil()
-    {
-        return $this->hasMany(PeriksaIbuHamil::class);
-    }
-    public function keluhantindakan()
-    {
-        return $this->hasMany(KeluhanTindakan::class);
+        return $this->hasMany(PantauanKMS::class);
     }
 }

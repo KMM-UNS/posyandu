@@ -17,12 +17,16 @@ class PantauanKMS extends Model
 
     protected $table = 'pantauan_kms';
     protected $fillable = [
-        'tanggal_pemeriksaan', 'nama_lansia1', 'kegiatan_harian', 'status_mental', 'indeks_massa_tubuh', 'tekanan_darah', 'hemoglobin', 'reduksi_urine', 'protein_urine', 'tb', 'bb', 'hasil', 'keluhan', 'tindakan'
+        'tanggal_pemeriksaan', 'nama_lansia1', 'kader', 'kegiatan_harian', 'status_mental', 'indeks_massa_tubuh', 'tb', 'bb', 'hasil',  'tekanan_darah', 'sistol', 'diastol', 'dengan_obat', 'nadi', 'hemoglobin', 'g_hemoglobin', 'reduksi_urine', 'jumlahtanda', 'dengan_obat_reduksi', 'protein_urine', 'jumlah_tanda', 'dengan_obat_protein', 'keluhan', 'gizi', 'tindakan',
     ];
     public $timestamps = false;
 
     public function lansia()
     {
         return $this->belongsTo(DataLansia::class, 'nama_lansia1');
+    }
+    public function kaderposyandu()
+    {
+        return $this->belongsTo(Kader::class, 'kader');
     }
 }

@@ -26,15 +26,9 @@ class DataKematianLansiaDataTable extends DataTable
             })
             ->addColumn('action', function ($row) {
                 $btn = '<div class="btn-group">';
-                // if($row->status == '0'){
-                //     $btn = $btn . '<a href="' . route('admin.data-lansia.datakematian.status', $row->id) . '" class="btn btn-success buttons-edit">Aktif</a>';
-                // }else{
-                //     $btn = $btn . '<a href="' . route('admin.data-lansia.datakematian.status', $row->id) . '" class="btn btn-secondary buttons-edit">Tidak Aktif</a>';
-                // }
                 $btn = $btn . '<a href="' . route('admin.data-lansia.datakematianlansia.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
                 $btn = $btn . '<a href="' . route('admin.data-lansia.datakematianlansia.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
                 $btn = $btn . '</div>';
-
                 return $btn;
             });
     }

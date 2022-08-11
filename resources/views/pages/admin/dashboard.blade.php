@@ -1,19 +1,19 @@
 @extends('layouts.default')
 
-@section('title', 'Morris Chart')
+@section('title')
 
-@push('css')
-    <link href="/assets/plugins/morris.js/morris.css" rel="stylesheet" />
-    <link href="/assets/plugins/jvectormap-next/jquery-jvectormap.css" rel="stylesheet" />
-    <link href="/assets/plugins/bootstrap-calendar/css/bootstrap_calendar.css" rel="stylesheet" />
-    <link href="/assets/plugins/gritter/css/jquery.gritter.css" rel="stylesheet" />
-    <link href="/assets/plugins/nvd3/build/nv.d3.css" rel="stylesheet" />
-    <style>
-        .chats-scrollbar {
-            height: 200px;
-        }
-    </style>
-@endpush
+    @push('css')
+        <link href="/assets/plugins/morris.js/morris.css" rel="stylesheet" />
+        <link href="/assets/plugins/jvectormap-next/jquery-jvectormap.css" rel="stylesheet" />
+        <link href="/assets/plugins/bootstrap-calendar/css/bootstrap_calendar.css" rel="stylesheet" />
+        <link href="/assets/plugins/gritter/css/jquery.gritter.css" rel="stylesheet" />
+        <link href="/assets/plugins/nvd3/build/nv.d3.css" rel="stylesheet" />
+        <style>
+            .chats-scrollbar {
+                height: 200px;
+            }
+        </style>
+    @endpush
 
 
 @section('content')
@@ -35,7 +35,7 @@
                     <div class="stats-number">{{ $jumlahlansia }}</div>
                 </div>
                 <div class="stats-link">
-                    <a href="admin/data-lansia/datalansia">View Detail </a>
+                    <a href="/admin/data-lansia/datalansia">View Detail </a>
                 </div>
             </div>
         </div>
@@ -48,7 +48,7 @@
                     <div class="stats-title">Data Kegiatan</div>
                     <div class="stats-number">{{ $jumlahkegiatan }}</div>
                     <div class="stats-link">
-                        <a href="admin/data-kegiatan/datakegiatanlansia">View Detail </a>
+                        <a href="/admin/data-kegiatan/datakegiatanlansia">View Detail </a>
                     </div>
                 </div>
             </div>
@@ -142,7 +142,7 @@
     <!-- begin row -->
     <div class="row">
         <!-- begin col-4 -->
-        <div class="col-7">
+        {{-- <div class="col-7">
             <!-- begin panel -->
             <div class="card ">
                 <div class="card-heading bg-dark ">
@@ -158,9 +158,10 @@
                         @if ($h != null)
                             <div class="card-body bg-light">
                                 <div class="chats">
+
                                     @if ($r->user->name == $h['name'])
                                         <div class="right">
-                                            <span class="date-time">{{ $r->jam }}</span>
+                                            <span class="date-time">{{ $r->jam }} / {{ $r->tanggal }}</span>
                                             <a href="javascript:;" class="name"><span
                                                     class="label label-primary">{{ $r->user->name }}</span> Me</a>
                                             <div class="message">
@@ -169,7 +170,7 @@
                                         </div>
                                     @else
                                         <div class="left">
-                                            <span class="date-time">{{ $r->jam }}</span>
+                                            <span class="date-time">{{ $r->jam }} / {{ $r->tanggal }}</span>
                                             <a href="javascript:;" class="name">{{ $r->user->name }}</a>
                                             <a href="javascript:;" class="image"><img alt=""
                                                     src="/assets/img/user/user-12.jpg" /></a>
@@ -198,7 +199,7 @@
                 <!-- end panel -->
             </div>
             <!-- end col-4 -->
-        </div>
+        </div> --}}
 
 
         <div class="col-5">

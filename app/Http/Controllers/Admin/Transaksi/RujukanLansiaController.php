@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Admin\Transaksi;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\RujukanLansia;
+use App\Models\Puskesmas;
 use App\Datatables\Admin\Transaksi\RujukanLansiaDataTable;
 use App\Models\DataLansia;
+use App\Models\PantauanKMS;
 use Illuminate\Support\Str;
 use Barryvdh\DomPDF\Facade\Pdf;
 
@@ -19,7 +21,8 @@ class RujukanLansiaController extends Controller
      */
     public function index(RujukanLansiaDataTable $dataTable)
     {
-        return $dataTable->render('pages.admin.transaksi.rujukanlansia.index');
+        $rujukan = PantauanKMS::where('status', '1')->get();
+        return $dataTable->render('pages.admin.transaksi.rujukanlansia.index', ['rujukan' => $rujukan]);
     }
 
     /**
@@ -30,7 +33,8 @@ class RujukanLansiaController extends Controller
     public function create()
     {
         $nama_lansia = DataLansia::pluck('nama_lansia', 'id');
-        return view('pages.admin.transaksi.rujukanlansia.add-edit', ['nama_lansia' => $nama_lansia]);
+        $instansi = Puskesmas::pluck('nama', 'id');
+        return view('pages.admin.transaksi.rujukanlansia.add-edit', ['nama_lansia' => $nama_lansia, 'instansi' => $instansi]);
     }
 
     /**
@@ -75,7 +79,7 @@ class RujukanLansiaController extends Controller
             'pages.admin.transaksi.rujukanlansia.showrujukanlansia-pdf',
             [
                 'no_surat' => $data->no_surat,
-                'kepada' => $data->kepada,
+                'kepada' => $data->instansi->nama,
                 'tanggal_surat' => $data->tanggal_surat,
                 'namalansia' => $data->rujukan->nama_lansia,
                 'umur' => $data->umur,
@@ -97,7 +101,8 @@ class RujukanLansiaController extends Controller
     {
         $data = RujukanLansia::findOrFail($id);
         $nama_lansia = DataLansia::pluck('nama_lansia', 'id');
-        return view('pages.admin.transaksi.rujukanlansia.edit', ['data' => $data, 'nama_lansia' => $nama_lansia]);
+        $instansi = Puskesmas::pluck('nama', 'id');
+        return view('pages.admin.transaksi.rujukanlansia.edit', ['data' => $data, 'nama_lansia' => $nama_lansia, 'instansi' => $instansi]);
     }
 
     /**
@@ -111,7 +116,7 @@ class RujukanLansiaController extends Controller
     {
         try {
             $request->validate([
-                'nama' => 'required|min:1'
+                'namalansia' => 'required|min:1'
             ]);
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError($th->validator->messages()->all()[0]);
@@ -141,6 +146,16 @@ class RujukanLansiaController extends Controller
             return response(['error' => 'Something went wrong']);
         }
     }
+
+    //status
+    public function statuslist($id)
+    {
+        $statuslist = PantauanKMS::find($id);
+        $statuslist->status = 2;
+        $statuslist->save();
+        return redirect()->back();
+    }
+
     //status
     public function status($id)
     {
@@ -165,7 +180,7 @@ class RujukanLansiaController extends Controller
             case 'table':
 
                 $data = RujukanLansia::all()
-                    ->whereBetween('tanggal_surat', [$startDate, $endDate]);
+                    ->whereBetween('tanggal_surat', [$startDate, $endDate])->where('status', '1');
 
                 return view('pages.admin.transaksi.rujukanlansia.laporanrujukanlansia', compact('data', 'startDate', 'endDate'));
                 break;
@@ -178,9 +193,9 @@ class RujukanLansiaController extends Controller
         $startDate = $start;
         $endDate = $end;
         $data = RujukanLansia::all()
-            ->whereBetween('tanggal_surat', [$startDate, $endDate]);
+            ->whereBetween('tanggal_surat', [$startDate, $endDate])->where('status', '1');
 
-        $pdf = PDF::loadview('pages.admin.transaksi.rujukanlansia.cetakrujukanlansia', ['data' => $data]);
+        $pdf = PDF::loadview('pages.admin.transaksi.rujukanlansia.cetakrujukanlansia', ['data' => $data])->setPaper('legal', 'landscape');
 
         return $pdf->download('Laporan Rujukan Lansia.pdf');
     }
@@ -193,15 +208,15 @@ class RujukanLansiaController extends Controller
     }
     public function sortirriwayat(Request $request)
     {
-        $data = RujukanLansia::where('namalansia', $request->namalansia)->get();
+        $data = RujukanLansia::where('namalansia', $request->namalansia)->where('status', '1')->get();
         // dd($data);
         return redirect()->route('admin.data-transaksi.riwayatrujukan')->with(['data' => $data]);
     }
     public function cetakriwayatRujukanLansia($id)
     {
-
-        $data = RujukanLansia::where('namalansia', $id)->get();
-        $pdf = PDF::loadview('pages.admin.transaksi.rujukanlansia.cetakrujukanlansia', ['data' => $data]);
-        return $pdf->download('Laporan KMS Lansia.pdf');
+        $lansia = RujukanLansia::where('namalansia', $id)->first();
+        $data = RujukanLansia::where('namalansia', $id)->get()->where('status', '1');
+        $pdf = PDF::loadview('pages.admin.transaksi.rujukanlansia.cetakriwayatrujukan', ['data' => $data, 'lansia' => $lansia])->setPaper('legal', 'landscape');
+        return $pdf->download('Riwayat Rujukan Lansia.pdf');
     }
 }

@@ -64,14 +64,14 @@
                         $nilaikode = substr($jumlah_data[0], 3);
                         $kode = (int) $nilaikode;
                         $kode = $jumlah_data + 1;
-                        $nokms = 'LS-' . str_pad($kode, 3, '0', STR_PAD_LEFT);
+                        $no_kms = 'LS-' . str_pad($kode, 3, '0', STR_PAD_LEFT);
                     } else {
-                        $nokms = 'LS-001';
+                        $no_kms = 'LS-001';
                     }
                     ?>
 
                     <label for="name">No KMS</label>
-                    <input type="text" name="no_kms" class="form-control" value="<?php echo $nokms; ?> " readonly
+                    <input type="text" name="no_kms" class="form-control" value="<?php echo $no_kms; ?> " readonly
                         class="form-control" name="no_kms" required="">
 
                     <label for="name">NIK</label>
@@ -107,8 +107,7 @@
                         data-parsley-required="true" value="{{ $data->agama ?? old('agama') }}">
                     <label for="name">Pendidikan Terakhir</label>
                     <x-form.Dropdown name="pendidikan_terakhir" :options="$pendidikans"
-                        selected="{{ old('pendidikan_terakhir') ?? ($data['pendidikan_terakhir'] ?? null) }}"
-                        required />
+                        selected="{{ old('pendidikan_terakhir') ?? ($data['pendidikan_terakhir'] ?? null) }}" required />
                     <label for="name">Golongan Darah</label>
                     <x-form.Dropdown name="golongan_darah" :options="$goldas"
                         selected="{{ old('golongan_darah') ?? ($data['golongan_darah'] ?? null) }}" required />

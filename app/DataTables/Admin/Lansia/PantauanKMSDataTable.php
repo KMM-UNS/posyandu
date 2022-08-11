@@ -30,6 +30,19 @@ class PantauanKMSDataTable extends DataTable
                 return view('pages.admin.lansia.pantauan-kms.show', compact('data'));
             })
             // ->addColumn('show','Detail dari {{$namalansia1}}')
+            ->addColumn('status_rujukan', function ($row) {
+                $btn = '<div class="btn-group">';
+
+                if ($row->status == '0') {
+                    $btn = $btn . '<a href="' . route('admin.data-lansia.pantauankms.status1', $row->id) . '" class="btn btn-secondary btn-xs">Tidak Dirujuk</a>';
+                } elseif ($row->status == '1') {
+                    $btn = $btn . '<a href="' . route('admin.data-lansia.pantauankms.status', $row->id) . '" class="btn btn-warning btn-xs">Dirujuk</a>';
+                } elseif ($row->status == '2') {
+                    $btn = $btn . '<a href="#" class="btn btn-success btn-xs">Selesai</a>';
+                }
+                $btn = $btn . '</div>';
+                return $btn;
+            })
             ->addColumn('action', function ($row) {
 
 
@@ -47,7 +60,8 @@ class PantauanKMSDataTable extends DataTable
                 $btn = $btn . '</div>';
 
                 return $btn;
-            });
+            })
+            ->rawColumns(['status_rujukan', 'action']);
     }
 
     /**
@@ -58,7 +72,7 @@ class PantauanKMSDataTable extends DataTable
      */
     public function query(PantauanKMS $model)
     {
-        return $model->with(['lansia'])->select('pantauan_kms.*')->newQuery();
+        return $model->with(['lansia', 'kaderposyandu'])->select('pantauan_kms.*')->newQuery();
     }
 
     /**
@@ -118,22 +132,34 @@ class PantauanKMSDataTable extends DataTable
             //Column::make('no'),
             Column::make('tanggal_pemeriksaan', 'pantauan_kms.tanggal_pemeriksaan')->title(' Tanggal Pemeriksaan'),
             Column::make('lansia.nama_lansia', 'lansia.nama_lansia')->title('Nama Lansia'),
-            // Column::make('kegiatan_harian'),
+            Column::make('lansia.no_kms', 'lansia.no_kms')->title('No KMS'),
+            Column::make('kegiatan_harian', 'pantauan_kms.kegiatan_harian')->title('Kemandirian'),
+            Column::make('status_mental', 'pantauan_kms.status_mental')->title('Emosional Mental'),
             // Column::make('status_mental'),
             Column::make('indeks_massa_tubuh', 'pantauan_kms.indeks_massa_tubuh')->title('Indeks Massa Tubuh'),
             Column::make('tekanan_darah', 'pantauan_kms.tekanan_darah')->title(' Tekanan Darah'),
+            Column::make('hemoglobin', 'pantauan_kms.hemoglobin')->title('Hemoglobin'),
+            Column::make('reduksi_urine', 'pantauan_kms.reduksi_urine')->title('Reduksi Urine'),
+            Column::make('protein_urine', 'pantauan_kms.protein_urine')->title('Protein Urine'),
+            Column::make('kaderposyandu.nama', 'kaderposyandu.nama')->title('Penanggung Jawab'),
+
             // Column::make('hemoglobin'),
             // Column::make('reduksi_urine'),
             // Column::make('protein_urine'),
             // Column::make('tb'),
             // Column::make('bb'),
             // Column::make('hasil'),
+            Column::computed('status_rujukan')
+                ->exportable(false)
+                ->printable(false)
+                ->width(60)
+                ->addClass('text-center'),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)
                 ->width(60)
                 ->addClass('text-center'),
-            Column::computed('more')->addClass('details-control'),
+            // Column::computed('more')->addClass('details-control'),
 
         ];
     }

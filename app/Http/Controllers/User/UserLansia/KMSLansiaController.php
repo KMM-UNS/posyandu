@@ -20,15 +20,15 @@ class KMSLansiaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(KMSLansiaDataTable $dataTable, IMTChart $chart)
+    public function index(IMTChart $chart)
     {
 
         $data = DataLansia::select('id')->where('createable_id', auth()->user()->id)->first()->id;
-        $keluhan_tindakans = KeluhanTindakan::where('nama_lansia_id', $data)->get();
+        $pantauan = PantauanKMS::where('nama_lansia1', $data)->get();
         $data = [
-            'keluhan_tindakans' => $keluhan_tindakans
+            'pantauan' => $pantauan
         ];
-        return $dataTable->render('pages.user.lansia.kmslansia.index', $data, ['chart' => $chart->build()]);
+        return view('pages.user.lansia.kmslansia.index', $data, ['chart' => $chart->build()]);
     }
 
 

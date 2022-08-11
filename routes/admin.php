@@ -8,7 +8,8 @@ use App\Http\Controllers\DashboardController;
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     // require base_path('vendor/laravel/fortify/routes/routes.php');
 
-    Route::group(['namespace' => 'Admin', 'middleware' => ['role:admin|petugas_kesehatan|ketua_kader']], function () {
+
+    Route::group(['namespace' => 'Admin', 'middleware' => ['role:admin|kader']], function () {
         // Route::get('/', function () {
         //     return redirect(route('admin.dashboard'));
         // });
@@ -33,6 +34,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::resource('vitamin', 'VitaminController');
             // Route::get('file-upload', [ SliderController::class, 'Slider' ])->name('file.upload');
             // Route::post('file-upload', [ SliderController::class, 'Slider' ])->name('file.upload.post');
+            Route::resource('puskesmas', 'PuskesmasController');
             Route::resource('pekerjaan', 'PekerjaanController');
             Route::resource('status-kawin', 'StatusKawinController');
             Route::resource('pendidikan', 'PendidikanController');
@@ -51,12 +53,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             //>>>>>>> 2c5fdcdb0465bb80ea204f1c599c47ec8a4c99c3
         });
 
-
-        // route data anak
-        Route::group(['prefix' => '/anak-data', 'as' => 'anak-data.', 'namespace' => 'Anak'], function () {
-            Route::resource('dataanak', 'DataAnakController');
-            Route::resource('imunisasi', 'ImunisasiController');
-        });
 
 
         //=======
@@ -82,6 +78,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
             //pantauan kms
             Route::resource('pantauankms', 'PantauanKMSController');
+            //Status
+            Route::get('/update/status/{id}', 'PantauanKMSController@status')->name('pantauankms.status');
+            Route::get('/update/status1/{id}', 'PantauanKMSController@status1')->name('pantauankms.status1');
             //cetak kms per tgl
             Route::get('/laporankmslansia', 'PantauanKMSController@laporanKMS')->name('laporankmslansia');
             Route::post('/laporankmslansia', 'PantauanKMSController@sortir');
@@ -90,26 +89,15 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::get('/laporandatakmslansia', 'PantauanKMSController@laporanDataKMS')->name('laporandatakmslansia');
             Route::post('/laporandatakmslansia', 'PantauanKMSController@sortirriwayat');
             Route::get('/cetaklaporandatakms/{id}', 'PantauanKMSController@cetakLaporandataKMS');
-
-
-
-            //keluhan tindakan
-            Route::resource('keluhantindakan', 'KeluhanTindakanController');
-            //cetak keluhan pertgl
-            Route::get('/laporankeluhantindakan', 'KeluhanTindakanController@laporanKeluhanTindakan')->name('laporankeluhantindakan');
-            Route::post('/laporankeluhantindakan', 'KeluhanTindakanController@sortir');
-            Route::get('/cetaklaporankeluhantindakan/{start}/{end}', 'KeluhanTindakanController@cetakLaporanKeluhanTindakan');
-            Route::resource('', 'KeluhanTindakanController');
-            //cetak per nama   
-            Route::get('/riwayatkeluhantindakan', 'KeluhanTindakanController@riwayatKeluhanTindakan')->name('riwayatkeluhantindakan');
-            Route::post('/riwayatkeluhantindakan', 'KeluhanTindakanController@sortirriwayat');
-            Route::get('/cetakriwayatkeluhantindakan/{id}', 'KeluhanTindakanController@cetakriwayatKeluhanTindakan');
+            Route::get('/cetakkms/{id}', 'PantauanKMSController@cetakKMS');
         });
 
         Route::group(['prefix' => '/data-transaksi', 'as' => 'data-transaksi.', 'namespace' => 'Transaksi'], function () {
 
             //Rujukan Lansia
             Route::resource('rujukanlansia', 'RujukanLansiaController');
+            //Status
+            Route::get('/statuslist/{id}', 'RujukanLansiaController@statuslist');
             //Status
             Route::get('/update/status/{id}', 'RujukanLansiaController@status')->name('rujukanlansia.status');
             //riwayat pertanggal
@@ -125,23 +113,15 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::group(['prefix' => '/data-kegiatan', 'as' => 'data-kegiatan.', 'namespace' => 'Kegiatan'], function () {
             Route::resource('datakegiatanlansia', 'KegiatanLansiaController');
             Route::get('/update/status/{id}', 'KegiatanLansiaController@status')->name('datakegiatanlansia.status');
-            Route::post('/create_peserta/{id}', 'KegiatanLansiaController@create_peserta')->name('create_peserta');
-            Route::get('/status_peserta/{id}', 'KegiatanLansiaController@status_peserta');
-            Route::post('/create_kader/{id}', 'KegiatanLansiaController@create_kader')->name('create_kader');
-            Route::get('/status_kader/{id}', 'KegiatanLansiaController@status_kader');
+            Route::get('/detail/{id}', 'KegiatanLansiaController@detail');
+            Route::get('/rekaplansia/{id}', 'KegiatanLansiaController@rekaplansia');
+            Route::get('/rekapitulasi/{id}', 'KegiatanLansiaController@rekapitulasi');
 
             //laporan kegiatan
             Route::get('laporankegiatanlansia', 'KegiatanLansiaController@laporankegiatan');
             Route::post('/laporankegiatanlansia', 'KegiatanLansiaController@riwayatkegiatan');
             Route::post('/pengajuan', 'KegiatanLansiaController@pengajuan')->name('pengajuan');
             Route::get('/hapus/{id}', 'KegiatanLansiaController@hapuspengajuan')->name('hapus');
-
-
-            //pengajuan punya ketua
-            Route::resource('pengajuan_ketua', 'PengajuanController');
-            Route::get('/status_pengajuan/{id}', 'KegiatanLansiaController@status_pengajuan');
-            Route::get('/statusakhir_pengajuan/{id}', 'KegiatanLansiaController@statusakhir_pengajuan');
-            Route::post('/create_bukti/{id}', 'KegiatanLansiaController@create_bukti')->name('create_bukti');
         });
     });
 });

@@ -1,6 +1,6 @@
 @extends('layouts.empty', ['paceTop' => true, 'bodyExtraClass' => 'bg-white'])
 
-
+@section('title', 'Lansia')
 
 {{-- @section('content')
     <!-- begin login -->
@@ -92,8 +92,8 @@
             <!-- begin login-header -->
             <div class="login-header">
                 <div class="brand">
-                    <b>Posyandu</b>
-                    <small>Posyandu Lansia Kelurahan</small>
+                    <b>Posyandu Lansia</b>
+                    <small>Posyandu Sahabat Masyarakat</small>
                 </div>
                 <div class="icon">
                     <i class="fa fa-lock"></i>
