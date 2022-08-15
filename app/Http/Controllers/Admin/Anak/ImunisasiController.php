@@ -34,12 +34,13 @@ class ImunisasiController extends Controller
      */
     public function create()
     {
+
         $jenisvaksin=JenisVaksin::pluck('vaksin','id');
         $dataanak=DataAnak::pluck('nama_anak','id');
         $vitaminanak=VitaminAnak::pluck('nama_vitamin','id');
         $kader=Kader::pluck('nama','id');
         return view('pages.admin.anak.imunisasi.add-edit',['jenisvaksin'=>$jenisvaksin,
-        'dataanak'=>$dataanak,'vitaminanak'=>$vitaminanak,'kader'=>$kader]);
+        'dataanak'=>$dataanak,'vitaminanak'=>$vitaminanak,'kader'=>$kader,]);
     }
 
     /**

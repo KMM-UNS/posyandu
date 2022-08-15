@@ -63,7 +63,7 @@
         <th>Vitamin Anak</th>
         <th>Keluhan</th>
         <th>Tindakan</th>
-        <th>Status Gizi</th>
+        <th>Gizi Tambahan</th>
         <th>Kader</th>
       </tr>
       @foreach ( $data as $cetak)

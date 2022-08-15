@@ -67,12 +67,12 @@
         <x-form.Dropdown name="vitamin" :options="$vitaminanak" selected="{{{ old('vitamin') ?? ($data['vitamin'] ?? null) }}}" required />
         {{-- <input type="text" id="vitamin" name="vitamin" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->vitamin ?? old('vitamin') }}}"> --}}
         <label for="name">Keluhan</label>
-        <input type="text" id="keluhan" name="keluhan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->keluhan ?? old('keluhan') }}}">
+        <input type="text" maxlength="11" id="keluhan" name="keluhan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->keluhan ?? old('keluhan') }}}">
         <label for="name">Tindakan</label>
-        <input type="text" id="tindakan" name="tindakan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tindakan ?? old('tindakan') }}}">
+        <input type="text" maxlength="11" id="tindakan" name="tindakan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tindakan ?? old('tindakan') }}}">
         <label for="name">Gizi Tambahan</label>
         {{-- <x-form.statusRadio name="status_gizi" selected="{{{ old('status_gizi') ?? ($data['status_gizi'] ?? null) }}}"/> --}}
-        <input type="text" id="status_gizi" name="status_gizi" class="form-control" autofocus data-parsley-required="false" value="{{{ $data->status_gizi ?? old('status_gizi') }}}">
+        <input type="text" maxlength="11" id="status_gizi" name="status_gizi" class="form-control" autofocus data-parsley-required="false" value="{{{ $data->status_gizi ?? old('status_gizi') }}}">
         <label for="name">Nama Kader</label>
         <x-form.Dropdown name="nama_kader" :options="$kader" selected="{{{ old('nama_kader') ?? ($data['nama_kader'] ?? null) }}}" required />
         {{-- <input type="text" id="nama_kader" name="nama_kader" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama_kader ?? old('nama_kader') }}}"> --}}

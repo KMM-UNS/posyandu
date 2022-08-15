@@ -66,7 +66,7 @@
         <input disabled type="text" id="keluhan" name="keluhan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->keluhan ?? old('keluhan') }}}">
         <label for="name">Tindakan</label>
         <input disabled type="text" id="tindakan" name="tindakan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tindakan ?? old('tindakan') }}}">
-        <label for="name">Status Gizi</label>
+        <label for="name">Gizi Tambahan</label>
         <input disabled type="text" id="status_gizi" name="status_gizi" class="form-control" autofocus data-parsley-required="false" value="{{{ $data->status_gizi ?? old('status_gizi') }}}">
         {{-- <x-form.statusRadio disabled name="status_gizi" selected="{{{ old('status_gizi') ?? ($data['status_gizi'] ?? null) }}}"/> --}}
         {{-- <label for="name">Berat Masa Ideal</label>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Anak;
 
 use App\Models\DataAnak;
 use App\Models\Imunisasi;
+use App\Models\JenisVaksin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Barryvdh\DomPDF\Facade\Pdf as PDF;
@@ -89,7 +90,8 @@ class DataAnakController extends Controller
     {
         $data = DataAnak::findOrFail($id);
         $imunisasis = Imunisasi::where('nama_anak_id',$id)->get();
-        return view('pages.admin.anak.dataanak.show', ['data' => $data, 'imunisasis' => $imunisasis]);
+        $jenisvaksins = JenisVaksin::where('id','!=',0)->get();
+        return view('pages.admin.anak.dataanak.show', ['data' => $data, 'imunisasis' => $imunisasis, 'jenisvaksins'=> $jenisvaksins]);
 
     }
 

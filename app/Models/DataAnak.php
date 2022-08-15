@@ -19,6 +19,7 @@ class DataAnak extends Model
 
     protected $table = 'data_anaks';
     protected $fillable = [
+        'foto',
         'nama_anak',
         'NIK',
         'alamat',
@@ -27,13 +28,16 @@ class DataAnak extends Model
         'berat_badan_lahir',
         'tinggi_badan_lahir',
         'umur',
+        'tahun',
         'jenis_kelamin',
         'anak_ke',
         'nama_orangtua',
         'no_hp_orangtua',
         'golongan_darah',
         'tinggi_ibu',
-        'tinggi_bapak'];
+        'tinggi_bapak',
+        'createable_id',
+        'createable_type'];
     public $timestamps = false;
 
     public function imunisasi()

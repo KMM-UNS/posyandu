@@ -1,3 +1,4 @@
+use App\Helpers\FileUploaderHelper;
 @extends('layouts.user')
 
 @section('title', isset($data) ? 'Edit Data Anak' : 'Lengkapi Data Anak' )
@@ -20,7 +21,7 @@
 
 
 <!-- begin panel -->
-<form action="{{ isset($data) ? route('user.biodata.update', $data->id) : route('user.biodata.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
+<form action="{{ isset($data) ? route('user.biodata.update', $data->id) : route('user.biodata.store') }}" id="form" name="form" method="POST" enctype="multipart/form-data" data-parsley-validate="true">
   @csrf
   @if(isset($data))
   {{ method_field('PUT') }}
@@ -87,12 +88,21 @@
 
         <div class="form-group">
           <div class="row">
-              <div class="col-md-1">
-                  <label for="name">Umur</label>
+            <div class="col-md-0.33">
+                <label for="name">Umur</label>
+            </div>
+              <div class="col-md-0.33">
+                  <label for="name">Bulan</label>
               </div>
-              <div class="col-md-3">
+              <div class="col-md-1">
                   <input type="text" id="umur" name="umur" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->umur ?? old('umur') }}}">
               </div>
+              <div class="col-md-0.33">
+                <label for="name">Tahun</label>
+            </div>
+            <div class="col-md-1">
+                <input type="text" id="tahun" name="tahun" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tahun ?? old('tahun') }}}">
+            </div>
               <div class="col-md-1">
                   <label for="name">Berat Badan Lahir</label>
               </div>
@@ -151,7 +161,15 @@
           <div class="col-md 3">
               <input type="text" id="tinggi_bapak" name="tinggi_bapak" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tinggi_bapak ?? old('tinggi_bapak') }}}">
           </div>
-   </div>
+        </div>
+        <div class="row">
+            <div class="col-md-1">
+                <label for="name">Foto Anak</label>
+            </div>
+            <div class="col-md-3">
+                <input type="file" id="foto" name="foto" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->foto ?? old('foto') }}}">
+            </div>
+    </div>
     </div>
     <!-- end panel-body -->
     <!-- begin panel-footer -->

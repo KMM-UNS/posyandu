@@ -21,6 +21,7 @@
     {{-- <li class="breadcrumb-item"><a href="javascript:;">Master Data</a></li> --}}
     <li class="breadcrumb-item active">@yield('title')</li>
 </ol>
+
 {{-- @foreach ($dataanaks as $dataanak )
  @if(empty($dataanak) || $dataanak->count()==0)
     <div class="panel-body">
@@ -30,6 +31,68 @@
     <div align="center">
 	<h1 class="page-header"><strong> Riwayat Imunisasi </strong></h1>
     </div>
+    <div class="row">
+        <!-- begin col-6 -->
+        <div class="col-lg-12">
+            <!-- begin panel -->
+            <div class="panel panel-inverse" data-sortable-id="table-basic-1">
+                <!-- begin panel-heading -->
+                <div class="panel-heading">
+                    <h4 class="panel-title">Table Riwayat Pemeriksaan Imunisasi Anak</h4>
+                </div>
+                <!-- end panel-heading -->
+                <!-- begin panel-body -->
+                <div class="panel-body">
+                    <!-- begin table-responsive -->
+                    <div class="table-responsive">
+                        <table class="table m-b-0">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Tanggal Imunisasi</th>
+                                    <th>Berat Badan (kg)</th>
+                                    <th>Tinggi Badan (Cm)</th>
+                                    <th>Lingkar Kepala (Cm)</th>
+                                    <th>Total IMT</th>
+                                    <th>Keterangan IMT</th>
+                                    <th>Umur</th>
+                                    {{-- <th>Vaksin</th> --}}
+                                    <th>Vitamin Anak</th>
+                                    <th>Keluhan</th>
+                                    <th>Tindakan</th>
+                                    <th>Status Gizi</th>
+                                    <th>Nama Kader</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($imunisasis as $imunisasi)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $imunisasi->tanggal_imunisasi }}</td>
+                                    <td>{{ $imunisasi->berat_badan}}</td>
+                                    <td>{{ $imunisasi->tinggi_badan}}</td>
+                                    <td>{{ $imunisasi->lingkar_kepala}}</td>
+                                    <td>{{ $imunisasi->total_imt }}</td>
+                                    <td>{{ $imunisasi->ket_imt}}</td>
+                                    <td>{{ $imunisasi->umur ?? old('umur') }}</td>
+                                    {{-- <td>{{ $imunisasi->jenisvaksin->vaksin}}</td> --}}
+                                    <td>{{ $imunisasi->vitamin_anak->nama_vitamin }}</td>
+                                    <td>{{ $imunisasi->keluhan }}</td>
+                                    <td>{{ $imunisasi->tindakan }}</td>
+                                    <td>{{ $imunisasi->status_gizi}}</td>
+                                    <td>{{ $imunisasi->kader->nama }}</td>
+                                </tr>
+                                @endforeach
+                                {{-- <a href=" {{ route('user.grafik.cetak', $imunisasi->id) }}" class="btn btn-info buttons-show"><i class="fa fa-print fa-fw"></i></a> --}}
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- end table-responsive -->
+                </div>
+            </div>
+        </div>
+    </div>
+
 	<!-- end page-header -->
 	<!-- begin row -->
     <div class="row">
@@ -39,7 +102,7 @@
             <div class="panel panel-inverse" data-sortable-id="table-basic-1">
                 <!-- begin panel-heading -->
                 <div class="panel-heading">
-                    <h4 class="panel-title">Table Riwayat Imunisasi Anak</h4>
+                    <h4 class="panel-title">Table Riwayat Vaksin Anak</h4>
                 </div>
                 <!-- end panel-heading -->
                 <!-- begin panel-body -->
@@ -50,10 +113,13 @@
                             <thead>
                                 <tr>
                                     <th><b>No</b></th>
+                                    {{-- <th><b>Vitamin</b></th> --}}
                                     <th><b>Jenis Vaksin</b></th>
                                     <th><b>Umur</b></th>
                                     <th><b>Tanggal</b></th>
+                                    <th><b>Vitamin</b></th>
                                     <th><b>Status</b></th>
+                                    {{-- <th><b>Vitamin</b></th> --}}
                                 </tr>
                             </thead>
                             <tbody>
@@ -67,8 +133,10 @@
                                     @endphp
                                     @if ($imunisasi)
                                     <td>{{ $imunisasi->tanggal_imunisasi }}</td>
+                                    <td>{{ $imunisasi->vitamin_anak->nama_vitamin }}</td>
                                     <td class="btn btn-info btn-xs"> Sudah Vaksin</td>
                                     @else
+                                    <td> -</td>
                                     <td> -</td>
                                     <td class="btn btn-secondary btn-xs">Belum Vaksin</td>
                                     @endif

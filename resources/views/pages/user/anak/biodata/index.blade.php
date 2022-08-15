@@ -51,7 +51,7 @@
 
     <div class="container">
         <div class="row">
-            <h2>Biodata Diri</h2>
+            <h2>Biodata Anak</h2>
         </div>
     </div>
     <br>
@@ -108,8 +108,21 @@
                                                 </tr>
                                                 <tr>
                                                     <td class="textt"><b>Umur</b></td>
+                                                    <td width="2%"></td>
+                                                    {{-- <td style="color: #158beb; font-weight:bold">{{$dataanak->umur}}</td> --}}
+                                                    {{-- <td width="2%">:</td> --}}
+                                                </tr>
+                                                <tr>
+                                                    <td class="textt"><b>Bulan</b></td>
                                                     <td width="2%">:</td>
-                                                    <td style="color: #158beb; font-weight:bold">{{$dataanak->umur}}</td>
+                                                    <td style="color: #158beb; font-weight:bold">
+                                                    {{$dataanak->umur}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="textt"><b>Tahun</b></td>
+                                                    <td width="2%">:</td>
+                                                    <td style="color: #158beb; font-weight:bold">
+                                                    {{$dataanak->tahun}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="textt"><b>Jenis Kelamin</b></td>
@@ -145,6 +158,21 @@
                                                     <td class="textt"><b>Tinggi Badan Bapak</b></td>
                                                     <td width="2%">:</td>
                                                     <td style="color: #158beb; font-weight:bold">{{$dataanak->tinggi_bapak}} Cm</td>
+                                                </tr>
+
+                                                {{-- <tr>
+                                                    <td class="textt"><b>Foto</b></td>
+                                                    <td width="2%">:</td>
+                                                    <td style="color: #158beb; font-weight:bold">{{$dataanak->foto}}</td>
+                                                </tr> --}}
+                                                <tr>
+                                                    <td class="textt"><b>Foto Anak</b></td>
+                                                    <td width="2%">:</td>
+                                                    <td style="color: #158beb; font-weight:bold">{{$dataanak->foto}} </td>
+                                                    {{-- <td>{{ asset('storea') }}</td> --}}
+                                                    <td>
+                                                        <img src="{{ asset('storage/fotoanak/'.$dataanak->foto)}}" alt="Image" style="width: 50%">
+                                                    </td>
                                                 </tr>
                                             </tbody>
                                         </table>

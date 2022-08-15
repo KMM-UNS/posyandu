@@ -71,6 +71,7 @@ class JadwalImunisasiController extends Controller
         $data = JadwalImunisasi::findOrFail($id);
         $kader=Kader::pluck('nama','id');
         $imunisasis = Imunisasi::where('tanggal_imunisasi',$data->tanggal)->get();
+        // dd($imunisasis);
         return view('pages.admin.anak.jadwalimunisasi.show', ['data' => $data,'kader'=>$kader, 'imunisasis' => $imunisasis]);
     }
 

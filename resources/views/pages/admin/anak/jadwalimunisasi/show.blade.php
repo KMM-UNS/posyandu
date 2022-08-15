@@ -110,6 +110,7 @@
                 <td>{{ $imunisasi->ket_imt}}</td>
                 <td>{{ $imunisasi->umur ?? old('umur') }}</td>
                 <td>{{ $imunisasi->jenisvaksin->vaksin}}</td>
+                {{-- <td>{{ $imunisasi->jenisvaksin->vaksin}}</td> --}}
                 <td>{{ $imunisasi->vitamin_anak->nama_vitamin }}</td>
                 <td>{{ $imunisasi->keluhan }}</td>
                 <td>{{ $imunisasi->tindakan }}</td>

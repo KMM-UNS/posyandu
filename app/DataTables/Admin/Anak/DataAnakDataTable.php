@@ -28,7 +28,7 @@ class DataAnakDataTable extends DataTable
         ->addColumn('action', function ($row) {
             $btn = '<div class="btn-group">';
             // $btn = $btn . '<a href="' . route('admin.anak-data.dataanak.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
-            $btn = $btn . '<a href="' . route('admin.anak-data.dataanak.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
+            // $btn = $btn . '<a href="' . route('admin.anak-data.dataanak.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
             $btn = $btn . '<a href="' . route('admin.anak-data.dataanak.show', $row->id) . '" class="btn btn-info buttons-show"><i class="fas fa-info fa-fw"></i></a>';
             $btn = $btn . '</div>';
 
@@ -89,7 +89,7 @@ class DataAnakDataTable extends DataTable
             Column::make('tanggal_lahir'),
             Column::make('berat_badan_lahir'),
             Column::make('tinggi_badan_lahir'),
-            Column::make('umur'),
+            // Column::make('umur'),
             Column::make('jenis_kelamin'),
             // Column::make('anak_ke'),
             // Column::make('nama_orangtua'),

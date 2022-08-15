@@ -26,181 +26,138 @@
   {{ method_field('PUT') }}
   @endif
 
-  <div class="panel panel-inverse">
-    <!-- begin panel-heading -->
-    <div class="panel-heading">
-      <h4 class="panel-title">Form @yield('title')</h4>
-      <div class="panel-heading-btn">
-        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
-        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
-      </div>
-    </div>
-    <!-- end panel-heading -->
-    <!-- begin panel-body -->
-    <div class="panel-body">
-      <div class="form-group">
-        <div class="row">
-            <div class="col-md-1">
-                <label for="name">Nama Anak</label>
-            </div>
-            <div class="col-md-3">
-                : {{ $data->nama_anak }}
-                {{-- <input type="text" id="nama_anak" name="nama_anak" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama_anak ?? old('nama_anak') }}}"> --}}
-            </div>
-            <div class="col-md-1">
-                <label for="name">NIK</label>
-            </div>
-            <div class="col-md-3">
-                : {{ $data->NIK }}
-                {{-- <input type="text" id="NIK" name="NIK" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->NIK ?? old('NIK') }}}"> --}}
-            </div>
-            <div class="col-md-1">
-                <label for="name">Tempat Lahir</label>
-            </div>
-            <div class="col-md-3">
-                : {{ $data->tempat_lahir }}
-                {{-- <input type="text" id="tempat_lahir" name="tempat_lahir" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tempat_lahir ?? old('tempat_lahir') }}}"> --}}
-            </div>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <div class="row">
-            <div class="col-md-1">
-                <label for="name">Tanggal Lahir</label>
-            </div>
-            <div class="col-md-3">
-                : {{ $data->tanggal_lahir }}
-                {{-- <input type="date" id="tanggal_lahir" name="tanggal_lahir" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tanggal_lahir ?? old('tanggal_lahir') }}}"> --}}
-            </div>
-            <div class="col-md-1">
-                <label for="name">Berat Badan Lahir</label>
-            </div>
-            <div class="col-md-3">
-                : {{ $data->berat_badan_lahir }}
-                {{-- <input type="text" id="berat_badan_lahir" name="berat_badan_lahir" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->berat_badan_lahir ?? old('berat_badan_lahir') }}}"> --}}
-            </div>
-            <div class="col-md-1">
-                <label for="name">Tinggi Badan Lahir</label>
-            </div>
-            <div class="col-md-3">
-                : {{ $data->tinggi_badan_lahir }}
-                {{-- <input type="text" id="tinggi_badan_lahir" name="tinggi_badan_lahir" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tinggi_badan_lahir ?? old('tinggi_badan_lahir') }}}"> --}}
-    </div>
+  <div align="center">
+	<h1 class="page-header"><strong> Riwayat Imunisasi Anak </strong></h1>
     </div>
 
-        <div class="form-group">
-          <div class="row">
-              <div class="col-md-1">
-                  <label for="name">Umur</label>
-              </div>
-              <div class="col-md-3">
-               : {{ $data->umur }}
-                {{-- <input type="text" id="umur" name="umur" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->umur ?? old('umur') }}}"> --}}
-              </div>
-              <div class="col-md-1">
-                  <label for="name">Jenis Kelamin</label>
-              </div>
-              <div class="col-md-3">
-                : {{ $data->jenis_kelamin }}
-                  {{-- <x-form.genderRadio name="jenis_kelamin" selected="{{{ old('jenis_kelamin') ?? ($data['jenis_kelamin'] ?? null) }}}"/> --}}
-                  {{-- <input type="text" id="jenis_kelamin" name="jenis_kelamin" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->jenis_kelamin ?? old('jenis_kelamin') }}}"> --}}
-              </div>
-              <div class="col-md-1">
-                  <label for="name">Anak Ke</label>
-              </div>
-              <div class="col-md-3">
-                  : {{ $data->anak_ke }}
-                  {{-- <input type="text" id="anak_ke" name="anak_ke" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->anak_ke ?? old('anak_ke') }}}"> --}}
-              </div>
-        </div>
-        </div>
-        <div class="form-group">
-          <div class="row">
-              <div class="col-md-1">
-                  <label for="name">Nama Orangtua</label>
-              </div>
-              <div class="col-md 3">
-               : {{ $data->nama_orangtua }}
-              </div>
-              <div class="col-md-1">
-                  <label for="name">No Handphone Orangtua</label>
-              </div>
-              <div class="col-md-3">
-                : {{ $data->no_hp_orangtua }}
-              </div>
-              <div class="col-md-1">
-              <label for="name">Alamat</label>
-              </div>
-              <div class="col-md-3">
-                : {{ $data->alamat }}
-              </div>
-
-
-
-
-     </div>
-    </div>
-    {{-- <table class="table table-primary table-striped">
-        <thead>
-            <tr> --}}
-    <div class="panel-body">
+    <div class="row">
+        <!-- begin col-6 -->
+        <div class="col-lg-12">
+            <!-- begin panel -->
+            <div class="panel panel-inverse" data-sortable-id="table-basic-1">
+                <!-- begin panel-heading -->
+                <div class="panel-heading">
+                    <h4 class="panel-title">Table Riwayat Pemeriksaan Imunisasi Anak</h4>
+                </div>
+                <!-- end panel-heading -->
+                <!-- begin panel-body -->
+                <div class="panel-body">
                     <!-- begin table-responsive -->
-    <div class="table-responsive">
-    <table class="table m-b-0">
-        <thead>
-            <tr>
-                <th> No</th>
-                {{-- <th> Nama Anak</th> --}}
-                <th> Tanggal Imunisasi</th>
-                <th> Berat Badan (kg)</th>
-                <th> Tinggi Badan (Cm)</th>
-                <th> Total IMT</th>
-                <th> Kategori IMT</th>
-                <th> Umur</th>
-                <th> Vaksin</th>
-                <th> Vitamin Anak</th>
-                <th> Keluhan</th>
-                <th> Tindakan</th>
-                <th> Status Gizi</th>
-                <th> Nama Kader</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($imunisasis as $imunisasi)
-            <tr>
-                <td>{{ $loop->iteration }}</td>
-                {{-- <td>{{ $imunisasi->data_anak->nama_anak }}</td> --}}
-                <td>{{ $imunisasi->tanggal_imunisasi }}</td>
-                <td>{{ $imunisasi->berat_badan}}</td>
-                <td>{{ $imunisasi->tinggi_badan}}</td>
-                <td>{{ $imunisasi->total_imt}}</td>
-                <td>{{ $imunisasi->ket_imt}}</td>
-                <td>{{ $imunisasi->umur ?? old('umur') }}</td>
-                <td>{{ $imunisasi->jenisvaksin->vaksin}}</td>
-                <td>{{ $imunisasi->vitamin_anak->nama_vitamin }}</td>
-                <td>{{ $imunisasi->keluhan }}</td>
-                <td>{{ $imunisasi->tindakan }}</td>
-                <td>{{ $imunisasi->status_gizi}}</td>
-                <td>{{ $imunisasi->kader->nama }}</td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
+                    <div class="table-responsive">
+                        <table class="table m-b-0">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Tanggal Imunisasi</th>
+                                    <th>Berat Badan (kg)</th>
+                                    <th>Tinggi Badan (Cm)</th>
+                                    <th>Lingkar Kepala (Cm)</th>
+                                    <th>Total IMT</th>
+                                    <th>Keterangan IMT</th>
+                                    <th>Umur</th>
+                                    {{-- <th>Vaksin</th> --}}
+                                    <th>Vitamin Anak</th>
+                                    <th>Keluhan</th>
+                                    <th>Tindakan</th>
+                                    <th>Status Gizi</th>
+                                    <th>Nama Kader</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($imunisasis as $imunisasi)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $imunisasi->tanggal_imunisasi }}</td>
+                                    <td>{{ $imunisasi->berat_badan}}</td>
+                                    <td>{{ $imunisasi->tinggi_badan}}</td>
+                                    <td>{{ $imunisasi->lingkar_kepala}}</td>
+                                    <td>{{ $imunisasi->total_imt }}</td>
+                                    <td>{{ $imunisasi->ket_imt}}</td>
+                                    <td>{{ $imunisasi->umur ?? old('umur') }}</td>
+                                    {{-- <td>{{ $imunisasi->jenisvaksin->vaksin}}</td> --}}
+                                    <td>{{ $imunisasi->vitamin_anak->nama_vitamin }}</td>
+                                    <td>{{ $imunisasi->keluhan }}</td>
+                                    <td>{{ $imunisasi->tindakan }}</td>
+                                    <td>{{ $imunisasi->status_gizi}}</td>
+                                    <td>{{ $imunisasi->kader->nama }}</td>
+                                </tr>
+                                @endforeach
+                                {{-- <a href=" {{ route('user.grafik.cetak', $imunisasi->id) }}" class="btn btn-info buttons-show"><i class="fa fa-print fa-fw"></i></a> --}}
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- end table-responsive -->
+                </div>
             </div>
         </div>
-    <!-- end panel-footer -->
     </div>
-  <!-- end panel -->
-  {{-- <div class="panel-footer">
-    <a href=" {{ route('admin.anak-data.dataanak.cetak') }}"class="fas fa-print"> Cetak</a>
-    </div> --}}
 
-</form>
-<a href="javascript:history.back(-1);" class="btn btn-success">
-  <i class="fa fa-arrow-circle-left"></i> Kembali
-</a>
+	<!-- end page-header -->
+	<!-- begin row -->
+    <div class="row">
+        <!-- begin col-6 -->
+        <div class="col-lg-12">
+            <!-- begin panel -->
+            <div class="panel panel-inverse" data-sortable-id="table-basic-1">
+                <!-- begin panel-heading -->
+                <div class="panel-heading">
+                    <h4 class="panel-title">Table Riwayat Vaksin Anak</h4>
+                </div>
+                <!-- end panel-heading -->
+                <!-- begin panel-body -->
+                <div class="panel-body">
+                    <!-- begin table-responsive -->
+                    <div class="table-responsive">
+                        <table class="table m-b-0">
+                            <thead>
+                                <tr>
+                                    <th><b>No</b></th>
+                                    {{-- <th><b>Vitamin</b></th> --}}
+                                    <th><b>Jenis Vaksin</b></th>
+                                    <th><b>Umur</b></th>
+                                    <th><b>Tanggal</b></th>
+                                    {{-- <th><b>Vitamin</b></th> --}}
+                                    <th><b>Status</b></th>
+                                    {{-- <th><b>Vitamin</b></th> --}}
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($jenisvaksins as $jenisvaksin)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $jenisvaksin->vaksin }}</td>
+                                    <td>{{ $jenisvaksin->umur}} Bulan</td>
+                                    @php
+                                        $imunisasi = $imunisasis->where('jenis_vaksin', $jenisvaksin->id)->first();
+                                    @endphp
+                                    @if ($imunisasi)
+                                    <td>{{ $imunisasi->tanggal_imunisasi }}</td>
+                                    {{-- <td>{{ $imunisasi->vitamin_anak->nama_vitamin }}</td> --}}
+                                    <td class="btn btn-info btn-xs"> Sudah Vaksin</td>
+                                    @else
+                                    {{-- <td> -</td> --}}
+                                    <td> -</td>
+                                    <td class="btn btn-secondary btn-xs">Belum Vaksin</td>
+                                    @endif
+                                </tr>
+                                @endforeach
+                                {{-- <a href=" {{ route('user.grafik.cetak', $imunisasi->id) }}" class="btn btn-info buttons-show"><i class="fa fa-print fa-fw"></i></a> --}}
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- end table-responsive -->
+                </div>
+            </div>
+        </div>
+    </div>
 
+
+    <a href="javascript:history.back(-1);" class="btn btn-success">
+        <i class="fa fa-arrow-circle-left"></i> Kembali
+      </a>
+
+        <!-- end table-responsive -->
+    </div>
 @endsection
 
 @push('scripts')

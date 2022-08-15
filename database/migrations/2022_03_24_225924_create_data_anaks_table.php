@@ -23,6 +23,7 @@ class CreateDataAnaksTable extends Migration
             $table->string('berat_badan_lahir');
             $table->string('tinggi_badan_lahir');
             $table->string('umur');
+            $table->string('tahun');
             $table->string('jenis_kelamin');
             $table->string('anak_ke');
             $table->string('nama_orangtua');
@@ -30,6 +31,7 @@ class CreateDataAnaksTable extends Migration
             $table->string('golongan_darah');
             $table->string('tinggi_ibu');
             $table->string('tinggi_bapak');
+            $table->string('foto');
             $table->bigInteger('createable_id')->nullable();
             $table->text('createable_type')->nullable();
             $table->softDeletes();

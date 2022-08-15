@@ -7,6 +7,7 @@ use App\Models\Rujukan;
 use App\Models\Imunisasi;
 use App\Charts\ImunisasiChart;
 use App\Charts\LingkarKepalaChart;
+use App\Charts\TinggiBadanChart;
 use App\Models\JenisVaksin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -32,32 +33,29 @@ class BiodataController extends Controller
 
     public function store(Request $request)
     {
-        DB::transaction(function () use ($request) {
-            try {
-                // dd($request->all());
-                $data = DataAnak::create($request->all());
-                $data->createable()->associate($request->user());
-                $data->save();
-
-                // dd($dataanak);
-            } catch (\Throwable $th) {
-                DB::rollBack();
-                dd($th);
-                return back()->withInput()->withToastError('Something went wrong');
-            }
-        });
-
-
-        // try {
-        //     $request->validate([
-        //         'nama_anak' => 'required|min:3'
-        //     ]);
-        // } catch (\Throwable $th) {
-        //     return back()->withInput()->withToastError($th->validator->messages()->all()[0]);
-        // }
-
-        // try {
-        //     // DataAnak::create($request->all());
+        $file = $request->file('foto');
+        $foto = $file->getClientOriginalName();
+        $file->move(storage_path('app/public/fotoanak'), $foto);
+        $validatedData['foto'] = $foto;
+        $validatedData['nama_anak'] = $request->nama_anak;
+        $validatedData['NIK'] = $request->NIK;
+        $validatedData['alamat'] = $request->alamat;
+        $validatedData['tempat_lahir'] = $request->tempat_lahir;
+        $validatedData['tanggal_lahir'] = $request->tanggal_lahir;
+        $validatedData['berat_badan_lahir'] = $request->berat_badan_lahir;
+        $validatedData['tinggi_badan_lahir'] = $request->tinggi_badan_lahir;
+        $validatedData['umur'] = $request->umur;
+        $validatedData['tahun'] = $request->tahun;
+        $validatedData['jenis_kelamin'] = $request->jenis_kelamin;
+        $validatedData['anak_ke'] = $request->anak_ke;
+        $validatedData['nama_orangtua'] = $request->nama_orangtua;
+        $validatedData['no_hp_orangtua'] = $request->no_hp_orangtua;
+        $validatedData['golongan_darah'] = $request->golongan_darah;
+        $validatedData['tinggi_ibu'] = $request->tinggi_ibu;
+        $validatedData['tinggi_bapak'] = $request->tinggi_bapak;
+        $validatedData['createable_id'] = auth()->user()->id;
+        $validatedData['createable_type'] = 'App\Models\User';
+            DataAnak::create($validatedData);
         // } catch (\Throwable $th) {
         //     return back()->withInput()->withToastError('Something went wrong');
         // }
@@ -130,13 +128,14 @@ class BiodataController extends Controller
 
     }
 
-    public function kms($id, ImunisasiChart  $imunisasiChart, LingkarKepalaChart $lingkarkepalaChart)
+    public function kms($id, ImunisasiChart  $imunisasiChart, LingkarKepalaChart $lingkarkepalaChart, TinggiBadanChart $tinggiBadanChart)
     {
+
         // $data = DataAnak::findOrFail($id);
         // $imunisasis = Imunisasi::where('nama_anak_id',$id)->get();
         // $rujukans = Rujukan::where('nama',$id)->get();
         // $jenisvaksins = JenisVaksin::where('id','!=',0)->get();
-        return view('pages.user.anak.biodata.grafik', ['imunisasiChart' => $imunisasiChart->build($id), 'lingkarkepalaChart'=>$lingkarkepalaChart->build($id)]);
+        return view('pages.user.anak.biodata.grafik', ['imunisasiChart' => $imunisasiChart->build($id), 'lingkarkepalaChart'=>$lingkarkepalaChart->build($id), 'tinggiBadanChart'=>$tinggiBadanChart->build($id)]);
 
     }
 }

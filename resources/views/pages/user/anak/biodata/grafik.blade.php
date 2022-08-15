@@ -74,6 +74,24 @@
     </body>
 </div>
 </div>
+
+<div class="row">
+    <div class="col-md-6">
+    <body class="h-screen bg-gray-100">
+
+        <div class="container px-4 mx-auto">
+
+            <div class="p-6 m-20 bg-white rounded shadow">
+            {!! $tinggiBadanChart->container() !!}
+        </div>
+
+    </div>
+
+    <script src="{{ $tinggiBadanChart->cdn() }}"></script>
+
+    {{ $tinggiBadanChart->script() }}
+    </body>
+</div>
     </div>
 <a href="javascript:history.back(-1);" class="btn btn-success">
     <i class="fa fa-arrow-circle-left"></i> Kembali

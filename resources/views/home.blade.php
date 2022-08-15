@@ -31,21 +31,21 @@
                         {{ $imunisasiChart->script() }}
                 </div> --}}
                 <div class="card-body">
-                <div align="center" class="text"><strong>Selamat Datang di Posyandu Anak</strong></div>
+                <div align="center" class="text"><strong>Selamat Datang di Posyandu Balita</strong></div>
                 </div>
-                <div class="col-xl-6 col-md-6">
+                {{-- <div class="col-xl-6 col-md-6">
                     <div class="widget widget-stats bg-purple">
                       <div class="stats-icon"><i class="fa fa-users"></i></div>
                       <div class="stats-info">
                         <h4>JUMLAH ANAK</h4>
                          <p></p>
                       </div>
-                      <div class="stats-link">
+                      <div class="stats-link"> --}}
                         {{-- <a>Jumlah Kader di Posyandu<i class=""></i></a> --}}
-                        <a href="user/biodata">View Detail </a>
+                        {{-- <a href="user/biodata">View Detail </a>
                       </div>
                     </div>
-                  </div>
+                  </div> --}}
                 {{-- <div class="text">
                     <p align="justify">Grafik diatas menunjukkan tumbuh kembang anak sesuai dengan berat badan dan tinggi badan anak.
                         Apabila garis naik maka berat badan anak dan tinggi badan anak meningkat. Sedangan garis turun maka berat badan dan tinggi badan anak menurun.
